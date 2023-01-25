@@ -15,5 +15,6 @@ namespace GestaoDDD.Domain.Entities
     public string Latitude { get; set; }
     public string Longitude { get; set; }
     public string Endereco { get; set; }
+    public string Turma { get; set; }
   }
 }

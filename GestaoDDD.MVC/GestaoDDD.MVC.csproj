@@ -334,6 +334,8 @@
     <Content Include="Images\Home\instagram2.png" />
     <Content Include="Images\Home\logo.png" />
     <Content Include="Images\Home\logomenu.png" />
+    <Content Include="Images\Home\logo_pcdf.png" />
+    <Content Include="Images\Home\logo_pcdf_2.png" />
     <Content Include="Images\Home\man2.png" />
     <Content Include="Images\Home\man3.png" />
     <Content Include="Images\Home\Profissionais\ar-condicionado.png" />
@@ -530,6 +532,7 @@
     <Content Include="Scripts\jquery-2.2.3.min.map" />
     <Content Include="Views\Candidato\Create.cshtml" />
     <Content Include="Views\Shared\_CFP.cshtml" />
+    <Content Include="Views\Candidato\CandidatoCadastroSucesso.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

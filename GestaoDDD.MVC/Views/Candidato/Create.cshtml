@@ -14,7 +14,7 @@
 <div class="container">
 
     <div class="row texto-formulario col-md-12">
-        <h2><b>Cadastre-se</b></h2>
+        <h1><b>Cadastre-se</b></h1>
         Informe a região em que está hospedado.
     </div>
 
@@ -22,44 +22,54 @@
 
         @using (Html.BeginForm())
         {
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            <label for="nome">Nome</label>
-            @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
-        </div>
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="col-form form-group col-md-4">
-            <label for="telefone">Telefone</label>
-            @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control", @placeholder = "(62) 99999-9999" } })
-        </div>
+            <div class="col-form form-group col-md-12">
+                <label for="nome">Nome</label>
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+            </div>
 
-        <div class="col-form form-group col-md-3">
-            <label for="tipoVeiculo">Possui Veículo?</label>
-            <select class="form-control" id="tipoVeiculo" name="TipoVeiculo">
-                <option>Não</option>
-                <option>Carro</option>
-                <option>Moto</option>
-            </select>
-        </div>
-        <div class="col-form form-group col-md-9">
-            <label>Endereço:</label>
-            <input type="text" id="endereco" name="Endereco" class="form-control" />
-        </div>
+            <div class="col-form form-group col-md-4">
+                <label for="telefone">Telefone</label>
+                @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control", @placeholder = "(62) 99999-9999" } })
+                @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "text-danger" })
+            </div>
 
-        <div class="botao-marcar col-md-2 ">
-            <input type="button" class="botao btn btn-marcamapa" id="btnEndereco" name="btnEndereco" value="Marcar no mapa" />
-        </div>
+            <div class="col-form form-group col-md-3">
+                <label for="tipoVeiculo">Possui Veículo?</label>
+                <select class="form-control" id="tipoVeiculo" name="TipoVeiculo">
+                    <option>Carro</option>
+                    <option>Moto</option>
+                    <option>Não</option>
+                </select>
+            </div>
 
-        <div class="mapa col-md-12">
-            <div id="mapa" class="map-mapa"></div>
-            <input type="hidden" id="latitude" name="Latitude" />
-            <input type="hidden" id="longitude" name="Longitude" />
-        </div>
+            <div class="col-form form-group col-md-3">
+                <label for="turma">Qual sua turma?</label>
+                <select class="form-control" id="turma" name="Turma">
+                    <option>T1</option>
+                    <option>T2</option>
+                    <option>T3</option>
+                </select>
+            </div>
 
-        <div class="col-form col-md-12">
-            <input type="button" class="btn btn-enviar" data-style="expand-right" onclick="location.href='@Url.Action("Create", "Candidato")'" value="Cadastrar" />
-        </div>
+            <div class="col-form form-group col-md-12">
+                <label for="endereco">Endereço:</label>
+                <input type="text" id="endereco" name="Endereco" class="form-control" />
+                @Html.ValidationMessageFor(model => model.Endereco, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mapa col-md-12">
+                <div id="mapa" class="map-mapa"></div>
+                <input type="hidden" id="latitude" name="Latitude" />
+                <input type="hidden" id="longitude" name="Longitude" />
+            </div>
+
+            <div class="col-form col-md-12">
+                <input type="submit" class="btn btn-enviar" data-style="expand-right" value="Cadastrar" />
+            </div>
 
         }
     </div>
@@ -67,5 +77,5 @@
 </div>
 
 <script type="text/javascript">
-    
+
 </script>

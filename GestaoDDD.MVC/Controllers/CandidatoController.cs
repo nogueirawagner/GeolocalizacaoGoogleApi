@@ -43,9 +43,19 @@ namespace GestaoDDD.MVC.Controllers
     {
       try
       {
-        var candidatoViewModel = Mapper.Map<CandidatoViewModel, Candidato>(candidato);
+        if (ModelState.IsValid)
+        {
 
-        return RedirectToAction("Index");
+          var candidatoViewModel = Mapper.Map<CandidatoViewModel, Candidato>(candidato);
+          _candidatoApp.Add(candidatoViewModel);
+        }
+        else
+        {
+          return View(candidato);
+        }
+
+
+        return RedirectToAction("CandidatoCadastroSucesso");
       }
       catch
       {
@@ -95,6 +105,12 @@ namespace GestaoDDD.MVC.Controllers
       {
         return View();
       }
+    }
+
+    public ActionResult CandidatoCadastroSucesso()
+    {
+
+      return View();
     }
   }
 }

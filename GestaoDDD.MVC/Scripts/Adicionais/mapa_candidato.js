@@ -78,7 +78,7 @@ $(document).ready(function () {
 
     $("#endereco").autoComplete({
         source: function (request, response) {
-            geocoder.geocode({ 'address': request.term + ', Brasil', 'region': 'BR' }, function (results, status) {
+            geocoder.geocode({ 'address': request.term + ', Brasil', 'region': 'Distrito Federal' }, function (results, status) {
                 response($.map(results, function (item) {
                     return {
                         label: item.formatted_address,
