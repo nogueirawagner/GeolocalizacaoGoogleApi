@@ -1,0 +1,27 @@
+﻿@model GestaoDDD.Application.ViewModels.PrestadorUsuarioViewModel
+
+@{
+    Layout = null;
+}
+
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title custom_align" id="Heading">Excluir</h4>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-warning"><span class="glyphicon glyphicon-warning-sign"></span> Deseja realmente excluir prestador @Html.DisplayFor(model => model.pres_nome)?</div>
+    </div>
+    <div class="modal-footer ">
+        <input type="hidden" name="id" />
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <input type="submit" value="Deletar" class="btn btn-primary" />
+            <a href="~/Prestador/Index" class="btn btn-default">
+                <span class="glyphicon glyphicon-remove"></span>
+            </a>
+        }
+    </div>
+</div>

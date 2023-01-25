@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BDB34E47-03FA-4B92-8E26-589F14E9C512}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GestaoDDD.Domain</RootNamespace>
+    <AssemblyName>GestaoDDD.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\Candidato.cs" />
+    <Compile Include="Entities\Categoria.cs" />
+    <Compile Include="Entities\Cidade.cs" />
+    <Compile Include="Entities\ComoFunciona.cs" />
+    <Compile Include="Entities\Contato.cs" />
+    <Compile Include="Entities\Entidade.cs" />
+    <Compile Include="Entities\Identity\Claims.cs" />
+    <Compile Include="Entities\Identity\Client.cs" />
+    <Compile Include="Entities\IndiqueProfissional.cs" />
+    <Compile Include="Entities\Log.cs" />
+    <Compile Include="Entities\NoSql\CidadeIdNome.cs" />
+    <Compile Include="Entities\NoSql\EnumClasses.cs" />
+    <Compile Include="Entities\NoSql\ServicoIdNome.cs" />
+    <Compile Include="Entities\Orcamento.cs" />
+    <Compile Include="Entities\Pessoa.cs" />
+    <Compile Include="Entities\Prestador.cs" />
+    <Compile Include="Entities\Servico.cs" />
+    <Compile Include="Entities\ServicoPrestador.cs" />
+    <Compile Include="Entities\Usuario.cs" />
+    <Compile Include="Interfaces\Repositories\ICandidatoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IComoFuncionaRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IContatoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IIndiqueProfissionalRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ILogRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ICidadeRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IOrcamentoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IPessoaRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IPrestadorRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />
+    <Compile Include="Interfaces\Repositories\ICategoriaRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IServicoPrestadorRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IServicoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IUsuarioRepository.cs" />
+    <Compile Include="Interfaces\Services\ICandidatoService.cs" />
+    <Compile Include="Interfaces\Services\ICategoriaService.cs" />
+    <Compile Include="Interfaces\Services\ICidadeService.cs" />
+    <Compile Include="Interfaces\Services\IComoFuncionaService.cs" />
+    <Compile Include="Interfaces\Services\IContatoService.cs" />
+    <Compile Include="Interfaces\Services\IIndiqueProfissionalService.cs" />
+    <Compile Include="Interfaces\Services\ILogService.cs" />
+    <Compile Include="Interfaces\Services\IOrcamentoService.cs" />
+    <Compile Include="Interfaces\Services\IPessoaService.cs" />
+    <Compile Include="Interfaces\Services\IPrestadorService.cs" />
+    <Compile Include="Interfaces\Services\IServiceBase.cs" />
+    <Compile Include="Interfaces\Services\IServicoPrestadorService.cs" />
+    <Compile Include="Interfaces\Services\IServicoService.cs" />
+    <Compile Include="Interfaces\Services\IUsuarioService.cs" />
+    <Compile Include="Services\CandidatoService.cs" />
+    <Compile Include="Services\CidadeService.cs" />
+    <Compile Include="Services\ComoFuncionaService.cs" />
+    <Compile Include="Services\ContatoService.cs" />
+    <Compile Include="Services\IndiqueProfissionalService.cs" />
+    <Compile Include="Services\LogService.cs" />
+    <Compile Include="Services\OrcamentoService.cs" />
+    <Compile Include="Services\PessoaService.cs" />
+    <Compile Include="Services\PrestadorService.cs" />
+    <Compile Include="Services\ServiceBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CategoriaService.cs" />
+    <Compile Include="Services\ServicoPrestadorService.cs" />
+    <Compile Include="Services\ServicoService.cs" />
+    <Compile Include="Services\UsuarioService.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

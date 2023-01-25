@@ -1,0 +1,35 @@
+﻿
+
+using AutoMapper;
+using GestaoDDD.Application.ViewModels;
+using GestaoDDD.Domain.Entities;
+
+namespace GestaoDDD.MVC.AutoMapper
+{
+    public class DomainToViewModelMappingProfile : Profile
+    {
+        //public override string ProfileName
+        //{
+        //    get { return "ViewModelToDomainMappings"; }
+        //}
+
+        protected override void Configure()
+        {
+            //mapeia de viewModel para classe
+            Mapper.CreateMap<CategoriaViewModel, Categoria>();
+            Mapper.CreateMap<CandidatoViewModel, Candidato>();
+            Mapper.CreateMap<ServicoViewModel, Servico>();
+            Mapper.CreateMap<UsuarioViewModel, Usuario>();
+            Mapper.CreateMap<OrcamentoViewModel, Orcamento>();
+            Mapper.CreateMap<PrestadorViewModel, Prestador>();
+            Mapper.CreateMap<ComoFuncionaViewModel, ComoFunciona>();
+            Mapper.CreateMap<IndiqueProfissionalViewModel, IndiqueProfissional>();
+            Mapper.CreateMap<ContatoViewModel, Contato>();
+            Mapper.CreateMap<PessoaViewModel, Pessoa>();
+            Mapper.CreateMap<Prestador, PrestadorUsuarioViewModel>();
+           Mapper.CreateMap<Log, LogViewModel>();
+            Mapper.CreateMap<ServicoPrestador, ServicoPrestadorViewModel>();
+            Mapper.CreateMap<Prestador, PrestadorEditarViewModel>();
+        }
+    }
+}

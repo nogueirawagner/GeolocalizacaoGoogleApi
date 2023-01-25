@@ -1,0 +1,38 @@
+﻿@model IEnumerable<GestaoDDD.Application.ViewModels.ServicoViewModel>
+
+    @using GestaoDDD.Application.ViewModels;
+    @{
+        Layout = "~/Views/Shared/_Layout2.cshtml";
+        var ListaCategoria = ViewBag.CategoriaModel as IEnumerable<CategoriaViewModel>;
+    }
+
+
+
+    @using (Html.BeginForm())
+    {
+        foreach (var cat in ListaCategoria)
+        {
+
+            <div class="row nome-categoria col-md-12 col-sm-12 col-xs-12" id="position-checkbox">
+                <br />
+                <hr style="color: #000000;" />
+                &bull;  @Html.DisplayFor(modelItem => cat.cat_Nome)
+                
+            </div>
+            foreach (var item in Model)
+            {
+                if (cat.cat_Id == item.cat_Id)
+                {
+                    <div class="container row text-left col-md-3 col-sm-4 col-xs-6" id="position-checkbox">
+                        <div class="checkbox">
+                            <label style="text-transform: capitalize">
+                                @Html.DisplayFor(modelItem => item.serv_Nome)
+                            </label>
+                        </div>
+                    </div>
+                }
+
+            }
+        }
+    }
+

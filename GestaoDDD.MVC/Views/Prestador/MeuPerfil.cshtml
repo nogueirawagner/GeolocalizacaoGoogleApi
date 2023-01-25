@@ -1,0 +1,100 @@
+﻿@model PrestadorUsuarioViewModel
+
+@using GestaoDDD.Application.ViewModels;
+
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    var categorias = ViewBag.Categorias as List<CategoriaViewModel>;
+    var servicos = ViewBag.Servicos as List<ServicoViewModel>;
+    var usuarioId = Model.pres_Id;
+
+}
+@Html.Partial("_PerfilPartial")
+
+<div class="container">
+    <div class="row texto-antesform col-md-12">
+        <div class="texto-superior">
+            <h2>Meu Perfil</h2>
+        </div>
+        <div class="texto-inferior">
+            Olá! Aqui estão suas informações pessoais e do seu negócio, é importante manter seus dados sempre atualizados.
+        </div>
+    </div>
+    <form role="form">
+        <div class="row formulario col-md-12">
+            <div class="titulo-formulario">
+                <h4><b>CONTATO</b></h4>
+            </div>
+            <div class="col-form form-group col-md-6">
+                <label for="nome">Seu nome:</label>
+                <input type="text" class="form-control" readonly id="pres_nome" name="pres_nome" value="@Html.DisplayFor(model => model.pres_nome)" />
+            </div>
+            <div class="col-form form-group col-md-6">
+                <label for="empresa">Nome da sua empresa:</label>
+                <input type="text" class="form-control" readonly id="nome_empresa" value="@Html.DisplayFor(model => model.nome_Empresa)" />
+            </div>
+            <div class="col-form form-group col-md-6">
+                <label for="email">Seu e-mail:</label>
+                <input type="text" class="form-control" readonly id="pres_email" name="pres_email" value="@Html.DisplayTextFor(model => model.pres_email)" />
+            </div>
+            <div class="col-form form-group col-md-6">
+                <label for="endereco">Endereço:</label>
+                <input type="text" id="pres_endereco" name="pres_endereco" class="form-control" readonly value="@Html.DisplayFor(model => model.pres_Endereco)" />
+            </div>
+
+            <div class="col-form form-group col-md-3">
+                <label for="telefone">Seu telefone:</label>
+                <input type="text" class="form-control" id="telefone" readonly value="@Html.DisplayFor(model => model.pres_telefone_residencial)" />
+            </div>
+            <div class="col-form form-group col-md-3">
+                <label for="telefone">Seu celular:</label>
+                <input type="text" class="form-control" id="telefone" readonly value="@Html.DisplayFor(model => model.pres_telefone_celular)" />
+            </div>
+            <div class="col-form form-group col-md-6">
+                <label for="raioatuacao">Raio de Atuação:</label>
+                <input type="text" class="form-control" id="raio" readonly value="@Html.DisplayFor(model => model.pres_Raio_Recebimento)" />
+            </div>
+            <div class="col-form form-group col-md-6">
+                @Html.LabelFor(model => model.apresentacao_Pesssoal, new { @class = "control-label" })
+               @Html.TextAreaFor(model => model.apresentacao_Empresa, new { @class = "form-control", @rows = 5, @readonly = "readonly" })
+            </div>
+            <div class="col-form form-group col-md-6">
+                @Html.LabelFor(model => model.apresentacao_Empresa, new { @class = "control-label" })
+                @Html.TextAreaFor(model => model.apresentacao_Empresa, new { @class = "form-control", @rows = 5, @readonly = "readonly" })
+            </div>
+
+            <div class="sub-formulario ">
+                <h4><b>ÁREA DE ATUAÇÃO</b></h4>
+            </div>
+            <div class="col-form form-group col-md-6">
+                <label for="categorias">Categorias:</label>
+                <div class="col-form form-group">
+                    @foreach (var categoria in categorias)
+                    {
+                        <label class="checkbox-inline" style="text-transform: capitalize"><input type="checkbox" checked readonly>@categoria.cat_Nome</label>
+                    }
+
+                </div>
+            </div>
+            <div class="col-form form-group col-md-6">
+                <label for="subcaterias">Serviços:</label>
+                <div class="col-form form-group">
+                    @foreach (var servico in servicos)
+                    {
+                        <label class="checkbox-inline" style="text-transform: capitalize"><input type="checkbox" checked readonly>@servico.serv_Nome</label>
+                    }
+                </div>
+            </div>
+            @*<div hidden class="col-form col-md-2">
+                    <input type="submit" class="btn btn-formulario" />
+                </div>*@
+            <div class="col-form col-md-offset-8 col-md-2">
+                <button type="button" class="btn btn-formulario">
+                    @Html.ActionLink("Editar Informações", "Editar", new { id = usuarioId })
+                </button>
+            </div>
+
+
+        </div>
+    </form>
+</div>

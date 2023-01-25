@@ -1,0 +1,182 @@
+﻿*{
+	margin: 0; padding: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-transition: all .9s ease;
+	-o-transition: all .9s ease;
+	transition: all .9s ease;
+	outline: none;
+    
+}
+
+body {
+    
+}
+
+
+html, body {
+	height: 100%;
+	font-size: 100%;
+	font-family: arial;  
+    background-image: url(../../Images/Prestador/background.png);  
+    opacity:1;
+	background-size: cover;
+	background-position: center;
+    
+}
+
+a{text-decoration: none; color: rgba(255,255,255,1);}
+
+#position-checkbox {
+	position:relative;
+    padding-left: 50px;
+   
+}
+
+.checkbox {
+    font-size: 14px;
+}
+
+#clear {
+ clear:both;
+}
+
+#conteudo {
+	margin-bottom: 10%;
+	}
+
+
+
+.nome-categoria {
+    color: rgb(209, 49, 55);
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.frm-contato {
+    background-color: #913034;
+    color: #FFF;
+    cursor: pointer;
+    position: relative;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    margin-left: 0px;
+    margin-right: 0px;
+    left: 47%;
+    cursor: pointer;
+    border-color: none;
+    border: none;
+  
+
+}
+
+
+.frm-contato input[type="submit"]:hover {
+        background-color: #000000;
+        color: #FFF;
+}
+
+
+
+
+.checkbox label:after,
+.radio label:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+/*Caxinha do checkbox */
+.checkbox .cr,
+.radio .cr {
+    position: relative;
+    display: inline-block;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: .25em;
+    width: 1.0em;
+    height: 1.0em;
+    float: left;
+    margin-right: .3em;
+    top: 2px;
+}
+
+.radio .cr {
+    border-radius: 50%;
+}
+
+    /*Vezinho do checkbox*/
+    .checkbox .cr .cr-icon,
+    .radio .cr .cr-icon {
+        position: absolute;
+        font-size: .8em;
+        line-height: 0;
+        top: 50%;
+        left: 20%;
+    }
+
+    .radio .cr .cr-icon {
+        margin-left: 0.04em;
+    }
+
+/*Parte de dentro da caixinha do checkbox*/
+.checkbox label input[type="checkbox"],
+.radio label input[type="radio"] {
+    display: none;
+}
+
+    .checkbox label input[type="checkbox"] + .cr > .cr-icon,
+    .radio label input[type="radio"] + .cr > .cr-icon {
+        transform: scale(3) rotateZ(-20deg);
+        opacity: 0;
+        transition: all .3s ease-in;
+    }
+
+    .checkbox label input[type="checkbox"]:checked + .cr > .cr-icon,
+    .radio label input[type="radio"]:checked + .cr > .cr-icon {
+        transform: scale(1) rotateZ(0deg);
+        opacity: 1;
+    }
+
+    .checkbox label input[type="checkbox"]:disabled + .cr,
+    .radio label input[type="radio"]:disabled + .cr {
+        opacity: .5;
+    }
+
+
+.prefooter {
+    margin-top: 4%;
+}
+
+.menunavegacao {
+    margin-bottom: 2%;
+}
+
+.pesquisa {
+    margin-top: 2%;
+    text-align: center;
+}
+
+.btn-cadastrar {
+    text-align: center;
+}
+
+
+
+@media screen and (max-width: 1000px){
+	.center{padding: 0 20px;}
+
+}
+
+@media screen and (max-width: 800px){
+	
+}
+
+@media screen and (max-width: 500px){
+ 
+  
+
+}
+

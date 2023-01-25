@@ -1,0 +1,41 @@
+﻿
+
+<link href="~/Content/Conta/meuperfil.css" rel="stylesheet" />
+
+<div class="header container-fluid">
+
+    <div class="row header col-md-12">
+
+        <div class="row header-foto col-md-2 col-sm-12">
+            <div class="image-upload">
+                <label for="foto">
+                    @if (!string.IsNullOrEmpty(@ViewBag.CaminhoFoto))
+                    {
+                        if (@ViewBag.CaminhoFoto.ToString().Contains(".jpg") || @ViewBag.CaminhoFoto.ToString().Contains(".png"))
+                        {
+                            <img width="250" height="200" src="~/Images/ImagemPerfil/@ViewBag.CaminhoFoto" class="header-foto col-md-12" />
+                        }
+                        else
+                        {
+                            <img width="250" height="200" src="~/Images/Conta/fotoperfil.png" class="header-foto col-md-12" />
+                        }
+                    }
+                    else
+                    {
+                        <img width="250" height="200" src="~/Images/Conta/fotoperfil.png" class="header-foto col-md-12" />
+                    }
+
+                </label>
+
+                @*<input id="foto" type="file"
+                    name="foto" />*@
+            </div>
+        </div>
+
+        <div class="row header-texto col-md-3">
+            <div class="header-texto-nome">
+                @ViewBag.Nome
+            </div>
+        </div>
+    </div>
+</div>

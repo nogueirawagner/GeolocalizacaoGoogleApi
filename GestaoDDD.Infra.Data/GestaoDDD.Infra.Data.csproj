@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{55A07FF1-137A-4FA1-AC2C-6A02AC82A29A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GestaoDDD.Infra.Data</RootNamespace>
+    <AssemblyName>GestaoDDD.Infra.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Contexto\GestaoContext.cs" />
+    <Compile Include="Contexto\IGestaoContext.cs" />
+    <Compile Include="DataLayerDAO\ConnectionDAO.cs" />
+    <Compile Include="EntityConfig\CandidatoConfiguration.cs" />
+    <Compile Include="EntityConfig\CidadeConfiguration.cs" />
+    <Compile Include="EntityConfig\ClaimsConfiguration.cs" />
+    <Compile Include="EntityConfig\ClientConfiguration.cs" />
+    <Compile Include="EntityConfig\ComoFuncionaConfiguration.cs" />
+    <Compile Include="EntityConfig\ContatoConfiguration.cs" />
+    <Compile Include="EntityConfig\IndiqueProfissionalConfiguration.cs" />
+    <Compile Include="EntityConfig\LogConfiguration.cs" />
+    <Compile Include="EntityConfig\PessoaConfiguration.cs" />
+    <Compile Include="EntityConfig\PrestadorConfiguration.cs" />
+    <Compile Include="EntityConfig\ServicoPrestadorConfiguration.cs" />
+    <Compile Include="EntityConfig\UsuarioConfiguration.cs" />
+    <Compile Include="EntityConfig\ServicoConfiguration.cs" />
+    <Compile Include="EntityConfig\OrcamentoConfiguration.cs" />
+    <Compile Include="EntityConfig\CategoriaConfiguration.cs" />
+    <Compile Include="Migrations\201603010140183_teste.cs" />
+    <Compile Include="Migrations\201603010143035_teste2.cs" />
+    <Compile Include="Migrations\201603061451554_gerarCampos.cs" />
+    <Compile Include="Migrations\201603061451554_gerarCampos.Designer.cs">
+      <DependentUpon>201603061451554_gerarCampos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603150038498_att.cs" />
+    <Compile Include="Migrations\201603150038498_att.Designer.cs">
+      <DependentUpon>201603150038498_att.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603150110578_att2.cs" />
+    <Compile Include="Migrations\201603150110578_att2.Designer.cs">
+      <DependentUpon>201603150110578_att2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607301530192_caio.cs" />
+    <Compile Include="Migrations\201607301530192_caio.Designer.cs">
+      <DependentUpon>201607301530192_caio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301251326491_CriandoCandidato.cs" />
+    <Compile Include="Migrations\202301251326491_CriandoCandidato.Designer.cs">
+      <DependentUpon>202301251326491_CriandoCandidato.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301251825538_InserindoEnderecoCandidato.cs" />
+    <Compile Include="Migrations\202301251825538_InserindoEnderecoCandidato.Designer.cs">
+      <DependentUpon>202301251825538_InserindoEnderecoCandidato.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\CandidatoRepository.cs" />
+    <Compile Include="Repositories\CidadeRepository.cs" />
+    <Compile Include="Repositories\ComoFuncionaRepository.cs" />
+    <Compile Include="Repositories\ContatoRepository.cs" />
+    <Compile Include="Repositories\IndiqueProfissionalRepository.cs" />
+    <Compile Include="Repositories\LogRepository.cs" />
+    <Compile Include="Repositories\PessoaRepository.cs" />
+    <Compile Include="Repositories\ServicoPrestadorRepository.cs" />
+    <Compile Include="Repositories\ServicoRepository.cs" />
+    <Compile Include="Repositories\OrcamentoRepository.cs" />
+    <Compile Include="Repositories\PrestadorRepository.cs" />
+    <Compile Include="Repositories\UsuarioRepository.cs" />
+    <Compile Include="Repositories\RepositoryBase.cs" />
+    <Compile Include="Repositories\CategoriaRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GestaoDDD.Domain\GestaoDDD.Domain.csproj">
+      <Project>{bdb34e47-03fa-4b92-8e26-589f14e9c512}</Project>
+      <Name>GestaoDDD.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201603061451554_gerarCampos.resx">
+      <DependentUpon>201603061451554_gerarCampos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603150038498_att.resx">
+      <DependentUpon>201603150038498_att.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603150110578_att2.resx">
+      <DependentUpon>201603150110578_att2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605312323128_x12.resx" />
+    <EmbeddedResource Include="Migrations\201607301530192_caio.resx">
+      <DependentUpon>201607301530192_caio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301251326491_CriandoCandidato.resx">
+      <DependentUpon>202301251326491_CriandoCandidato.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301251825538_InserindoEnderecoCandidato.resx">
+      <DependentUpon>202301251825538_InserindoEnderecoCandidato.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

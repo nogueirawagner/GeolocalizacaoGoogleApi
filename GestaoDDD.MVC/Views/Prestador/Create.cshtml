@@ -1,0 +1,265 @@
+﻿@model GestaoDDD.Application.ViewModels.PrestadorUsuarioViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<link href="~/Content/Prestador/prestador.css" rel="stylesheet" />
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC77KEJkbjHojYpYqn3NZB1PkpAqC8nJCU&amp;sensor=true"></script>
+<script src="~/Scripts/Adicionais/mapaPrestador.js"></script>
+<script src="~/Scripts/Adicionais/progress_bar_prestador.js"></script>
+<script src="~/Scripts/jquery-ui.custom.min.js"></script>
+<script src="~/Scripts/jquery-2.2.3.js"></script>
+<script src="~/Scripts/jquery.maskedinput.min.js"></script>
+<script src="~/Scripts/sweetalert.min.js"></script>
+<link href="~/Styles/sweetalert.css" rel="stylesheet" />
+<div class="container">
+
+    <div class="row banner col-md-12">
+        <div class="row banner-texto-esquerda col-md-6 pull-left">
+            <h1>QUERO ME CADASTRAR</h1>
+        </div>
+        <div class="row banner-texto-direita col-md-6 pull-right">
+
+        </div>
+    </div>
+    <div class="row banner-baixo col-md-12 center-block">
+        <div class="row texto-bannerbaixo col-md-12">
+            Você é um profissional e <b>busca novos clientes?</b>
+            <a href="~/Prestador/Create"><input type="button" class="btn" value="Cadastre-se" /></a>
+        </div>
+    </div>
+
+    <div class="row texto-formulario col-md-12">
+        <h2><b>Cadastre-se</b></h2>
+        <br />
+        Faça seu cadastro e encontre potenciais clientes da sua região, interessados em seus serviços
+    </div>
+
+    <div class="row formulario col-md-12">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="titulo-formulario">
+                <h4><b>DADOS DO PROFISSIONAL OU EMPRESA</b></h4>
+            </div>
+            <br />
+            <div class="form-group">
+                <label for="nome">Nome do Profissional ou Empresa:</label>
+                @Html.EditorFor(model => model.pres_nome, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.pres_nome, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-form form-group col-md-5">
+                <label for="email">E-mail:</label>
+                @Html.EditorFor(model => model.pres_email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.pres_email, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-form form-group col-md-offset-1 col-md-3">
+                <label for="senha">Senha:</label>
+                @Html.PasswordFor(model => model.Senha, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-form-2 form-group col-md-3">
+                <label for="repetirsenha">Repetir Senha:</label>
+                @Html.PasswordFor(model => model.ConfirmaSenha, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ConfirmaSenha, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-form form-group col-md-4">
+                @Html.LabelFor(model => model.pres_telefone_residencial, new { @class = "control-label" })
+                @*<label for="telefone">Telefone Residencial:</label>*@
+                @*<input class="form-control text-box single-line" id="pres_telefone_residencial" maxlength="15" size="15" name="pres_telefone_residencial" type="text" pattern="\(\d{2}\) \d{4}-\d{4}" placeholder="(99)99999-9999">*@
+                @Html.EditorFor(model => model.pres_telefone_residencial, new { htmlAttributes = new { @class = "form-control", @placeholder = "(16)9999-9999" } })
+                @Html.ValidationMessageFor(model => model.pres_telefone_residencial, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-form form-group col-md-4">
+                @Html.LabelFor(model => model.pres_telefone_celular, new { @class = "control-label" })
+                @*<label for="telefone">Telefone Celular:</label>*@
+                @* <input class="form-control text-box single-line" id="pres_telefone_celular" maxlength="15" size="15" name="pres_telefone_celular" type="text" pattern="\(\d{2}\) \d{4}-\d{4}" placeholder="(99)99999-9999">*@
+                @Html.EditorFor(model => model.pres_telefone_celular, new { htmlAttributes = new { @class = "form-control", @placeholder = "(16)99999-9999" } })
+                @Html.ValidationMessageFor(model => model.pres_telefone_celular, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-form-2 form-group col-md-4">
+                @Html.LabelFor(model => model.pres_cpf_cnpj, new { @class = "control-label" })
+                <input type="text" name="cpf" id="cpf" class="form-control" data-val="true"
+                       data-val-require="Campo obrigatório" />
+                <input type="text" name="cnpj" id="cnpj" style="display: none" class="form-control" data-val="true"
+                       data-val-require="Campo obrigatório" />
+            </div>
+
+            @*<div class="col-form-2 form-group col-md-4">
+                @Html.LabelFor(model => model.pres_cpf_cnpj, new { @class = "control-label" })
+                @Html.EditorFor(model => model.pres_cpf_cnpj, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.pres_cpf_cnpj, "", new { @class = "text-danger" })
+            </div>*@
+
+            <div class="col-form form-group col-md-9">
+                <label>Endereço:</label>
+                <input type="text" id="orc_Endereco" name="pres_Endereco" class="form-control" />
+                @Html.ValidationMessageFor(model => model.pres_Endereco, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="botao-marcar col-md-2 ">
+                <input type="button" class="botao btn btn-marcamapa" id="btnEndereco" name="btnEndereco" value="Marcar no mapa" />
+            </div>
+            @*<div class="col-form form-group col-md-3">
+                <label for="raioatuacao">Raio de Atuação em KM:</label>
+                <select class="form-control" id="pres_Raio_Recebimento" name="pres_Raio_Recebimento">
+                    <option>10</option>
+                    <option>30</option>
+                    <option>60</option>
+                    <option>70</option>
+                    <option>100</option>
+                    <option>150</option>
+                    <option>200</option>
+                </select>
+            </div>*@
+
+            <div class="mapa col-md-12">
+                <div id="mapa" class="map-mapa"></div>
+                <input type="hidden" id="orc_latitude" name="pres_Latitude" />
+                <input type="hidden" id="orc_longitude" name="pres_Longitude" />
+            </div>
+
+
+
+            <div class="col-form form-group col-md-12">
+                @Html.CheckBoxFor(x => x.TermosECondicoes)
+                @Html.LabelFor(x => x.TermosECondicoes) presentes no <a href="@Url.Action("Index", "TermosDeUso")"
+                                                                        type="submit"
+                                                                        id="runReport"
+                                                                        target="_blank"
+                                                                        style="color:blue">termo de uso</a>
+                @Html.ValidationMessageFor(model => model.TermosECondicoes, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-form col-md-12">
+                <input type="button" class="btn btn-enviar" data-style="expand-right" onclick="CadastrarPrestador();" value="Cadastrar" />
+            </div>
+
+            <div class="col-form col-md-12">
+                <input type="button" class="btn btn-enviar" data-style="expand-right" onclick = "location.href='@Url.Action("Create", "Prestador")'" value="Cadastrar" />
+            </div>
+
+            
+
+    }
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+    $("#pres_cpf_cnpj").mask("99999999999");
+    $('#pres_telefone_celular').focusout(function () {
+        var phone, element;
+        element = $(this);
+        element.unmask();
+        phone = element.val().replace(/\D/g, '');
+        if (phone.length > 10) {
+            element.mask("(99)99999-999?9");
+        } else {
+            element.mask("(99)9999-9999?9");
+        }
+    }).trigger('focusout');
+    $('#pres_telefone_residencial').focusout(function () {
+        var phone, element;
+        element = $(this);
+        element.unmask();
+        phone = element.val().replace(/\D/g, '');
+        if (phone.length > 10) {
+            element.mask("(99)9999-9999");
+        } else {
+            element.mask("(99)9999-9999");
+        }
+    }).trigger('focusout');
+
+    $(document).on({
+        ready: function () {
+            var masks = {
+                cpf: "999.999.999-999",
+                cnpj: "99.999.999/9999-99"
+            };
+
+            $('input#cpf').mask(masks.cpf, {
+                autoclear: false,
+                completed: function() {
+                    var concated = this.val().match(/\d+/g).join('')
+                    var newMask = "";
+                    debugger;
+                    this.unmask();
+                    newMask = concated.length === 12 ? masks.cnpj : masks.cpf
+                    this.mask(newMask).val(concated).trigger('paste')
+                }
+            });
+        }
+    });
+
+    function CadastrarPrestador() {
+        //insira aqui sua validação
+        $.ajax({
+            type: 'POST',
+            url: '/Prestador/VerifcaPrestadorExiste',
+            data: 'email=' + $('#pres_email').val(),
+            dataType: "json",
+            cache: false,
+            async: true,
+            success: function (data) {
+                //veririca se o prestador existe
+                //se existe retorna 1 e toma ação, senao nao faz nada e segue o cadastro
+                if (data == 1) {
+                    swal({
+                        title: "Prestador ja cadastrado",
+                        text: "Prestador ja esta cadastrado deseja recuperar a senha?",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "SIM!",
+                        cancelButtonText: "Não!",
+                        closeOnConfirm: false,
+                        closeOnCancel: false
+                    }, function(isConfirm) {
+                        if (isConfirm) {
+                            $.ajax({
+                                type: 'POST',
+                                url: '/Prestador/AtivaStatusPrestador',
+                                data: 'email=' + $("#pres_email").val(),
+                                dataType: "json",
+                                cache: false,
+                                async: true,
+                                success: function(dataRetorno) {
+                                    if (dataRetorno == 1) {
+                                        swal({
+                                            title: "Email Enviado!", text: "Você será redirecionado em 5 segundos. verifique seu email",
+                                            timer: 5000,
+                                            showConfirmButton: false
+                                        }, setTimeout(function ()
+                                        { window.location.href = "/Account/Login"; }, 4000));
+                                      } else {
+                                        swal("Houve um problema para recuperar sua senha, entra em contato conosco", "error");
+                                    }
+                                }
+                            });
+                        } else {
+                            swal({
+                                title: "Procedimento cancelado!", text: "Recarregando a página.",
+                                timer: 5000,
+                                showConfirmButton: false
+                            }, setTimeout(function ()
+                            { window.location.reload()}, 4000));
+                            }
+                    });
+
+                } else {
+                    $("form").submit();
+                }
+            }
+        });
+    };
+</script>

@@ -1,0 +1,87 @@
+﻿@model IEnumerable<GestaoDDD.Application.ViewModels.PrestadorUsuarioViewModel>
+
+@{
+    var msg = ViewBag.Retorno as string;
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+
+
+
+    <script src="~/Scripts/Adicionais/ListaPrestadorAdmin.js"></script>
+    @*---*@
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+
+    <div class="container">
+        <div class="row">
+
+
+            <div class="col-md-12">
+                <h4>Lista de prestadores</h4>
+                <div class="table-responsive">
+                    <div class="container" style="position:relative; left: 40%; color: #dc143c">
+                        <strong>@msg</strong>
+                    </div>
+
+                    <table id="mytable" class="table table-bordred table-striped">
+
+                        <thead>
+
+                        <th>Nome</th>
+                        <th>CPF/CNPJ</th>
+                        <th>Endereço</th>
+                        <th>Email</th>
+                        <th>Tel. Residencial</th>
+                        <th>Tel. Celular</th>
+                        <th>Detalhes</th>
+                        <th>Desativar</th>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.pres_nome)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.pres_cpf_cnpj)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.pres_Endereco)</td>
+                                    <td>@Html.DisplayTextFor(modelItem => item.pres_email)</td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.pres_telefone_residencial)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.pres_telefone_celular)
+                                    </td>
+
+                                    <td class="text-center">
+                                        <p data-placement="top" data-toggle="tooltip" title="Edit">
+                                            <a href="~/Prestador/Detalhes/@item.pres_Id" class="btn btn-primary btn-xs" title="Editar">
+                                                <span class="glyphicon glyphicon-pencil"></span>
+                                            </a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a class="btn btn-danger btn-xs" href="~/Prestador/Deletar/@item.pres_Id" data-toggle="modal" data-target="#delete" data-placement="top" rel="tooltip" data-title="Excluir">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </a>
+                                    </td>
+                                </tr>
+                                 <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-hidden="false">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                //FIM MODAL DELETE
+                            }
+
+                        </tbody>
+
+                    </table>
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+

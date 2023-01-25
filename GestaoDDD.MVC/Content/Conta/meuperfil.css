@@ -1,0 +1,259 @@
+﻿body { overflow-x: hidden; }
+
+
+.header {
+ /* #EE6363 #A52A2A */   background-color: #CD5555;
+    margin-left: 0px;
+    margin-right: 0px; 
+    padding: 0px;
+    margin-bottom: 0px;
+    
+    
+}
+
+.image-upload > input
+{
+    display: none;
+    
+}
+
+
+.header-foto {
+
+    margin-left: 6%;
+    border-radius:50%;
+    cursor:pointer;
+}
+
+.header-texto {
+    color: white;
+    font-weight: bold;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.header-texto-nome {
+    font-size: 20px;
+}
+
+/* Botões Header */
+
+.btn-header {
+    color: white;
+    background-color: #ad2323;
+    margin: 20px;
+    border-bottom-color: black;
+    
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+    -webkit-transition: all 0.3s linear; 
+    -o-transition: all 0s linear; 
+	transition: all 0s linear; 
+}
+
+.btn-header:hover {
+    font-size: 16px;
+    color: white;
+}
+
+.btn-header:focus {
+    box-shadow: rgba (0,0,0,4);
+    outline: 0;
+}
+
+.botoes-header {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+/* Fim Botões Header */
+
+/* Corpo da página  */
+
+.texto-antesform {
+    margin-top: 1%;
+    margin-bottom: 2%;
+}
+
+.texto-superior {
+    font: bold;
+}
+
+body > .container {
+     padding-top: 0px; 
+}
+
+.formulario {
+    background-color: #EEE9E9;
+    margin-bottom: 4%;
+    padding: 2%;
+    border-radius: 10px;
+}
+
+.titulo-formulario {
+    color: gray;
+    margin-bottom: 2%;
+}
+
+.sub-formulario {
+    color: gray;
+    margin-bottom: 2%;
+    margin-top: 10%;
+}
+
+.botao-formulario {
+    text-align: center;
+    margin-top: 2%;
+    
+}
+
+.btn-formulario {
+    color: white;
+    text-align: center;
+    border-bottom: 5px solid #f56a6a;
+    background-color: #ad2323;
+    margin: 20px;
+    
+}
+
+
+/* Fim Corpo da página  */
+
+/* BuscaTrabalhosIndex */
+
+.botao {
+    margin-top: 2%;
+    margin-bottom: 4%;
+    text-align: center;
+}
+
+.imagem-lupa {
+    text-align: right;
+    margin-top: 1%;
+}
+
+.texto-imagem h2 {
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+.texto-antesform2 {
+    margin-top: 3%;
+    margin-bottom: 2%;
+}
+
+/* Fim BuscaTrabalhosIndex */
+
+/* BuscaTrabalhos */
+
+.corpo {
+    margin-bottom: 3%;
+    margin-top: 3%;
+}
+
+.texto-lista {
+    text-align: left;
+    margin-bottom:1%;
+}
+
+.filtro {
+    background-color: #EEE9E9;
+    border-radius: 10px;
+}
+
+.titulo-filtro {
+    color: gray;
+    margin-bottom: 2%;
+}
+
+.titulo-filtro h4 {
+    margin-top: 10%;
+}
+
+.qtd-resultados {
+    background-color: #EEE9E9;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.texto-resultados {
+    padding: 2%;
+    font-size: 16px;
+}
+
+.resultados {
+    background-color: #f7f4f4;
+    margin-left: 0px;
+}
+
+.titulo-resultado {
+    font-weight: bold;
+    margin-top: 4%;
+    margin-bottom: 2%;
+}
+
+.localizacao-resultado {
+    margin-top: 3%;
+    margin-bottom: 2%;
+    color: red;
+    font-weight: bold;
+}
+
+/*estava dando um espaço desnecessario entao comentei*/
+/*.dados {
+    margin-top: 20%;
+}*/
+
+.valor {
+    margin-top: 2%;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.resultados hr {
+    width: 100%;
+    color: black;
+    border: 1px solid black;
+}
+
+.resultados-trabalhos {
+    margin-bottom: 5%;
+}
+
+.msg a:link{
+
+    text-decoration: none;
+}
+
+.msg a{
+    color: black;
+}
+
+.msg a:hover{
+    color: red;
+}
+
+
+
+/* Fim BuscaTrabalhos */
+
+@media screen and (max-width: 1000px){
+	.header-texto {
+        text-align: center;
+	}
+    .header {
+        text-align: center;
+    }
+    .header-foto {
+        margin-left: 0px;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+   
+}
+
+@media screen and (max-width: 500px){
+    
+}
