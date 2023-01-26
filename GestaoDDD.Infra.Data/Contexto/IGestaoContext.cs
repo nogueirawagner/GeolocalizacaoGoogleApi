@@ -10,6 +10,7 @@ namespace GestaoDDD.Infra.Data.Contexto
         int SaveChanges();
         DbSet<T> Set<T>() where T : class;
         DbSet<Categoria> Categoria { get; set; }
+        DbSet<Candidato> Candidato { get; set; }
         DbSet<Prestador> Prestador { get; set; }
         DbSet<Usuario> Usuario { get; set; }
         DbSet<Orcamento> Orcamento { get; set; }

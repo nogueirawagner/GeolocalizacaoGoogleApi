@@ -52,7 +52,9 @@ namespace GestaoDDD.MVC.Controllers
 
     public ActionResult BuscaCandidatos()
     {
-      return View();
+      var candidatos = _candidatoApp.GetAll();
+      var candVM = Mapper.Map<IEnumerable<Candidato>, IEnumerable<CandidatoViewModel>>(candidatos);
+      return View(candVM);
     }
 
     public ActionResult CandidatoCadastroSucesso()

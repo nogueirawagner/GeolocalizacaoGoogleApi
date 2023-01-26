@@ -7,6 +7,7 @@
         public string ctt_email { get; set; }
         public string ctt_telefone { get; set; }
         public string  ctt_msg { get; set; }
+        public string  ctt_msg2 { get; set; }
 
     }
 }

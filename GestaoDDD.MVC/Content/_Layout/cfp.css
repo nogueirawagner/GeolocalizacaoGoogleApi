@@ -47,7 +47,7 @@ a:hover {
 .logomenu {
     vertical-align: center;
     padding-top: 1%;
-    padding-left: 160%;
+    padding-left: 10%;
 }
 
 nav.navbar-findcond { color: black; }
@@ -72,7 +72,7 @@ nav.navbar-findcond span.badge.new { background: rgba(255, 0, 0, 0.8); color: #f
      
     vertical-align: central;
     padding-top: 1.5%;
-    font-size: 50px;
+    font-size: 20px;
 
 }
 

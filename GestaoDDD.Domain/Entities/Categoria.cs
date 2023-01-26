@@ -9,7 +9,6 @@ namespace GestaoDDD.Domain.Entities
     public string cat_Nome { get; set; }
     public string Descricao { get; set; }
 
-
     public ICollection<Servico> Servico { get; set; }
   }
 }

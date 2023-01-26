@@ -11,6 +11,7 @@
        public int UF { get; set; }
        public string CodigoPais { get; set; }
        public string Pais { get; set; }
+       public string Mundo { get; set; }
 
     }
 }
