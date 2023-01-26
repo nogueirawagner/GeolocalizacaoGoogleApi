@@ -27,7 +27,8 @@
                 $("#servico_id").html(options_servico);
             }
         });
-        });
+    });
+
     $(document).ready(function () {
         $('#ListaCat').change(function () {
             var value = $("#ListaCat option:selected").val();
@@ -48,6 +49,7 @@
             });
         });
     });
+
     $(document).ready(function () {
         $('#EnumEstados').change(function () {
             var value = $("#EnumEstados option:selected").val();
@@ -68,6 +70,7 @@
             });
         });
     });
+
     function ProcuraOrcamento() {
         var estado = $("#EnumEstados option:selected").val();
         var cidade = $("#cidade_id option:selected").val();

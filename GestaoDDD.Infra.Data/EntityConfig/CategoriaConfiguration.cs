@@ -14,9 +14,9 @@ namespace GestaoDDD.Infra.Data.EntityConfig
                 .IsRequired()
                 .HasMaxLength(200).HasColumnName("nome").HasColumnOrder(4);
 
-            Property(c => c.data_alteracao).HasColumnName("data_alteracao").HasColumnOrder(3);
+            //Property(c => c.data_alteracao).HasColumnName("data_alteracao").HasColumnOrder(3);
 
-            Property(c => c.data_inclusao).HasColumnName("data_inclusao").HasColumnOrder(2);
+            //Property(c => c.data_inclusao).HasColumnName("data_inclusao").HasColumnOrder(2);
         }
     }
 }

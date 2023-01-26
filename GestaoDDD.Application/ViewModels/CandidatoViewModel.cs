@@ -8,16 +8,18 @@ namespace GestaoDDD.Application.ViewModels
     [Key]
     public int ID { get; set; }
 
-    [Required(ErrorMessage = "Preencha seu nome")]
-    [MaxLength(100, ErrorMessage = "Tamanho máximo de {0} caracteres.")]
-    [MinLength(3, ErrorMessage = "Tamanho minímo de {0} caracteres.")]
+    [Required(ErrorMessage = "Preencha seu nome ou de seus colegas")]
     [DisplayName("Nome:")]
     public string Nome { get; set; }
 
+
     [Required(ErrorMessage = "Preencha com o seu WhatsApp")]
-    [StringLength(14, ErrorMessage = "A {0} deve conter {1} caracteres ao menos.", MinimumLength = 11)]
     [DataType(DataType.PhoneNumber)]
     public string Telefone { get; set; }
+
+    [DisplayName("Descricao:")]
+    [DataType(DataType.MultilineText)]
+    public string Descricao { get; set; }
 
     public string TipoVeiculo { get; set; }
 
@@ -27,6 +29,8 @@ namespace GestaoDDD.Application.ViewModels
     [MinLength(5, ErrorMessage = "Tamanho minímo de {0} caracteres.")]
     [DisplayName("Endereço:")]
     public string Endereco { get; set; }
+
+    public int QtdVagas { get; set; }
 
     public string Turma { get; set; }
 

@@ -94,6 +94,18 @@
     <Compile Include="Migrations\202301252042127_AddTurma.Designer.cs">
       <DependentUpon>202301252042127_AddTurma.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202301261145063_AddColunasCandidato.cs" />
+    <Compile Include="Migrations\202301261145063_AddColunasCandidato.Designer.cs">
+      <DependentUpon>202301261145063_AddColunasCandidato.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301261303508_AddDescricaoCategoria.cs" />
+    <Compile Include="Migrations\202301261303508_AddDescricaoCategoria.Designer.cs">
+      <DependentUpon>202301261303508_AddDescricaoCategoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301261709519_AjustandoColunasTables.cs" />
+    <Compile Include="Migrations\202301261709519_AjustandoColunasTables.Designer.cs">
+      <DependentUpon>202301261709519_AjustandoColunasTables.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CandidatoRepository.cs" />
@@ -143,6 +155,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202301252042127_AddTurma.resx">
       <DependentUpon>202301252042127_AddTurma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301261145063_AddColunasCandidato.resx">
+      <DependentUpon>202301261145063_AddColunasCandidato.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301261303508_AddDescricaoCategoria.resx">
+      <DependentUpon>202301261303508_AddDescricaoCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301261709519_AjustandoColunasTables.resx">
+      <DependentUpon>202301261709519_AjustandoColunasTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

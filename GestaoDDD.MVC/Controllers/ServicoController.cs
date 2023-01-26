@@ -308,7 +308,7 @@ namespace GestaoDDD.MVC.Controllers
         //retorna os serviços pela categoria
         public JsonResult RServicosPCategoria(string id)
         {
-            List<ServicoIdNome> retorno = _iServicoApp.RetornaServicoPelaCategoria(Convert.ToInt32(id));
+            List<ServicoIdNome> retorno = _iServicoApp.RetornaServicoPelaCategoria(Convert.ToInt32(2));
             return Json(retorno, JsonRequestBehavior.AllowGet);
         }
 

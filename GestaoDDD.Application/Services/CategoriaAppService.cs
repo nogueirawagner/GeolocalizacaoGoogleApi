@@ -13,10 +13,5 @@ namespace GestaoDDD.Application.Services
         {
             _categoriaService = categoriaService;
         }
-
-        //public IEnumerable<Categoria> ObterCategoriasEspeciais()
-        //{
-        //    return Mapper.Map<IEnumerable<Categoria>, IEnumerable<CategoriaViewModel>>(_categoriaService.ObterCategoriasEspeciais());
-        //}
     }
 }

@@ -234,6 +234,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Candidato\candidato.css" />
     <Content Include="Content\ComoFunciona\comofunciona.css" />
     <Content Include="Content\Contato\contato.css" />
     <Content Include="Content\Conta\buscatrabalhadores.css" />
@@ -376,7 +377,6 @@
     <Content Include="Scripts\Adicionais\lerCheckbox.js" />
     <Content Include="Scripts\Adicionais\ListaPrestadorAdmin.js" />
     <Content Include="Scripts\Adicionais\loginsExternos.js" />
-    <Content Include="Scripts\Adicionais\mapa_candidato.js" />
     <Content Include="Scripts\Adicionais\mapaPrestador.js" />
     <Content Include="Scripts\Adicionais\mapa.js" />
     <Content Include="Scripts\Adicionais\menufixo.js" />
@@ -400,7 +400,8 @@
     <None Include="Properties\PublishProfiles\Wagner.pubxml" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\GoogleMaps\mapa _cfp.js" />
+    <Content Include="Scripts\GoogleMaps\Candidatos\mapa _cfp.js" />
+    <Content Include="Scripts\GoogleMaps\Candidatos\mapa_candidato.js" />
     <Content Include="Scripts\GoogleMaps\mapa.js" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.3.js" />
@@ -533,6 +534,7 @@
     <Content Include="Views\Candidato\Create.cshtml" />
     <Content Include="Views\Shared\_CFP.cshtml" />
     <Content Include="Views\Candidato\CandidatoCadastroSucesso.cshtml" />
+    <Content Include="Views\Candidato\BuscaCandidatos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -132,7 +132,25 @@ namespace GestaoDDD.MVC.Controllers
     {
       try
       {
-        ViewBag.ListaCat = new SelectList(_categoriaApp.GetAll(), "cat_Id", "cat_Nome");
+        var categorias = new List<Categoria>();
+        var servicos = new List<Servico>();
+        servicos.Add(new Servico
+        {
+          cat_Id = 1,
+          serv_Id = 1,
+          serv_Nome = "Pintar"
+        });
+
+
+        categorias.Add(new Categoria
+        {
+          cat_Id = 1,
+          cat_Nome = "Eletro",
+          Servico = servicos,
+          Descricao = "Eletro"
+        });
+
+        ViewBag.ListaCat = categorias;
         return View();
       }
       catch (Exception e)

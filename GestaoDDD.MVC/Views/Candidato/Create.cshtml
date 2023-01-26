@@ -2,9 +2,9 @@
 @{
     Layout = "~/Views/Shared/_CFP.cshtml";
 }
-<link href="~/Content/Prestador/prestador.css" rel="stylesheet" />
+<link href="~/Content/Candidato/candidato.css" rel="stylesheet" />
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC77KEJkbjHojYpYqn3NZB1PkpAqC8nJCU&amp;sensor=true"></script>
-<script src="~/Scripts/Adicionais/mapa_candidato.js"></script>
+<script src="~/Scripts/GoogleMaps/Candidatos/mapa_candidato.js"></script>
 <script src="~/Scripts/jquery-ui.custom.min.js"></script>
 <script src="~/Scripts/jquery-2.2.3.js"></script>
 <script src="~/Scripts/jquery.maskedinput.min.js"></script>
@@ -27,11 +27,17 @@
 
             <div class="col-form form-group col-md-12">
                 <label for="nome">Nome</label>
-                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", @placeholder = "Descreva seu nome ou de seus colegas" } })
                 @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
             </div>
 
-            <div class="col-form form-group col-md-4">
+            <div class="col-form form-group col-md-12">
+                <label for="descricao">Descrição:</label>
+                @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control", @placeholder = "Descreva algo que considere importante" } })
+                @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-form form-group col-md-3">
                 <label for="telefone">Telefone</label>
                 @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control", @placeholder = "(62) 99999-9999" } })
                 @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "text-danger" })
@@ -40,24 +46,37 @@
             <div class="col-form form-group col-md-3">
                 <label for="tipoVeiculo">Possui Veículo?</label>
                 <select class="form-control" id="tipoVeiculo" name="TipoVeiculo">
-                    <option>Carro</option>
-                    <option>Moto</option>
                     <option>Não</option>
+                    <option>3 Carros</option>
+                    <option>2 Carros</option>
+                    <option>1 Carro</option>
+                    <option>1 Moto</option>
                 </select>
             </div>
 
             <div class="col-form form-group col-md-3">
                 <label for="turma">Qual sua turma?</label>
                 <select class="form-control" id="turma" name="Turma">
-                    <option>T1</option>
-                    <option>T2</option>
-                    <option>T3</option>
+                    <option>Todos T1</option>
+                    <option>Todos T2</option>
+                    <option>Todos T3</option>
+                    <option>Misturado</option>
+                </select>
+            </div>
+
+            <div class="col-form form-group col-md-3">
+                <label for="turma">Tem vaga na casa?</label>
+                <select class="form-control" id="turma" name="Turma">
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
                 </select>
             </div>
 
             <div class="col-form form-group col-md-12">
                 <label for="endereco">Endereço:</label>
-                <input type="text" id="endereco" name="Endereco" class="form-control" />
+                <input type="text" id="endereco" name="Endereco" class="form-control" placeholder="Entre com o CEP ou parte do endereço. Se não der certo pode arrastar o Marcardor pelo mapa."/>
                 @Html.ValidationMessageFor(model => model.Endereco, "", new { @class = "text-danger" })
             </div>
 
