@@ -4,20 +4,12 @@ var marker;
 
 function initialize() {
 
-    var locations = [
-        ['Bondi Beach', 'a', -33.890542, 151.274856, 4],
-        ['Coogee Beach', 'a', -33.923036, 151.259052, 5],
-        ['Cronulla Beach', 'a', -34.028249, 151.157507, 3],
-        ['Manly Beach', 'a', -33.80010128657071, 151.28747820854187, 2],
-        ['Maroubra Beach', 'a', -33.950198, 151.259302, 1]
-    ];
-
     // Chama o serviço para pegar os dados
     fetch('/Candidato/BuscaCandidatosJson')
         .then(response => response.json())
         .then(data => {
             // Atualiza a variável locations com os dados retornados pelo serviço
-            locations = data;
+            var locations = data;
 
             // Continua com o restante do código
             var map = new google.maps.Map(document.getElementById('mapa'), {
@@ -26,13 +18,15 @@ function initialize() {
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             });
 
+            geocoder = new google.maps.Geocoder();
+
             var infowindow = new google.maps.InfoWindow();
 
             var marker, i;
 
             for (i = 0; i < locations.length; i++) {
                 marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(locations[i].Latitude, locations[i].Longitude,),
+                    position: new google.maps.LatLng(locations[i].Latitude, locations[i].Longitude),
                     map: map,
                     title: locations[i].Nome
                 });
@@ -47,48 +41,95 @@ function initialize() {
         });
 }
 
-
-/*
-function initialize() {
-
-    var locations = [
-        ['Bondi Beach', 'a', -33.890542, 151.274856, 4],
-        ['Coogee Beach', 'a', -33.923036, 151.259052, 5],
-        ['Cronulla Beach', 'a', -34.028249, 151.157507, 3],
-        ['Manly Beach', 'a', -33.80010128657071, 151.28747820854187, 2],
-        ['Maroubra Beach', 'a', -33.950198, 151.259302, 1]
-    ];
-
-    var map = new google.maps.Map(document.getElementById('mapa'), {
-        zoom: 10,
-        center: new google.maps.LatLng(-33.92, 151.25),
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    });
-
-    var infowindow = new google.maps.InfoWindow();
-
-    var marker, i;
-
-    for (i = 0; i < locations.length; i++) {
-        marker = new google.maps.Marker({
-            position: new google.maps.LatLng(locations[i][2], locations[i][3]),
-            map: map,
-            title: "Teste"
-        });
-
-        google.maps.event.addListener(marker, 'click', (function (marker, i) {
-            return function () {
-                infowindow.setContent(locations[i][0]);
-                infowindow.open(map, marker);
-            }
-        })(marker, i));
-    }
-}
-*/
-
 $(document).ready(function () {
 
     initialize();
+
+    function carregarNoMapa(endereco) {
+        geocoder.geocode({ 'address': endereco + ', Brasil', 'region': 'BR' }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                if (results[0]) {
+                    var latitude = results[0].geometry.location.lat();
+                    var longitude = results[0].geometry.location.lng();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    // Chama o serviço para pegar os dados
+                    fetch('/Candidato/BuscaCandidatosJson')
+                        .then(response => response.json())
+                        .then(data => {
+                            // Atualiza a variável locations com os dados retornados pelo serviço
+                            var locations = data;
+
+                            // Continua com o restante do código
+                            var map = new google.maps.Map(document.getElementById('mapa'), {
+                                zoom: 12,
+                                center: new google.maps.LatLng(locations[0].Latitude, locations[0].Longitude),
+                                mapTypeId: google.maps.MapTypeId.ROADMAP
+                            });
+
+                            var infowindow = new google.maps.InfoWindow();
+
+                            var marker, i;
+
+                            // Local do cara
+                            marker = new google.maps.Marker({
+                                position: new google.maps.LatLng(latitude, longitude),
+                                map: map,
+                                title: "Eu estou hospedado aqui"
+                            });
+
+                            google.maps.event.addListener(marker, 'click', (function (marker) {
+                                return function () {
+                                    infowindow.setContent("Meu local");
+                                    infowindow.open(map, marker);
+                                }
+                            })(marker));
+
+                            // Locais de outras pessoas
+                            for (i = 0; i < locations.length; i++) {
+                                marker = new google.maps.Marker({
+                                    position: new google.maps.LatLng(locations[i].Latitude, locations[i].Longitude),
+                                    map: map,
+                                    title: locations[i].Nome
+                                });
+
+                                google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                                    return function () {
+                                        infowindow.setContent('Telefone: ' + locations[i].Telefone + '. ' + ' Qtd Vagas: ' + locations[i].QtdVagas + '. ' + ' Veículo: ' + locations[i].TipoVeiculo + '. ' + ' Turma: ' + locations[i].Turma);
+                                        infowindow.open(map, marker);
+                                    }
+                                })(marker, i));
+                            }
+                        });
+                }
+            }
+        })
+    }
+
+    $("#endereco").blur(function () {
+        if ($(this).val() != "")
+            carregarNoMapa($(this).val());
+    })
+
+    $('#endereco').keypress(function (event) {
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if (keycode == '13') {
+            if ($(this).val() != "")
+                carregarNoMapa($(this).val());
+        }
+    });
 
     google.maps.event.addListener(marker, 'drag', function () {
         geocoder.geocode({ 'latLng': marker.getPosition() }, function (results, status) {
@@ -102,4 +143,26 @@ $(document).ready(function () {
         });
     });
 
+    $("#endereco").autoComplete({
+        source: function (request, response) {
+            geocoder.geocode({ 'address': request.term + ', Brasil', 'region': 'Distrito Federal' }, function (results, status) {
+                response($.map(results, function (item) {
+                    return {
+                        label: item.formatted_address,
+                        value: item.formatted_address,
+                        latitude: item.geometry.location.lat(),
+                        longitude: item.geometry.location.lng()
+                    }
+                }));
+            })
+        },
+        select: function (event, ui) {
+            $("#latitude").val(ui.item.latitude);
+            $("#longitude").val(ui.item.longitude);
+            var location = new google.maps.LatLng(ui.item.latitude, ui.item.longitude);
+            marker.setPosition(location);
+            map.setCenter(location);
+            map.setZoom(16);
+        }
+    });
 });

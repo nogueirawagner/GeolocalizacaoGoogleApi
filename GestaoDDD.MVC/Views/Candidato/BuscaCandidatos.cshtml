@@ -17,6 +17,10 @@
 
             @using (Html.BeginForm())
             {
+                <div class="col-form form-group col-md-12">
+                    <label for="endereco">Endereço:</label>
+                    <input type="text" id="endereco" name="Endereco" class="form-control" placeholder="Entre com o CEP ou parte do endereço. Se não der certo pode arrastar o Marcardor pelo mapa." />
+                </div>
                 <div class="mapa col-md-12">
                     <div id="mapa" class="map-mapa"></div>
                     <input type="hidden" id="latitude" name="Latitude" />
