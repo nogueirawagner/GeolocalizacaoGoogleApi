@@ -46,7 +46,7 @@ namespace GestaoDDD.Application.Services
       {
         var coordCandidato = new GeoCoordinate();
 
-        if (string.IsNullOrEmpty(cand.Latitude) || string.IsNullOrEmpty(cand.Longitude))
+        if (!string.IsNullOrEmpty(cand.Latitude) || !string.IsNullOrEmpty(cand.Longitude))
         {
           coordCandidato.Latitude = double.Parse(cand.Latitude.Replace(",", "."),
               CultureInfo.InvariantCulture);

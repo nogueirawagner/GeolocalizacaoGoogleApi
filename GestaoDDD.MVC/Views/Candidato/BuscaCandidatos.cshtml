@@ -20,14 +20,12 @@
 
             @using (Html.BeginForm())
             {
-                <div class="col-form form-group col-md-11" style="padding-left: 20px;">
+                <div class="col-form form-group col-md-10" style="padding-left: 20px;">
                     <label for="endereco">Me informe onde vc está:</label>
                     <input type="text" id="endereco" name="Endereco" class="form-control" placeholder="Entre com o CEP ou parte do endereço. Ex: Tagua Life" />
                 </div>
-                <div class="col-form form-group col-md-1" style="padding-left: 30px;">
-                    <label></label>
-                    <button type="button" class="fas fa-search">
-                    </button>
+                <div class="botao-marcar col-md-2" style="padding-top: 5px;">
+                    <input type="button" class="botao btn btn-marcamapa" id="btnEndereco" name="btnEndereco" value="Marcar no mapa" />
                 </div>
 
                 <div class="mapa col-md-12">
