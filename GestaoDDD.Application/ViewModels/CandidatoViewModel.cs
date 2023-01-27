@@ -34,7 +34,9 @@ namespace GestaoDDD.Application.ViewModels
 
     public string Turma { get; set; }
 
+    [Required(ErrorMessage = "Marque seu local no mapa.")]
     public string Latitude { get; set; }
+    
     public string Longitude { get; set; }
 
     [DataType(DataType.Currency)]

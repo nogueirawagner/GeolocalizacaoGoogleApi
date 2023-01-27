@@ -92,6 +92,13 @@ namespace GestaoDDD.MVC.Controllers
       return View(candidatoViewModel);
     }
 
+    public ActionResult Excluir(int Id)
+    {
+      var candidato = _candidatoApp.GetById(Id);
+      _candidatoApp.Remove(candidato);
+      return RedirectToAction("BuscaCandidatos");
+    }
+
     [HttpPost]
     public ActionResult Editar(CandidatoViewModel candidato)
     {

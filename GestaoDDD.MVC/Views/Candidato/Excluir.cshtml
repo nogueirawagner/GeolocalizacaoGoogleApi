@@ -92,15 +92,11 @@
                 @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "text-danger" })
             </div>
 
-            <div class="col-form form-group col-md-10">
+            <div class="col-form form-group col-md-12">
                 <label for="endereco">Endereço:</label>
                 @*<input type="text" id="endereco" name="Endereco" class="form-control" placeholder="Entre com o CEP ou parte do endereço. Ex: Tagua Life" />*@
                 @Html.EditorFor(model => model.Endereco, new { htmlAttributes = new { @class = "form-control", @id = "endereco", @placeholder = "Entre com o CEP ou parte do endereço. Ex: Tagua Life" } })
                 @*@Html.ValidationMessageFor(model => model.Endereco, "", new { @class = "text-danger" })*@
-            </div>
-
-            <div class="botao-marcar col-md-2" style="padding-top: 5px;">
-                <input type="button" class="botao btn btn-marcamapa" id="btnEndereco" name="btnEndereco" value="Marcar no mapa" />
             </div>
 
             <div class="mapa col-md-12">
@@ -108,7 +104,7 @@
                 @Html.EditorFor(model => model.Latitude, new { htmlAttributes = new { @class = "form-control", @id = "latitude", @style = "display:none" } })
                 @Html.EditorFor(model => model.Longitude, new { htmlAttributes = new { @class = "form-control", @id = "longitude", @style = "display:none" } })
                 @*<input type="hidden" id="latitude" name="model.Latitude" />
-            <input type="hidden" id="longitude" name="model.Longitude" />*@
+                    <input type="hidden" id="longitude" name="model.Longitude" />*@
             </div>
 
             <div class="col-form col-md-12">

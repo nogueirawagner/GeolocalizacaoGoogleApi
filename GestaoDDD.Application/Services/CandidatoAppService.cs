@@ -41,20 +41,24 @@ namespace GestaoDDD.Application.Services
       var distanciaEspc = (coordAtual.GetDistanceTo(coordESPC) / 1000);
 
       var candidatos = _candidatoService.GetAll();
-      
+
       foreach (var cand in candidatos)
       {
         var coordCandidato = new GeoCoordinate();
-        coordCandidato.Latitude = double.Parse(cand.Latitude.Replace(",", "."),
-              CultureInfo.InvariantCulture);
-        coordCandidato.Longitude = double.Parse(cand.Longitude.Replace(",", "."),
-              CultureInfo.InvariantCulture);
 
-        var distancia = (coordAtual.GetDistanceTo(coordCandidato) / 1000);
-        cand.DistanciaColega =
-         string.Format("{0} está a {1} km de você", cand.Nome.Trim(), Math.Round(distancia, 2).ToString());
+        if (string.IsNullOrEmpty(cand.Latitude) || string.IsNullOrEmpty(cand.Longitude))
+        {
+          coordCandidato.Latitude = double.Parse(cand.Latitude.Replace(",", "."),
+              CultureInfo.InvariantCulture);
+          coordCandidato.Longitude = double.Parse(cand.Longitude.Replace(",", "."),
+                CultureInfo.InvariantCulture);
 
-        cand.DistanciaEscolas = string.Format("Estou aqui a {0} km do CEPOM e a {1} km da ESPC", Math.Round(distanciaCepom, 2), Math.Round(distanciaEspc, 2));
+          var distancia = (coordAtual.GetDistanceTo(coordCandidato) / 1000);
+          cand.DistanciaColega =
+           string.Format("{0} está a {1} km de você", cand.Nome.Trim(), Math.Round(distancia, 2).ToString());
+
+          cand.DistanciaEscolas = string.Format("Estou aqui a {0} km do CEPOM e a {1} km da ESPC", Math.Round(distanciaCepom, 2), Math.Round(distanciaEspc, 2));
+        }
       }
       return candidatos;
     }

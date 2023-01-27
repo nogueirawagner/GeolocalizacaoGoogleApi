@@ -380,6 +380,7 @@
     <Content Include="Views\Shared\_CFP.cshtml" />
     <Content Include="Views\Candidato\BuscaCandidatos.cshtml" />
     <Content Include="Views\Candidato\Editar.cshtml" />
+    <Content Include="Views\Candidato\Excluir.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
