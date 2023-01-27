@@ -57,6 +57,12 @@ namespace GestaoDDD.MVC.Controllers
       return View(candVM);
     }
 
+    public JsonResult BuscaCandidatosJson()
+    {
+      var retorno = _candidatoApp.GetAll();
+      return Json(retorno, JsonRequestBehavior.AllowGet);
+    }
+
     public ActionResult CandidatoCadastroSucesso()
     {
 

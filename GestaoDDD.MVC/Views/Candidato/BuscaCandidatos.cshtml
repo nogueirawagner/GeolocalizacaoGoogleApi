@@ -2,7 +2,7 @@
     @{
         Layout = "~/Views/Shared/_CFP.cshtml";
     }
-    <link href="~/Content/Candidato/candidato.css" rel="stylesheet" />
+    <link href="~/Content/Candidato/candidato_todos.css" rel="stylesheet" />
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC77KEJkbjHojYpYqn3NZB1PkpAqC8nJCU&amp;sensor=true"></script>
     <script src="~/Scripts/GoogleMaps/Candidatos/mapa_todos_candidatos.js"></script>
     <script src="~/Scripts/jquery-ui.custom.min.js"></script>
@@ -23,52 +23,54 @@
                     <input type="hidden" id="longitude" name="Longitude" />
                 </div>
             }
+
+            <table id="mytable" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Descrição</th>
+                        <th>Endereço</th>
+                        <th>Telefone</th>
+                        <th>Veículo</th>
+                        <th>Turma</th>
+                        <th>Vagas na casa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Descricao)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Endereco)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Telefone)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TipoVeiculo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Turma)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.QtdVagas)
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
         </div>
 
-        <table id="mytable" class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Descrição</th>
-                    <th>Endereço</th>
-                    <th>Telefone</th>
-                    <th>Veículo</th>
-                    <th>Turma</th>
-                    <th>Vagas na casa</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Nome)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Descricao)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Endereco)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Telefone)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TipoVeiculo)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Turma)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.QtdVagas)
-                    </td>
-                </tr>
-                }
-
-            </tbody>
-
-        </table>
+       
 
 
     </div>
