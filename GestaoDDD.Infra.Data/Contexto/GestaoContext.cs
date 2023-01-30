@@ -15,18 +15,6 @@ namespace GestaoDDD.Infra.Data.Contexto
     }
 
     #region objetos
-    public DbSet<Categoria> Categoria { get; set; }
-    public DbSet<Prestador> Prestador { get; set; }
-    public DbSet<Usuario> Usuario { get; set; }
-    public DbSet<Orcamento> Orcamento { get; set; }
-    public DbSet<Servico> Servico { get; set; }
-    public DbSet<ServicoPrestador> ServicoPrestador { get; set; }
-    public DbSet<ComoFunciona> ComoFunciona { get; set; }
-    public DbSet<Pessoa> Pessoa { get; set; }
-    public DbSet<IndiqueProfissional> IndiqueProfissional { get; set; }
-    public DbSet<Contato> Contato { get; set; }
-    public DbSet<Cidade> Cidade { get; set; }
-    public DbSet<Log> Log { get; set; }
     public DbSet<Candidato> Candidato { get; set; }
 
     #endregion
@@ -50,20 +38,7 @@ namespace GestaoDDD.Infra.Data.Contexto
 
 
       #region ArquivoConfiguracao
-      modelBuilder.Configurations.Add(new CategoriaConfiguration());
-      modelBuilder.Configurations.Add(new OrcamentoConfiguration());
-      modelBuilder.Configurations.Add(new PrestadorConfiguration());
-      modelBuilder.Configurations.Add(new ServicoConfiguration());
-      modelBuilder.Configurations.Add(new UsuarioConfiguration());
-      modelBuilder.Configurations.Add(new ServicoPrestadorConfiguration());
-      modelBuilder.Configurations.Add(new PessoaConfiguration());
-      modelBuilder.Configurations.Add(new ComoFuncionaConfiguration());
-      modelBuilder.Configurations.Add(new IndiqueProfissionalConfiguration());
-      modelBuilder.Configurations.Add(new ContatoConfiguration());
-      modelBuilder.Configurations.Add(new LogConfiguration());
-      modelBuilder.Configurations.Add(new CidadeConfiguration());
       modelBuilder.Configurations.Add(new CandidatoConfiguration());
-
       #endregion
     }
   }

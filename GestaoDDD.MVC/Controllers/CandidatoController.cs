@@ -42,7 +42,7 @@ namespace GestaoDDD.MVC.Controllers
         {
           return View(candidato);
         }
-        return RedirectToAction("CandidatoCadastroSucesso");
+        return RedirectToAction("BuscaCandidatos");
       }
       catch
       {

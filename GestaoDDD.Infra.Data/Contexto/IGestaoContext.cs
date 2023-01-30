@@ -9,17 +9,6 @@ namespace GestaoDDD.Infra.Data.Contexto
         DbEntityEntry Entry(object entity);
         int SaveChanges();
         DbSet<T> Set<T>() where T : class;
-        DbSet<Categoria> Categoria { get; set; }
         DbSet<Candidato> Candidato { get; set; }
-        DbSet<Prestador> Prestador { get; set; }
-        DbSet<Usuario> Usuario { get; set; }
-        DbSet<Orcamento> Orcamento { get; set; }
-        DbSet<Servico> Servico { get; set; }
-        DbSet<ServicoPrestador> ServicoPrestador { get; set; }
-        DbSet<Pessoa> Pessoa { get; set; }
-        DbSet<IndiqueProfissional> IndiqueProfissional { get; set; }
-        DbSet<Contato> Contato { get; set; }
-        DbSet<Cidade> Cidade { get; set; }
-        DbSet<Log> Log { get; set; }
     }
 }

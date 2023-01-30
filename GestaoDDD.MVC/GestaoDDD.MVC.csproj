@@ -199,23 +199,7 @@
     <Compile Include="AutoMapper\DomainToViewModelMappingProfile.cs" />
     <Compile Include="AutoMapper\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CandidatoController.cs" />
-    <Compile Include="Controllers\CategoriaController.cs" />
-    <Compile Include="Controllers\CidadeController.cs" />
-    <Compile Include="Controllers\ComoFuncionaController.cs" />
-    <Compile Include="Controllers\ContatoController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\IndiqueProfissionalController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\OrcamentoController.cs" />
-    <Compile Include="Controllers\PessoaController.cs" />
-    <Compile Include="Controllers\PrestadorController.cs" />
-    <Compile Include="Controllers\QuemSomosController.cs" />
-    <Compile Include="Controllers\RolesAdminController.cs" />
-    <Compile Include="Controllers\ServicoController.cs" />
-    <Compile Include="Controllers\TermosDeUsoController.cs" />
-    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

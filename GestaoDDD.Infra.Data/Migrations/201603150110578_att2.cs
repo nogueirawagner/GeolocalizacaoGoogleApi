@@ -23,10 +23,6 @@ namespace GestaoDDD.Infra.Data.Migrations
             DropForeignKey("dbo.Servico", "cat_Id", "dbo.Categoria");
             DropIndex("dbo.Categoria", new[] { "cat_Id" });
             DropPrimaryKey("dbo.Categoria");
-            AlterColumn("dbo.Categoria", "cat_Id", c => c.Int(nullable: false, identity: true));
-            AddPrimaryKey("dbo.Categoria", "cat_Id");
-            RenameColumn(table: "dbo.Categoria", name: "cat_Id", newName: "orc_Id");
-            AddColumn("dbo.Categoria", "cat_Id", c => c.Int(nullable: false, identity: true));
             AddForeignKey("dbo.Servico", "cat_Id", "dbo.Categoria", "cat_Id");
             AddForeignKey("dbo.Orcamento", "orc_Id", "dbo.Categoria", "cat_Id");
         }

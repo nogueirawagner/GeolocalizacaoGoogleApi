@@ -48,22 +48,7 @@
   <ItemGroup>
     <Compile Include="Contexto\GestaoContext.cs" />
     <Compile Include="Contexto\IGestaoContext.cs" />
-    <Compile Include="DataLayerDAO\ConnectionDAO.cs" />
     <Compile Include="EntityConfig\CandidatoConfiguration.cs" />
-    <Compile Include="EntityConfig\CidadeConfiguration.cs" />
-    <Compile Include="EntityConfig\ClaimsConfiguration.cs" />
-    <Compile Include="EntityConfig\ClientConfiguration.cs" />
-    <Compile Include="EntityConfig\ComoFuncionaConfiguration.cs" />
-    <Compile Include="EntityConfig\ContatoConfiguration.cs" />
-    <Compile Include="EntityConfig\IndiqueProfissionalConfiguration.cs" />
-    <Compile Include="EntityConfig\LogConfiguration.cs" />
-    <Compile Include="EntityConfig\PessoaConfiguration.cs" />
-    <Compile Include="EntityConfig\PrestadorConfiguration.cs" />
-    <Compile Include="EntityConfig\ServicoPrestadorConfiguration.cs" />
-    <Compile Include="EntityConfig\UsuarioConfiguration.cs" />
-    <Compile Include="EntityConfig\ServicoConfiguration.cs" />
-    <Compile Include="EntityConfig\OrcamentoConfiguration.cs" />
-    <Compile Include="EntityConfig\CategoriaConfiguration.cs" />
     <Compile Include="Migrations\201603010140183_teste.cs" />
     <Compile Include="Migrations\201603010143035_teste2.cs" />
     <Compile Include="Migrations\201603061451554_gerarCampos.cs" />
@@ -126,22 +111,14 @@
     <Compile Include="Migrations\202301301140505_AdicionandoCamposcandidato.Designer.cs">
       <DependentUpon>202301301140505_AdicionandoCamposcandidato.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202301301926451_LimpandoProjeto.cs" />
+    <Compile Include="Migrations\202301301926451_LimpandoProjeto.Designer.cs">
+      <DependentUpon>202301301926451_LimpandoProjeto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CandidatoRepository.cs" />
-    <Compile Include="Repositories\CidadeRepository.cs" />
-    <Compile Include="Repositories\ComoFuncionaRepository.cs" />
-    <Compile Include="Repositories\ContatoRepository.cs" />
-    <Compile Include="Repositories\IndiqueProfissionalRepository.cs" />
-    <Compile Include="Repositories\LogRepository.cs" />
-    <Compile Include="Repositories\PessoaRepository.cs" />
-    <Compile Include="Repositories\ServicoPrestadorRepository.cs" />
-    <Compile Include="Repositories\ServicoRepository.cs" />
-    <Compile Include="Repositories\OrcamentoRepository.cs" />
-    <Compile Include="Repositories\PrestadorRepository.cs" />
-    <Compile Include="Repositories\UsuarioRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
-    <Compile Include="Repositories\CategoriaRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -200,6 +177,12 @@
     <EmbeddedResource Include="Migrations\202301301140505_AdicionandoCamposcandidato.resx">
       <DependentUpon>202301301140505_AdicionandoCamposcandidato.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301301926451_LimpandoProjeto.resx">
+      <DependentUpon>202301301926451_LimpandoProjeto.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DataLayerDAO\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
