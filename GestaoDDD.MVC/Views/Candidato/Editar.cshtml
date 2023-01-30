@@ -47,43 +47,42 @@
             <div class="col-form form-group col-md-2">
                 <label for="tipoVeiculo">Possui veículo na casa?</label>
                 <select class="form-control" id="tipoVeiculo" name="TipoVeiculo">
-                    <option>Não</option>
-                    <option>3 Carros</option>
-                    <option>2 Carros</option>
-                    <option>1 Carro</option>
-                    <option>1 Moto</option>
+                    <option value="Não" @(Model.TipoVeiculo == "Não" ? "selected" : "")>Não</option>
+                    <option value="3 Carros" @(Model.TipoVeiculo == "3 Carros" ? "selected" : "")>3 Carros</option>
+                    <option value="2 Carros" @(Model.TipoVeiculo == "2 Carros" ? "selected" : "")>2 Carros</option>
+                    <option value="1 Carro" @(Model.TipoVeiculo == "1 Carro" ? "selected" : "")>1 Carro</option>
+                    <option value="1 Moto" @(Model.TipoVeiculo == "1 Moto" ? "selected" : "")>1 Moto</option>
                 </select>
             </div>
 
             <div class="col-form form-group col-md-2">
                 <label for="QtdVagasCarro">Possui vagas no veículo?</label>
                 <select class="form-control" id="qtdVagasCarro" name="QtdVagasCarro">
-                    <option>Não</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
+                    <option @((Model.QtdVagasCarro == 0) ? "selected" : "")>0</option>
+                    <option @((Model.QtdVagasCarro == 1) ? "selected" : "")>1</option>
+                    <option @((Model.QtdVagasCarro == 2) ? "selected" : "")>2</option>
+                    <option @((Model.QtdVagasCarro == 3) ? "selected" : "")>3</option>
+                    <option @((Model.QtdVagasCarro == 4) ? "selected" : "")>4</option>
                 </select>
             </div>
 
             <div class="col-form form-group col-md-2">
                 <label for="QtdVagasDisponivelCasa">Tem vaga na casa?</label>
                 <select class="form-control" id="qtdVagasDisponivelCasa" name="QtdVagasDisponivelCasa">
-                    <option>0</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
+                    @for (int i = 0; i <= 4; i++)
+                    {
+                        <option value="@i" @(i == Model.QtdVagasDisponivelCasa ? "selected" : "")>@i</option>
+                    }
                 </select>
             </div>
 
             <div class="col-form form-group col-md-2">
                 <label for="turma">Qual sua turma?</label>
                 <select class="form-control" id="turma" name="Turma">
-                    <option>Todos T1</option>
-                    <option>Todos T2</option>
-                    <option>Todos T3</option>
-                    <option>Misturado</option>
+                    <option @(Model.Turma == "Todos T1" ? "selected" : "")>Todos T1</option>
+                    <option @(Model.Turma == "Todos T2" ? "selected" : "")>Todos T2</option>
+                    <option @(Model.Turma == "Todos T3" ? "selected" : "")>Todos T3</option>
+                    <option @(Model.Turma == "Misturado" ? "selected" : "")>Misturado</option>
                 </select>
             </div>
 
