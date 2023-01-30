@@ -49,24 +49,6 @@
     <Compile Include="Contexto\GestaoContext.cs" />
     <Compile Include="Contexto\IGestaoContext.cs" />
     <Compile Include="EntityConfig\CandidatoConfiguration.cs" />
-    <Compile Include="Migrations\201603010140183_teste.cs" />
-    <Compile Include="Migrations\201603010143035_teste2.cs" />
-    <Compile Include="Migrations\201603061451554_gerarCampos.cs" />
-    <Compile Include="Migrations\201603061451554_gerarCampos.Designer.cs">
-      <DependentUpon>201603061451554_gerarCampos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603150038498_att.cs" />
-    <Compile Include="Migrations\201603150038498_att.Designer.cs">
-      <DependentUpon>201603150038498_att.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603150110578_att2.cs" />
-    <Compile Include="Migrations\201603150110578_att2.Designer.cs">
-      <DependentUpon>201603150110578_att2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607301530192_caio.cs" />
-    <Compile Include="Migrations\201607301530192_caio.Designer.cs">
-      <DependentUpon>201607301530192_caio.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202301251326491_CriandoCandidato.cs" />
     <Compile Include="Migrations\202301251326491_CriandoCandidato.Designer.cs">
       <DependentUpon>202301251326491_CriandoCandidato.cs</DependentUpon>
@@ -83,37 +65,9 @@
     <Compile Include="Migrations\202301261145063_AddColunasCandidato.Designer.cs">
       <DependentUpon>202301261145063_AddColunasCandidato.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202301261303508_AddDescricaoCategoria.cs" />
-    <Compile Include="Migrations\202301261303508_AddDescricaoCategoria.Designer.cs">
-      <DependentUpon>202301261303508_AddDescricaoCategoria.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202301261709519_AjustandoColunasTables.cs" />
-    <Compile Include="Migrations\202301261709519_AjustandoColunasTables.Designer.cs">
-      <DependentUpon>202301261709519_AjustandoColunasTables.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202301261925059_RemovendoLog.cs" />
-    <Compile Include="Migrations\202301261925059_RemovendoLog.Designer.cs">
-      <DependentUpon>202301261925059_RemovendoLog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202301262039326_AddContato.cs" />
-    <Compile Include="Migrations\202301262039326_AddContato.Designer.cs">
-      <DependentUpon>202301262039326_AddContato.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202301262041173_AlterandoCategoria.cs" />
-    <Compile Include="Migrations\202301262041173_AlterandoCategoria.Designer.cs">
-      <DependentUpon>202301262041173_AlterandoCategoria.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202301262042407_AlterandoCidade.cs" />
-    <Compile Include="Migrations\202301262042407_AlterandoCidade.Designer.cs">
-      <DependentUpon>202301262042407_AlterandoCidade.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202301301140505_AdicionandoCamposcandidato.cs" />
     <Compile Include="Migrations\202301301140505_AdicionandoCamposcandidato.Designer.cs">
       <DependentUpon>202301301140505_AdicionandoCamposcandidato.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202301301926451_LimpandoProjeto.cs" />
-    <Compile Include="Migrations\202301301926451_LimpandoProjeto.Designer.cs">
-      <DependentUpon>202301301926451_LimpandoProjeto.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -131,19 +85,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201603061451554_gerarCampos.resx">
-      <DependentUpon>201603061451554_gerarCampos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603150038498_att.resx">
-      <DependentUpon>201603150038498_att.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603150110578_att2.resx">
-      <DependentUpon>201603150110578_att2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605312323128_x12.resx" />
-    <EmbeddedResource Include="Migrations\201607301530192_caio.resx">
-      <DependentUpon>201607301530192_caio.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202301251326491_CriandoCandidato.resx">
       <DependentUpon>202301251326491_CriandoCandidato.cs</DependentUpon>
     </EmbeddedResource>
@@ -156,29 +97,8 @@
     <EmbeddedResource Include="Migrations\202301261145063_AddColunasCandidato.resx">
       <DependentUpon>202301261145063_AddColunasCandidato.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202301261303508_AddDescricaoCategoria.resx">
-      <DependentUpon>202301261303508_AddDescricaoCategoria.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202301261709519_AjustandoColunasTables.resx">
-      <DependentUpon>202301261709519_AjustandoColunasTables.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202301261925059_RemovendoLog.resx">
-      <DependentUpon>202301261925059_RemovendoLog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202301262039326_AddContato.resx">
-      <DependentUpon>202301262039326_AddContato.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202301262041173_AlterandoCategoria.resx">
-      <DependentUpon>202301262041173_AlterandoCategoria.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202301262042407_AlterandoCidade.resx">
-      <DependentUpon>202301262042407_AlterandoCidade.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202301301140505_AdicionandoCamposcandidato.resx">
       <DependentUpon>202301301140505_AdicionandoCamposcandidato.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202301301926451_LimpandoProjeto.resx">
-      <DependentUpon>202301301926451_LimpandoProjeto.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
