@@ -27,6 +27,10 @@
                     <input type="hidden" id="longitude" name="Longitude" />
                 </div>
             }
+            <div class="col-form form-group col-md-12" style="padding-left: 20px;">
+                <label>Aplique o filtro que deseja:</label>
+                <input type="text" id="searchInput" class="form-control"" />
+            </div>
 
             <table id="mytable" class="table table-bordered table-striped">
                 <thead>
@@ -40,41 +44,45 @@
                         <th>Vagas na casa</th>
                         <th>Turma</th>
                         <th>R$ Médio</th>
+                        <th>Editar</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
                     {
 
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Nome)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Descricao)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Endereco)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Telefone)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.TipoVeiculo)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.QtdVagasCarro)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.QtdVagasDisponivelCasa)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Turma)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Valor)
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Descricao)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Endereco)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Telefone)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TipoVeiculo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.QtdVagasCarro)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.QtdVagasDisponivelCasa)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Turma)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Valor)
+                            </td>
+                            <td>
+                                <a href="~/Candidato/Editar/@item.ID" class="btn btn-enviar btn-lg btn-block" title="Editar">Editar</a>
+                            </td>
+                        </tr>
                     }
 
                 </tbody>
@@ -88,5 +96,13 @@
     </div>
 
     <script type="text/javascript">
+        $(document).ready(function () {
+            $("#searchInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#mytable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
 
     </script>

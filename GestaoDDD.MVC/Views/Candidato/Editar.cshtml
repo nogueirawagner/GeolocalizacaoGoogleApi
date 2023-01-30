@@ -1,10 +1,12 @@
 ﻿@model GestaoDDD.Application.ViewModels.CandidatoViewModel
+
 @{
     Layout = "~/Views/Shared/_CFP.cshtml";
 }
+
 <link href="~/Content/Candidato/candidato.css" rel="stylesheet" />
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC77KEJkbjHojYpYqn3NZB1PkpAqC8nJCU&amp;sensor=true"></script>
-<script src="~/Scripts/GoogleMaps/Candidatos/mapa_candidato.js"></script>
+<script src="~/Scripts/GoogleMaps/Candidatos/mapa_editar_candidato.js"></script>
 <script src="~/Scripts/jquery-ui.custom.min.js"></script>
 <script src="~/Scripts/jquery-2.2.3.js"></script>
 <script src="~/Scripts/jquery.maskedinput.min.js"></script>
@@ -12,16 +14,15 @@
 <link href="~/Styles/sweetalert.css" rel="stylesheet" />
 
 <div class="container">
+    @using (Html.BeginForm())
+    {
+        <div class="row texto-formulario col-md-12">
+            <h1><b>Editar informações do @Model.Nome</b></h1>
+        </div>
 
-    <div class="row texto-formulario col-md-12">
-        <h1><b>Cadastre-se</b></h1>
-        Informe a região em que está hospedado.
-    </div>
+        <div class="row formulario col-md-12">
 
-    <div class="row formulario col-md-12">
 
-        @using (Html.BeginForm())
-        {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -88,28 +89,29 @@
 
             <div class="col-form form-group col-md-2">
                 <label for="Valor">Preço média por pessoa:</label>
-                <input type="text" id="valor" name="Valor" class="form-control" placeholder="R$ 1.500 por pessoa." />
+                @Html.EditorFor(model => model.Valor, new { htmlAttributes = new { @class = "form-control", @placeholder = "R$ 1.500 por pessoa." } })
                 @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "text-danger" })
             </div>
 
             <div class="col-form form-group col-md-12">
                 <label for="endereco">Endereço:</label>
-                <input type="text" id="endereco" name="Endereco" class="form-control" placeholder="Entre com o CEP ou parte do endereço. Ex: Tagua Life" />
-                @Html.ValidationMessageFor(model => model.Endereco, "", new { @class = "text-danger" })
+                @*<input type="text" id="endereco" name="Endereco" class="form-control" placeholder="Entre com o CEP ou parte do endereço. Ex: Tagua Life" />*@
+                @Html.EditorFor(model => model.Endereco, new { htmlAttributes = new { @class = "form-control", @id = "endereco", @placeholder = "Entre com o CEP ou parte do endereço. Ex: Tagua Life" } })
+                @*@Html.ValidationMessageFor(model => model.Endereco, "", new { @class = "text-danger" })*@
             </div>
 
             <div class="mapa col-md-12">
                 <div id="mapa" class="map-mapa"></div>
-                <input type="hidden" id="latitude" name="Latitude" />
-                <input type="hidden" id="longitude" name="Longitude" />
+                @Html.EditorFor(model => model.Latitude, new { htmlAttributes = new { @class = "form-control", @id = "latitude", @style = "display:none" } })
+                @Html.EditorFor(model => model.Longitude, new { htmlAttributes = new { @class = "form-control", @id = "longitude", @style = "display:none" } })
+                @*<input type="hidden" id="latitude" name="model.Latitude" />
+                    <input type="hidden" id="longitude" name="model.Longitude" />*@
             </div>
 
             <div class="col-form col-md-12">
-                <input type="submit" class="btn btn-enviar" data-style="expand-right" value="Cadastrar" />
+                <input type="submit" class="btn btn-enviar" data-style="expand-right" value="Salvar" />
             </div>
-
-        }
-    </div>
-
+        </div>
+    }
 </div>
 

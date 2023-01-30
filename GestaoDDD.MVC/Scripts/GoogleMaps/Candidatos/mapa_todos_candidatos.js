@@ -33,7 +33,7 @@ function initialize() {
 
                 google.maps.event.addListener(marker, 'click', (function (marker, i) {
                     return function () {
-                        infowindow.setContent('Telefone: ' + locations[i].Telefone + '. '+ ' Qtd Vagas: ' + locations[i].QtdVagas + '. ' + ' Veículo: ' + locations[i].TipoVeiculo + '. ' + ' Turma: ' + locations[i].Turma );
+                        infowindow.setContent('Nome: ' + locations[i].Nome + ' ' + 'Telefone: ' + locations[i].Telefone);
                         infowindow.open(map, marker);
                     }
                 })(marker, i));
@@ -98,7 +98,7 @@ $(document).ready(function () {
 
                                 google.maps.event.addListener(marker, 'click', (function (marker, i) {
                                     return function () {
-                                        infowindow.setContent('Telefone: ' + locations[i].Telefone + '. ' + ' Qtd Vagas: ' + locations[i].QtdVagas + '. ' + ' Veículo: ' + locations[i].TipoVeiculo + '. ' + ' Turma: ' + locations[i].Turma);
+                                        infowindow.setContent('Nome: ' + locations[i].Nome + '. ' + 'Telefone: ' + locations[i].Telefone);
                                         infowindow.open(map, marker);
                                     }
                                 })(marker, i));

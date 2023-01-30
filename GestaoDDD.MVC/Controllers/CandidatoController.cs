@@ -63,10 +63,33 @@ namespace GestaoDDD.MVC.Controllers
       return Json(retorno, JsonRequestBehavior.AllowGet);
     }
 
-    public ActionResult CandidatoCadastroSucesso()
+    public ActionResult Editar(int Id)
     {
+      var candidato = _candidatoApp.GetById(Id);
+      var candidatoViewModel = Mapper.Map<Candidato, CandidatoViewModel>(candidato);
+      return View(candidatoViewModel);
+    }
 
-      return View();
+    [HttpPost]
+    public ActionResult Editar(CandidatoViewModel candidato)
+    {
+      try
+      {
+        if (ModelState.IsValid)
+        {
+          var candidatoViewModel = Mapper.Map<CandidatoViewModel, Candidato>(candidato);
+          _candidatoApp.Update(candidatoViewModel);
+        }
+        else
+        {
+          return View(candidato);
+        }
+        return RedirectToAction("BuscaCandidatos");
+      }
+      catch
+      {
+        return View();
+      }
     }
   }
 }
