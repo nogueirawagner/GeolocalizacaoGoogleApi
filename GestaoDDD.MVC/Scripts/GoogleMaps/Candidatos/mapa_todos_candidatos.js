@@ -53,18 +53,6 @@ $(document).ready(function () {
                     var longitude = results[0].geometry.location.lng();
 
 
-
-
-
-
-
-
-
-
-
-
-
-
                     // Chama o serviço para pegar os dados
                     fetch('/Candidato/BuscaCandidatosJson')
                         .then(response => response.json())
@@ -83,11 +71,14 @@ $(document).ready(function () {
 
                             var marker, i;
 
+                            const image =
+                                "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
                             // Local do cara
                             marker = new google.maps.Marker({
                                 position: new google.maps.LatLng(latitude, longitude),
                                 map: map,
-                                title: "Eu estou hospedado aqui"
+                                title: "Eu estou hospedado aqui",
+                                icon: image
                             });
 
                             google.maps.event.addListener(marker, 'click', (function (marker) {

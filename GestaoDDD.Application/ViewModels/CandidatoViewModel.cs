@@ -30,11 +30,15 @@ namespace GestaoDDD.Application.ViewModels
     [DisplayName("Endereço:")]
     public string Endereco { get; set; }
 
-    public int QtdVagas { get; set; }
+    public int QtdVagasCarro { get; set; }
 
     public string Turma { get; set; }
 
     public string Latitude { get; set; }
     public string Longitude { get; set; }
+
+    [DataType(DataType.Currency)]
+    public double Valor { get; set; }
+    public int QtdVagasDisponivelCasa { get; set; }
   }
 }

@@ -17,9 +17,9 @@
 
             @using (Html.BeginForm())
             {
-                <div class="col-form form-group col-md-12">
-                    <label for="endereco">Endereço:</label>
-                    <input type="text" id="endereco" name="Endereco" class="form-control" placeholder="Entre com o CEP ou parte do endereço. Se não der certo pode arrastar o Marcardor pelo mapa." />
+                <div class="col-form form-group col-md-12" style="padding-left: 20px;">
+                    <label for="endereco">Me informe onde vc está:</label>
+                    <input type="text" id="endereco" name="Endereco" class="form-control" placeholder="Entre com o CEP ou parte do endereço. Ex: Tagua Life" />
                 </div>
                 <div class="mapa col-md-12">
                     <div id="mapa" class="map-mapa"></div>
@@ -36,37 +36,45 @@
                         <th>Endereço</th>
                         <th>Telefone</th>
                         <th>Veículo</th>
-                        <th>Turma</th>
+                        <th>Vagas no veículo</th>
                         <th>Vagas na casa</th>
+                        <th>Turma</th>
+                        <th>R$ Médio</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
                     {
 
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Nome)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Descricao)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Endereco)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Telefone)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.TipoVeiculo)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Turma)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.QtdVagas)
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Descricao)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Endereco)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Telefone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TipoVeiculo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.QtdVagasCarro)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.QtdVagasDisponivelCasa)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Turma)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Valor)
+                        </td>
+                    </tr>
                     }
 
                 </tbody>

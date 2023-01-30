@@ -5,7 +5,7 @@
 
 
 .map-mapa {
-    bottom: 30px;
+    bottom: 60px;
     height: 350px;
     width: 600px
 }
@@ -110,15 +110,20 @@
 }
 
 .mapa {
-    padding: 0px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 0px;
 }
 
 .map-mapa {
     margin-top: 3%;
-    padding-left: 0px;
+    padding-left: 1%;
+    padding-right: 10%;
     height: 950px;
     width: 1090px;
 }
+
 
 .botao {
     color: white;

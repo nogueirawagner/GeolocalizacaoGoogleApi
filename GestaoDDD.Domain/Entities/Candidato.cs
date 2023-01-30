@@ -16,7 +16,9 @@ namespace GestaoDDD.Domain.Entities
     public string Longitude { get; set; }
     public string Endereco { get; set; }
     public string Descricao { get; set; }
-    public string QtdVagas { get; set; }
+    public string QtdVagasCarro { get; set; }
     public string Turma { get; set; }
+    public double Valor { get; set; }
+    public int QtdVagasDisponivelCasa { get; set; }
   }
 }

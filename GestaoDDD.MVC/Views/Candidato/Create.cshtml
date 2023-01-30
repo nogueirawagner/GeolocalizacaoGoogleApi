@@ -37,14 +37,14 @@
                 @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
             </div>
 
-            <div class="col-form form-group col-md-3">
+            <div class="col-form form-group col-md-2">
                 <label for="telefone">Telefone</label>
                 @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control", @placeholder = "(62) 99999-9999" } })
                 @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "text-danger" })
             </div>
 
-            <div class="col-form form-group col-md-3">
-                <label for="tipoVeiculo">Possui Veículo?</label>
+            <div class="col-form form-group col-md-2">
+                <label for="tipoVeiculo">Possui veículo na casa?</label>
                 <select class="form-control" id="tipoVeiculo" name="TipoVeiculo">
                     <option>Não</option>
                     <option>3 Carros</option>
@@ -54,7 +54,29 @@
                 </select>
             </div>
 
-            <div class="col-form form-group col-md-3">
+            <div class="col-form form-group col-md-2">
+                <label for="QtdVagasCarro">Possui vagas no veículo?</label>
+                <select class="form-control" id="qtdVagasCarro" name="QtdVagasCarro">
+                    <option>Não</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select>
+            </div>
+
+            <div class="col-form form-group col-md-2">
+                <label for="QtdVagasDisponivelCasa">Tem vaga na casa?</label>
+                <select class="form-control" id="qtdVagasDisponivelCasa" name="QtdVagasDisponivelCasa">
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select>
+            </div>
+
+            <div class="col-form form-group col-md-2">
                 <label for="turma">Qual sua turma?</label>
                 <select class="form-control" id="turma" name="Turma">
                     <option>Todos T1</option>
@@ -64,19 +86,15 @@
                 </select>
             </div>
 
-            <div class="col-form form-group col-md-3">
-                <label for="turma">Tem vaga na casa?</label>
-                <select class="form-control" id="turma" name="Turma">
-                    <option>0</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                </select>
+            <div class="col-form form-group col-md-2">
+                <label for="Valor">Preço média por pessoa:</label>
+                <input type="text" id="valor" name="Valor" class="form-control" placeholder="R$ 1.500 por pessoa." />
+                @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "text-danger" })
             </div>
 
             <div class="col-form form-group col-md-12">
                 <label for="endereco">Endereço:</label>
-                <input type="text" id="endereco" name="Endereco" class="form-control" placeholder="Entre com o CEP ou parte do endereço. Se não der certo pode arrastar o Marcardor pelo mapa."/>
+                <input type="text" id="endereco" name="Endereco" class="form-control" placeholder="Entre com o CEP ou parte do endereço. Ex: Tagua Life" />
                 @Html.ValidationMessageFor(model => model.Endereco, "", new { @class = "text-danger" })
             </div>
 
