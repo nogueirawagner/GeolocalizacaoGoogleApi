@@ -24,6 +24,39 @@ function initialize() {
 
             var marker, i;
 
+            const imageCursos =
+                "https://developers.google.com/maps/documentation/javascript/examples/full/images/parking_lot_maps.png";
+            // Localização do CEPOM
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(-15.7994772, -48.0607247),
+                map: map,
+                title: "CEPOM",
+                icon: imageCursos
+            });
+
+            google.maps.event.addListener(marker, 'click', (function (marker) {
+                return function () {
+                    infowindow.setContent("CEPOM");
+                    infowindow.open(map, marker);
+                }
+            })(marker));
+
+
+            // Localização da ESPC
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(-15.8851054, -48.0626557),
+                map: map,
+                title: "ESPC",
+                icon: imageCursos
+            });
+
+            google.maps.event.addListener(marker, 'click', (function (marker) {
+                return function () {
+                    infowindow.setContent("ESPC");
+                    infowindow.open(map, marker);
+                }
+            })(marker));
+
             for (i = 0; i < locations.length; i++) {
                 marker = new google.maps.Marker({
                     position: new google.maps.LatLng(locations[i].Latitude, locations[i].Longitude),
@@ -54,7 +87,7 @@ $(document).ready(function () {
 
 
                     // Chama o serviço para pegar os dados
-                    fetch('/Candidato/BuscaCandidatosJson')
+                    fetch('/Candidato/BuscaCandidatosJson?Latitude=' + latitude + '&Longitude=' + longitude)
                         .then(response => response.json())
                         .then(data => {
                             // Atualiza a variável locations com os dados retornados pelo serviço
@@ -77,7 +110,7 @@ $(document).ready(function () {
                             marker = new google.maps.Marker({
                                 position: new google.maps.LatLng(latitude, longitude),
                                 map: map,
-                                title: "Eu estou hospedado aqui",
+                                title: locations[0].DistanciaEscolas,
                                 icon: image
                             });
 
@@ -88,12 +121,46 @@ $(document).ready(function () {
                                 }
                             })(marker));
 
+
+                            const imageCursos =
+                                "https://developers.google.com/maps/documentation/javascript/examples/full/images/parking_lot_maps.png";
+                            // Localização do CEPOM
+                            marker = new google.maps.Marker({
+                                position: new google.maps.LatLng(-15.7994772, -48.0607247),
+                                map: map,
+                                title: "CEPOM",
+                                icon: imageCursos
+                            });
+
+                            google.maps.event.addListener(marker, 'click', (function (marker) {
+                                return function () {
+                                    infowindow.setContent("CEPOM");
+                                    infowindow.open(map, marker);
+                                }
+                            })(marker));
+
+
+                            // Localização da ESPC
+                            marker = new google.maps.Marker({
+                                position: new google.maps.LatLng(-15.8851054, -48.0626557),
+                                map: map,
+                                title: "ESPC",
+                                icon: imageCursos
+                            });
+
+                            google.maps.event.addListener(marker, 'click', (function (marker) {
+                                return function () {
+                                    infowindow.setContent("ESPC");
+                                    infowindow.open(map, marker);
+                                }
+                            })(marker));
+
                             // Locais de outras pessoas
                             for (i = 0; i < locations.length; i++) {
                                 marker = new google.maps.Marker({
                                     position: new google.maps.LatLng(locations[i].Latitude, locations[i].Longitude),
                                     map: map,
-                                    title: locations[i].Nome
+                                    title: locations[i].DistanciaColega
                                 });
 
                                 google.maps.event.addListener(marker, 'click', (function (marker, i) {

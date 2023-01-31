@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace GestaoDDD.Domain.Entities
 {
@@ -20,5 +22,10 @@ namespace GestaoDDD.Domain.Entities
     public string Turma { get; set; }
     public double Valor { get; set; }
     public int QtdVagasDisponivelCasa { get; set; }
+    [NotMapped]
+    public string DistanciaColega { get; set; }
+    [NotMapped]
+    public string DistanciaEscolas { get; set; }
+    
   }
 }

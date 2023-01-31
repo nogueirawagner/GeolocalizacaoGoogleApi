@@ -19,7 +19,7 @@ namespace GestaoDDD.MVC.Controllers
       _candidatoApp = candidatoApp;
     }
 
- 
+
     // GET: Candidato/Create
     public ActionResult Create()
     {
@@ -57,10 +57,19 @@ namespace GestaoDDD.MVC.Controllers
       return View(candVM);
     }
 
-    public JsonResult BuscaCandidatosJson()
+    public JsonResult BuscaCandidatosJson(string Latitude, string Longitude)
     {
-      var retorno = _candidatoApp.GetAll();
-      return Json(retorno, JsonRequestBehavior.AllowGet);
+      if (Latitude == null && Longitude == null)
+      {
+        var retorno = _candidatoApp.GetAll();
+        return Json(retorno, JsonRequestBehavior.AllowGet);
+      }
+      else
+      {
+        var retorno = _candidatoApp.CalculaDistancia(Latitude, Longitude);
+        return Json(retorno, JsonRequestBehavior.AllowGet);
+      }
+
     }
 
     public ActionResult Editar(int Id)

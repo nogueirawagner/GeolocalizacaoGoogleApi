@@ -1,6 +1,12 @@
-﻿using GestaoDDD.Application.Interface;
+﻿using AutoMapper;
+using GeoCoordinatePortable;
+using GestaoDDD.Application.Interface;
+using GestaoDDD.Application.ViewModels;
 using GestaoDDD.Domain.Entities;
 using GestaoDDD.Domain.Interfaces.Services;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
 
 namespace GestaoDDD.Application.Services
 {
@@ -14,72 +20,43 @@ namespace GestaoDDD.Application.Services
       _candidatoService = candidatoService;
     }
 
-    /*
-       public IEnumerable<Orcamento> RetornarOrcamentosComDistanciaCalculada(string prestadorLatitude,
-        string prestadorLongitude, string raio, string usuarioId)
+
+    public IEnumerable<Candidato> CalculaDistancia(string latitudeAtual, string longitudeAtual)
     {
-      var orcamentos = _orcamentoService.RetornaOrcamentosAbertos().ToList();
-      var orcamentosPagos = GetOrcamentoPagosPeloPrestador(usuarioId).ToList();
+      var coordAtual = new GeoCoordinate();
+      coordAtual.Latitude = double.Parse(latitudeAtual.Replace(",", "."),
+            CultureInfo.InvariantCulture);
+      coordAtual.Longitude = double.Parse(longitudeAtual.Replace(",", "."),
+            CultureInfo.InvariantCulture);
 
-      var orcamentosView = new List<Orcamento>();
-      foreach (var orcamento in orcamentos)
+      var coordCEPOM = new GeoCoordinate();
+      coordCEPOM.Latitude = -15.7994772;
+      coordCEPOM.Longitude = -48.0607247;
+
+      var coordESPC = new GeoCoordinate();
+      coordESPC.Latitude = -15.8851054;
+      coordESPC.Longitude = -48.0626557;
+
+      var distanciaCepom = (coordAtual.GetDistanceTo(coordCEPOM) / 1000);
+      var distanciaEspc = (coordAtual.GetDistanceTo(coordESPC) / 1000);
+
+      var candidatos = _candidatoService.GetAll();
+      
+      foreach (var cand in candidatos)
       {
-
-
-        var expirou = _orcamentoService.PegarQuantidadeOrcamentosPorPrestador(orcamento.orc_Id);
-        if (!expirou)
-          continue;
-
-        if (orcamentosPagos.All(s => s.orc_Id != orcamento.orc_Id))
-        {
-          var coord_orcamento = new GeoCoordinate();
-          coord_orcamento.Latitude = double.Parse(orcamento.orc_latitude.Replace(",", "."),
+        var coordCandidato = new GeoCoordinate();
+        coordCandidato.Latitude = double.Parse(cand.Latitude.Replace(",", "."),
               CultureInfo.InvariantCulture);
-          coord_orcamento.Longitude = double.Parse(orcamento.orc_longitude.Replace(",", "."),
+        coordCandidato.Longitude = double.Parse(cand.Longitude.Replace(",", "."),
               CultureInfo.InvariantCulture);
 
-          var coordenada_prestador = new GeoCoordinate();
-          coordenada_prestador.Latitude = double.Parse(prestadorLatitude.Replace(",", "."),
-              CultureInfo.InvariantCulture);
-          coordenada_prestador.Longitude = double.Parse(prestadorLongitude.Replace(",", "."),
-              CultureInfo.InvariantCulture);
+        var distancia = (coordAtual.GetDistanceTo(coordCandidato) / 1000);
+        cand.DistanciaColega =
+         string.Format("{0} está a {1} km de você", cand.Nome.Trim(), Math.Round(distancia, 2).ToString());
 
-          var distancia = (coordenada_prestador.GetDistanceTo(coord_orcamento) / 1000);
-
-          var endereco = orcamento.orc_endereco;
-          var cidade = "";
-          var estado = new EnumAppEstados();
-          var partes = endereco.Split(',');
-          foreach (var parte in partes.Where(s => s.Contains("-")))
-          {
-
-            var separar = parte.Split('-');
-            var ufs = " AC, AL, AP, AM, BA, CE, DF, ES, GO, MA, MT, MS, MG, PA,PB, PR, PE, PI, RJ, RN, RS, RO, RR, SC, SP, SE, TO";
-            if (ufs.Contains(separar[1]))
-            {
-              estado = (EnumAppEstados)Enum.Parse(typeof(EnumAppEstados), separar[1]);
-              cidade = separar[0];
-            }
-            else
-              continue;
-          }
-
-          orcamento.Distancia = Math.Round(distancia, 2).ToString() + " Km do seu negócio em " +
-                                cidade.ToString().Trim() +
-                                " - " + estado.ToString().Trim() + " ";
-
-          if (distancia <= double.Parse(raio))
-            orcamentosView.Add(orcamento);
-        }
+        cand.DistanciaEscolas = string.Format("Estou aqui a {0} km do CEPOM e a {1} km da ESPC", Math.Round(distanciaCepom, 2), Math.Round(distanciaEspc, 2));
       }
-      return orcamentosView;
+      return candidatos;
     }
-     
-     */
-
-    //public IEnumerable<Candidato> ObterCandidatosEspeciais()
-    //{
-    //    return Mapper.Map<IEnumerable<Candidato>, IEnumerable<CandidatoViewModel>>(_candidatoService.ObterCandidatosEspeciais());
-    //}
   }
 }

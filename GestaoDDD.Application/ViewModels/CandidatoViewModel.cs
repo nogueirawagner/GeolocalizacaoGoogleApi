@@ -40,5 +40,7 @@ namespace GestaoDDD.Application.ViewModels
     [DataType(DataType.Currency)]
     public double Valor { get; set; }
     public int QtdVagasDisponivelCasa { get; set; }
+
+    public string DistanciaColega { get; set; }
   }
 }
