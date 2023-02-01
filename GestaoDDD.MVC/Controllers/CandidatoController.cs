@@ -34,9 +34,6 @@ namespace GestaoDDD.MVC.Controllers
       {
         if (ModelState.IsValid)
         {
-
-
-
           var candidatoViewModel = Mapper.Map<CandidatoViewModel, Candidato>(candidato);
           _candidatoApp.Add(candidatoViewModel);
 
