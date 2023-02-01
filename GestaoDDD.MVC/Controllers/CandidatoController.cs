@@ -35,14 +35,21 @@ namespace GestaoDDD.MVC.Controllers
         if (ModelState.IsValid)
         {
 
+
+
           var candidatoViewModel = Mapper.Map<CandidatoViewModel, Candidato>(candidato);
           _candidatoApp.Add(candidatoViewModel);
+
+          ViewBag.Latitude = candidatoViewModel.Latitude;
+          ViewBag.Longitude = candidatoViewModel.Longitude;
+
+          return RedirectToAction("BuscaCandidatos", new { Latitude = ViewBag.Latitude, Longitude = ViewBag.Longitude });
         }
         else
         {
           return View(candidato);
         }
-        return RedirectToAction("BuscaCandidatos");
+
       }
       catch
       {
@@ -50,8 +57,17 @@ namespace GestaoDDD.MVC.Controllers
       }
     }
 
-    public ActionResult BuscaCandidatos()
+    public ActionResult BuscaCandidatos(string Latitude, string Longitude)
     {
+      ViewBag.Latitude = null;
+      ViewBag.Longitude = null;
+
+      if (!string.IsNullOrEmpty(Latitude) && !string.IsNullOrEmpty(Longitude))
+      {
+        ViewBag.Latitude = Latitude;
+        ViewBag.Longitude = Longitude;
+      }
+
       var candidatos = _candidatoApp.GetAll();
       var candVM = Mapper.Map<IEnumerable<Candidato>, IEnumerable<CandidatoViewModel>>(candidatos);
       return View(candVM);
@@ -59,7 +75,7 @@ namespace GestaoDDD.MVC.Controllers
 
     public JsonResult BuscaCandidatosJson(string Latitude, string Longitude)
     {
-      if (Latitude == null && Longitude == null)
+      if (string.IsNullOrEmpty(Latitude) && string.IsNullOrEmpty(Longitude))
       {
         var retorno = _candidatoApp.GetAll();
         return Json(retorno, JsonRequestBehavior.AllowGet);

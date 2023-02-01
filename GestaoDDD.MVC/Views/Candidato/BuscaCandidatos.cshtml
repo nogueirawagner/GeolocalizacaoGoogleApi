@@ -3,13 +3,16 @@
         Layout = "~/Views/Shared/_CFP.cshtml";
     }
     <link href="~/Content/Candidato/candidato_todos.css" rel="stylesheet" />
-    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC77KEJkbjHojYpYqn3NZB1PkpAqC8nJCU&amp;sensor=true"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC77KEJkbjHojYpYqn3NZB1PkpAqC8nJCU&amp;sensor=true"></script>
     <script src="~/Scripts/GoogleMaps/Candidatos/mapa_todos_candidatos.js"></script>
     <script src="~/Scripts/jquery-ui.custom.min.js"></script>
     <script src="~/Scripts/jquery-2.2.3.js"></script>
     <script src="~/Scripts/jquery.maskedinput.min.js"></script>
     <script src="~/Scripts/sweetalert.min.js"></script>
     <link href="~/Styles/sweetalert.css" rel="stylesheet" />
+
+    <input type="hidden" id="vbLat" value="@ViewBag.Latitude" />
+    <input type="hidden" id="vbLong" value="@ViewBag.Longitude" />
 
     <div class="container">
         <br />
@@ -26,7 +29,7 @@
                     <button type="button" class="fas fa-search">
                     </button>
                 </div>
-                
+
                 <div class="mapa col-md-12">
                     <div id="mapa" class="map-mapa"></div>
                     <input type="hidden" id="latitude" name="Latitude" />
@@ -35,7 +38,7 @@
             }
             <div class="col-form form-group col-md-12" style="padding-left: 20px;">
                 <label>Aplique o filtro que deseja:</label>
-                <input type="text" id="searchInput" class="form-control"/>
+                <input type="text" id="searchInput" class="form-control" />
             </div>
 
             <table id="mytable" class="table table-bordered table-striped">
@@ -96,7 +99,7 @@
             </table>
         </div>
 
-       
+
 
 
     </div>

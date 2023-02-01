@@ -4,8 +4,11 @@ var marker;
 
 function initialize() {
 
+    var vbLat = document.getElementById("vbLat").value;
+    var vbLong = document.getElementById("vbLong").value;
+
     // Chama o serviço para pegar os dados
-    fetch('/Candidato/BuscaCandidatosJson')
+    fetch('/Candidato/BuscaCandidatosJson?Latitude=' + vbLat + '&Longitude=' + vbLong)
         .then(response => response.json())
         .then(data => {
             // Atualiza a variável locations com os dados retornados pelo serviço
@@ -41,6 +44,24 @@ function initialize() {
                 }
             })(marker));
 
+            if (vbLat && vbLong) {
+                const image =
+                    "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
+                // Local do cara
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(vbLat, vbLong),
+                    map: map,
+                    title: locations[0].DistanciaEscolas,
+                    icon: image
+                });
+
+                google.maps.event.addListener(marker, 'click', (function (marker) {
+                    return function () {
+                        infowindow.setContent("Meu local");
+                        infowindow.open(map, marker);
+                    }
+                })(marker));
+            }
 
             // Localização da ESPC
             marker = new google.maps.Marker({

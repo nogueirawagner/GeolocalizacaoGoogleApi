@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_CFP.cshtml";
 }
 <link href="~/Content/Candidato/candidato.css" rel="stylesheet" />
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC77KEJkbjHojYpYqn3NZB1PkpAqC8nJCU&amp;sensor=true"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC77KEJkbjHojYpYqn3NZB1PkpAqC8nJCU&amp;sensor=true"></script>
 <script src="~/Scripts/GoogleMaps/Candidatos/mapa_candidato.js"></script>
 <script src="~/Scripts/jquery-ui.custom.min.js"></script>
 <script src="~/Scripts/jquery-2.2.3.js"></script>
@@ -57,7 +57,7 @@
             <div class="col-form form-group col-md-2">
                 <label for="QtdVagasCarro">Possui vagas no veículo?</label>
                 <select class="form-control" id="qtdVagasCarro" name="QtdVagasCarro">
-                    <option>Não</option>
+                    <option>0</option>
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -88,7 +88,7 @@
 
             <div class="col-form form-group col-md-2">
                 <label for="Valor">Preço média por pessoa:</label>
-                <input type="text" id="valor" name="Valor" class="form-control" placeholder="R$ 1.500 por pessoa." />
+                <input type="text" id="valor" name="Valor" class="form-control" placeholder="R$ 1.500 ou 0." value="0" />
                 @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "text-danger" })
             </div>
 

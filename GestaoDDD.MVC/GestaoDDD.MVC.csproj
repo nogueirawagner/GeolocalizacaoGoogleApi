@@ -343,6 +343,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Properties\PublishProfiles\Caio.pubxml" />
+    <None Include="Properties\PublishProfiles\Geolocalizacao - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\v.001.pubxml" />
     <None Include="Properties\PublishProfiles\Wagner.pubxml" />
     <Content Include="Scripts\bootstrap.js" />
