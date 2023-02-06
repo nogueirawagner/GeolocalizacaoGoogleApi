@@ -23,7 +23,7 @@ namespace GestaoDDD.MVC
             routes.MapRoute(
                 name: "Cadastro",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Candidato", action = "Create", id = UrlParameter.Optional }
+                defaults: new { controller = "Candidato", action = "BuscaCandidatos", id = UrlParameter.Optional }
             );
 
 
