@@ -40,7 +40,10 @@ namespace GestaoDDD.MVC.Controllers
           ViewBag.Latitude = candidatoViewModel.Latitude;
           ViewBag.Longitude = candidatoViewModel.Longitude;
 
-          return RedirectToAction("BuscaCandidatos", new { Latitude = ViewBag.Latitude, Longitude = ViewBag.Longitude });
+          ViewBag.TodosESPC = candidatoViewModel.Turma == "Todos T1";
+          ViewBag.TodosCEPOM = candidatoViewModel.Turma == "Todos T2" || candidatoViewModel.Turma == "Todos T3";
+
+          return RedirectToAction("BuscaCandidatos", new { Latitude = ViewBag.Latitude, Longitude = ViewBag.Longitude, T1 = ViewBag.TodosESPC, T2 = ViewBag.TodosCEPOM });
         }
         else
         {
@@ -54,15 +57,19 @@ namespace GestaoDDD.MVC.Controllers
       }
     }
 
-    public ActionResult BuscaCandidatos(string Latitude, string Longitude)
+    public ActionResult BuscaCandidatos(string Latitude, string Longitude, string T1, string T2)
     {
       ViewBag.Latitude = null;
       ViewBag.Longitude = null;
+      ViewBag.TodosESPC = false;
+      ViewBag.TodosCEPOM = false;
 
       if (!string.IsNullOrEmpty(Latitude) && !string.IsNullOrEmpty(Longitude))
       {
         ViewBag.Latitude = Latitude;
         ViewBag.Longitude = Longitude;
+        ViewBag.TodosESPC = bool.Parse(T1.ToLower());
+        ViewBag.TodosCEPOM = bool.Parse(T2.ToLower());
       }
 
       var candidatos = _candidatoApp.GetAll();
