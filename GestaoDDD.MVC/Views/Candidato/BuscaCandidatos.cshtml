@@ -51,7 +51,7 @@
                         <th>Vagas na casa</th>
                         <th>Turma</th>
                         <th>R$ Médio</th>
-                        <th>Editar</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -88,7 +88,7 @@
                             </td>
                             <td>
                                 <a href="~/Candidato/Editar/@item.ID" class="btn btn-enviar btn-sm btn-block" title="Editar">Editar</a>
-                                <a href="~/Candidato/Excluir/@item.ID" class="btn btn-enviar btn-sm btn-block" title="Editar">Excluir</a>
+                                <a href="~/Candidato/Excluir/@item.ID" class="btn btn-enviar btn-sm btn-block" title="Excluir">Excluir</a>
                             </td>
                         </tr>
                     }
@@ -107,10 +107,11 @@
         $(document).ready(function () {
             $("#searchInput").on("keyup", function () {
                 var value = $(this).val().toLowerCase();
-                $("#mytable tr").filter(function () {
+                $("#mytable tr:not(:first)").filter(function () {
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
             });
         });
+
 
     </script>
