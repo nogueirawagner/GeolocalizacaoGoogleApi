@@ -33,7 +33,7 @@ function initialize() {
 
             // Continua com o restante do código
             var map = new google.maps.Map(document.getElementById('mapa'), {
-                zoom: 12,
+                zoom: 11,
                 center: new google.maps.LatLng(locations[0].Latitude, locations[0].Longitude),
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             });
@@ -153,9 +153,7 @@ $(document).ready(function () {
                 if (results[0]) {
                     var latitude = results[0].geometry.location.lat();
                     var longitude = results[0].geometry.location.lng();
-                    var directionsService = new google.maps.DirectionsService();
-                    var directionsRenderer = new google.maps.DirectionsRenderer();
-
+                   
                     var cepomLat = -15.7994772;
                     var cepomLong = -48.0607247;
 
@@ -175,7 +173,7 @@ $(document).ready(function () {
 
                             // Continua com o restante do código
                             var map = new google.maps.Map(document.getElementById('mapa'), {
-                                zoom: 12,
+                                zoom: 11,
                                 center: new google.maps.LatLng(latitude, longitude),
                                 mapTypeId: google.maps.MapTypeId.ROADMAP
                             });
