@@ -72,7 +72,7 @@ namespace GestaoDDD.MVC.Controllers
         ViewBag.TodosCEPOM = bool.Parse(T2.ToLower());
       }
 
-      var candidatos = _candidatoApp.GetAll();
+      var candidatos = _candidatoApp.GetAll().OrderByDescending(s => s.QtdVagasDisponivelCasa);
       var candVM = Mapper.Map<IEnumerable<Candidato>, IEnumerable<CandidatoViewModel>>(candidatos);
       return View(candVM);
     }
@@ -81,12 +81,12 @@ namespace GestaoDDD.MVC.Controllers
     {
       if (string.IsNullOrEmpty(Latitude) && string.IsNullOrEmpty(Longitude))
       {
-        var retorno = _candidatoApp.GetAll();
+        var retorno = _candidatoApp.GetAll().OrderByDescending(s => s.QtdVagasDisponivelCasa);
         return Json(retorno, JsonRequestBehavior.AllowGet);
       }
       else
       {
-        var retorno = _candidatoApp.CalculaDistancia(Latitude, Longitude);
+        var retorno = _candidatoApp.CalculaDistancia(Latitude, Longitude).OrderByDescending(s => s.QtdVagasDisponivelCasa);
         return Json(retorno, JsonRequestBehavior.AllowGet);
       }
 
