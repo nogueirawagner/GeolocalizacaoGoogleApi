@@ -11,12 +11,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CFP PC-DF</title>
 
-   @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/mapa_cfp")
     <link href="~/Content/_Layout/cfp.css" rel="stylesheet" />
-  
+
 </head>
 <body>
     <div class="menunavegacao col-md-12 col-sm-12 col-xs-12" id="menuHeader">
@@ -32,19 +32,25 @@
                             <li class="active"><a href="~/Candidato/BuscaCandidatos">Ver Candidatos <span class="sr-only">(current)</span></a></li>
                         </ul>
                     </div>
+
                 </div>
+
             </nav>
+        </div>
+        <div class="redessociaistopo col-md-1 col-sm-2">
+            <span><a href="https://www.instagram.com/nogueirawgn/" target="_blank"><img title="Contato: &#13;&#10;Wagner Nogueira &#13;&#10;(62) 99373-1723 " src="~/Images/Home/instagram2.png" id="redessociais"></a></span>
         </div>
     </div>
 
-    @RenderBody()
 
+    @RenderBody()
 </body>
 
 
 @RenderSection("scripts", required: false)
 
 </html>
+
 
 
 

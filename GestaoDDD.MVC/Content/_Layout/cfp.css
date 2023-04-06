@@ -44,10 +44,11 @@ a:hover {
 /* END MENU NAVEGAÇÃO */
 
 /* PREFOOTER */
+
 .redessociais {
-    text-align: center;
-    vertical-align: central;
-    margin-top: 3%;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 #linha-rodape {
@@ -150,10 +151,12 @@ nav.navbar-findcond span.badge.new { background: rgba(255, 0, 0, 0.8); color: #f
 }
 
 .redessociaistopo {
-    text-align: center;
-    vertical-align: central;
-    margin-top: 3%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 15px;
 }
+
 
 .menu-fixo  {
 		    position:fixed !important;
