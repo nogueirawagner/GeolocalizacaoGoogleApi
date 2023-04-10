@@ -54,7 +54,9 @@
                         <th>Vagas na casa</th>
                         <th>Turma</th>
                         <th>R$ Médio</th>
-                        <th>Ações</th>
+                        <th>Editar</th>
+                        <th>Excluir</th>
+                        <th>Procurar Próximos</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -90,28 +92,21 @@
                                 @Html.DisplayFor(modelItem => item.Valor)
                             </td>
                             <td>
-
-                                <a href="~/Candidato/Editar/@item.ID" class="btn btn-info" style="margin: 5px;" title="Editar">
+                                <a href="~/Candidato/Editar/@item.ID" class="btn btn-info" title="Editar">
                                     <span class="glyphicon glyphicon-pencil"></span>
                                 </a>
-
-                                <a href="~/Candidato/Excluir/@item.ID" class="btn btn-danger" style="margin: 5px;" title="Excluir">
+                            </td>
+                            <td>
+                                <a href="~/Candidato/Excluir/@item.ID" class="btn btn-danger" title="Excluir">
                                     <span class="glyphicon glyphicon-remove"></span>
                                 </a>
-
-                                <a href="@Url.Action("BuscaCandidatosProximos", "Candidato", new { Latitude = item.Latitude, Longitude = item.Longitude, Endereco = item.Endereco, Id = item.ID  })" class="btn btn-proximos" style="margin: 5px;" title="Buscar Próximos">
+                            </td>
+                            <td>
+                                <a href="@Url.Action("BuscaCandidatosProximos", "Candidato", new { Latitude = item.Latitude, Longitude = item.Longitude, Endereco = item.Endereco, Id = item.ID  })" class="btn btn-proximos" title="Buscar Próximos">
                                     <span class="glyphicon glyphicon-filter"></span>
                                 </a>
-
-                                @*<button type="button" class="btn btn-proximos" style="margin: 5px;" title="Procurar próximos">
-                                    <a href="@Url.Action("BuscaCandidatosProximos", "Candidato", new { Latitude = item.Latitude, Longitude = item.Longitude, Endereco = item.Endereco, Id = item.ID  })" class="glyphicon glyphicon-filter"></a>
-                                </button>*@
-
-                                @*<a href="~/Candidato/Editar/@item.ID" class="btn btn-editar btn-sm btn-block" title="Editar"></a>*@
-                                @*<a href="~/Candidato/Excluir/@item.ID" class="btn btn-enviar btn-sm btn-block" title="Excluir">Excluir</a>*@
-                                @*<a href="@Url.Action("BuscaCandidatosProximos", "Candidato", new { Latitude = item.Latitude, Longitude = item.Longitude, Endereco = item.Endereco, Id = item.ID  })" class="btn btn-proximos btn-sm btn-block">Próximos</a>*@
-
                             </td>
+
                         </tr>
                     }
 
