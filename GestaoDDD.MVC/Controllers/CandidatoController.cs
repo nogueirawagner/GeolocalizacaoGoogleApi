@@ -99,7 +99,9 @@ namespace GestaoDDD.MVC.Controllers
         ViewBag.TodosCEPOM = bool.Parse(T2.ToLower());
       }
 
-      var candidatos = _candidatoApp.GetAll().OrderByDescending(s => s.QtdVagasDisponivelCasa);
+      var candidatos = _candidatoApp.GetAll()
+        .OrderByDescending(s => s.QtdVagasCarro)
+        .ThenByDescending(s => s.QtdVagasDisponivelCasa);
       var candVM = Mapper.Map<IEnumerable<Candidato>, IEnumerable<CandidatoViewModel>>(candidatos);
       return View(candVM);
     }
