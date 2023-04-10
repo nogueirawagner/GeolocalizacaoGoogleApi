@@ -57,6 +57,33 @@ namespace GestaoDDD.MVC.Controllers
       }
     }
 
+    public ActionResult BuscaCandidatosProximos(string Latitude, string Longitude, string Endereco, int Id)
+    {
+      ViewBag.Latitude = null;
+      ViewBag.Longitude = null;
+
+      if (!string.IsNullOrEmpty(Latitude) && !string.IsNullOrEmpty(Longitude))
+      {
+        ViewBag.Latitude = Latitude;
+        ViewBag.Longitude = Longitude;
+        ViewBag.Endereco = Endereco;
+        ViewBag.Id = Id;
+
+        var candidatos = _candidatoApp.BuscaCandidatosProximos(Latitude, Longitude)
+          .Where(s => s.ID != Id)
+          .OrderByDescending(s => s.QtdVagasCarro)
+          .ThenByDescending(s => s.QtdVagasDisponivelCasa);
+        var candVM = Mapper.Map<IEnumerable<Candidato>, IEnumerable<CandidatoViewModel>>(candidatos);
+        return View(candVM);
+      }
+      else
+      {
+        var candidatos = _candidatoApp.GetAll();
+        var candVM = Mapper.Map<IEnumerable<Candidato>, IEnumerable<CandidatoViewModel>>(candidatos);
+        return View(candVM);
+      }
+    }
+
     public ActionResult BuscaCandidatos(string Latitude, string Longitude, string T1, string T2)
     {
       ViewBag.Latitude = null;
@@ -89,8 +116,23 @@ namespace GestaoDDD.MVC.Controllers
         var retorno = _candidatoApp.CalculaDistancia(Latitude, Longitude).OrderByDescending(s => s.QtdVagasDisponivelCasa);
         return Json(retorno, JsonRequestBehavior.AllowGet);
       }
-
     }
+
+    public JsonResult BuscaCandidatosProximosJson(string Latitude, string Longitude, int Id)
+    {
+      if (string.IsNullOrEmpty(Latitude) && string.IsNullOrEmpty(Longitude))
+      {
+        var retorno = _candidatoApp.GetAll();
+        return Json(retorno, JsonRequestBehavior.AllowGet);
+      }
+      else
+      {
+        var retorno = _candidatoApp.BuscaCandidatosProximos(Latitude, Longitude)
+          .Where(s => s.ID != Id);
+        return Json(retorno, JsonRequestBehavior.AllowGet);
+      }
+    }
+
 
     public ActionResult Editar(int Id)
     {

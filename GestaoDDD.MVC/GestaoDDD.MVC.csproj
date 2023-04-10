@@ -216,6 +216,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Candidato\candidato_proximos.css" />
     <Content Include="Content\Candidato\candidato_todos.css" />
     <Content Include="Content\Candidato\candidato.css" />
     <Content Include="Content\site.css" />
@@ -350,6 +351,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\GoogleMaps\Candidatos\mapa _cfp.js" />
     <Content Include="Scripts\GoogleMaps\Candidatos\mapa_editar_candidato.js" />
+    <Content Include="Scripts\GoogleMaps\Candidatos\mapa_candidatos_proximos.js" />
     <Content Include="Scripts\GoogleMaps\Candidatos\mapa_todos_candidatos.js" />
     <Content Include="Scripts\GoogleMaps\Candidatos\mapa_candidato.js" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
@@ -381,6 +383,7 @@
     <Content Include="Views\Candidato\BuscaCandidatos.cshtml" />
     <Content Include="Views\Candidato\Editar.cshtml" />
     <Content Include="Views\Candidato\Excluir.cshtml" />
+    <Content Include="Views\Candidato\BuscaCandidatosProximos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

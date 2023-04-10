@@ -46,16 +46,16 @@
     margin-bottom: 5%;
 }
 
-.btn-marcar {
+.btn {
     background-color: #ad2323;
     margin: 20px;
     border-bottom-color: black;
 }
 
-.btn:focus {
-    box-shadow: rgba (0,0,0,4);
-    outline: 0;
-}
+    .btn:focus {
+        box-shadow: rgba (0,0,0,4);
+        outline: 0;
+    }
 
 .banner-baixo {
     background-color: #f56a6a;
@@ -118,7 +118,7 @@
     margin-top: 3%;
     padding-left: 1%;
     padding-right: 10%;
-    height: 950px;
+    height: 500px;
     width: 1090px;
 }
 
@@ -141,30 +141,6 @@
     outline: 0;
 }
 
-.btn-proximos {
-    background-color: #04994c;
-    border-bottom-color: black;
-    color: white;
-}
-
-.btn-proximos:focus {
-    box-shadow: rgba(0,0,0,4);
-    outline: 0;
-}
-
-
-.btn-editar {
-    background-color: #04994c;
-    margin: 20px;
-    margin-left: 0px;
-    border-bottom-color: black;
-    color: white;
-}
-
-    .btn-editar:focus {
-        box-shadow: rgba(0,0,0,4);
-        outline: 0;
-    }
 /* Fim Corpo da página */
 
 
