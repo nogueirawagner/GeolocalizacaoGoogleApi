@@ -23,78 +23,79 @@
 
             @using (Html.BeginForm())
             {
-                <div class="col-form form-group col-md-12" style="padding-left: 20px;">
+                <div class="col-form form-group col-md-12 col-sm-12" style="padding-left: 20px;">
                     <label for="endereco">Está aparecendo pessoas no raio de 3 km do seu endereço em:</label>
                     <input type="text" id="endereco" value="@ViewBag.Endereco" name="Endereco" class="form-control" readonly />
                 </div>
-                <div class="botao-marcar col-md-2" style="padding-top: 5px;">
-                    <input type="hidden" class="botao btn btn-marcamapa" id="btnEndereco" name="btnEndereco" value="Marcar no mapa" />
-                </div>
 
-                <div class="mapa col-md-12">
+                <div class="mapa">
                     <div id="mapa" class="map-mapa"></div>
                     <input type="hidden" id="latitude" name="Latitude" />
                     <input type="hidden" id="longitude" name="Longitude" />
                 </div>
+
+                <div class="col-form form-group col-md-12" style="padding-left: 20px;">
+                    <label>Aplique o filtro que deseja:</label>
+                    <input type="text" id="searchInput" class="form-control" />
+                </div>
             }
-            <div class="col-form form-group col-md-12" style="padding-left: 20px;">
-                <label>Aplique o filtro que deseja:</label>
-                <input type="text" id="searchInput" class="form-control" />
+
+            <p id="totalRows" style="padding-left: 20px;"></p>
+            <div class="table-responsive" style="padding-left: 20px;">
+                <table id="mytable" class="table">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Descrição</th>
+                            <th>Endereço</th>
+                            <th>Telefone</th>
+                            <th>Veículo</th>
+                            <th>Vagas no veículo</th>
+                            <th>Vagas na casa</th>
+                            <th>Turma</th>
+                            <th>R$ Médio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nome)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Descricao)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Endereco)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Telefone)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TipoVeiculo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.QtdVagasCarro)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.QtdVagasDisponivelCasa)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Turma)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Valor)
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
             </div>
 
-            <p id="totalRows"></p>
-            <table id="mytable" class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Descrição</th>
-                        <th>Endereço</th>
-                        <th>Telefone</th>
-                        <th>Veículo</th>
-                        <th>Vagas no veículo</th>
-                        <th>Vagas na casa</th>
-                        <th>Turma</th>
-                        <th>R$ Médio</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Nome)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Descricao)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Endereco)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Telefone)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.TipoVeiculo)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.QtdVagasCarro)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.QtdVagasDisponivelCasa)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Turma)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Valor)
-                            </td>
-                        </tr>
-                    }
-
-                </tbody>
-
-            </table>
         </div>
 
 

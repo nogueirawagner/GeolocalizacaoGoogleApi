@@ -2,17 +2,10 @@
     overflow-x: hidden;
 }
 
-.map-mapa {
-    bottom: 60px;
-    height: 350px;
-    width: 600px
-}
-
 .btn-marcamapa:focus {
     box-shadow: rgba(0,0,0,4);
     outline: 0;
 }
-
 
 /* Banner Padrão e Secundário */
 
@@ -107,21 +100,49 @@
     padding: 0px;
 }
 
+/* Mapa */
+
+/* div mapa que engloba o mapa */
 .mapa {
     padding-top: 20px;
     padding-left: 20px;
     padding-right: 20px;
     padding-bottom: 0px;
+    width: 100%;
+    /*height: 400px;*/
 }
 
 .map-mapa {
     margin-top: 3%;
     padding-left: 1%;
     padding-right: 10%;
-    height: 950px;
+    height: 400px;
     width: 1090px;
 }
 
+@media only screen and (max-width: 768px) {
+    ajuste as propriedades para telas menores
+    .map-mapa {
+        height: 300px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    ajuste as propriedades para telas ainda menores
+    .map-mapa {
+        height: 200px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    /* Estilos para telas menores que 768px */
+    .map-mapa {
+        bottom: 20px;
+        height: 200px;
+        width: 100%;
+    }
+}
+/* Fim Mapa */
 
 .botao {
     color: white;
@@ -168,19 +189,33 @@
 /* Fim Corpo da página */
 
 
-@media screen and (max-width: 1200px) {
-    .map-mapa {
-        width: 900px;
-    }
+
+
+/* Tabela */
+
+.table-responsive {
+    overflow-x: auto;
 }
 
-@media screen and (max-width: 990px) {
-    .map-mapa {
-        width: 700px;
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+}
+
+    .table th,
+    .table td {
+        padding: 0.75rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
     }
 
-    .form {
-        margin-left: 0px;
-        padding-left: 0px;
+    .table thead th {
+        vertical-align: bottom;
+        border-bottom: 2px solid #dee2e6;
     }
-}
+
+    .table tbody + tbody {
+        border-top: 2px solid #dee2e6;
+    }

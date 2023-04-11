@@ -18,106 +18,100 @@
 
     <div class="container">
         <br />
-        <div class="row formulario col-md-12">
+        <div class="row formulario col-md-12 col-sm-12 col-lg-12">
 
             @using (Html.BeginForm())
             {
-                <div class="col-form form-group col-md-10" style="padding-left: 20px;">
+                <div class="col-form form-group col-md-10 col-sm-10" style="padding-left: 20px;">
                     <label for="endereco">Me informe onde vc está:</label>
                     <input type="text" id="endereco" name="Endereco" class="form-control" placeholder="Entre com o CEP ou parte do endereço. Ex: Tagua Life" />
                 </div>
-                <div class="botao-marcar col-md-2" style="padding-top: 5px;">
+                <div class="botao-marcar col-md-2 col-sm-2 col-form-2" style="padding-top: 5px;">
                     <input type="button" class="botao btn btn-marcamapa" style="margin: 20px; background-color: #ad2323" id="btnEndereco" name="btnEndereco" value="Marcar no mapa" />
                 </div>
 
-                <div class="mapa col-md-12">
+                <div class="mapa">
                     <div id="mapa" class="map-mapa"></div>
                     <input type="hidden" id="latitude" name="Latitude" />
                     <input type="hidden" id="longitude" name="Longitude" />
                 </div>
+
+                <div class="col-form form-group col-md-12" style="padding-left: 20px;">
+                    <label>Aplique o filtro que deseja:</label>
+                    <input type="text" id="searchInput" class="form-control" />
+                </div>
             }
-            <div class="col-form form-group col-md-12" style="padding-left: 20px;">
-                <label>Aplique o filtro que deseja:</label>
-                <input type="text" id="searchInput" class="form-control" />
-            </div>
-
-            <p id="totalRows"></p>
-            <table id="mytable" class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Descrição</th>
-                        <th>Endereço</th>
-                        <th>Telefone</th>
-                        <th>Veículo</th>
-                        <th>Vagas no veículo</th>
-                        <th>Vagas na casa</th>
-                        <th>Turma</th>
-                        <th>R$ Médio</th>
-                        <th>Editar</th>
-                        <th>Excluir</th>
-                        <th>Procurar Próximos</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-
+            <p id="totalRows" style="padding-left: 20px;"></p>
+            <div class="table-responsive" style="padding-left: 20px;">
+                <table id="mytable" class="table">
+                    <thead>
                         <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Nome)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Descricao)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Endereco)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Telefone)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.TipoVeiculo)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.QtdVagasCarro)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.QtdVagasDisponivelCasa)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Turma)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Valor)
-                            </td>
-                            <td>
-                                <a href="~/Candidato/Editar/@item.ID" class="btn btn-info" title="Editar">
-                                    <span class="glyphicon glyphicon-pencil"></span>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="~/Candidato/Excluir/@item.ID" class="btn btn-danger" title="Excluir">
-                                    <span class="glyphicon glyphicon-remove"></span>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="@Url.Action("BuscaCandidatosProximos", "Candidato", new { Latitude = item.Latitude, Longitude = item.Longitude, Endereco = item.Endereco, Id = item.ID  })" class="btn btn-proximos" title="Buscar Próximos">
-                                    <span class="glyphicon glyphicon-filter"></span>
-                                </a>
-                            </td>
-
+                            <th>Nome</th>
+                            <th>Descrição</th>
+                            <th>Endereço</th>
+                            <th>Telefone</th>
+                            <th>Veículo</th>
+                            <th>Vagas no veículo</th>
+                            <th>Vagas na casa</th>
+                            <th>Turma</th>
+                            <th>R$ Médio</th>
+                            <th>Editar</th>
+                            <th>Excluir</th>
+                            <th>Procurar Próximos</th>
                         </tr>
-                    }
-
-                </tbody>
-
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nome)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Descricao)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Endereco)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Telefone)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TipoVeiculo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.QtdVagasCarro)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.QtdVagasDisponivelCasa)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Turma)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Valor)
+                                </td>
+                                <td>
+                                    <a href="~/Candidato/Editar/@item.ID" class="btn btn-info" title="Editar">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="~/Candidato/Excluir/@item.ID" class="btn btn-danger" title="Excluir">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("BuscaCandidatosProximos", "Candidato", new { Latitude = item.Latitude, Longitude = item.Longitude, Endereco = item.Endereco, Id = item.ID })" class="btn btn-proximos" title="Buscar Próximos">
+                                        <span class="glyphicon glyphicon-filter"></span>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
-
-
-
-
     </div>
 
     <script type="text/javascript">
