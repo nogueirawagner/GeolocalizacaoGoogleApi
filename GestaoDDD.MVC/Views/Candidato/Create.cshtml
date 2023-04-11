@@ -11,11 +11,13 @@
 <script src="~/Scripts/sweetalert.min.js"></script>
 <link href="~/Styles/sweetalert.css" rel="stylesheet" />
 
-<div class="container">
+<div class="m-4">
 
-    <div class="row texto-formulario col-md-12">
-        <h1><b>Cadastre-se</b></h1>
-        Informe a região em que está hospedado.
+    <div class="row col-md-12">
+        <h4>
+            <b>Informe a região em que está hospedado.</b>
+        </h4>
+        
     </div>
 
     <div class="row formulario col-md-12">
@@ -102,13 +104,13 @@
                 <input type="button" class="botao btn btn-sm btn-marcamapa" id="btnEndereco" name="btnEndereco" value="Marcar no mapa" />
             </div>
 
-            <div class="mapa col-md-12">
+            <div class="mapa ">
                 <div id="mapa" class="map-mapa"></div>
                 <input type="hidden" id="latitude" name="Latitude" />
                 <input type="hidden" id="longitude" name="Longitude" />
             </div>
 
-            <div class="col-form col-md-12">
+            <div class="col-form col-md-2">
                 <input type="submit" class="btn btn-enviar" data-style="expand-right" value="Cadastrar" />
             </div>
 

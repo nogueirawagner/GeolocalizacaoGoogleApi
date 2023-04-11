@@ -3,17 +3,49 @@
 }
 
 
+/* Mapa */
+
+/* div mapa que engloba o mapa */
+.mapa {
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-bottom: 0px;
+    width: 100%;
+}
 
 .map-mapa {
-    bottom:30px;
-    height: 350px; 
-    width: 600px
+    margin-top: 3%;
+    padding-left: 1%;
+    padding-right: 10%;
+    height: 400px;
+    width: 1090px;
 }
-    .btn-marcamapa:focus {
-        box-shadow: rgba(0,0,0,4);
-        outline: 0;
-    }
 
+@media only screen and (max-width: 768px) {
+    /*ajuste as propriedades para telas menores*/
+    .map-mapa {
+        height: 300px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    /*ajuste as propriedades para telas ainda menores*/
+    .map-mapa {
+        height: 200px;
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+    /* Estilos para telas menores que 768px */
+    .map-mapa {
+        bottom: 20px;
+        height: 200px;
+        width: 100%;
+    }
+}
+
+/* Fim Mapa */
 
 /* Banner Padrão e Secundário */
 
@@ -106,16 +138,7 @@
 
 }
 
-.mapa {
-    padding: 0px;
-}
 
-.map-mapa {
-    margin-top: 3%;
-    padding-left: 0px;
-    height: 350px; 
-    width: 1090px;
-}
 
 .botao {
    color: white;
@@ -138,19 +161,3 @@
 /* Fim Corpo da página */
 
 
-@media screen and (max-width: 1200px){
-	.map-mapa {
-        width: 900px;
-	}
-}
-
-@media screen and (max-width: 990px){
-	.map-mapa {
-        width: 700px;
-	}
-    .form {
-        margin-left:0px;
-        padding-left: 0px;
-       
-    }
-}

@@ -17,13 +17,12 @@
     <input type="hidden" id="vbId" value="@ViewBag.Id" />
 
 
-    <div class="container">
-        <br />
+    <div class="m-4">
         <div class="row formulario col-md-12">
 
             @using (Html.BeginForm())
             {
-                <div class="col-form form-group col-md-12 col-sm-12" style="padding-left: 20px;">
+                <div class="col-form form-group col-md-9 col-sm-9" style="padding-left: 20px;">
                     <label for="endereco">Está aparecendo pessoas no raio de 3 km do seu endereço em:</label>
                     <input type="text" id="endereco" value="@ViewBag.Endereco" name="Endereco" class="form-control" readonly />
                 </div>
@@ -34,14 +33,14 @@
                     <input type="hidden" id="longitude" name="Longitude" />
                 </div>
 
-                <div class="col-form form-group col-md-12" style="padding-left: 20px;">
+                <div class="col-form form-group col-md-4" style="padding-left: 20px;">
                     <label>Aplique o filtro que deseja:</label>
                     <input type="text" id="searchInput" class="form-control" />
                 </div>
             }
 
             <p id="totalRows" style="padding-left: 20px;"></p>
-            <div class="table-responsive" style="padding-left: 20px;">
+            <div class="table-responsive" style="padding-left: 20px; border: 1px solid black">
                 <table id="mytable" class="table">
                     <thead>
                         <tr>
