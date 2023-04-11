@@ -16,13 +16,12 @@
     <input type="hidden" id="vbT1" value="@ViewBag.TodosESPC" />
     <input type="hidden" id="vbT2" value="@ViewBag.TodosCEPOM" />
 
-    <div class="container">
-        <br />
-        <div class="row formulario col-md-12 col-sm-12 col-lg-12">
+    <div class="m-4">
+        <div class="row formulario col-md-12 col-sm-6 col-lg-12">
 
             @using (Html.BeginForm())
             {
-                <div class="col-form form-group col-md-10 col-sm-10" style="padding-left: 20px;">
+                <div class="col-form form-group col-md-8 col-sm-8" style="padding-left: 20px;">
                     <label for="endereco">Me informe onde vc está:</label>
                     <input type="text" id="endereco" name="Endereco" class="form-control" placeholder="Entre com o CEP ou parte do endereço. Ex: Tagua Life" />
                 </div>
@@ -36,13 +35,13 @@
                     <input type="hidden" id="longitude" name="Longitude" />
                 </div>
 
-                <div class="col-form form-group col-md-12" style="padding-left: 20px;">
+                <div class="col-form form-group col-md-4" style="padding-left: 20px;">
                     <label>Aplique o filtro que deseja:</label>
                     <input type="text" id="searchInput" class="form-control" />
                 </div>
             }
             <p id="totalRows" style="padding-left: 20px;"></p>
-            <div class="table-responsive" style="padding-left: 20px;">
+            <div class="table-responsive" style="padding-left: 20px; border: 1px solid black;">
                 <table id="mytable" class="table">
                     <thead>
                         <tr>
