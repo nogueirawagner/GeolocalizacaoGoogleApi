@@ -4,10 +4,10 @@ using GestaoDDD.Infra.Data.Contexto;
 
 namespace GestaoDDD.Infra.Data.Repositories
 {
-  public class CandidatoRepository : RepositoryBase<Candidato>, ICandidatoRepository
+  public class DptoPoliciaRepository : RepositoryBase<DepartamentoPolicia>, IDptoPoliciaRepository
   {
     private readonly GestaoContext _db;
-    public CandidatoRepository(GestaoContext dbContext)
+    public DptoPoliciaRepository(GestaoContext dbContext)
         : base(dbContext)
     {
       //nao ppode ser new gestaocontext para nao instanciar novamente o contexto

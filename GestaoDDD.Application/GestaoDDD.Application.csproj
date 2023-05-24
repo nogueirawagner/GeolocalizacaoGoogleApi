@@ -61,11 +61,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interface\IDptoPoliciaAppService.cs" />
     <Compile Include="Interface\ICandidatoAppService.cs" />
     <Compile Include="Interface\IAppServiceBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AppServiceBase.cs" />
+    <Compile Include="Services\DptoPoliciaAppService.cs" />
     <Compile Include="Services\CandidatoAppService.cs" />
+    <Compile Include="ViewModels\DepartamentoPoliciaViewModel.cs" />
     <Compile Include="ViewModels\CandidatoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -77,9 +80,7 @@
       <Name>GestaoDDD.Domain</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\CalculosDistancia\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

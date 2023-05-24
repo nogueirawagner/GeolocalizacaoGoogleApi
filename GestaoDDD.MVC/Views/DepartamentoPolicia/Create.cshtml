@@ -1,0 +1,86 @@
+﻿@model GestaoDDD.Application.ViewModels.DepartamentoPoliciaViewModel
+
+@{
+    Layout = "~/Views/Shared/_CFP.cshtml";
+}
+<link href="~/Content/Delegacias/candidato.css" rel="stylesheet" />
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPb6icqT4MScket_GqPIIyPGl5A6CcThg&amp;sensor=true"></script>
+<script src="~/Scripts/GoogleMaps/Delegacias/mapa_candidato.js"></script>
+<script src="~/Scripts/jquery-ui.custom.min.js"></script>
+<script src="~/Scripts/jquery-2.2.3.js"></script>
+<script src="~/Scripts/jquery.maskedinput.min.js"></script>
+<script src="~/Scripts/sweetalert.min.js"></script>
+<link href="~/Styles/sweetalert.css" rel="stylesheet" />
+
+<div class="m-4">
+
+    <div class="row col-md-12">
+        <h4>
+            <b>Informe a delegacia.</b>
+        </h4>
+
+    </div>
+
+    <div class="row formulario col-md-12">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="col-form form-group col-md-12">
+                <label for="nome">Nome</label>
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", @placeholder = "Descreva seu nome ou de seus colegas" } })
+                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-form form-group col-md-12">
+                <label for="descricao">Descrição:</label>
+                <textarea type="text" id="descricao" name="Descricao" class="form-control" rows="4" cols="50"></textarea>
+            </div>
+
+            <div class="col-form form-group col-md-12">
+                <label for="descricao">Area de Atuacao:</label>
+                @Html.EditorFor(model => model.AreaAtuacao, new { htmlAttributes = new { @class = "form-control", @placeholder = "01ªDP, 04ªDP, 10ªDP" } })
+                @Html.ValidationMessageFor(model => model.AreaAtuacao, "", new { @class = "text-danger" })
+            </div>
+
+            @*<div class="col-form form-group col-md-2">
+                <label for="vagas">Qtd vagas:</label>
+                @Html.EditorFor(model => model.Vagas, new { htmlAttributes = new { @class = "form-control", @placeholder = "20" } })
+                @Html.ValidationMessageFor(model => model.Vagas, "", new { @class = "text-danger" })
+            </div>*@
+
+            <div class="col-form form-group col-md-2">
+                <label for="ehSede">É sede?</label>
+                <select class="form-control" id="ehSede" name="EhSede">
+                    <option>Não</option>
+                    <option>Sim</option>
+                </select>
+            </div>
+
+            <div class="col-form form-group col-md-10">
+                <label for="endereco">Endereço:</label>
+                <input type="text" id="endereco" name="Endereco" class="form-control" placeholder="Entre com o CEP ou parte do endereço. Ex: Tagua Life" />
+                @Html.ValidationMessageFor(model => model.Endereco, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="botao-marcar col-md-2" style="padding-top: 5px;">
+                <input type="button" class="botao btn btn-sm btn-marcamapa" id="btnEndereco" name="btnEndereco" value="Marcar no mapa" />
+            </div>
+
+            <div class="mapa ">
+                <div id="mapa" class="map-mapa"></div>
+                <input type="hidden" id="latitude" name="Latitude" />
+                <input type="hidden" id="longitude" name="Longitude" />
+            </div>
+
+            <div class="col-form col-md-2">
+                <input type="submit" class="btn btn-enviar" data-style="expand-right" value="Cadastrar" />
+            </div>
+
+        }
+    </div>
+
+</div>
+

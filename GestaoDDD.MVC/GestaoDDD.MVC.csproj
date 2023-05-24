@@ -199,6 +199,7 @@
     <Compile Include="AutoMapper\DomainToViewModelMappingProfile.cs" />
     <Compile Include="AutoMapper\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Controllers\DepartamentoPoliciaController.cs" />
     <Compile Include="Controllers\CandidatoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -219,6 +220,9 @@
     <Content Include="Content\Candidato\candidato_proximos.css" />
     <Content Include="Content\Candidato\candidato_todos.css" />
     <Content Include="Content\Candidato\candidato.css" />
+    <Content Include="Content\Delegacias\candidato.css" />
+    <Content Include="Content\Delegacias\candidato_proximos.css" />
+    <Content Include="Content\Delegacias\candidato_todos.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -353,6 +357,11 @@
     <Content Include="Scripts\GoogleMaps\Candidatos\mapa_todos_candidatos.js" />
     <Content Include="Scripts\GoogleMaps\Candidatos\mapa_candidato.js" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
+    <Content Include="Scripts\GoogleMaps\Delegacias\mapa _cfp.js" />
+    <Content Include="Scripts\GoogleMaps\Delegacias\mapa_candidato.js" />
+    <Content Include="Scripts\GoogleMaps\Delegacias\mapa_candidatos_proximos.js" />
+    <Content Include="Scripts\GoogleMaps\Delegacias\mapa_editar_candidato.js" />
+    <Content Include="Scripts\GoogleMaps\Delegacias\mapa_todos_candidatos.js" />
     <Content Include="Scripts\jquery-2.2.3.js" />
     <Content Include="Scripts\jquery-2.2.3.min.js" />
     <Content Include="Scripts\jquery-ui-1.12.0.js" />
@@ -382,6 +391,8 @@
     <Content Include="Views\Candidato\Editar.cshtml" />
     <Content Include="Views\Candidato\Excluir.cshtml" />
     <Content Include="Views\Candidato\BuscaCandidatosProximos.cshtml" />
+    <Content Include="Views\DepartamentoPolicia\Create.cshtml" />
+    <Content Include="Views\DepartamentoPolicia\BuscaDelegacias.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

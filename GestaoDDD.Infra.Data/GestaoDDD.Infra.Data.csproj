@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Contexto\GestaoContext.cs" />
     <Compile Include="Contexto\IGestaoContext.cs" />
+    <Compile Include="EntityConfig\DptoPoliciaConfiguration.cs" />
     <Compile Include="EntityConfig\CandidatoConfiguration.cs" />
     <Compile Include="Migrations\202301251326491_CriandoCandidato.cs" />
     <Compile Include="Migrations\202301251326491_CriandoCandidato.Designer.cs">
@@ -77,8 +78,17 @@
     <Compile Include="Migrations\202305240054476_Criando departamentos de Polícia.Designer.cs">
       <DependentUpon>202305240054476_Criando departamentos de Polícia.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202305240141560_add latitude e longitutde.cs" />
+    <Compile Include="Migrations\202305240141560_add latitude e longitutde.Designer.cs">
+      <DependentUpon>202305240141560_add latitude e longitutde.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305240156259_alterando tipo de dados de EhSede.cs" />
+    <Compile Include="Migrations\202305240156259_alterando tipo de dados de EhSede.Designer.cs">
+      <DependentUpon>202305240156259_alterando tipo de dados de EhSede.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\DepartamentosPoliciaRepository.cs" />
     <Compile Include="Repositories\CandidatoRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
   </ItemGroup>
@@ -113,6 +123,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202305240054476_Criando departamentos de Polícia.resx">
       <DependentUpon>202305240054476_Criando departamentos de Polícia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305240141560_add latitude e longitutde.resx">
+      <DependentUpon>202305240141560_add latitude e longitutde.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305240156259_alterando tipo de dados de EhSede.resx">
+      <DependentUpon>202305240156259_alterando tipo de dados de EhSede.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

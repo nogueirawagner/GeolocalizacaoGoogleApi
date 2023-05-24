@@ -46,10 +46,13 @@
     <Compile Include="Entities\Entidade.cs" />
     <Compile Include="Entities\Identity\Claims.cs" />
     <Compile Include="Entities\Identity\Client.cs" />
+    <Compile Include="Interfaces\Repositories\IDptoPoliciaRepository.cs" />
     <Compile Include="Interfaces\Repositories\ICandidatoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />
+    <Compile Include="Interfaces\Services\IDptoPoliciaService.cs" />
     <Compile Include="Interfaces\Services\ICandidatoService.cs" />
     <Compile Include="Interfaces\Services\IServiceBase.cs" />
+    <Compile Include="Services\DptoPoliciaService.cs" />
     <Compile Include="Services\CandidatoService.cs" />
     <Compile Include="Services\ServiceBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

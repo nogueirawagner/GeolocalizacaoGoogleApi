@@ -3,12 +3,12 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace GestaoDDD.Infra.Data.EntityConfig
 {
-    public class CandidatoConfiguration : EntityTypeConfiguration<Candidato>
+  public class CandidatoConfiguration : EntityTypeConfiguration<Candidato>
+  {
+    public CandidatoConfiguration()
     {
-        public CandidatoConfiguration()
-        {
-            HasKey(c => c.ID);
-            Property(c => c.ID).HasColumnName("ID").HasColumnOrder(1);
-        }
+      HasKey(c => c.ID);
+      Property(c => c.ID).HasColumnName("ID").HasColumnOrder(1);
     }
+  }
 }
