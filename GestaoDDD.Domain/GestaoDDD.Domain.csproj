@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Candidato.cs" />
+    <Compile Include="Entities\DepartamentoPolicia.cs" />
     <Compile Include="Entities\Entidade.cs" />
     <Compile Include="Entities\Identity\Claims.cs" />
     <Compile Include="Entities\Identity\Client.cs" />
