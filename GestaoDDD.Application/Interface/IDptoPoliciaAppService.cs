@@ -5,7 +5,7 @@ namespace GestaoDDD.Application.Interface
 {
   public interface IDptoPoliciaAppService : IAppServiceBase<DepartamentoPolicia>
   {
-    //IEnumerable<Candidato> CalculaDistancia(string latitudeAtual, string longitudeAtual);
+    IEnumerable<DepartamentoPolicia> CalculaDistancia(string latitudeAtual, string longitudeAtual);
 
     //IEnumerable<Candidato> BuscaCandidatosProximos(string latitudeAtual, string longitudeAtual);
   }

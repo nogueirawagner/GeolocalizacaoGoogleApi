@@ -88,41 +88,27 @@ namespace GestaoDDD.MVC.Controllers
     //  }
     //}
 
-    //public ActionResult BuscaCandidatos(string Latitude, string Longitude, string T1, string T2)
-    //{
-    //  ViewBag.Latitude = null;
-    //  ViewBag.Longitude = null;
-    //  ViewBag.TodosESPC = false;
-    //  ViewBag.TodosCEPOM = false;
+    public ActionResult BuscaDelegacias()
+    {
+      var dptos = _dptoPoliciaApp.GetAll()
+        .OrderByDescending(s => s.Vagas);
+      var dptoVm = Mapper.Map<IEnumerable<DepartamentoPolicia>, IEnumerable<DepartamentoPoliciaViewModel>>(dptos);
+      return View(dptoVm);
+    }
 
-    //  if (!string.IsNullOrEmpty(Latitude) && !string.IsNullOrEmpty(Longitude))
-    //  {
-    //    ViewBag.Latitude = Latitude;
-    //    ViewBag.Longitude = Longitude;
-    //    ViewBag.TodosESPC = bool.Parse(T1.ToLower());
-    //    ViewBag.TodosCEPOM = bool.Parse(T2.ToLower());
-    //  }
-
-    //  var candidatos = _candidatoApp.GetAll()
-    //    .OrderByDescending(s => s.QtdVagasCarro)
-    //    .ThenByDescending(s => s.QtdVagasDisponivelCasa);
-    //  var candVM = Mapper.Map<IEnumerable<Candidato>, IEnumerable<CandidatoViewModel>>(candidatos);
-    //  return View(candVM);
-    //}
-
-    //public JsonResult BuscaCandidatosJson(string Latitude, string Longitude)
-    //{
-    //  if (string.IsNullOrEmpty(Latitude) && string.IsNullOrEmpty(Longitude))
-    //  {
-    //    var retorno = _candidatoApp.GetAll().OrderByDescending(s => s.QtdVagasDisponivelCasa);
-    //    return Json(retorno, JsonRequestBehavior.AllowGet);
-    //  }
-    //  else
-    //  {
-    //    var retorno = _candidatoApp.CalculaDistancia(Latitude, Longitude).OrderByDescending(s => s.QtdVagasDisponivelCasa);
-    //    return Json(retorno, JsonRequestBehavior.AllowGet);
-    //  }
-    //}
+    public JsonResult BuscaDelegaciasJson(string Latitude, string Longitude)
+    {
+      if (string.IsNullOrEmpty(Latitude) && string.IsNullOrEmpty(Longitude))
+      {
+        var retorno = _dptoPoliciaApp.GetAll().OrderByDescending(s => s.Vagas);
+        return Json(retorno, JsonRequestBehavior.AllowGet);
+      }
+      else
+      {
+        var retorno = _dptoPoliciaApp.CalculaDistancia(Latitude, Longitude).OrderByDescending(s => s.Vagas);
+        return Json(retorno, JsonRequestBehavior.AllowGet);
+      }
+    }
 
     //public JsonResult BuscaCandidatosProximosJson(string Latitude, string Longitude, int Id)
     //{

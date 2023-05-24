@@ -59,46 +59,44 @@ namespace GestaoDDD.Application.Services
     //  return candidatosProximos;
     //}
 
-    //public IEnumerable<Candidato> CalculaDistancia(string latitudeAtual, string longitudeAtual)
-    //{
-    //  var coordAtual = new GeoCoordinate();
-    //  coordAtual.Latitude = double.Parse(latitudeAtual.Replace(",", "."),
-    //        CultureInfo.InvariantCulture);
-    //  coordAtual.Longitude = double.Parse(longitudeAtual.Replace(",", "."),
-    //        CultureInfo.InvariantCulture);
+    public IEnumerable<DepartamentoPolicia> CalculaDistancia(string latitudeAtual, string longitudeAtual)
+    {
+      var deptosProximas = new List<DepartamentoPolicia>();
 
-    //  var coordCEPOM = new GeoCoordinate();
-    //  coordCEPOM.Latitude = -15.7994772;
-    //  coordCEPOM.Longitude = -48.0607247;
+      var coordAtual = new GeoCoordinate();
+      coordAtual.Latitude = double.Parse(latitudeAtual.Replace(",", "."),
+            CultureInfo.InvariantCulture);
+      coordAtual.Longitude = double.Parse(longitudeAtual.Replace(",", "."),
+            CultureInfo.InvariantCulture);
 
-    //  var coordESPC = new GeoCoordinate();
-    //  coordESPC.Latitude = -15.8851054;
-    //  coordESPC.Longitude = -48.0626557;
+      var dptos = _dptoPoliciaService.GetAll();
 
-    //  var distanciaCepom = (coordAtual.GetDistanceTo(coordCEPOM) / 1000);
-    //  var distanciaEspc = (coordAtual.GetDistanceTo(coordESPC) / 1000);
+      foreach (var dpto in dptos)
+      {
+        var coordDpto = new GeoCoordinate();
 
-    //  var candidatos = _candidatoService.GetAll();
+        if (!string.IsNullOrEmpty(dpto.Latitude) || !string.IsNullOrEmpty(dpto.Longitude))
+        {
+          coordDpto.Latitude = double.Parse(dpto.Latitude.Replace(",", "."),
+              CultureInfo.InvariantCulture);
+          coordDpto.Longitude = double.Parse(dpto.Longitude.Replace(",", "."),
+                CultureInfo.InvariantCulture);
 
-    //  foreach (var cand in candidatos)
-    //  {
-    //    var coordCandidato = new GeoCoordinate();
+          var distancia = (coordAtual.GetDistanceTo(coordDpto) / 1000);
 
-    //    if (!string.IsNullOrEmpty(cand.Latitude) || !string.IsNullOrEmpty(cand.Longitude))
-    //    {
-    //      coordCandidato.Latitude = double.Parse(cand.Latitude.Replace(",", "."),
-    //          CultureInfo.InvariantCulture);
-    //      coordCandidato.Longitude = double.Parse(cand.Longitude.Replace(",", "."),
-    //            CultureInfo.InvariantCulture);
+          if (Math.Round(distancia, 2) <= 10)
+          {
+            var dptoProximo = new DepartamentoPolicia();
+            dptoProximo = dpto;
 
-    //      var distancia = (coordAtual.GetDistanceTo(coordCandidato) / 1000);
-    //      cand.DistanciaColega =
-    //       string.Format("{0} está a {1} km de você", cand.Nome.Trim(), Math.Round(distancia, 2).ToString());
+            dpto.DistanciaColega =
+              string.Format("{0} está a {1} km de você", dpto.Nome.Trim(), Math.Round(distancia, 2).ToString());
 
-    //      cand.DistanciaEscolas = string.Format("Estou aqui a {0} km do CEPOM e a {1} km da ESPC", Math.Round(distanciaCepom, 2), Math.Round(distanciaEspc, 2));
-    //    }
-    //  }
-    //  return candidatos;
-    //}
+            deptosProximas.Add(dptoProximo);
+          }
+        }
+      }
+      return deptosProximas;
+    }
   }
 }

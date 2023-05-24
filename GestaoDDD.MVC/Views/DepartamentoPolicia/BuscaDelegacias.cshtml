@@ -1,10 +1,10 @@
-﻿@model IEnumerable<GestaoDDD.Application.ViewModels.CandidatoViewModel>
+﻿@model IEnumerable<GestaoDDD.Application.ViewModels.DepartamentoPoliciaViewModel>
     @{
         Layout = "~/Views/Shared/_CFP.cshtml";
     }
-    <link href="~/Content/Candidato/candidato_todos.css" rel="stylesheet" />
+    <link href="~/Content/Delegacias/candidato_todos.css" rel="stylesheet" />
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPb6icqT4MScket_GqPIIyPGl5A6CcThg&amp;sensor=true"></script>
-    <script src="~/Scripts/GoogleMaps/Candidatos/mapa_todos_candidatos.js"></script>
+    <script src="~/Scripts/GoogleMaps/Delegacias/mapa_todos_delegacias.js"></script>
     <script src="~/Scripts/jquery-ui.custom.min.js"></script>
     <script src="~/Scripts/jquery-2.2.3.js"></script>
     <script src="~/Scripts/jquery.maskedinput.min.js"></script>
@@ -13,8 +13,6 @@
 
     <input type="hidden" id="vbLat" value="@ViewBag.Latitude" />
     <input type="hidden" id="vbLong" value="@ViewBag.Longitude" />
-    <input type="hidden" id="vbT1" value="@ViewBag.TodosESPC" />
-    <input type="hidden" id="vbT2" value="@ViewBag.TodosCEPOM" />
 
     <div class="m-4">
         <div class="row formulario col-md-12 col-sm-6 col-lg-12">
@@ -46,66 +44,42 @@
                     <thead>
                         <tr>
                             <th>Nome</th>
-                            <th>Descrição</th>
+                            <th>CEFLAG</th>
                             <th>Endereço</th>
-                            <th>Telefone</th>
-                            <th>Veículo</th>
-                            <th>Vagas no veículo</th>
-                            <th>Vagas na casa</th>
-                            <th>Turma</th>
-                            <th>R$ Médio</th>
-                            <th>Editar</th>
-                            <th>Excluir</th>
-                            <th>Procurar Próximos</th>
+                            <th>Áreas da CEFLAG</th>
+                            <th>Detalhes</th>
+                            <th>DPs Próximas</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Nome)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Descricao)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Endereco)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Telefone)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.TipoVeiculo)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.QtdVagasCarro)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.QtdVagasDisponivelCasa)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Turma)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Valor)
-                                </td>
-                                <td>
-                                    <a href="~/Candidato/Editar/@item.ID" class="btn btn-info" title="Editar">
-                                        <span class="glyphicon glyphicon-pencil"></span>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="~/Candidato/Excluir/@item.ID" class="btn btn-danger" title="Excluir">
-                                        <span class="glyphicon glyphicon-remove"></span>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="@Url.Action("BuscaCandidatosProximos", "Candidato", new { Latitude = item.Latitude, Longitude = item.Longitude, Endereco = item.Endereco, Id = item.ID })" class="btn btn-proximos" title="Buscar Próximos">
-                                        <span class="glyphicon glyphicon-filter"></span>
-                                    </a>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EhSede)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Endereco)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AreaAtuacao)
+                            </td>
+
+                            <td>
+                                <a href="~/Candidato/Editar/@item.ID" class="btn btn-info" title="Editar">
+                                    <span class="glyphicon glyphicon-zoom-in"></span>
+                                </a>
+                            </td>
+                            
+                            <td>
+                                <a href="@Url.Action("BuscaDelegaciasProximos", "DepartamentoPolicia", new { Latitude = item.Latitude, Longitude = item.Longitude, Endereco = item.Endereco, Id = item.ID })" class="btn btn-proximos" title="Buscar Próximos">
+                                    <span class="glyphicon glyphicon-filter"></span>
+                                </a>
+                            </td>
+                        </tr>
                         }
                     </tbody>
                 </table>
