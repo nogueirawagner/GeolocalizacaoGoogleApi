@@ -35,14 +35,19 @@ function initialize() {
                 const image =
                     "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
 
-               
+                const endereco = {
+                    url: "/Images/endereco.png", // url
+                    scaledSize: new google.maps.Size(30, 30), // scaled size
+                    origin: new google.maps.Point(0, 0), // origin
+                    anchor: new google.maps.Point(0, 0) // anchor
+                };
 
                 // Local do cara
                 marker = new google.maps.Marker({
                     position: new google.maps.LatLng(vbLat, vbLong),
                     map: map,
                     title: locations[0].DistanciaEscolas,
-                    icon: image
+                    icon: endereco
                 });
 
                 google.maps.event.addListener(marker, 'click', (function (marker) {
@@ -113,12 +118,20 @@ $(document).ready(function () {
 
                             const image =
                                 "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
+
+                            const endereco = {
+                                url: "/Images/endereco.png", // url
+                                scaledSize: new google.maps.Size(40, 40), // scaled size
+                                origin: new google.maps.Point(0, 0), // origin
+                                anchor: new google.maps.Point(0, 0) // anchor
+                            };
+
                             // Local do cara
                             marker = new google.maps.Marker({
                                 position: originPoint,
                                 map: map,
                                 title: "Estou aqui",
-                                icon: image
+                                icon: endereco
                             });
 
                             const postoVermelho = {
