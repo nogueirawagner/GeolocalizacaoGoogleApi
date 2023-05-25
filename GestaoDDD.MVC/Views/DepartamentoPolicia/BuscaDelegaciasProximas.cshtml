@@ -2,9 +2,9 @@
     @{
         Layout = "~/Views/Shared/_CFP.cshtml";
     }
-    <link href="~/Content/Delegacias/candidato_todos.css" rel="stylesheet" />
+    <link href="~/Content/Delegacias/candidato_proximos.css" rel="stylesheet" />
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPb6icqT4MScket_GqPIIyPGl5A6CcThg&amp;sensor=true"></script>
-    <script src="~/Scripts/GoogleMaps/Delegacias/mapa_todos_delegacias.js"></script>
+    <script src="~/Scripts/GoogleMaps/Delegacias/mapa_delegacias_proximas.js"></script>
     <script src="~/Scripts/jquery-ui.custom.min.js"></script>
     <script src="~/Scripts/jquery-2.2.3.js"></script>
     <script src="~/Scripts/jquery.maskedinput.min.js"></script>
@@ -13,18 +13,19 @@
 
     <input type="hidden" id="vbLat" value="@ViewBag.Latitude" />
     <input type="hidden" id="vbLong" value="@ViewBag.Longitude" />
+    <input type="hidden" id="vbEndereco" value="@ViewBag.Endereco" />
+    <input type="hidden" id="vbId" value="@ViewBag.Id" />
+    <input type="hidden" id="vbNome" value="@ViewBag.Nome" />
+
 
     <div class="m-4">
-        <div class="row formulario col-md-12 col-sm-6 col-lg-12">
+        <div class="row formulario col-md-12">
 
             @using (Html.BeginForm())
             {
-                <div class="col-form form-group col-md-8 col-sm-8" style="padding-left: 20px;">
-                    <label for="endereco">Me informe onde vc está:</label>
-                    <input type="text" id="endereco" name="Endereco" class="form-control" placeholder="Entre com o CEP ou parte do endereço. Ex: Tagua Life" />
-                </div>
-                <div class="botao-marcar col-md-2 col-sm-2 col-form-2" style="padding-top: 5px;">
-                    <input type="button" class="botao btn btn-marcamapa" style="margin: 20px; background-color: #ad2323" id="btnEndereco" name="btnEndereco" value="Marcar no mapa" />
+                <div class="col-form form-group col-md-9 col-sm-9" style="padding-left: 20px;">
+                    <label for="endereco">Está aparecendo DPs no raio de 10 km da @ViewBag.Nome:</label>
+                    <input type="text" id="endereco" value="@ViewBag.Endereco" name="Endereco" class="form-control" readonly />
                 </div>
 
                 <div class="mapa">
@@ -38,22 +39,24 @@
                     <input type="text" id="searchInput" class="form-control" />
                 </div>
             }
+
             <p id="totalRows" style="padding-left: 20px;"></p>
-            <div class="table-responsive" style="padding-left: 20px; border: 1px solid black;">
+            <div class="table-responsive" style="padding-left: 20px; border: 1px solid black">
                 <table id="mytable" class="table">
                     <thead>
+                        <tr>
                         <tr>
                             <th>Nome</th>
                             <th>CEFLAG</th>
                             <th>Descrição</th>
                             <th>Endereço</th>
                             <th>Áreas da CEFLAG</th>
-                            <th>DPs Próximas</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in Model)
                         {
+
                         <tr>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Nome)
@@ -70,22 +73,24 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.AreaAtuacao)
                             </td>
-                            <td>
-                                <a href="@Url.Action("BuscaDelegaciasProximas", "DepartamentoPolicia", new { Latitude = item.Latitude, Longitude = item.Longitude, Endereco = item.Endereco, Id = item.ID, Nome = item.Nome })" class="btn btn-proximos" title="Buscar Próximos">
-                                    <span class="glyphicon glyphicon-filter"></span>
-                                </a>
-                            </td>
                         </tr>
                         }
+
                     </tbody>
+
                 </table>
             </div>
+
         </div>
+
+
+
+
     </div>
 
     <script type="text/javascript">
         $(document).ready(function () {
-            var totalRows = $("#mytable tr").length;
+            var totalRows = $("#mytable tr").length - 1;
             $("#totalRows").text("Total de linhas: " + totalRows);
 
             $("#searchInput").on("keyup", function () {

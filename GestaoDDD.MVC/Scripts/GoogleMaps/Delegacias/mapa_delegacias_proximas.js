@@ -13,6 +13,7 @@ $(document).ready(function () {
     var vbLong = document.getElementById("vbLong").value;
     var vbID = document.getElementById("vbId").value;
     var vbEndereco = document.getElementById("vbEndereco").value;
+    var vbNome = document.getElementById("vbNome").value;
 
     //initialize();
     geocoder.geocode({ 'address': vbEndereco + ', Brasil', 'region': 'BR' }, function (results, status) {
@@ -23,7 +24,7 @@ $(document).ready(function () {
                     var originPoint = new google.maps.LatLng(vbLat, vbLong);
 
                     // Chama o serviço para pegar os dados
-                    fetch('/Candidato/BuscaCandidatosProximosJson?Latitude=' + vbLat + '&Longitude=' + vbLong + '&Id=' + vbID)
+                    fetch('/DepartamentoPolicia/BuscaDelegaciasProximasJson?Latitude=' + vbLat + '&Longitude=' + vbLong + '&Id=' + vbID)
                         .then(response => response.json())
                         .then(data => {
                             // Atualiza a variável locations com os dados retornados pelo serviço
@@ -31,7 +32,7 @@ $(document).ready(function () {
 
                             // Continua com o restante do código
                             var map = new google.maps.Map(document.getElementById('mapa'), {
-                                zoom: 13,
+                                zoom: 12    ,
                                 center: new google.maps.LatLng(vbLat, vbLong),
                                 mapTypeId: google.maps.MapTypeId.ROADMAP
                             });
@@ -52,7 +53,7 @@ $(document).ready(function () {
 
                             google.maps.event.addListener(marker, 'click', (function (marker) {
                                 return function () {
-                                    infowindow.setContent("Meu local");
+                                    infowindow.setContent(vbNome);
                                     infowindow.open(map, marker);
                                 }
                             })(marker));

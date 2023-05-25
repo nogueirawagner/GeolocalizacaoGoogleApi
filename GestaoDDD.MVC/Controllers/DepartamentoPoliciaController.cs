@@ -37,16 +37,6 @@ namespace GestaoDDD.MVC.Controllers
         {
           var dptoViewModel = Mapper.Map<DepartamentoPoliciaViewModel, DepartamentoPolicia>(depto);
           _dptoPoliciaApp.Add(dptoViewModel);
-          //var candidatoViewModel = Mapper.Map<CandidatoViewModel, Candidato>(candidato);
-          //_candidatoApp.Add(candidatoViewModel);
-
-          //ViewBag.Latitude = candidatoViewModel.Latitude;
-          //ViewBag.Longitude = candidatoViewModel.Longitude;
-
-          //ViewBag.TodosESPC = candidatoViewModel.Turma == "Todos T1";
-          //ViewBag.TodosCEPOM = candidatoViewModel.Turma == "Todos T2" || candidatoViewModel.Turma == "Todos T3";
-
-          //return RedirectToAction("BuscaCandidatos", new { Latitude = ViewBag.Latitude, Longitude = ViewBag.Longitude, T1 = ViewBag.TodosESPC, T2 = ViewBag.TodosCEPOM });
           return View();
         }
         else
@@ -60,33 +50,34 @@ namespace GestaoDDD.MVC.Controllers
         return View();
       }
     }
+    
+    public ActionResult BuscaDelegaciasProximas(string Latitude, string Longitude, string Endereco, int Id, string Nome)
+    {
+      ViewBag.Latitude = null;
+      ViewBag.Longitude = null;
 
-    //public ActionResult BuscaCandidatosProximos(string Latitude, string Longitude, string Endereco, int Id)
-    //{
-    //  ViewBag.Latitude = null;
-    //  ViewBag.Longitude = null;
+      if (!string.IsNullOrEmpty(Latitude) && !string.IsNullOrEmpty(Longitude))
+      {
+        ViewBag.Latitude = Latitude;
+        ViewBag.Longitude = Longitude;
+        ViewBag.Endereco = Endereco;
+        ViewBag.Id = Id;
+        ViewBag.Nome = Nome;
 
-    //  if (!string.IsNullOrEmpty(Latitude) && !string.IsNullOrEmpty(Longitude))
-    //  {
-    //    ViewBag.Latitude = Latitude;
-    //    ViewBag.Longitude = Longitude;
-    //    ViewBag.Endereco = Endereco;
-    //    ViewBag.Id = Id;
-
-    //    var candidatos = _candidatoApp.BuscaCandidatosProximos(Latitude, Longitude)
-    //      .Where(s => s.ID != Id)
-    //      .OrderByDescending(s => s.QtdVagasCarro)
-    //      .ThenByDescending(s => s.QtdVagasDisponivelCasa);
-    //    var candVM = Mapper.Map<IEnumerable<Candidato>, IEnumerable<CandidatoViewModel>>(candidatos);
-    //    return View(candVM);
-    //  }
-    //  else
-    //  {
-    //    var candidatos = _candidatoApp.GetAll();
-    //    var candVM = Mapper.Map<IEnumerable<Candidato>, IEnumerable<CandidatoViewModel>>(candidatos);
-    //    return View(candVM);
-    //  }
-    //}
+        var dptos = _dptoPoliciaApp.BuscaDelegaciasProximas(Latitude, Longitude)
+          .Where(s => s.ID != Id)
+          .OrderByDescending(s => s.Vagas);
+          
+        var dptoVM = Mapper.Map<IEnumerable<DepartamentoPolicia>, IEnumerable<DepartamentoPoliciaViewModel>>(dptos);
+        return View(dptoVM);
+      }
+      else
+      {
+        var dptos = _dptoPoliciaApp.GetAll();
+        var dptoVM = Mapper.Map<IEnumerable<DepartamentoPolicia>, IEnumerable<DepartamentoPoliciaViewModel>>(dptos);
+        return View(dptoVM);
+      }
+    }
 
     public ActionResult BuscaDelegacias()
     {
@@ -110,20 +101,20 @@ namespace GestaoDDD.MVC.Controllers
       }
     }
 
-    //public JsonResult BuscaCandidatosProximosJson(string Latitude, string Longitude, int Id)
-    //{
-    //  if (string.IsNullOrEmpty(Latitude) && string.IsNullOrEmpty(Longitude))
-    //  {
-    //    var retorno = _candidatoApp.GetAll();
-    //    return Json(retorno, JsonRequestBehavior.AllowGet);
-    //  }
-    //  else
-    //  {
-    //    var retorno = _candidatoApp.BuscaCandidatosProximos(Latitude, Longitude)
-    //      .Where(s => s.ID != Id);
-    //    return Json(retorno, JsonRequestBehavior.AllowGet);
-    //  }
-    //}
+    public JsonResult BuscaDelegaciasProximasJson(string Latitude, string Longitude, int Id)
+    {
+      if (string.IsNullOrEmpty(Latitude) && string.IsNullOrEmpty(Longitude))
+      {
+        var retorno = _dptoPoliciaApp.GetAll();
+        return Json(retorno, JsonRequestBehavior.AllowGet);
+      }
+      else
+      {
+        var retorno = _dptoPoliciaApp.BuscaDelegaciasProximas(Latitude, Longitude)
+          .Where(s => s.ID != Id);
+        return Json(retorno, JsonRequestBehavior.AllowGet);
+      }
+    }
 
 
     //public ActionResult Editar(int Id)

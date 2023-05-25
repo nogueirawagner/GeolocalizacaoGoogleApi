@@ -7,6 +7,6 @@ namespace GestaoDDD.Application.Interface
   {
     IEnumerable<DepartamentoPolicia> CalculaDistancia(string latitudeAtual, string longitudeAtual);
 
-    //IEnumerable<Candidato> BuscaCandidatosProximos(string latitudeAtual, string longitudeAtual);
+    IEnumerable<DepartamentoPolicia> BuscaDelegaciasProximas(string latitudeAtual, string longitudeAtual);
   }
 }
