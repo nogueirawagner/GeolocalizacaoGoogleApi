@@ -252,9 +252,18 @@
     }
 
     /* botão marcar */
-    .botao-marcar {
+   /* .botao-marcar {
         margin: 0px;
         margin-left: 225px;
+        margin-top: -85px;
+        width: 320px;
+    }*/
+    .botao-marcar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0px;
+        margin-left: 150px;
         margin-top: -85px;
         width: 320px;
     }
