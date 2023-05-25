@@ -84,7 +84,7 @@ $(document).ready(function () {
 
                             google.maps.event.addListener(marker, 'click', (function (marker, i) {
                                 return function () {
-                                    infowindow.setContent('Nome: ' + locations[i].Nome + '. ' + 'Telefone: ' + locations[i].Telefone);
+                                    infowindow.setContent(locations[i].Nome);
                                     infowindow.open(map, marker);
                                 }
                             })(marker, i));

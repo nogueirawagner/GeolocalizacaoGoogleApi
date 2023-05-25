@@ -290,7 +290,6 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Images\endereco-2.jpg" />
     <Content Include="Images\endereco.png" />
     <Content Include="Images\Home\banner.png" />
     <Content Include="Images\Home\facebook.png" />
