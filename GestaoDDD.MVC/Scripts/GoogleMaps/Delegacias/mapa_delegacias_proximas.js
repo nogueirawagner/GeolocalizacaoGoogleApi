@@ -17,66 +17,82 @@ $(document).ready(function () {
 
     //initialize();
     geocoder.geocode({ 'address': vbEndereco + ', Brasil', 'region': 'BR' }, function (results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                if (results[0]) {
-                    var latitude = results[0].geometry.location.lat();
-                    var longitude = results[0].geometry.location.lng();
-                    var originPoint = new google.maps.LatLng(vbLat, vbLong);
+        if (status == google.maps.GeocoderStatus.OK) {
+            if (results[0]) {
+                var latitude = results[0].geometry.location.lat();
+                var longitude = results[0].geometry.location.lng();
+                var originPoint = new google.maps.LatLng(vbLat, vbLong);
 
-                    // Chama o serviço para pegar os dados
-                    fetch('/DepartamentoPolicia/BuscaDelegaciasProximasJson?Latitude=' + vbLat + '&Longitude=' + vbLong + '&Id=' + vbID)
-                        .then(response => response.json())
-                        .then(data => {
-                            // Atualiza a variável locations com os dados retornados pelo serviço
-                            var locations = data;
+                // Chama o serviço para pegar os dados
+                fetch('/DepartamentoPolicia/BuscaDelegaciasProximasJson?Latitude=' + vbLat + '&Longitude=' + vbLong + '&Id=' + vbID)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Atualiza a variável locations com os dados retornados pelo serviço
+                        var locations = data;
 
-                            // Continua com o restante do código
-                            var map = new google.maps.Map(document.getElementById('mapa'), {
-                                zoom: 12    ,
-                                center: new google.maps.LatLng(vbLat, vbLong),
-                                mapTypeId: google.maps.MapTypeId.ROADMAP
-                            });
+                        // Continua com o restante do código
+                        var map = new google.maps.Map(document.getElementById('mapa'), {
+                            zoom: 12,
+                            center: new google.maps.LatLng(vbLat, vbLong),
+                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                        });
 
-                            var infowindow = new google.maps.InfoWindow();
+                        var infowindow = new google.maps.InfoWindow();
 
-                            var marker, i;
+                        var marker, i;
 
-                            const image =
-                                "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
-                            // Local do cara
+                        const image =
+                            "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
+
+                        const postoPreto = {
+                            url: "/Images/posto-preto.png", // url
+                            scaledSize: new google.maps.Size(50, 50), // scaled size
+                            origin: new google.maps.Point(0, 0), // origin
+                            anchor: new google.maps.Point(0, 0) // anchor
+                        };
+
+                        const postoVermelho = {
+                            url: "/Images/posto-vermelho.png", // url
+                            scaledSize: new google.maps.Size(50, 50), // scaled size
+                            origin: new google.maps.Point(0, 0), // origin
+                            anchor: new google.maps.Point(0, 0) // anchor
+                        };
+
+                        // Local do cara
+                        marker = new google.maps.Marker({
+                            position: originPoint,
+                            map: map,
+                            title: locations[0].DistanciaEscolas,
+                            icon: postoPreto
+                        });
+
+                        google.maps.event.addListener(marker, 'click', (function (marker) {
+                            return function () {
+                                infowindow.setContent(vbNome);
+                                infowindow.open(map, marker);
+                            }
+                        })(marker));
+
+                        // Locais de outras pessoas
+                        for (i = 0; i < locations.length; i++) {
                             marker = new google.maps.Marker({
-                                position: originPoint,
+                                position: new google.maps.LatLng(locations[i].Latitude, locations[i].Longitude),
                                 map: map,
-                                title: locations[0].DistanciaEscolas,
-                                icon: image
+                                title: locations[i].DistanciaColega,
+                                icon: postoVermelho
                             });
 
-                            google.maps.event.addListener(marker, 'click', (function (marker) {
+                            google.maps.event.addListener(marker, 'click', (function (marker, i) {
                                 return function () {
-                                    infowindow.setContent(vbNome);
+                                    infowindow.setContent('Nome: ' + locations[i].Nome + '. ' + 'Telefone: ' + locations[i].Telefone);
                                     infowindow.open(map, marker);
                                 }
-                            })(marker));
-
-                            // Locais de outras pessoas
-                            for (i = 0; i < locations.length; i++) {
-                                marker = new google.maps.Marker({
-                                    position: new google.maps.LatLng(locations[i].Latitude, locations[i].Longitude),
-                                    map: map,
-                                    title: locations[i].DistanciaColega
-                                });
-
-                                google.maps.event.addListener(marker, 'click', (function (marker, i) {
-                                    return function () {
-                                        infowindow.setContent('Nome: ' + locations[i].Nome + '. ' + 'Telefone: ' + locations[i].Telefone);
-                                        infowindow.open(map, marker);
-                                    }
-                                })(marker, i));
-                            }
-                        });
-                }
+                            })(marker, i));
+                        }
+                    });
             }
-        })
+        }
+    })
 
     //carregarNoMapa(vbEndereco);
 

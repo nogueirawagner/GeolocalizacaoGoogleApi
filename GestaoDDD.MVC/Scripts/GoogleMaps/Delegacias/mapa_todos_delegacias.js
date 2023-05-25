@@ -34,6 +34,9 @@ function initialize() {
             if (vbLat && vbLong) {
                 const image =
                     "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
+
+               
+
                 // Local do cara
                 marker = new google.maps.Marker({
                     position: new google.maps.LatLng(vbLat, vbLong),
@@ -50,12 +53,20 @@ function initialize() {
                 })(marker));
             }
 
+            const postoVermelho = {
+                url: "/Images/posto-vermelho.png", // url
+                scaledSize: new google.maps.Size(30, 30), // scaled size
+                origin: new google.maps.Point(0, 0), // origin
+                anchor: new google.maps.Point(0, 0) // anchor
+            };
+
             for (i = 0; i < locations.length; i++) {
 
                 marker = new google.maps.Marker({
                     position: new google.maps.LatLng(locations[i].Latitude, locations[i].Longitude),
                     map: map,
-                    title: locations[i].EhSede ? "CEFLAG: " + locations[i].Nome : locations[i].Nome
+                    title: locations[i].EhSede ? "CEFLAG: " + locations[i].Nome : locations[i].Nome,
+                    icon: postoVermelho
                 });
 
                 google.maps.event.addListener(marker, 'click', (function (marker, i) {
@@ -109,6 +120,13 @@ $(document).ready(function () {
                                 icon: image
                             });
 
+                            const postoVermelho = {
+                                url: "/Images/posto-vermelho.png", // url
+                                scaledSize: new google.maps.Size(50, 50), // scaled size
+                                origin: new google.maps.Point(0, 0), // origin
+                                anchor: new google.maps.Point(0, 0) // anchor
+                            };
+
                             google.maps.event.addListener(marker, 'click', (function (marker) {
                                 return function () {
                                     infowindow.setContent("Meu local");
@@ -121,7 +139,8 @@ $(document).ready(function () {
                                 marker = new google.maps.Marker({
                                     position: new google.maps.LatLng(locations[i].Latitude, locations[i].Longitude),
                                     map: map,
-                                    title: locations[i].DistanciaColega
+                                    title: locations[i].DistanciaColega,
+                                    icon: postoVermelho
                                 });
 
                                 google.maps.event.addListener(marker, 'click', (function (marker, i) {
