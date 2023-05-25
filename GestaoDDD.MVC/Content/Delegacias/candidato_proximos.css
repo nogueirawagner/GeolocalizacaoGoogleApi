@@ -141,7 +141,11 @@
     .map-mapa {
         bottom: 45px;
         height: 500px;
-        width: 100%;
+        width: 105%;
+    }
+    .mapa {
+        margin-left: -20px;
+        margin-top: 10px;
     }
 }
 
@@ -211,5 +215,11 @@
     .filtro {
         margin-left: -20px;
         margin-top: -25px;
+    }
+
+    /* endereco de resultado */
+    .endereco {
+        margin-left: -20px;
+        margin-bottom: 25px;
     }
 }

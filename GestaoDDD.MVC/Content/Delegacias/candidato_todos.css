@@ -137,21 +137,18 @@
     .map-mapa {
         bottom: 45px;
         height: 500px;
-        width: 100%;
+        width: 105%;
+    }
+
+    .mapa {
+        margin-left: -20px;
+        margin-top: 10px;
     }
 }
 /* Fim Mapa */
 
 .botao {
     color: white;
-}
-
-/* Estilos para telas ainda menores */
-@media (max-width: 480px) {
-    .botao-marcar {
-        margin: 0px;
-        margin-top: -30px;
-    }
 }
 
 .btn-enviar {
@@ -246,5 +243,18 @@
     .filtro {
         margin-left: -20px;
         margin-top: -25px;
+    }
+
+    /* endereco de resultado */
+    .endereco {
+        margin-left: -20px;
+        margin-bottom: 25px;
+    }
+
+    /* botão marcar */
+    .botao-marcar {
+        margin: 0px;
+        margin-left: -20px;
+        margin-top: -40px;
     }
 }
