@@ -39,8 +39,8 @@
 @media only screen and (max-width: 768px) {
     /* Estilos para telas menores que 768px */
     .map-mapa {
-        bottom: 20px;
-        height: 200px;
+        bottom: 45px;
+        height: 500px;
         width: 100%;
     }
 }

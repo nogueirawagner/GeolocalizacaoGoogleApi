@@ -135,8 +135,8 @@
 @media only screen and (max-width: 768px) {
     /* Estilos para telas menores que 768px */
     .map-mapa {
-        bottom: 20px;
-        height: 200px;
+        bottom: 45px;
+        height: 500px;
         width: 100%;
     }
 }
@@ -146,6 +146,13 @@
     color: white;
 }
 
+/* Estilos para telas ainda menores */
+@media (max-width: 480px) {
+    .botao-marcar {
+        margin: 0px;
+        margin-top: -30px;
+    }
+}
 
 .btn-enviar {
     background-color: #ad2323;
@@ -217,3 +224,27 @@
     .table tbody + tbody {
         border-top: 2px solid #dee2e6;
     }
+
+
+@media (max-width: 480px) {
+    .table th:nth-child(3),
+    .table th:nth-child(4),
+    .table th:nth-child(5),
+    .table td:nth-child(3) {
+        display: none;
+    }
+
+    .table td:nth-child(4) {
+        display: none;
+    }
+
+    .table td:nth-child(5) {
+        display: none;
+    }
+
+    /*Filtro de busca*/
+    .filtro {
+        margin-left: -20px;
+        margin-top: -25px;
+    }
+}
