@@ -119,9 +119,9 @@ namespace GestaoDDD.MVC.Controllers
 
     //public ActionResult Editar(int Id)
     //{
-    //  var candidato = _candidatoApp.GetById(Id);
-    //  var candidatoViewModel = Mapper.Map<Candidato, CandidatoViewModel>(candidato);
-    //  return View(candidatoViewModel);
+    //  var dpto = _dptoPoliciaApp.GetById(Id);
+    //  var dptoVM = Mapper.Map<DepartamentoPolicia, DepartamentoPoliciaViewModel>(dpto);
+    //  return View(dptoVM);
     //}
 
     //public ActionResult Excluir(int Id)

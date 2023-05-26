@@ -199,6 +199,7 @@
     <Compile Include="AutoMapper\DomainToViewModelMappingProfile.cs" />
     <Compile Include="AutoMapper\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\DepartamentoPoliciaController.cs" />
     <Compile Include="Controllers\CandidatoController.cs" />
     <Compile Include="Global.asax.cs">
@@ -373,6 +374,7 @@
     <Content Include="Views\DepartamentoPolicia\Create.cshtml" />
     <Content Include="Views\DepartamentoPolicia\BuscaDelegacias.cshtml" />
     <Content Include="Views\DepartamentoPolicia\BuscaDelegaciasProximas.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

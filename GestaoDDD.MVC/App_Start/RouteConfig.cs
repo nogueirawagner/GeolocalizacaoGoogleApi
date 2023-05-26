@@ -11,13 +11,12 @@ namespace GestaoDDD.MVC
 
 
       routes.MapRoute(
-      name: "Contato",
-      url: "Contato",
+      name: "Admin",
+      url: "Admin",
       defaults: new
       {
-        controller = "Contato",
-        action = "Create",
-        id = UrlParameter.Optional
+        controller = "Admin",
+        action = "Index"
       });
 
       //routes.MapRoute(
