@@ -221,9 +221,9 @@
     <Content Include="Content\Candidato\candidato_proximos.css" />
     <Content Include="Content\Candidato\candidato_todos.css" />
     <Content Include="Content\Candidato\candidato.css" />
-    <Content Include="Content\Delegacias\candidato.css" />
-    <Content Include="Content\Delegacias\candidato_proximos.css" />
-    <Content Include="Content\Delegacias\candidato_todos.css" />
+    <Content Include="Content\Delegacias\delegacias.css" />
+    <Content Include="Content\Delegacias\delegacias_proximas.css" />
+    <Content Include="Content\Delegacias\delegacia_todas.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
