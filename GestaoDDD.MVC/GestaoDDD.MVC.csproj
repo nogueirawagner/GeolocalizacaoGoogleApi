@@ -334,6 +334,7 @@
     <Content Include="Images\posto-vermelho.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\GoogleMaps\Alunos\alunos_partes.js" />
     <Content Include="Scripts\GoogleMaps\Candidatos\mapa _cfp.js" />
     <Content Include="Scripts\GoogleMaps\Candidatos\mapa_editar_candidato.js" />
     <Content Include="Scripts\GoogleMaps\Candidatos\mapa_candidatos_proximos.js" />
@@ -379,6 +380,8 @@
     <Content Include="Views\DepartamentoPolicia\BuscaDelegaciasProximas.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Aluno\BuscarAlunos.cshtml" />
+    <Content Include="Views\Aluno\BuscaAlunosFiltro.cshtml" />
+    <Content Include="Views\Aluno\BuscaLocacoes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -3,6 +3,7 @@
         Layout = "~/Views/Shared/_CFP.cshtml";
     }
     <link href="~/Content/Alunos/alunos_todos.css" rel="stylesheet" />
+    <script src="~/Scripts/GoogleMaps/Alunos/alunos_partes.js"></script>
     <script src="~/Scripts/jquery-ui.custom.min.js"></script>
     <script src="~/Scripts/jquery-2.2.3.js"></script>
     <script src="~/Scripts/jquery.maskedinput.min.js"></script>
@@ -10,68 +11,20 @@
     <link href="~/Styles/sweetalert.css" rel="stylesheet" />
 
     <div class="m-4">
-        <div class="row formulario col-md-12 col-sm-6 col-lg-12">
-            
-            <p id="totalRows" style="padding-left: 20px;"></p>
-            <div class="table-responsive" style="padding-left: 20px; border: 1px solid black;">
-                <table id="mytable" class="table">
-                    <thead>
-                        <tr>
-                            <th>Posicao</th>
-                            <th>Inscricao</th>
-                            <th>Nome</th>
-                            <th>Nota Etapa 1</th>
-                            <th>Nota SAT</th>
-                            <th>Nota TIP/DPP</th>
-                            <th>Nota Etapa 2</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Posicao)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Inscricao)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Nome)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.NotaEtapa1)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.NotaSAT)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.NotaTIPDPP)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.NotaEtapa2)
-                            </td>
-                        </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
+        <div class="form-control">
+            <p>
+                Escolha a concorrência dos alunos a ser exibidos:
+                <select name="concorrencia" id="concorrencias">
+                    <option value="Ampla">Ampla</option>
+                    <option value="Negros">Negros</option>
+                    <option value="SJ">Sub Judice</option>
+                    <option value="SJNegros">Sub Judice Negros</option>
+                </select>
+            </p>
         </div>
+        <div id="retornoPesquisa">
+                @{
+                    Html.RenderPartial("BuscaAlunosFiltro");
+                }
+            </div>
     </div>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var totalRows = $("#mytable tr").length;
-            $("#totalRows").text("Total de linhas: " + totalRows - 1);
-
-            $("#searchInput").on("keyup", function () {
-                var value = $(this).val().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
-                $("#mytable tr:not(:first)").filter(function () {
-                    var rowValue = $(this).text().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
-                    $(this).toggle(rowValue.indexOf(value) > -1);
-                });
-                var filteredRows = $("#mytable tr:visible").length - 1;
-                $("#totalRows").text("Linhas encontradas: " + filteredRows);
-            });
-        });
-    </script>

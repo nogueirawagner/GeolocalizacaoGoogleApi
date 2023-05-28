@@ -13,6 +13,7 @@ namespace GestaoDDD.MVC.AutoMapper
       //mapeia de viewModel para classe
       Mapper.CreateMap<CandidatoViewModel, Candidato>();
       Mapper.CreateMap<DepartamentoPoliciaViewModel, DepartamentoPolicia>();
+      Mapper.CreateMap<AlunoViewModel, Aluno>();
     }
   }
 }

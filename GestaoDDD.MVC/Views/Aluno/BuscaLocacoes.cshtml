@@ -1,0 +1,79 @@
+﻿@model IEnumerable<GestaoDDD.Application.ViewModels.DepartamentoPoliciaViewModel>
+    @{
+        Layout = "~/Views/Shared/_CFP.cshtml";
+    }
+    <link href="~/Content/Delegacias/delegacia_todas.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPb6icqT4MScket_GqPIIyPGl5A6CcThg&amp;sensor=true"></script>
+    <script src="~/Scripts/GoogleMaps/Delegacias/mapa_todos_delegacias.js"></script>
+    <script src="~/Scripts/jquery-ui.custom.min.js"></script>
+    <script src="~/Scripts/jquery-2.2.3.js"></script>
+    <script src="~/Scripts/jquery.maskedinput.min.js"></script>
+    <script src="~/Scripts/sweetalert.min.js"></script>
+    <link href="~/Styles/sweetalert.css" rel="stylesheet" />
+    <div class="m-4">
+        <div class="row formulario col-md-4 col-sm-4 col-lg-4">
+
+                <p id="totalRows" style="padding-left: 20px;"></p>
+                <div class="table-responsive" style="padding-left: 20px; border: 1px solid black;">
+                    <table id="mytable" class="table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Escolher</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Nome)
+                                    </td>
+
+                                    <td>
+                                        <a id="escolher" class="btn btn-proximos">
+                                            <span class="glyphicon glyphicon-filter"></span>
+                                        </a>
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var escolher = document.getElementById("escolher");
+            escolher.addEventListener("click", function () {
+                EscolherLotacao();
+            });
+
+
+
+            function EscolherLotacao() {
+                fetch('/Aluno/EscolherLotacao?pLotacaoID=' + 10 + '&pAlunoID=' + 20)
+                    .then(response => response.json());
+            }
+
+               
+
+            var totalRows = $("#mytable tr").length;
+            $("#totalRows").text("Total de linhas: " + totalRows);
+
+            $("#searchInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+                $("#mytable tr:not(:first)").filter(function () {
+                    var rowValue = $(this).text().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+                    $(this).toggle(rowValue.indexOf(value) > -1);
+                });
+                var filteredRows = $("#mytable tr:visible").length - 1;
+                $("#totalRows").text("Linhas encontradas: " + filteredRows);
+            });
+        });
+    </script>

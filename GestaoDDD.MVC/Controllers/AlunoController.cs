@@ -17,7 +17,7 @@ namespace GestaoDDD.MVC.Controllers
     private readonly IAlunoAppService _alunoAppService;
 
 
-    public AlunoController(IDptoPoliciaAppService dptoPoliciaApp, 
+    public AlunoController(IDptoPoliciaAppService dptoPoliciaApp,
       IAlunoAppService alunoAppService)
     {
       _dptoPoliciaApp = dptoPoliciaApp;
@@ -26,111 +26,43 @@ namespace GestaoDDD.MVC.Controllers
 
     public ActionResult BuscarAlunos()
     {
-      var alunos = _alunoAppService.GetAll();
-      var alunosVm = Mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoViewModel>>(alunos);
+      var alunos = _alunoAppService.GetAll().Where(s => s.Concorrencia == "Ampla").OrderByDescending(s => s.NotaEtapa1);
+      int i = 1;
+      var alunosVm = Mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoViewModel>>(alunos).ToList();
+      alunosVm.ForEach(s =>
+        {
+          s.Posicao = i++;
+          s.NotaFinal = s.NotaEtapa1 + s.NotaEtapa2 + s.NotaSAT + s.NotaTIPDPP;
+        });
       return View(alunosVm);
     }
 
-    public ActionResult BuscaDelegaciasProximas(string Latitude, string Longitude, string Endereco, int Id, string Nome)
+    public ActionResult BuscaAlunosFiltro(string pFiltro)
     {
-      ViewBag.Latitude = null;
-      ViewBag.Longitude = null;
-
-      if (!string.IsNullOrEmpty(Latitude) && !string.IsNullOrEmpty(Longitude))
+      var alunos = _alunoAppService.GetAll().Where(s => s.Concorrencia == pFiltro).OrderByDescending(s => s.NotaEtapa1);
+      int i = 1;
+      var alunosVm = Mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoViewModel>>(alunos).ToList();
+      alunosVm.ForEach(s =>
       {
-        ViewBag.Latitude = Latitude;
-        ViewBag.Longitude = Longitude;
-        ViewBag.Endereco = Endereco;
-        ViewBag.Id = Id;
-        ViewBag.Nome = Nome;
-
-        var dptos = _dptoPoliciaApp.BuscaDelegaciasProximas(Latitude, Longitude)
-          .Where(s => s.ID != Id)
-          .OrderByDescending(s => s.Vagas);
-          
-        var dptoVM = Mapper.Map<IEnumerable<DepartamentoPolicia>, IEnumerable<DepartamentoPoliciaViewModel>>(dptos);
-        return View(dptoVM);
-      }
-      else
-      {
-        var dptos = _dptoPoliciaApp.GetAll();
-        var dptoVM = Mapper.Map<IEnumerable<DepartamentoPolicia>, IEnumerable<DepartamentoPoliciaViewModel>>(dptos);
-        return View(dptoVM);
-      }
+        s.Posicao = i++;
+        s.NotaFinal = s.NotaEtapa1 + s.NotaEtapa2 + s.NotaSAT + s.NotaTIPDPP;
+      });
+      return PartialView(alunosVm);
     }
 
-    public ActionResult BuscaDelegacias()
+
+    public ActionResult BuscaLocacoes(AlunoViewModel pAluno)
     {
       var dptos = _dptoPoliciaApp.GetAll()
         .OrderByDescending(s => s.Vagas);
       var dptoVm = Mapper.Map<IEnumerable<DepartamentoPolicia>, IEnumerable<DepartamentoPoliciaViewModel>>(dptos);
+
       return View(dptoVm);
     }
 
-    public JsonResult BuscaDelegaciasJson(string Latitude, string Longitude)
+    public void EscolherLotacao(int pLotacaoID, int pAlunoID)
     {
-      if (string.IsNullOrEmpty(Latitude) && string.IsNullOrEmpty(Longitude))
-      {
-        var retorno = _dptoPoliciaApp.GetAll().OrderByDescending(s => s.Vagas);
-        return Json(retorno, JsonRequestBehavior.AllowGet);
-      }
-      else
-      {
-        var retorno = _dptoPoliciaApp.CalculaDistancia(Latitude, Longitude).OrderByDescending(s => s.Vagas);
-        return Json(retorno, JsonRequestBehavior.AllowGet);
-      }
+
     }
-
-    public JsonResult BuscaDelegaciasProximasJson(string Latitude, string Longitude, int Id)
-    {
-      if (string.IsNullOrEmpty(Latitude) && string.IsNullOrEmpty(Longitude))
-      {
-        var retorno = _dptoPoliciaApp.GetAll();
-        return Json(retorno, JsonRequestBehavior.AllowGet);
-      }
-      else
-      {
-        var retorno = _dptoPoliciaApp.BuscaDelegaciasProximas(Latitude, Longitude)
-          .Where(s => s.ID != Id);
-        return Json(retorno, JsonRequestBehavior.AllowGet);
-      }
-    }
-
-
-    //public ActionResult Editar(int Id)
-    //{
-    //  var dpto = _dptoPoliciaApp.GetById(Id);
-    //  var dptoVM = Mapper.Map<DepartamentoPolicia, DepartamentoPoliciaViewModel>(dpto);
-    //  return View(dptoVM);
-    //}
-
-    //public ActionResult Excluir(int Id)
-    //{
-    //  var candidato = _candidatoApp.GetById(Id);
-    //  _candidatoApp.Remove(candidato);
-    //  return RedirectToAction("BuscaCandidatos");
-    //}
-
-    //[HttpPost]
-    //public ActionResult Editar(CandidatoViewModel candidato)
-    //{
-    //  try
-    //  {
-    //    if (ModelState.IsValid)
-    //    {
-    //      var candidatoViewModel = Mapper.Map<CandidatoViewModel, Candidato>(candidato);
-    //      _candidatoApp.Update(candidatoViewModel);
-    //    }
-    //    else
-    //    {
-    //      return View(candidato);
-    //    }
-    //    return RedirectToAction("BuscaCandidatos");
-    //  }
-    //  catch
-    //  {
-    //    return View();
-    //  }
-    //}
   }
 }

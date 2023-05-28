@@ -15,10 +15,10 @@ namespace GestaoDDD.Domain.Entities
 
     public string Nome { get; set; }
     public string Concorrencia { get; set; }
-    public float NotaEtapa1 { get; set; }
-    public float NotaEtapa2 { get; set; }
-    public float NotaSAT { get; set; }
-    public float NotaTIPDPP { get; set; }
+    public double NotaEtapa1 { get; set; }
+    public double NotaEtapa2 { get; set; }
+    public double NotaSAT { get; set; }
+    public double NotaTIPDPP { get; set; }
     
     [NotMapped]
     public int Posicao { get; set; }
