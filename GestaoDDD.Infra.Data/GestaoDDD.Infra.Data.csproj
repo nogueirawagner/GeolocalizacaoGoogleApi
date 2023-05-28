@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Contexto\GestaoContext.cs" />
     <Compile Include="Contexto\IGestaoContext.cs" />
+    <Compile Include="EntityConfig\AlunoConfiguration.cs" />
     <Compile Include="EntityConfig\DptoPoliciaConfiguration.cs" />
     <Compile Include="EntityConfig\CandidatoConfiguration.cs" />
     <Compile Include="Migrations\202301251326491_CriandoCandidato.cs" />
@@ -86,8 +87,13 @@
     <Compile Include="Migrations\202305240156259_alterando tipo de dados de EhSede.Designer.cs">
       <DependentUpon>202305240156259_alterando tipo de dados de EhSede.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202305281928587_Criando aluno.cs" />
+    <Compile Include="Migrations\202305281928587_Criando aluno.Designer.cs">
+      <DependentUpon>202305281928587_Criando aluno.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AlunoRepository.cs" />
     <Compile Include="Repositories\DepartamentosPoliciaRepository.cs" />
     <Compile Include="Repositories\CandidatoRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
@@ -129,6 +135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202305240156259_alterando tipo de dados de EhSede.resx">
       <DependentUpon>202305240156259_alterando tipo de dados de EhSede.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305281928587_Criando aluno.resx">
+      <DependentUpon>202305281928587_Criando aluno.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -8,7 +8,7 @@ namespace GestaoDDD.Infra.Data.Contexto
   public class GestaoContext : DbContext, IGestaoContext
   {
     public GestaoContext()
-        : base("ConnectionProduction")
+        : base("ConnectionLocal")
     {
       Configuration.ProxyCreationEnabled = false;
       Configuration.LazyLoadingEnabled = true;
@@ -17,6 +17,7 @@ namespace GestaoDDD.Infra.Data.Contexto
     #region objetos
     public DbSet<Candidato> Candidato { get; set; }
     public DbSet<DepartamentoPolicia> DepartamentoPolicia { get; set; }
+    public DbSet<Aluno> Aluno { get; set; }
 
     #endregion
 
@@ -40,6 +41,8 @@ namespace GestaoDDD.Infra.Data.Contexto
 
       #region ArquivoConfiguracao
       modelBuilder.Configurations.Add(new CandidatoConfiguration());
+      modelBuilder.Configurations.Add(new DptoPoliciaConfiguration());
+      modelBuilder.Configurations.Add(new AlunoConfiguration());
       #endregion
     }
   }

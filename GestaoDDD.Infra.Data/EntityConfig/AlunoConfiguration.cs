@@ -3,9 +3,9 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace GestaoDDD.Infra.Data.EntityConfig
 {
-  public class DptoPoliciaConfiguration : EntityTypeConfiguration<DepartamentoPolicia>
+  public class AlunoConfiguration : EntityTypeConfiguration<Aluno>
   {
-    public DptoPoliciaConfiguration()
+    public AlunoConfiguration()
     {
       HasKey(c => c.ID);
       Property(c => c.ID).HasColumnName("ID").HasColumnOrder(1);

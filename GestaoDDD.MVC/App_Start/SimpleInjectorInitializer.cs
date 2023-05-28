@@ -34,7 +34,8 @@ namespace GestaoDDD.MVC.App_Start
       container.Options.DefaultScopedLifestyle = new WebRequestLifestyle();
 
       // Chamada dos módulos do Simple Injector
-      /// InitializeContainer(container);
+       InitializeContainer(container);
+
       container.Register<ApplicationDbContext>(Lifestyle.Scoped);
       container.Register(() => new GestaoContext(), Lifestyle.Scoped);
 
@@ -45,13 +46,17 @@ namespace GestaoDDD.MVC.App_Start
       container.RegisterPerWebRequest<ApplicationSignInManager>();
 
       #region Candidato
-      container.Register<ICandidatoRepository, CandidatoRepository>(Lifestyle.Scoped);
-      container.Register<ICandidatoAppService, CandidatoAppService>(Lifestyle.Scoped);
-      container.Register<ICandidatoService, CandidatoService>(Lifestyle.Scoped);
+      //container.Register<ICandidatoRepository, CandidatoRepository>(Lifestyle.Scoped);
+      //container.Register<ICandidatoAppService, CandidatoAppService>(Lifestyle.Scoped);
+      //container.Register<ICandidatoService, CandidatoService>(Lifestyle.Scoped);
 
-      container.Register<IDptoPoliciaRepository, DptoPoliciaRepository>(Lifestyle.Scoped);
-      container.Register<IDptoPoliciaAppService, DptoPoliciaAppService>(Lifestyle.Scoped);
-      container.Register<IDptoPoliciaService, DptoPoliciaService>(Lifestyle.Scoped);
+      //container.Register<IDptoPoliciaRepository, DptoPoliciaRepository>(Lifestyle.Scoped);
+      //container.Register<IDptoPoliciaAppService, DptoPoliciaAppService>(Lifestyle.Scoped);
+      //container.Register<IDptoPoliciaService, DptoPoliciaService>(Lifestyle.Scoped);
+
+      //container.Register<IDptoPoliciaRepository, DptoPoliciaRepository>(Lifestyle.Scoped);
+      //container.Register<IDptoPoliciaAppService, DptoPoliciaAppService>(Lifestyle.Scoped);
+      //container.Register<IDptoPoliciaService, DptoPoliciaService>(Lifestyle.Scoped);
       #endregion
       // Necessário para registrar o ambiente do Owin que é dependência do Identity
       // Feito fora da camada de IoC para não levar o System.Web para fora

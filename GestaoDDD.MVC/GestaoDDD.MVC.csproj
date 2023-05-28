@@ -200,6 +200,7 @@
     <Compile Include="AutoMapper\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AlunoController.cs" />
     <Compile Include="Controllers\DepartamentoPoliciaController.cs" />
     <Compile Include="Controllers\CandidatoController.cs" />
     <Compile Include="Global.asax.cs">
@@ -214,6 +215,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\Alunos\aluno.css" />
+    <Content Include="Content\Alunos\alunos_todos.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -375,6 +378,7 @@
     <Content Include="Views\DepartamentoPolicia\BuscaDelegacias.cshtml" />
     <Content Include="Views\DepartamentoPolicia\BuscaDelegaciasProximas.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Aluno\BuscarAlunos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
