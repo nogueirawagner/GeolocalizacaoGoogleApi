@@ -136,7 +136,7 @@
     /* Estilos para telas menores que 768px */
     .map-mapa {
         bottom: 45px;
-        height: 600px;
+        height: 450px;
         width: 105%;
     }
 
@@ -222,7 +222,6 @@
         border-top: 2px solid #dee2e6;
     }
 
-
 @media (max-width: 480px) {
     .table th:nth-child(3),
     .table th:nth-child(4),
@@ -252,12 +251,7 @@
     }
 
     /* botão marcar */
-   /* .botao-marcar {
-        margin: 0px;
-        margin-left: 225px;
-        margin-top: -85px;
-        width: 320px;
-    }*/
+  
     .botao-marcar {
         display: flex;
         flex-direction: column;
