@@ -76,7 +76,7 @@ function initialize() {
 
                 google.maps.event.addListener(marker, 'click', (function (marker, i) {
                     return function () {
-                        infowindow.setContent('Endereço: ' + locations[i].Endereco);
+                        infowindow.setContent(locations[i].Nome);
                         infowindow.open(map, marker);
                     }
                 })(marker, i));
