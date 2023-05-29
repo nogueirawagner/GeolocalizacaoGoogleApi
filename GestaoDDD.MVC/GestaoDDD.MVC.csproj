@@ -334,6 +334,7 @@
     <Content Include="Images\posto-vermelho.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\GoogleMaps\Alunos\locacoes.js" />
     <Content Include="Scripts\GoogleMaps\Alunos\alunos_partes.js" />
     <Content Include="Scripts\GoogleMaps\Candidatos\mapa _cfp.js" />
     <Content Include="Scripts\GoogleMaps\Candidatos\mapa_editar_candidato.js" />

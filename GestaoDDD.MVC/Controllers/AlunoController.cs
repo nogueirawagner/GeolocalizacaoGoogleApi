@@ -51,8 +51,12 @@ namespace GestaoDDD.MVC.Controllers
     }
 
 
-    public ActionResult BuscaLocacoes(AlunoViewModel pAluno)
+    public ActionResult BuscaLocacoes(int pAlunoId, string pNome, float pNotaFinal)
     {
+      ViewBag.Id = pAlunoId;
+      ViewBag.Nome = pNome;
+      ViewBag.NotaFinal = pNotaFinal;
+
       var dptos = _dptoPoliciaApp.GetAll()
         .OrderByDescending(s => s.Vagas);
       var dptoVm = Mapper.Map<IEnumerable<DepartamentoPolicia>, IEnumerable<DepartamentoPoliciaViewModel>>(dptos);
@@ -62,7 +66,8 @@ namespace GestaoDDD.MVC.Controllers
 
     public void EscolherLotacao(int pLotacaoID, int pAlunoID)
     {
-
+      var dpto = _dptoPoliciaApp.GetById(pLotacaoID);
+      var aluno = _alunoAppService.GetById(pAlunoID);
     }
   }
 }

@@ -54,7 +54,7 @@
                                     @Html.DisplayFor(modelItem => item.NotaFinal)
                                 </td>
                                 <td>
-                                    <a href="@Url.Action("BuscaLocacoes", "Aluno", new { pAluno = item })" class="btn btn-proximos" title="Buscar Locacoes">
+                                    <a href="@Url.Action("BuscaLocacoes", "Aluno", new { pAlunoId = item.ID, pNome = item.Nome, pNotaFinal = item.NotaFinal })" class="btn btn-proximos" title="Buscar Locacoes">
                                         <span class="glyphicon glyphicon-zoom-in"></span>
                                     </a>
                                 </td>
