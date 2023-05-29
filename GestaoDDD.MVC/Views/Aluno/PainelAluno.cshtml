@@ -1,0 +1,38 @@
+﻿@model IEnumerable<GestaoDDD.Application.ViewModels.DepartamentoPoliciaViewModel>
+
+    @{
+        Layout = "~/Views/Shared/_CFP.cshtml";
+    }
+    <link href="~/Content/Alunos/painel_aluno.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-ui.custom.min.js"></script>
+    <script src="~/Scripts/jquery-2.2.3.js"></script>
+    <script src="~/Scripts/jquery.maskedinput.min.js"></script>
+    <script src="~/Scripts/sweetalert.min.js"></script>
+    <link href="~/Styles/sweetalert.css" rel="stylesheet" />
+
+    <input type="hidden" id="vbNome" value="@ViewBag.Nome" />
+    <input type="hidden" id="vbNotaFinal" value="@ViewBag.NotaFinal" />
+    <input type="hidden" id="vbId" value="@ViewBag.Id" />
+
+
+    <div class="container-painel">
+        <div class="half">
+            <p style="margin-left: 20px;">Obs: Como não há definição sobre a quantidade de vagas e formas de escolha entre turmas, então por enquanto apenas selecione as unidades que você tenha preferência. </p>
+        </div>
+        <div class="half">
+            <div class="half">
+                <p style="margin-left: 20px;">Obs: Como não há definição sobre a quantidade de vagas e formas de escolha entre turmas, então por enquanto apenas selecione as unidades que você tenha preferência. </p>
+            </div>
+        </div>
+        <div class="half">
+            @{
+                Html.RenderPartial("BuscaDptosPolicia");
+            }
+        </div>
+        <div class="half">
+            @{
+                Html.RenderPartial("BuscaDptosPreferenciaAluno");
+            }
+        </div>
+    </div>

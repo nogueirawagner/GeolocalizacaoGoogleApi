@@ -216,6 +216,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Content\Alunos\aluno.css" />
+    <Content Include="Content\Alunos\delegacia_preferencia_aluno.css" />
+    <Content Include="Content\Alunos\delegacia_painel_aluno.css" />
+    <Content Include="Content\Alunos\painel_aluno.css" />
     <Content Include="Content\Alunos\alunos_todos.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -334,7 +337,10 @@
     <Content Include="Images\posto-vermelho.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\GoogleMaps\Alunos\locacoes.js" />
+    <Content Include="Scripts\GoogleMaps\Alunos\busca_dptos_preferencia.js" />
+    <Content Include="Scripts\GoogleMaps\Alunos\tabela_filtro.js" />
+    <Content Include="Scripts\GoogleMaps\Alunos\painel_aluno.js" />
+    <Content Include="Scripts\GoogleMaps\Alunos\busca_dptos.js" />
     <Content Include="Scripts\GoogleMaps\Alunos\alunos_partes.js" />
     <Content Include="Scripts\GoogleMaps\Candidatos\mapa _cfp.js" />
     <Content Include="Scripts\GoogleMaps\Candidatos\mapa_editar_candidato.js" />
@@ -382,7 +388,9 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Aluno\BuscarAlunos.cshtml" />
     <Content Include="Views\Aluno\BuscaAlunosFiltro.cshtml" />
-    <Content Include="Views\Aluno\BuscaLocacoes.cshtml" />
+    <Content Include="Views\Aluno\BuscaDptosPolicia.cshtml" />
+    <Content Include="Views\Aluno\PainelAluno.cshtml" />
+    <Content Include="Views\Aluno\BuscaDptosPreferenciaAluno.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

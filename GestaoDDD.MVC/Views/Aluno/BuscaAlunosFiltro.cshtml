@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<GestaoDDD.Application.ViewModels.AlunoViewModel>
 
+    <script src="~/Scripts/GoogleMaps/Alunos/tabela_filtro.js"></script>
     <div class="m-4">
         <div class="row formulario col-md-12 col-sm-6 col-lg-12">
-
 
             <div class="col-form form-group col-md-4" style="padding-left: 20px;">
                 <label>Procure seu nome:</label>
@@ -54,7 +54,7 @@
                                     @Html.DisplayFor(modelItem => item.NotaFinal)
                                 </td>
                                 <td>
-                                    <a href="@Url.Action("BuscaLocacoes", "Aluno", new { pAlunoId = item.ID, pNome = item.Nome, pNotaFinal = item.NotaFinal })" class="btn btn-proximos" title="Buscar Locacoes">
+                                    <a href="@Url.Action("PainelAluno", "Aluno", new { pAlunoId = item.ID, pNome = item.Nome, pNotaFinal = item.NotaFinal })" class="btn btn-proximos" title="Buscar Locacoes">
                                         <span class="glyphicon glyphicon-zoom-in"></span>
                                     </a>
                                 </td>
@@ -65,20 +65,3 @@
             </div>
         </div>
     </div>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var totalRows = $("#mytable tr").length - 1;
-            $("#totalRows").text("Total de linhas: " + totalRows);
-
-            $("#searchInput").on("keyup", function () {
-                var value = $(this).val().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
-                $("#mytable tr:not(:first)").filter(function () {
-                    var rowValue = $(this).text().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
-                    $(this).toggle(rowValue.indexOf(value) > -1);
-                });
-                var filteredRows = $("#mytable tr:visible").length - 1;
-                $("#totalRows").text("Linhas encontradas: " + filteredRows);
-            });
-        });
-    </script>

@@ -1,10 +1,9 @@
 ﻿@model IEnumerable<GestaoDDD.Application.ViewModels.DepartamentoPoliciaViewModel>
-    @{
-        Layout = "~/Views/Shared/_CFP.cshtml";
-    }
-    <link href="~/Content/Delegacias/delegacia_todas.css" rel="stylesheet" />
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPb6icqT4MScket_GqPIIyPGl5A6CcThg&amp;sensor=true"></script>
-    <script src="~/Scripts/GoogleMaps/Alunos/locacoes.js"></script>
+
+    <link href="~/Content/Alunos/delegacia_painel_aluno.css" rel="stylesheet" />
+    <script src="~/Scripts/GoogleMaps/Alunos/tabela_filtro.js"></script>
+    <script src="~/Scripts/GoogleMaps/Alunos/busca_dptos.js"></script>
+
     <script src="~/Scripts/jquery-ui.custom.min.js"></script>
     <script src="~/Scripts/jquery-2.2.3.js"></script>
     <script src="~/Scripts/jquery.maskedinput.min.js"></script>
@@ -15,12 +14,12 @@
     <input type="hidden" id="vbNotaFinal" value="@ViewBag.NotaFinal" />
     <input type="hidden" id="vbId" value="@ViewBag.Id" />
 
-    
+
     <div class="m-4">
-        <p>@ViewBag.Nome escolha suas unidades de preferência.</p>
-        <div class="row formulario col-md-4 col-sm-4 col-lg-4">
+        <div class="row formulario col-md-6 col-sm-6 col-lg-6">
+            <p>Escolha suas unidades de preferência.</p>
+            <label>Busque pela unidade:</label>
             <div class="col-form form-group col-md-2 filtro" style="padding-left: 20px;">
-                <label>Busque pela unidade:</label>
                 <input type="text" id="searchInput" class="form-control" />
             </div>
 
@@ -53,8 +52,6 @@
                         }
                     </tbody>
                 </table>
-
             </div>
-
         </div>
     </div>

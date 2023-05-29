@@ -1,24 +1,4 @@
-﻿var geocoder;
-var map;
-var marker;
-
-function initialize() {
-
-    $.ajax({
-        type: 'POST',
-        url: '/Aluno/BuscaAlunosFiltro?pFiltro=Ampla',
-        dataType: 'html',
-        cache: false,
-        async: true,
-        success: function (data) { $('#retornoPesquisa').html(data); }
-    });
-}
-
-
-$(document).ready(function () {
-
-    initialize();
-
+﻿$(document).ready(function () {
     var select = document.getElementById("concorrencias");
 
     select.addEventListener("change", function () {
@@ -27,21 +7,45 @@ $(document).ready(function () {
         // Verifica se alguma opção foi selecionada
         if (selectedValue !== "") {
             // Aqui você pode chamar o serviço desejado com base na opção selecionada
-            BuscarAlunos(selectedValue);
+            BuscarAlunosFetch(selectedValue);
         }
     });
 
-
-    function BuscarAlunos() {
+    function BuscarAlunosFetch() {
         var filtro = $("#concorrencias option:selected").val();
-        $.ajax({
-            type: 'POST',
-            url: '/Aluno/BuscaAlunosFiltro?pFiltro=' + filtro,
-            dataType: 'html',
-            cache: false,
-            async: true,
-            success: function (data) { $('#retornoPesquisa').html(data); }
-        });
-    };
+
+        fetch('/Aluno/BuscaAlunosFiltro?pFiltro=' + filtro, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            cache: 'no-cache',
+        })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('retornoPesquisa').innerHTML = data;
+
+
+
+                var totalRows = $("#mytable tr").length - 1;
+                $("#totalRows").text("Total de linhas: " + totalRows);
+
+                $("#searchInput").on("keyup", function () {
+                    var value = $(this).val().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+                    $("#mytable tr:not(:first)").filter(function () {
+                        var rowValue = $(this).text().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+                        $(this).toggle(rowValue.indexOf(value) > -1);
+                    });
+                    var filteredRows = $("#mytable tr:visible").length - 1;
+                    $("#totalRows").text("Linhas encontradas: " + filteredRows);
+                });
+
+
+            })
+            .catch(error => {
+                // Se houver algum erro na requisição, ele será capturado aqui
+                console.error('Erro:', error);
+            });
+    }
 });
 

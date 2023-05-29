@@ -1,21 +1,10 @@
-﻿$(document).ready(function () {
+﻿var geocoder;
+var map;
+var marker;
 
-    var vbId = document.getElementById("vbId").value;
+$(document).ready(function () {
 
-    var escolher = document.getElementById("escolher");
-    escolher.addEventListener("click", function () {
-        var dpId = escolher.getAttribute('value');
-        EscolherLotacao(dpId);
-    });
-
-    function EscolherLotacao(pId) {
-        fetch('/Aluno/EscolherLotacao?pLotacaoID=' + pId + '&pAlunoID=' + vbId)
-            .then(response => response.json());
-    }
-
-  
-
-    var totalRows = $("#mytable tr").length;
+    var totalRows = $("#mytable tr").length - 1;
     $("#totalRows").text("Total de linhas: " + totalRows);
 
     $("#searchInput").on("keyup", function () {
@@ -28,3 +17,4 @@
         $("#totalRows").text("Linhas encontradas: " + filteredRows);
     });
 });
+

@@ -51,17 +51,36 @@ namespace GestaoDDD.MVC.Controllers
     }
 
 
-    public ActionResult BuscaLocacoes(int pAlunoId, string pNome, float pNotaFinal)
+    public ActionResult PainelAluno(int pAlunoId, string pNome, float pNotaFinal)
     {
       ViewBag.Id = pAlunoId;
       ViewBag.Nome = pNome;
       ViewBag.NotaFinal = pNotaFinal;
 
+
+      var dptos = _dptoPoliciaApp.GetAll()
+       .OrderByDescending(s => s.Vagas);
+      var dptoVm = Mapper.Map<IEnumerable<DepartamentoPolicia>, IEnumerable<DepartamentoPoliciaViewModel>>(dptos);
+
+      return View(dptoVm);
+    }
+
+    public ActionResult BuscaDptosPolicia()
+    {
       var dptos = _dptoPoliciaApp.GetAll()
         .OrderByDescending(s => s.Vagas);
       var dptoVm = Mapper.Map<IEnumerable<DepartamentoPolicia>, IEnumerable<DepartamentoPoliciaViewModel>>(dptos);
 
-      return View(dptoVm);
+      return PartialView(dptoVm);
+    }
+
+    public ActionResult BuscaDptosPreferenciaAluno()
+    {
+      var dptos = _dptoPoliciaApp.GetAll()
+        .OrderByDescending(s => s.Vagas);
+      var dptoVm = Mapper.Map<IEnumerable<DepartamentoPolicia>, IEnumerable<DepartamentoPoliciaViewModel>>(dptos);
+
+      return PartialView(dptoVm);
     }
 
     public void EscolherLotacao(int pLotacaoID, int pAlunoID)
