@@ -95,9 +95,14 @@
     <Compile Include="Migrations\202305282004274_alterando aluno.Designer.cs">
       <DependentUpon>202305282004274_alterando aluno.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202305292038529_Criando relacionamento de departamento e aluno.cs" />
+    <Compile Include="Migrations\202305292038529_Criando relacionamento de departamento e aluno.Designer.cs">
+      <DependentUpon>202305292038529_Criando relacionamento de departamento e aluno.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AlunoRepository.cs" />
+    <Compile Include="Repositories\DepartamentosAlunoRepository.cs" />
     <Compile Include="Repositories\DepartamentosPoliciaRepository.cs" />
     <Compile Include="Repositories\CandidatoRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
@@ -145,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202305282004274_alterando aluno.resx">
       <DependentUpon>202305282004274_alterando aluno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305292038529_Criando relacionamento de departamento e aluno.resx">
+      <DependentUpon>202305292038529_Criando relacionamento de departamento e aluno.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

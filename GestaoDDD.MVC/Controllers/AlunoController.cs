@@ -15,13 +15,16 @@ namespace GestaoDDD.MVC.Controllers
   {
     private readonly IDptoPoliciaAppService _dptoPoliciaApp;
     private readonly IAlunoAppService _alunoAppService;
-
+    private readonly IDptoAlunoAppService _dptoAlunoService;
 
     public AlunoController(IDptoPoliciaAppService dptoPoliciaApp,
-      IAlunoAppService alunoAppService)
+      IAlunoAppService alunoAppService,
+      IDptoAlunoAppService dptoAlunoService
+      )
     {
       _dptoPoliciaApp = dptoPoliciaApp;
       _alunoAppService = alunoAppService;
+      _dptoAlunoService = dptoAlunoService;
     }
 
     public ActionResult BuscarAlunos()
@@ -87,6 +90,16 @@ namespace GestaoDDD.MVC.Controllers
     {
       var dpto = _dptoPoliciaApp.GetById(pLotacaoID);
       var aluno = _alunoAppService.GetById(pAlunoID);
+
+      if (dpto != null && aluno != null)
+      {
+        var dptoAluno = new DepartamentoAluno
+        {
+          AlunoID = pAlunoID,
+          DptoID = pLotacaoID
+        };
+        _dptoAlunoService.Add(dptoAluno);
+      }
     }
   }
 }

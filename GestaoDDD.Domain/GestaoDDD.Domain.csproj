@@ -41,21 +41,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\DepartamentoAluno.cs" />
     <Compile Include="Entities\Aluno.cs" />
     <Compile Include="Entities\Candidato.cs" />
     <Compile Include="Entities\DepartamentoPolicia.cs" />
     <Compile Include="Entities\Entidade.cs" />
     <Compile Include="Entities\Identity\Claims.cs" />
     <Compile Include="Entities\Identity\Client.cs" />
+    <Compile Include="Interfaces\Repositories\IDptoAlunoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IAlunoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IDptoPoliciaRepository.cs" />
     <Compile Include="Interfaces\Repositories\ICandidatoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />
     <Compile Include="Interfaces\Services\IAlunoService.cs" />
+    <Compile Include="Interfaces\Services\IDptoAlunoService.cs" />
     <Compile Include="Interfaces\Services\IDptoPoliciaService.cs" />
     <Compile Include="Interfaces\Services\ICandidatoService.cs" />
     <Compile Include="Interfaces\Services\IServiceBase.cs" />
     <Compile Include="Services\AlunoService.cs" />
+    <Compile Include="Services\DptoAlunoService.cs" />
     <Compile Include="Services\DptoPoliciaService.cs" />
     <Compile Include="Services\CandidatoService.cs" />
     <Compile Include="Services\ServiceBase.cs" />

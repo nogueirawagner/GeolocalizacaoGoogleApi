@@ -31,6 +31,9 @@ namespace GestaoDDD.Infra.IoC
       container.Register<IAlunoAppService, AlunoAppService>(Lifestyle.Scoped);
       container.Register<IAlunoService, AlunoService>(Lifestyle.Scoped);
 
+      container.Register<IDptoAlunoRepository, DptoAlunoRepository>(Lifestyle.Scoped);
+      container.Register<IDptoAlunoAppService, DptoAlunoAppService>(Lifestyle.Scoped);
+      container.Register<IDptoAlunoService, DptoAlunoService>(Lifestyle.Scoped);
     }
   }
 }

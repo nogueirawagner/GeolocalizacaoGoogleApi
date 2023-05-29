@@ -17,6 +17,7 @@ namespace GestaoDDD.Infra.Data.Contexto
     #region objetos
     public DbSet<Candidato> Candidato { get; set; }
     public DbSet<DepartamentoPolicia> DepartamentoPolicia { get; set; }
+    public DbSet<DepartamentoAluno> DepartamentoAluno { get; set; }
     public DbSet<Aluno> Aluno { get; set; }
 
     #endregion

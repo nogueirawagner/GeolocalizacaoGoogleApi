@@ -62,12 +62,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interface\IAlunoAppService.cs" />
+    <Compile Include="Interface\IDptoAlunoAppService.cs" />
     <Compile Include="Interface\IDptoPoliciaAppService.cs" />
     <Compile Include="Interface\ICandidatoAppService.cs" />
     <Compile Include="Interface\IAppServiceBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AppServiceBase.cs" />
     <Compile Include="Services\AlunoAppService.cs" />
+    <Compile Include="Services\DptoAlunoAppService.cs" />
     <Compile Include="Services\DptoPoliciaAppService.cs" />
     <Compile Include="Services\CandidatoAppService.cs" />
     <Compile Include="ViewModels\AlunoViewModel.cs" />
