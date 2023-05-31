@@ -9,5 +9,7 @@ namespace GestaoDDD.Domain.Interfaces.Services
 {
   public interface IDptoAlunoService : IServiceBase<DepartamentoAluno>
   {
+    IEnumerable<DepartamentoPolicia> PegaDptosPreferenciaAluno(int pAlunoID);
+    bool AlunoJaEscolheuUnidade(int pAlunoID, int pDptoPoliciaID);
   }
 }

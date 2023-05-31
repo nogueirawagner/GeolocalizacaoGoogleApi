@@ -4,6 +4,10 @@
         Layout = "~/Views/Shared/_CFP.cshtml";
     }
     <link href="~/Content/Alunos/painel_aluno.css" rel="stylesheet" />
+    <script src="~/Scripts/GoogleMaps/Alunos/painel_aluno.js"></script>
+    <script src="~/Scripts/GoogleMaps/Alunos/busca_dptos_preferencia.js"></script>
+    <script src="~/Scripts/GoogleMaps/Alunos/tabela_filtro.js"></script>
+    <script src="~/Scripts/GoogleMaps/Alunos/busca_dptos.js"></script>
 
     <script src="~/Scripts/jquery-ui.custom.min.js"></script>
     <script src="~/Scripts/jquery-2.2.3.js"></script>
@@ -30,9 +34,9 @@
                 Html.RenderPartial("BuscaDptosPolicia");
             }
         </div>
-        <div class="half">
+        <div class="half" id="retornoPreferencias">
             @{
-                Html.RenderPartial("BuscaDptosPreferenciaAluno");
+                Html.RenderPartial("BuscaDptosPreferenciaAluno", null);
             }
         </div>
     </div>

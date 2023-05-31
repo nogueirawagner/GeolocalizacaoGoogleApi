@@ -3,6 +3,7 @@ using GestaoDDD.Application.Interface;
 using GestaoDDD.Application.ViewModels;
 using GestaoDDD.Domain.Entities;
 using GestaoDDD.Domain.Interfaces.Services;
+using GestaoDDD.MVC.ModelosPadronizados;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,18 +14,18 @@ namespace GestaoDDD.MVC.Controllers
 {
   public class AlunoController : Controller
   {
-    private readonly IDptoPoliciaAppService _dptoPoliciaApp;
+    private readonly IDptoPoliciaAppService _dptoPoliciaAppService;
     private readonly IAlunoAppService _alunoAppService;
-    private readonly IDptoAlunoAppService _dptoAlunoService;
+    private readonly IDptoAlunoAppService _dptoAlunoAppService;
 
-    public AlunoController(IDptoPoliciaAppService dptoPoliciaApp,
+    public AlunoController(IDptoPoliciaAppService dptoPoliciaAppService,
       IAlunoAppService alunoAppService,
-      IDptoAlunoAppService dptoAlunoService
+      IDptoAlunoAppService dptoAlunoAppService
       )
     {
-      _dptoPoliciaApp = dptoPoliciaApp;
+      _dptoPoliciaAppService = dptoPoliciaAppService;
       _alunoAppService = alunoAppService;
-      _dptoAlunoService = dptoAlunoService;
+      _dptoAlunoAppService = dptoAlunoAppService;
     }
 
     public ActionResult BuscarAlunos()
@@ -60,8 +61,7 @@ namespace GestaoDDD.MVC.Controllers
       ViewBag.Nome = pNome;
       ViewBag.NotaFinal = pNotaFinal;
 
-
-      var dptos = _dptoPoliciaApp.GetAll()
+      var dptos = _dptoPoliciaAppService.GetAll()
        .OrderByDescending(s => s.Vagas);
       var dptoVm = Mapper.Map<IEnumerable<DepartamentoPolicia>, IEnumerable<DepartamentoPoliciaViewModel>>(dptos);
 
@@ -70,17 +70,16 @@ namespace GestaoDDD.MVC.Controllers
 
     public ActionResult BuscaDptosPolicia()
     {
-      var dptos = _dptoPoliciaApp.GetAll()
+      var dptos = _dptoPoliciaAppService.GetAll()
         .OrderByDescending(s => s.Vagas);
       var dptoVm = Mapper.Map<IEnumerable<DepartamentoPolicia>, IEnumerable<DepartamentoPoliciaViewModel>>(dptos);
 
       return PartialView(dptoVm);
     }
 
-    public ActionResult BuscaDptosPreferenciaAluno()
+    public ActionResult BuscaDptosPreferenciaAluno(int pAlunoID)
     {
-      var dptos = _dptoPoliciaApp.GetAll()
-        .OrderByDescending(s => s.Vagas);
+      var dptos = _dptoAlunoAppService.PegaDptosPreferenciaAluno(pAlunoID).OrderByDescending(s => s.Vagas);
       var dptoVm = Mapper.Map<IEnumerable<DepartamentoPolicia>, IEnumerable<DepartamentoPoliciaViewModel>>(dptos);
 
       return PartialView(dptoVm);
@@ -88,17 +87,16 @@ namespace GestaoDDD.MVC.Controllers
 
     public void EscolherLotacao(int pLotacaoID, int pAlunoID)
     {
-      var dpto = _dptoPoliciaApp.GetById(pLotacaoID);
-      var aluno = _alunoAppService.GetById(pAlunoID);
+      var jaEscolheu = _dptoAlunoAppService.AlunoJaEscolheuUnidade(pAlunoID, pLotacaoID);
 
-      if (dpto != null && aluno != null)
+      if (!jaEscolheu)
       {
         var dptoAluno = new DepartamentoAluno
         {
           AlunoID = pAlunoID,
           DptoID = pLotacaoID
         };
-        _dptoAlunoService.Add(dptoAluno);
+        _dptoAlunoAppService.Add(dptoAluno);
       }
     }
   }

@@ -15,5 +15,15 @@ namespace GestaoDDD.Domain.Services
     {
       _dptoAlunoRepository = dptoAlunoRepository;
     }
+
+    public bool AlunoJaEscolheuUnidade(int pAlunoID, int pDptoPoliciaID)
+    {
+      return _dptoAlunoRepository.AlunoJaEscolheuUnidade(pAlunoID, pDptoPoliciaID);
+    }
+
+    public IEnumerable<DepartamentoPolicia> PegaDptosPreferenciaAluno(int pAlunoID)
+    {
+      return _dptoAlunoRepository.PegaDptosPreferenciaAluno(pAlunoID);
+    }
   }
 }

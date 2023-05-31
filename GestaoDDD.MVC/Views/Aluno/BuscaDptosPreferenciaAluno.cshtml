@@ -1,8 +1,7 @@
 ﻿@model IEnumerable<GestaoDDD.Application.ViewModels.DepartamentoPoliciaViewModel>
 
     <link href="~/Content/Alunos/delegacia_preferencia_aluno.css" rel="stylesheet" />
-    <script src="~/Scripts/GoogleMaps/Alunos/tabela_filtro.js"></script>
-    <script src="~/Scripts/GoogleMaps/Alunos/busca_dptos_preferencia.js"></script>
+    
 
     <script src="~/Scripts/jquery-ui.custom.min.js"></script>
     <script src="~/Scripts/jquery-2.2.3.js"></script>
@@ -35,19 +34,19 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Nome)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Vagas)
-                                </td>
-                                <td>
-                                    <a id="escolher" value="@item.ID" class="btn btn-proximos">
-                                        <span class="glyphicon glyphicon-filter"></span>
-                                    </a>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Vagas)
+                            </td>
+                            <td>
+                                <a data-value="@item.ID" class="excluir-dpto btn btn-remover">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </a>
+                            </td>
+                        </tr>
                         }
                     </tbody>
                 </table>
