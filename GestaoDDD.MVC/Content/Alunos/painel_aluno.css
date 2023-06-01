@@ -7,13 +7,14 @@
 .container-painel {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: 50px;
     margin: 10px;
     height: 100vh; /* Define a altura total da tela */
 }
 
 .half {
     box-sizing: border-box; /* Considera a borda no cálculo da largura */
-    border: 1px solid #000; /* Apenas para fins de visualização */
+    border: 1px solid #dee2e6; /* Apenas para fins de visualização */
     overflow: auto;
 }
 

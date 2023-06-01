@@ -10,18 +10,25 @@
         .then(data => {
             document.getElementById('retornoPreferencias').innerHTML = data;
 
+            contarLinhas();
+            linhaLink();
 
             var removerButton = document.querySelectorAll(".excluir-dpto");
             removerButton.forEach(function (button) {
                 button.addEventListener("click", function () {
                     var dpId = button.getAttribute("data-value");
-                    ExcluirLotacao(dpId);
+                    ExcluirDptoPreferencia(alunoId, dpId);
                 });
             });
+        });
+}
 
-            function ExcluirLotacao(pId) {
-                console.log("passou pelo excluir: " + pId)
-            }
+function ExcluirDptoPreferencia(alunoId, dptoId) {
+    fetch('/Aluno/ExcluirDptoPreferencia?pDptoId=' + dptoId + '&pAlunoID=' + alunoId)
+        .then(function (response) {
+            atualizarPainelPreferencias(alunoId);
+            contarLinhas();
+            linhaLink();
         });
 }
 
@@ -41,20 +48,9 @@ function AtualizarPainelPreferencias(alunoId) {
 
 $(document).ready(function () {
 
-    var vbId = document.getElementById("vbId").value;
-    carregarPreferencia(vbId);
+    var alunoId = document.getElementById("vbId").value;
+    carregarPreferencia(alunoId);
 
-    var removerButton = document.querySelectorAll(".excluir-dpto");
-    removerButton.forEach(function (button) {
-        button.addEventListener("click", function () {
-            var dpId = button.getAttribute("data-value");
-            ExcluirLotacao(dpId);
-        });
-    });
-
-    function ExcluirLotacao(pId) {
-        console.log("passou pelo excluir: " + pId)
-    }
-
-
+    linhaLink();
+    contarLinhas();
 });

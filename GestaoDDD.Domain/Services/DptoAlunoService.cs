@@ -25,5 +25,10 @@ namespace GestaoDDD.Domain.Services
     {
       return _dptoAlunoRepository.PegaDptosPreferenciaAluno(pAlunoID);
     }
+
+    public DepartamentoAluno PegarDptoPreferenciaPorAluno(int pAlunoId, int pDptoPoliciaId)
+    {
+      return _dptoAlunoRepository.PegarDptoPreferenciaPorAluno(pAlunoId, pDptoPoliciaId);
+    }
   }
 }

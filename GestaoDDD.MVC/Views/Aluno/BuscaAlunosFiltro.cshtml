@@ -1,6 +1,8 @@
 ﻿@model IEnumerable<GestaoDDD.Application.ViewModels.AlunoViewModel>
 
     <script src="~/Scripts/GoogleMaps/Alunos/tabela_filtro.js"></script>
+    <link href="~/Content/Alunos/aluno.css" rel="stylesheet" />
+
     <div class="m-4">
         <div class="row formulario col-md-12 col-sm-6 col-lg-12">
 
@@ -18,17 +20,15 @@
                             <th>Inscricao</th>
                             <th>Nome</th>
                             <th>Nota Etapa 1</th>
-                            <th>Nota SAT</th>
-                            <th>Nota TIP/DPP</th>
                             <th>Nota Prova CFP</th>
                             <th>Nota Final</th>
-                            <th>Escolher Lotação</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr>
+
+                            <tr class="table-row " data-url="@Url.Action("PainelAluno", "Aluno", new { pAlunoId = item.ID, pNome = item.Nome, pNotaFinal = item.NotaFinal })">
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Posicao)
                                 </td>
@@ -42,21 +42,10 @@
                                     @Html.DisplayFor(modelItem => item.NotaEtapa1)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.NotaSAT)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.NotaTIPDPP)
-                                </td>
-                                <td>
                                     @Html.DisplayFor(modelItem => item.NotaEtapa2)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.NotaFinal)
-                                </td>
-                                <td>
-                                    <a href="@Url.Action("PainelAluno", "Aluno", new { pAlunoId = item.ID, pNome = item.Nome, pNotaFinal = item.NotaFinal })" class="btn btn-proximos" title="Buscar Locacoes">
-                                        <span class="glyphicon glyphicon-zoom-in"></span>
-                                    </a>
                                 </td>
                             </tr>
                         }

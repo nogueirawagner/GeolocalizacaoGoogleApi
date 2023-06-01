@@ -10,18 +10,16 @@
         .then(data => {
             document.getElementById('retornoPreferencias').innerHTML = data;
 
+            contarLinhas();
+            linhaLink();
+
             var removerButton = document.querySelectorAll(".excluir-dpto");
             removerButton.forEach(function (button) {
                 button.addEventListener("click", function () {
                     var dpId = button.getAttribute("data-value");
-                    ExcluirLotacao(dpId);
+                    ExcluirDptoPreferencia(alunoId, dpId);
                 });
             });
-
-            function ExcluirLotacao(pId) {
-                console.log("passou pelo excluir: " + pId)
-            }
-
         });
 }
 
@@ -52,7 +50,6 @@ $(document).ready(function () {
     });
 
     function EscolherLotacao(pId) {
-        console.log("passou pelo escolher: " + pId);
         fetch('/Aluno/EscolherLotacao?pLotacaoID=' + pId + '&pAlunoID=' + vbId)
             .then(function (response) {
                 atualizarPainelPreferencias(vbId);

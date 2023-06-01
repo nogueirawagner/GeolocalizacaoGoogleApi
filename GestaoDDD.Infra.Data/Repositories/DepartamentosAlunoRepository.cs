@@ -29,7 +29,15 @@ namespace GestaoDDD.Infra.Data.Repositories
       return (from da in _db.Set<DepartamentoAluno>()
                    join dp in _db.Set<DepartamentoPolicia>()
                    on da.DptoID equals dp.ID
+                    where da.AlunoID == pAlunoID
                    select dp).ToList();
+    }
+
+    public DepartamentoAluno PegarDptoPreferenciaPorAluno(int pAlunoId, int pDptoPoliciaId)
+    {
+      return (from da in _db.Set<DepartamentoAluno>()
+             where da.AlunoID == pAlunoId && da.DptoID == pDptoPoliciaId
+             select da).FirstOrDefault();
     }
   }
 }

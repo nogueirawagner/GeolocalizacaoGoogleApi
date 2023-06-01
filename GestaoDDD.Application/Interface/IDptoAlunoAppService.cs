@@ -7,5 +7,6 @@ namespace GestaoDDD.Application.Interface
   {
     IEnumerable<DepartamentoPolicia> PegaDptosPreferenciaAluno(int pAlunoID);
     bool AlunoJaEscolheuUnidade(int pAlunoID, int pDptoPoliciaID);
+    DepartamentoAluno PegarDptoPreferenciaPorAluno(int pAlunoId, int pDptoPoliciaId);
   }
 }

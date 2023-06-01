@@ -16,18 +16,14 @@
     <div class="m-4">
         <div class="row formulario col-md-6 col-sm-6 col-lg-6">
             <p>Unidades que você escolheu.</p>
-            <label>Busque pela unidade:</label>
-            <div class="col-form form-group col-md-2 filtro" style="padding-left: 20px;">
-                <input type="text" id="searchInput" class="form-control" />
-            </div>
-
+            
             <p id="totalRows" style="padding-left: 20px;"></p>
             <div class="table-responsive" style="padding-left: 20px; border: 1px solid black;">
                 <table id="mytable" class="table">
                     <thead>
                         <tr>
                             <th>Nome</th>
-                            <th>Vagas</th>
+                            <th>Contemplada</th>
                             <th>Escolher</th>
                         </tr>
                     </thead>
@@ -39,8 +35,10 @@
                                 @Html.DisplayFor(modelItem => item.Nome)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Vagas)
+                                @*@Html.DisplayFor(modelItem => item.Contemplada)*@
+                                Sim
                             </td>
+
                             <td>
                                 <a data-value="@item.ID" class="excluir-dpto btn btn-remover">
                                     <span class="glyphicon glyphicon-remove"></span>

@@ -20,14 +20,19 @@ namespace GestaoDDD.Application.Services
       _dptoAlunoService = dptoAlunoService;
     }
 
-    public bool AlunoJaEscolheuUnidade(int pAlunoID, int pDptoPoliciaID)
+    public bool AlunoJaEscolheuUnidade(int pAlunoId, int pDptoPoliciaId)
     {
-      return _dptoAlunoService.AlunoJaEscolheuUnidade(pAlunoID, pDptoPoliciaID);
+      return _dptoAlunoService.AlunoJaEscolheuUnidade(pAlunoId, pDptoPoliciaId);
     }
 
-    public IEnumerable<DepartamentoPolicia> PegaDptosPreferenciaAluno(int pAlunoID)
+    public IEnumerable<DepartamentoPolicia> PegaDptosPreferenciaAluno(int pAlunoId)
     {
-      return _dptoAlunoService.PegaDptosPreferenciaAluno(pAlunoID);
+      return _dptoAlunoService.PegaDptosPreferenciaAluno(pAlunoId);
+    }
+
+    public DepartamentoAluno PegarDptoPreferenciaPorAluno(int pAlunoId, int pDptoPoliciaId)
+    {
+      return _dptoAlunoService.PegarDptoPreferenciaPorAluno(pAlunoId, pDptoPoliciaId);
     }
   }
 }

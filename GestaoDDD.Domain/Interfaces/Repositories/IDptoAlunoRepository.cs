@@ -5,7 +5,9 @@ namespace GestaoDDD.Domain.Interfaces.Repositories
 {
   public interface IDptoAlunoRepository : IRepositoryBase<DepartamentoAluno>
   {
-    IEnumerable<DepartamentoPolicia> PegaDptosPreferenciaAluno(int pAlunoID);
-    bool AlunoJaEscolheuUnidade(int pAlunoID, int pDptoPoliciaID);
+    IEnumerable<DepartamentoPolicia> PegaDptosPreferenciaAluno(int pAlunoId);
+    bool AlunoJaEscolheuUnidade(int pAlunoId, int pDptoPoliciaId);
+
+    DepartamentoAluno PegarDptoPreferenciaPorAluno(int pAlunoId, int pDptoPoliciaId);
   }
 }

@@ -15,6 +15,7 @@ namespace GestaoDDD.Application.ViewModels
     public string Endereco { get; set; }
     public string Descricao { get; set; }
     public int Vagas { get; set; }
+    public string Contemplada { get; set; }
     public string DistanciaColega { get; set; }
   }
 }

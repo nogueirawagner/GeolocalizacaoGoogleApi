@@ -3,7 +3,6 @@ using GestaoDDD.Application.Interface;
 using GestaoDDD.Application.ViewModels;
 using GestaoDDD.Domain.Entities;
 using GestaoDDD.Domain.Interfaces.Services;
-using GestaoDDD.MVC.ModelosPadronizados;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -83,6 +82,12 @@ namespace GestaoDDD.MVC.Controllers
       var dptoVm = Mapper.Map<IEnumerable<DepartamentoPolicia>, IEnumerable<DepartamentoPoliciaViewModel>>(dptos);
 
       return PartialView(dptoVm);
+    }
+
+    public void ExcluirDptoPreferencia(int pAlunoId, int pDptoId)
+    {
+      var dptoAluno = _dptoAlunoAppService.PegarDptoPreferenciaPorAluno(pAlunoId, pDptoId);
+      _dptoAlunoAppService.Remove(dptoAluno);
     }
 
     public void EscolherLotacao(int pLotacaoID, int pAlunoID)
