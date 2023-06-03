@@ -7,9 +7,9 @@
 .container-painel {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 50px;
+    grid-template-rows: 550px; /* se tiver duas linhas e duas colunas. Esse código fixa o tamanho da primeira linha.*/
     margin: 10px;
-    height: 100vh; /* Define a altura total da tela */
+    height: 65vh; /* Define a altura total da tela: ficar a tela cheia é 100vh */
 }
 
 .half {

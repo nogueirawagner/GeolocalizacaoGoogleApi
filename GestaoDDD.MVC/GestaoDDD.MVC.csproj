@@ -230,6 +230,7 @@
     <Content Include="Content\Delegacias\delegacias.css" />
     <Content Include="Content\Delegacias\delegacias_proximas.css" />
     <Content Include="Content\Delegacias\delegacia_todas.css" />
+    <Content Include="Content\Estatisticas\graficos.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -353,6 +354,7 @@
     <Content Include="Scripts\GoogleMaps\Delegacias\mapa_delegacias_proximas.js" />
     <Content Include="Scripts\GoogleMaps\Delegacias\mapa_editar_candidato.js" />
     <Content Include="Scripts\GoogleMaps\Delegacias\mapa_todos_delegacias.js" />
+    <Content Include="Scripts\GoogleMaps\Estatisticas\grafico.js" />
     <Content Include="Scripts\jquery-2.2.3.js" />
     <Content Include="Scripts\jquery-2.2.3.min.js" />
     <Content Include="Scripts\jquery-ui-1.12.0.js" />
@@ -391,6 +393,7 @@
     <Content Include="Views\Aluno\BuscaDptosPolicia.cshtml" />
     <Content Include="Views\Aluno\PainelAluno.cshtml" />
     <Content Include="Views\Aluno\BuscaDptosPreferenciaAluno.cshtml" />
+    <Content Include="Views\Aluno\Estatisticas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

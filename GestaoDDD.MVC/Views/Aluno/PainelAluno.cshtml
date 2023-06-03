@@ -22,14 +22,20 @@
     <h2 style="margin-left: 20px;">Painel do aluno</h2>
     <p><label style="margin-left: 20px;">Nome: @ViewBag.Nome.</label></p>
     <p><label style="margin-left: 20px;">Nota Final: @ViewBag.NotaFinal</label></p>
+
+    <div>
+        <div class="col-form col-md-2" style="padding-left: 20px;">
+            Sua nota do CFP: @ViewBag.NotaFinal <input type="text" id="notacfp" style="width: 50%;" placeholder="Nota CFP" class="form-control">
+        </div>
+    </div>
     <div class="container-painel">
 
-        <div class="half">
+        @*<div class="half">
             <p style="margin-left: 20px;">Como não há definição sobre a quantidade de vagas e formas de escolha entre turmas, então por enquanto apenas selecione as unidades que você tenha preferência. </p>
         </div>
         <div class="half">
             <p style="margin-left: 20px;">A coluna "Contemplada" poderá mudar a depender da quantidade de vagas e sua nota.</p>
-        </div>
+        </div>*@
         <div class="half">
             @{
                 Html.RenderPartial("BuscaDptosPolicia");

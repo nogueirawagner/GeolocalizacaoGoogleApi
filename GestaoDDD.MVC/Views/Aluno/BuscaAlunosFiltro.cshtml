@@ -28,7 +28,7 @@
                         @foreach (var item in Model)
                         {
 
-                            <tr class="table-row " data-url="@Url.Action("PainelAluno", "Aluno", new { pAlunoId = item.ID, pNome = item.Nome, pNotaFinal = item.NotaFinal })">
+                            <tr class="table-row" data-url="@Url.Action("PainelAluno", "Aluno", new { pAlunoId = item.ID, pNome = item.Nome, pNotaFinal = item.NotaFinal })">
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Posicao)
                                 </td>

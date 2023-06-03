@@ -84,6 +84,11 @@ namespace GestaoDDD.MVC.Controllers
       return PartialView(dptoVm);
     }
 
+    public ActionResult Estatisticas()
+    {
+      return View();
+    }
+
     public void ExcluirDptoPreferencia(int pAlunoId, int pDptoId)
     {
       var dptoAluno = _dptoAlunoAppService.PegarDptoPreferenciaPorAluno(pAlunoId, pDptoId);
