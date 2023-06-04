@@ -1,23 +1,39 @@
-﻿.chart-container {
-    width: 100%;
+﻿.container-graficos {
+    display: grid;
+    grid-template-columns: 420px 420px;
+    grid-template-rows: 240px 240px; /* se tiver duas linhas e duas colunas. Esse código fixa o tamanho da primeira linha e da segunda linha.*/
+    margin: 20px;
+    height: 100vh; /* Define a altura total da tela: ficar a tela cheia é 100vh */
+}
+
+.half {
+    box-sizing: border-box; /* Considera a borda no cálculo da largura */
+    border: 1px solid #dee2e6; /* Apenas para fins de visualização */
+    overflow: auto;
+}
+
+.descricao {
+    margin-left:20px;
+}
+
+.label-titulo {
+    font-size: 1.5em;
+}
+
+.legenda {
+    font-size: 10px;
+    margin-left: 20px;
+}
+
+.grafico-rosca {
+    width: 400px;
     height: 200px;
-    border: 1px solid #ccc;
-    position: relative;
-    overflow: hidden;
+    margin-top: -5px;
 }
 
-.chart-line {
-    position: absolute;
-    bottom: 0;
-    width: 20px;
-    height: 100%;
-    background-image: linear-gradient(to top, #007bff, transparent);
-    background-position: center bottom;
-    background-size: 100% 0;
-    background-repeat: no-repeat;
-    transition: background-size 0.5s;
-}
-
-.chart-container:hover .chart-line {
-    background-size: 100% 100%;
+@media (max-width: 480px) {
+    .container-graficos {
+        grid-template-columns: 420px;
+        grid-template-rows: 200px;
+    }
 }
