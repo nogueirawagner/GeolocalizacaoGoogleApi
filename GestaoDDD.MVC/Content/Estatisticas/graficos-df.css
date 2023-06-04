@@ -1,0 +1,66 @@
+﻿.container-graficos-df {
+    display: grid;
+    grid-template-columns: 500px 500px;
+    grid-template-rows: 250px 250px; /* se tiver duas linhas e duas colunas. Esse código fixa o tamanho da primeira linha e da segunda linha.*/
+    margin: 20px;
+}
+
+.half-df {
+    box-sizing: border-box; /* Considera a borda no cálculo da largura */
+    border: 1px solid #dee2e6; /* Apenas para fins de visualização */
+    overflow: auto;
+}
+
+.descricao {
+    padding-top: 20px;
+    margin-left: 20px;
+}
+
+.label-titulo {
+    font-size: 1.5em;
+}
+
+.legenda {
+    font-size: 14px;
+    margin-left: 20px;
+}
+
+.grafico-rosca-df {
+    width: 400px;
+    height: 200px;
+    margin-top: -5px;
+}
+
+
+.grafico-linha {
+    margin-left: 20px;
+    margin-top: -5px;
+}
+
+.regioes {
+    font-size: 10px;
+    margin-left: 20px;
+}
+
+@media (max-width: 480px) {
+    .container-graficos-df {
+        grid-template-columns: 500px;
+        grid-template-rows: 250px 250px 250px 250px;
+    }
+
+    .descricao {
+        margin-left: 20px;
+        width: 42vh;
+        font-size: 12px;
+    }
+
+    .legenda {
+        font-size: 12px;
+        margin-left: 20px;
+        width: 42vh;
+    }
+
+    .grafico-rosca-df {
+        margin-left: -60px;
+    }
+}
