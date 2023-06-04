@@ -7,58 +7,56 @@ document.addEventListener("DOMContentLoaded", function () {
         /*Metropolitana */
         var data_metro = google.visualization.arrayToDataTable([
             ['Task', 'Hours per Day'],
-            ['Crimes Violentos Letais Intencionais', 28],
-            ['Crimes Contra o Patrimônio', 6674],
+            ['C.V.L.I', 28],
+            ['C.C.P', 6674],
             ['Outros Crimes', 1089],
-            ['Produtividade Policial', 1961]
+            ['Prod. Policial', 1961]
         ]);
-
-        var options_metro = {
-            title: 'BALANÇO CRIMINAL \nCOMPARATIVO MENSAL 2022 - POR NATUREZA',
-            is3D: true,
-        };
 
         /* Sul */
         var data_sul = google.visualization.arrayToDataTable([
             ['Task', 'Hours per Day'],
-            ['Crimes Violentos Letais Intencionais', 63],
-            ['Crimes Contra o Patrimônio', 4471],
+            ['C.V.L.I', 63],
+            ['C.C.P', 4471],
             ['Outros Crimes', 551],
-            ['Produtividade Policial', 1840]
+            ['Prod. Policial', 1840]
         ]);
-
-        var options_sul = {
-            title: 'BALANÇO CRIMINAL \nCOMPARATIVO MENSAL 2022 - POR NATUREZA',
-            is3D: true,
-        };
 
         /* Leste */
         var data_leste = google.visualization.arrayToDataTable([
             ['Task', 'Hours per Day'],
-            ['Crimes Violentos Letais Intencionais', 85],
-            ['Crimes Contra o Patrimônio', 3977],
+            ['C.V.L.I', 85],
+            ['C.C.P', 3977],
             ['Outros Crimes', 733],
-            ['Produtividade Policial', 2166]
+            ['Prod. Policial', 2166]
         ]);
-
-        var options_leste = {
-            title: 'BALANÇO CRIMINAL \nCOMPARATIVO MENSAL 2022 - POR NATUREZA',
-            is3D: true,
-        };
 
         /* Oeste */
         var data_oeste = google.visualization.arrayToDataTable([
             ['Task', 'Hours per Day'],
-            ['Crimes Violentos Letais Intencionais', 109],
-            ['Crimes Contra o Patrimônio', 12442],
+            ['C.V.L.I', 109],
+            ['C.C.P', 12442],
             ['Outros Crimes', 1484],
-            ['Produtividade Policial', 4710]
+            ['Prod. Policial', 4710]
         ]);
 
-        var options_oeste = {
-            title: 'BALANÇO CRIMINAL \nCOMPARATIVO MENSAL 2022 - POR NATUREZA',
-            is3D: true,
-        };
+        /* Teste para graficos de linha */
+        /* Sul */
+        var data_sul_1 = google.visualization.arrayToDataTable([
+            ['Task', 'Hours per Day'],
+            ['C.V.L.I', 63],
+            ['C.C.P', 4471],
+            ['Outros Crimes', 551],
+            ['Prod. Policial', 1840]
+        ]);
+
+        var data_sul_2 = google.visualization.arrayToDataTable([
+            ['Task', 'Hours per Day'],
+            ['C.V.L.I', 63],
+            ['C.C.P', 4471],
+            ['Outros Crimes', 551],
+            ['Prod. Policial', 1840]
+        ]);
 
         /* setando dados */
         var chartNorte = new google.visualization.PieChart(document.getElementById('piechart_norte'));
@@ -66,9 +64,15 @@ document.addEventListener("DOMContentLoaded", function () {
         var chartLeste = new google.visualization.PieChart(document.getElementById('piechart_leste'));
         var chartOeste = new google.visualization.PieChart(document.getElementById('piechart_oeste'));
 
-        chartNorte.draw(data_metro, options_metro);
-        chartSul.draw(data_sul, options_sul);
-        chartLeste.draw(data_leste, options_leste);
-        chartOeste.draw(data_oeste, options_oeste);
+        var chartSul_1 = new google.visualization.PieChart(document.getElementById('piechart_sul_1'));
+        var chartSul_2 = new google.visualization.PieChart(document.getElementById('piechart_sul_2'));
+
+        chartNorte.draw(data_metro);
+        chartSul.draw(data_sul);
+        chartLeste.draw(data_leste);
+        chartOeste.draw(data_oeste);
+        
+        chartSul_1.draw(data_sul_1);
+        chartSul_2.draw(data_sul_2);
     }
 });

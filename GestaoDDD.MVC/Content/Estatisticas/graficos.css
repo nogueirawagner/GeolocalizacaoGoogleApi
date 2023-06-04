@@ -1,9 +1,9 @@
 ﻿.container-graficos {
     display: grid;
-    grid-template-columns: 420px 420px;
-    grid-template-rows: 240px 240px; /* se tiver duas linhas e duas colunas. Esse código fixa o tamanho da primeira linha e da segunda linha.*/
+    grid-template-columns: 325px 325px 325px;
+    grid-template-rows: 230px 230px; /* se tiver duas linhas e duas colunas. Esse código fixa o tamanho da primeira linha e da segunda linha.*/
     margin: 20px;
-    height: 100vh; /* Define a altura total da tela: ficar a tela cheia é 100vh */
+    height: 120vh; /* Define a altura total da tela: ficar a tela cheia é 100vh */
 }
 
 .half {
@@ -29,11 +29,25 @@
     width: 400px;
     height: 200px;
     margin-top: -5px;
+    margin-left: -80px;
 }
 
 @media (max-width: 480px) {
     .container-graficos {
-        grid-template-columns: 420px;
-        grid-template-rows: 200px;
+        grid-template-columns: 325px;
+        grid-template-rows: 230px 230px 230px 230px 230px 230px;
+        height: 185vh
+    }
+
+    .descricao {
+        margin-left: 20px;
+        width: 42vh;
+        font-size: 12px;
+    }
+
+    .legenda {
+        font-size: 12px;
+        margin-left: 20px;
+        width: 42vh;
     }
 }
