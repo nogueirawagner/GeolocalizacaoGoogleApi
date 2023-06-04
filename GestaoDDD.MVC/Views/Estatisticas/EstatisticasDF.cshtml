@@ -1,0 +1,64 @@
+﻿<html>
+<head>
+    <link href="~/Content/Estatisticas/graficos-df.css" rel="stylesheet" />
+    <script src="~/Scripts/GoogleMaps/Estatisticas/grafico-df.js"></script>
+    <script src="~/Scripts/GoogleMaps/Estatisticas/grafico-delegacias.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+    <div>
+        <p class="descricao">
+            <label class="label-titulo">Regiões Integradas de Segurança Pública (RISPs):</label>
+            <br />
+            O DF foi dividido em quatro RISPs – Metropolitana, Oeste, Sul e Leste – para facilitar o direcionamento das ações dos órgãos de segurança pública em determinados locais. Cada RISP é composta por, pelo menos, seis regiões administrativas. A divisão ocorre, entre outras estratégias, para que batalhões e delegacias façam operações conjuntas para a solução de alguns crimes que afetam mais de uma área, por exemplo.
+        </p>
+
+        <p class="descricao" style="font-weight:bold;">
+            <label class="label-titulo">Legenda:</label>
+            <div class="legenda">
+                <strong>Crimes Violentos Letais Intencionais (CVLI):</strong> Homicídio, Latrocínio e Lesão Corporal Seg. de Morte
+                <br />
+                <strong>Crimes Contra o Patrimônio (CCP):</strong> Roubo a Transeunte, Roubo de Veículo, Roubo em Transporte Coletivo, Roubo em Comércio, Roubo em Residência e Furto em Veículo
+                <br />
+                <strong>Outros Crimes:</strong> Tentativa de Homicídio, Tentativa de Latrocínio, Estupro, Furto a Transeunte
+                <br />
+                <strong>Produtividade Policial:</strong> Tráfico de Drogas, Uso e Porte de Drogas, Posse/Porte de Arma e Localização de Veiculo Furtado ou Roubado
+                <br />
+                <a style="text-decoration: underline; color: blue; font-weight: 100" href="https://www.ssp.df.gov.br/dados-por-regiao-administrativa/">Acesse as informações completas aqui.</a>
+                <br />
+                <br />
+                <label class="label-titulo">BALANÇO CRIMINAL COMPARATIVO MENSAL 2022 - POR NATUREZA</label>
+            </div>
+        </p>
+    </div>
+    <div class="container-graficos-df">
+        <div class="half-df">
+            <label>RISP - Metropolitana</label>
+            <div id="piechart_norte" class="grafico-rosca-df"></div>
+            <p class="regioes">Plano Piloto, Cruzeiro, Octogonal, Sudoeste, Guará, SIA, SCIA, Estrutural e Lago Sul</p>
+        </div>
+        <div class="half-df">
+            <label>RISP - Sul</label>
+            <div id="piechart_sul" class="grafico-rosca-df"></div>
+            <p class="regioes">Gama, Riacho Fundo, Núcleo Bandeirante, Candangolândia, Park Way, Santa Maria e Jardim Botânico</p>
+        </div>
+        <div class="half-df">
+            <label>RISP - Leste</label>
+            <div id="piechart_leste" class="grafico-rosca-df"></div>
+            <p class="regioes">Taguatinga, Brazlândia, Ceilândia, Samambaia, Águas Claras e Vicente Pires</p>
+        </div>
+        <div class="half-df">
+            <label>RISP - Oeste</label>
+            <div id="piechart_oeste" class="grafico-rosca-df"></div>
+            <p class="regioes">
+                Planaltina, Lago Norte, Varjão, Paranoá, Itapoã, São Sebastião, Fercal, Jardim Botânico, Sobradinho I e II
+            </p>
+        </div>
+    </div>
+    <div class="grafico-linha">
+    <label class="label-titulo">QUANTATIVO DE VAGAS E ESCOLHAS POR ALUNOS</label>
+        <div id="columnchart_material" style="height: 500px;"></div>
+    </div>
+</body>
+</html>
+

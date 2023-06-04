@@ -35,7 +35,7 @@ namespace GestaoDDD.MVC.Controllers
       alunosVm.ForEach(s =>
         {
           s.Posicao = i++;
-          s.NotaFinal = s.NotaEtapa1 + s.NotaEtapa2 + s.NotaSAT + s.NotaTIPDPP;
+          s.NotaFinal = s.NotaEtapa1 + s.NotaEtapa2;
         });
       return View(alunosVm);
     }
@@ -82,11 +82,6 @@ namespace GestaoDDD.MVC.Controllers
       var dptoVm = Mapper.Map<IEnumerable<DepartamentoPolicia>, IEnumerable<DepartamentoPoliciaViewModel>>(dptos);
 
       return PartialView(dptoVm);
-    }
-
-    public ActionResult Estatisticas()
-    {
-      return View();
     }
 
     public void ExcluirDptoPreferencia(int pAlunoId, int pDptoId)
