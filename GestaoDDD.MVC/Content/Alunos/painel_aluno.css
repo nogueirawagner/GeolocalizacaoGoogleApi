@@ -2,7 +2,31 @@
     overflow-x: hidden;
 }
 
+.bloco-notas {
+    display: grid;
+    grid-template-columns: 80px 200px;
+    grid-template-rows: 30px; /* se tiver duas linhas e duas colunas. Esse código fixa o tamanho da primeira linha.*/
+    margin-left: 20px;
+}
 
+.bloco-nota-cfp {
+    display: grid;
+    grid-template-columns: 400px;
+    grid-template-rows: 40px; /* se tiver duas linhas e duas colunas. Esse código fixa o tamanho da primeira linha.*/
+    margin-left: 20px;
+}
+
+.bloco-coluna {
+    box-sizing: border-box; /* Considera a borda no cálculo da largura */
+    border: 0px solid #dee2e6; /* Apenas para fins de visualização */
+    overflow: auto;
+}
+
+.painel {
+    display: grid;
+    grid-template-rows: 150px; /* se tiver duas linhas e duas colunas. Esse código fixa o tamanho da primeira linha.*/
+    margin-top: -30px;
+}
 
 .container-painel {
     display: grid;
@@ -10,6 +34,7 @@
     grid-template-rows: 550px; /* se tiver duas linhas e duas colunas. Esse código fixa o tamanho da primeira linha.*/
     margin: 10px;
     height: 65vh; /* Define a altura total da tela: ficar a tela cheia é 100vh */
+    margin-top: -10px;
 }
 
 .half {
@@ -19,33 +44,9 @@
 }
 
 
-/*.container-painel {
-    display: flex;
-    margin: 10px;
-    height: 100vh;*/ /* Define a altura total da tela */
-/*}
-
-.half {
-    flex: 1;*/ /* Faz com que cada metade ocupe 50% da largura total */
-    /*border: 0px solid #000;*/ /* Apenas para fins de visualização */
-    /*box-sizing: border-box;*/ /* Considera a borda no cálculo da largura */
-    /*overflow: auto;
-}*/
 .btn:focus {
     box-shadow: rgba (0,0,0,4);
     outline: 0;
-}
-
-.banner-baixo {
-    background-color: #f56a6a;
-    color: white;
-    text-align: center;
-}
-
-.texto-bannerbaixo {
-    vertical-align: center;
-    margin-top: 10px;
-    font-size: 18px;
 }
 
 /* Fim Banner Padrão e Secundário */
@@ -66,38 +67,18 @@
     padding: 0;
 }
 
-.col-form {
-    padding-left: 0px;
-    padding-right: 1%;
-    margin-right: 0%;
-
-}
-
-.col-form-2 {
-    padding-left: 0px;
-    padding-right: 0px;
-}
-
-.botao-marcar {
-    padding: 0px;
-}
-
-.botao {
-    color: white;
-}
-
-.btn-enviar {
-    background-color: #ad2323;
-    margin: 20px;
-    margin-left: 0px;
+.btn-cfp {
+    background-color: #04994c;
     border-bottom-color: black;
     color: white;
+    margin-left: 10px;
+    height: 35px;
 }
 
-.btn-enviar:focus {
-    box-shadow: rgba(0,0,0,4);
-    outline: 0;
-}
+    .btn-cfp:focus {
+        box-shadow: rgba(0,0,0,4);
+        outline: 0;
+    }
 
 .btn-proximos {
     background-color: #04994c;
@@ -109,24 +90,6 @@
     box-shadow: rgba(0,0,0,4);
     outline: 0;
 }
-
-
-.btn-editar {
-    background-color: #04994c;
-    margin: 20px;
-    margin-left: 0px;
-    border-bottom-color: black;
-    color: white;
-}
-
-    .btn-editar:focus {
-        box-shadow: rgba(0,0,0,4);
-        outline: 0;
-    }
-/* Fim Corpo da página */
-
-
-
 
 /* Tabela */
 

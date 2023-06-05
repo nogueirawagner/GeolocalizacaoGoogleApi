@@ -1,12 +1,6 @@
-﻿using AutoMapper;
-using GeoCoordinatePortable;
-using GestaoDDD.Application.Interface;
-using GestaoDDD.Application.ViewModels;
+﻿using GestaoDDD.Application.Interface;
 using GestaoDDD.Domain.Entities;
 using GestaoDDD.Domain.Interfaces.Services;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
 
 namespace GestaoDDD.Application.Services
 {
@@ -20,5 +14,9 @@ namespace GestaoDDD.Application.Services
       _alunoService = alunoService;
     }
 
+    public void AtualizarNotaCFP(int pAlunoId, double pNota)
+    {
+      _alunoService.AtualizarNotaCFP(pAlunoId, pNota);
+    }
   }
 }

@@ -1,7 +1,6 @@
 ﻿using GestaoDDD.Domain.Entities;
 using GestaoDDD.Domain.Interfaces.Repositories;
 using GestaoDDD.Domain.Interfaces.Services;
-using System.Collections.Generic;
 
 namespace GestaoDDD.Domain.Services
 {
@@ -13,6 +12,11 @@ namespace GestaoDDD.Domain.Services
     : base(alunoRepository)
     {
       _alunoRepository = alunoRepository;
+    }
+
+    public void AtualizarNotaCFP(int pAlunoId, double pNota)
+    {
+      _alunoRepository.AtualizarNotaCFP(pAlunoId, pNota);
     }
   }
 }

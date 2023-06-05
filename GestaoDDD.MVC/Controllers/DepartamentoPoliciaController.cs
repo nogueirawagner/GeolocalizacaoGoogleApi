@@ -115,42 +115,5 @@ namespace GestaoDDD.MVC.Controllers
         return Json(retorno, JsonRequestBehavior.AllowGet);
       }
     }
-
-
-    //public ActionResult Editar(int Id)
-    //{
-    //  var dpto = _dptoPoliciaApp.GetById(Id);
-    //  var dptoVM = Mapper.Map<DepartamentoPolicia, DepartamentoPoliciaViewModel>(dpto);
-    //  return View(dptoVM);
-    //}
-
-    //public ActionResult Excluir(int Id)
-    //{
-    //  var candidato = _candidatoApp.GetById(Id);
-    //  _candidatoApp.Remove(candidato);
-    //  return RedirectToAction("BuscaCandidatos");
-    //}
-
-    //[HttpPost]
-    //public ActionResult Editar(CandidatoViewModel candidato)
-    //{
-    //  try
-    //  {
-    //    if (ModelState.IsValid)
-    //    {
-    //      var candidatoViewModel = Mapper.Map<CandidatoViewModel, Candidato>(candidato);
-    //      _candidatoApp.Update(candidatoViewModel);
-    //    }
-    //    else
-    //    {
-    //      return View(candidato);
-    //    }
-    //    return RedirectToAction("BuscaCandidatos");
-    //  }
-    //  catch
-    //  {
-    //    return View();
-    //  }
-    //}
   }
 }

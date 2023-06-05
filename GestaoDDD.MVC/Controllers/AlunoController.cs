@@ -48,17 +48,19 @@ namespace GestaoDDD.MVC.Controllers
       alunosVm.ForEach(s =>
       {
         s.Posicao = i++;
-        s.NotaFinal = s.NotaEtapa1 + s.NotaEtapa2 + s.NotaSAT + s.NotaTIPDPP;
+        s.NotaFinal = s.NotaEtapa1 + s.NotaEtapa2;
       });
       return PartialView(alunosVm);
     }
 
 
-    public ActionResult PainelAluno(int pAlunoId, string pNome, float pNotaFinal)
+    public ActionResult PainelAluno(int pAlunoId, string pNome, float pNotaFinal, float pNotaCFP)
     {
+      var aluno = _alunoAppService.GetById(pAlunoId);
       ViewBag.Id = pAlunoId;
-      ViewBag.Nome = pNome;
-      ViewBag.NotaFinal = pNotaFinal;
+      ViewBag.Nome = aluno.Nome;
+      ViewBag.NotaFinal = aluno.NotaEtapa1 + aluno.NotaEtapa2;
+      ViewBag.NotaCFP = pNotaCFP;
 
       var dptos = _dptoPoliciaAppService.GetAll()
        .OrderByDescending(s => s.Vagas);
@@ -74,6 +76,11 @@ namespace GestaoDDD.MVC.Controllers
       var dptoVm = Mapper.Map<IEnumerable<DepartamentoPolicia>, IEnumerable<DepartamentoPoliciaViewModel>>(dptos);
 
       return PartialView(dptoVm);
+    }
+
+    public void AtualizarNotaCFP(int pAlunoId, double pNota)
+    {
+      _alunoAppService.AtualizarNotaCFP(pAlunoId, pNota);
     }
 
     public ActionResult BuscaDptosPreferenciaAluno(int pAlunoID)

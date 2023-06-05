@@ -13,8 +13,6 @@ namespace GestaoDDD.Application.ViewModels
     public string Concorrencia { get; set; }
     public double NotaEtapa1 { get; set; }
     public double NotaEtapa2 { get; set; }
-    public double NotaSAT { get; set; }
-    public double NotaTIPDPP { get; set; }
     public double NotaFinal { get; set; }
     public int Posicao { get; set; }
   }

@@ -2,9 +2,8 @@
 
 namespace GestaoDDD.Domain.Interfaces.Repositories
 {
-    public interface IAlunoRepository : IRepositoryBase<Aluno>
-    {
-
-
-    }
+  public interface IAlunoRepository : IRepositoryBase<Aluno>
+  {
+    void AtualizarNotaCFP(int pAlunoId, double pNota);
+  }
 }

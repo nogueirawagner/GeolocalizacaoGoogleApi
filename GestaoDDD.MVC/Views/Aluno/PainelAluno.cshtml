@@ -18,32 +18,39 @@
     <input type="hidden" id="vbNome" value="@ViewBag.Nome" />
     <input type="hidden" id="vbNotaFinal" value="@ViewBag.NotaFinal" />
     <input type="hidden" id="vbId" value="@ViewBag.Id" />
+    <input type="hidden" id="vbNotaCFP" value="@ViewBag.NotaCFP" />
 
-    <h2 style="margin-left: 20px;">Painel do aluno</h2>
-    <p><label style="margin-left: 20px;">Nome: @ViewBag.Nome.</label></p>
-    <p><label style="margin-left: 20px;">Nota Final: @ViewBag.NotaFinal</label></p>
+    <div class="painel">
+        <div>
+            <h2 style="margin-left: 20px;"><strong>Painel do aluno:</strong> @ViewBag.Nome.</h2>
+            <div class="bloco-notas">
+                <div class="bloco-coluna">
+                    <strong>Nota Final:</strong>
+                </div>
+                <div class="bloco-coluna">
+                    <input type="text" id="nota-atualizada" style="border: 0px;" readonly />
+                </div>
+            </div>
+            <div class="bloco-nota-cfp">
+                <div class="bloco-coluna" style="display: flex;">
+                    <input type="text"  maxlength="4" min="30" max="60" step="0.01" pattern="^\d+(,\d{2})?$" id="notacfp" style="width: 50%; order: 1;" placeholder="Atualize sua Nota do CFP" class="form-control col-form-2">
+                    <a class="btn btn-cfp" id="botao-cfp" style="order: 2;">
+                        <span class="glyphicon glyphicon-ok"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
 
-    <div>
-        <div class="col-form col-md-2" style="padding-left: 20px;">
-            Sua nota do CFP: @ViewBag.NotaFinal <input type="text" id="notacfp" style="width: 50%;" placeholder="Nota CFP" class="form-control">
-        </div>
-    </div>
-    <div class="container-painel">
-
-        @*<div class="half">
-            <p style="margin-left: 20px;">Como não há definição sobre a quantidade de vagas e formas de escolha entre turmas, então por enquanto apenas selecione as unidades que você tenha preferência. </p>
-        </div>
-        <div class="half">
-            <p style="margin-left: 20px;">A coluna "Contemplada" poderá mudar a depender da quantidade de vagas e sua nota.</p>
-        </div>*@
-        <div class="half">
-            @{
-                Html.RenderPartial("BuscaDptosPolicia");
-            }
-        </div>
-        <div class="half" id="retornoPreferencias">
-            @{
-                Html.RenderPartial("BuscaDptosPreferenciaAluno", null);
-            }
+        <div class="container-painel">
+            <div class="half">
+                @{
+                    Html.RenderPartial("BuscaDptosPolicia");
+                }
+            </div>
+            <div class="half" id="retornoPreferencias">
+                @{
+                    Html.RenderPartial("BuscaDptosPreferenciaAluno", null);
+                }
+            </div>
         </div>
     </div>
