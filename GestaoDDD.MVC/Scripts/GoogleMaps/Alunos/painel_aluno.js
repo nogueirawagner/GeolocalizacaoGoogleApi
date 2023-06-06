@@ -1,7 +1,5 @@
 ﻿function SalvarNotaCFP(alunoId, notaCfp) {
     var nota = parseFloat(notaCfp.replace(',', '.'));
-   
-
     fetch('/Aluno/AtualizarNotaCFP?pAlunoId=' + alunoId + '&pNota=' + nota, {
         method: 'POST',
         headers: {
@@ -14,27 +12,35 @@
             var notaFinal = document.getElementById("vbNotaFinal").value;
             var notaFinal = parseFloat(notaFinal.replace(',', '.'));
             var notaAtualizada = nota + notaFinal;
-            notaAtualizada.toFixed(4);
+            notaAtualizada = parseFloat(notaAtualizada.toFixed(4)).toFixed(2).replace('.', ',');
 
+            document.getElementById('nota-etapa-2').value = notaCfp;
             document.getElementById('nota-atualizada').value = notaAtualizada;
         });
 }
 
+function inicializarNotas() {
+    var notaEtapa1 = document.getElementById("vbNotaEtapa1").value;
+    document.getElementById('nota-etapa-1').value = notaEtapa1;
+
+    var notaEtapa2 = document.getElementById("vbNotaEtapa2").value;
+    document.getElementById('nota-etapa-2').value = notaEtapa2;
+
+    var notaFinal = document.getElementById("vbNotaFinal").value;
+    document.getElementById('nota-atualizada').value = notaFinal;
+}
 
 
 $(document).ready(function () {
     var alunoId = document.getElementById("vbId").value;
-
-    var notaFinal = document.getElementById("vbNotaFinal").value;
-    document.getElementById('nota-atualizada').value = notaFinal;
-    
+    inicializarNotas();
 
     document.getElementById('botao-cfp').addEventListener('click', function () {
         var notaCfp = document.getElementById('notacfp').value;
         if (notaCfp.length > 3)
             SalvarNotaCFP(alunoId, notaCfp);
         else
-            alert("Sua nota deve estar no formato 35,40");
+            alert("Sua nota deve estar no formato 55,40 ou 55,00");
     });
 
     var input = document.getElementById('notacfp');

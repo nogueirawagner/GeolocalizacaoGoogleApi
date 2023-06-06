@@ -103,6 +103,10 @@
     <Compile Include="Migrations\202306051903346_removendo nota sat e tip aluno.Designer.cs">
       <DependentUpon>202306051903346_removendo nota sat e tip aluno.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202306060204247_add campo nota final para aluno.cs" />
+    <Compile Include="Migrations\202306060204247_add campo nota final para aluno.Designer.cs">
+      <DependentUpon>202306060204247_add campo nota final para aluno.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AlunoRepository.cs" />
@@ -160,6 +164,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202306051903346_removendo nota sat e tip aluno.resx">
       <DependentUpon>202306051903346_removendo nota sat e tip aluno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306060204247_add campo nota final para aluno.resx">
+      <DependentUpon>202306060204247_add campo nota final para aluno.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

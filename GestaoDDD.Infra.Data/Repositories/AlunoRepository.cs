@@ -18,6 +18,7 @@ namespace GestaoDDD.Infra.Data.Repositories
     {
       var aluno = GetById(pAlunoId);
       aluno.NotaEtapa2 = pNota;
+      aluno.NotaFinal = aluno.NotaEtapa1 + pNota;
       Update(aluno);
     }
   }

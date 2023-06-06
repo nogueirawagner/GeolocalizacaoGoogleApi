@@ -29,38 +29,39 @@ namespace GestaoDDD.MVC.Controllers
 
     public ActionResult BuscarAlunos()
     {
-      var alunos = _alunoAppService.GetAll().Where(s => s.Concorrencia == "Ampla").OrderByDescending(s => s.NotaEtapa1);
+      var alunos = _alunoAppService.GetAll().Where(s => s.Concorrencia == "Ampla")
+        .OrderByDescending(s => s.NotaFinal);
       int i = 1;
       var alunosVm = Mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoViewModel>>(alunos).ToList();
       alunosVm.ForEach(s =>
         {
           s.Posicao = i++;
-          s.NotaFinal = s.NotaEtapa1 + s.NotaEtapa2;
         });
       return View(alunosVm);
     }
 
     public ActionResult BuscaAlunosFiltro(string pFiltro)
     {
-      var alunos = _alunoAppService.GetAll().Where(s => s.Concorrencia == pFiltro).OrderByDescending(s => s.NotaEtapa1);
+      var alunos = _alunoAppService.GetAll().Where(s => s.Concorrencia == pFiltro)
+        .OrderByDescending(s => s.NotaFinal);
       int i = 1;
       var alunosVm = Mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoViewModel>>(alunos).ToList();
       alunosVm.ForEach(s =>
       {
         s.Posicao = i++;
-        s.NotaFinal = s.NotaEtapa1 + s.NotaEtapa2;
       });
+
       return PartialView(alunosVm);
     }
 
-
-    public ActionResult PainelAluno(int pAlunoId, string pNome, float pNotaFinal, float pNotaCFP)
+    public ActionResult PainelAluno(int pAlunoId)
     {
       var aluno = _alunoAppService.GetById(pAlunoId);
       ViewBag.Id = pAlunoId;
       ViewBag.Nome = aluno.Nome;
       ViewBag.NotaFinal = aluno.NotaEtapa1 + aluno.NotaEtapa2;
-      ViewBag.NotaCFP = pNotaCFP;
+      ViewBag.NotaEtapa1 = aluno.NotaEtapa1;
+      ViewBag.NotaEtapa2 = aluno.NotaEtapa2;
 
       var dptos = _dptoPoliciaAppService.GetAll()
        .OrderByDescending(s => s.Vagas);

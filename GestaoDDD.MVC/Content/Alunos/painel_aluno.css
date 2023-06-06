@@ -4,16 +4,26 @@
 
 .bloco-notas {
     display: grid;
-    grid-template-columns: 80px 200px;
-    grid-template-rows: 30px; /* se tiver duas linhas e duas colunas. Esse código fixa o tamanho da primeira linha.*/
-    margin-left: 20px;
+    grid-template-columns: 180px 180px 180px;
+    grid-template-rows: 20px 20px 20px; /* se tiver duas linhas e duas colunas. Esse código fixa o tamanho da primeira linha.*/
+    margin-right: -70px;
+    margin-top: -40px;
+    float: right;
 }
 
 .bloco-nota-cfp {
     display: grid;
     grid-template-columns: 400px;
     grid-template-rows: 40px; /* se tiver duas linhas e duas colunas. Esse código fixa o tamanho da primeira linha.*/
-    margin-left: 20px;
+    margin-right: -400px;
+    margin-top: 10px;
+    float: right;
+}
+
+.titulo-aluno {
+    padding-top: 15px;
+    margin-bottom: 10px;
+    font-size: 25px;
 }
 
 .bloco-coluna {
@@ -33,7 +43,7 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 550px; /* se tiver duas linhas e duas colunas. Esse código fixa o tamanho da primeira linha.*/
     margin: 10px;
-    height: 65vh; /* Define a altura total da tela: ficar a tela cheia é 100vh */
+    height: 75vh; /* Define a altura total da tela: ficar a tela cheia é 100vh */
     margin-top: -10px;
 }
 
@@ -119,3 +129,11 @@
     .table tbody + tbody {
         border-top: 2px solid #dee2e6;
     }
+
+@media (max-width: 480px) {
+    .titulo-aluno {
+        padding-top: 20px;
+        margin-bottom: 45px;
+        font-size: 15px;
+    }
+}
