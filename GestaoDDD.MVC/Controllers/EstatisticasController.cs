@@ -34,6 +34,7 @@ namespace GestaoDDD.MVC.Controllers
 
     public JsonResult PegarDelegaciasPessoas()
     {
+      var dptoAluno = _dptoAlunoAppService.GetAll();
       var dp = new DelegaciasPessoas();
       var lista = dp.Pegar();
       return Json(lista, JsonRequestBehavior.AllowGet);

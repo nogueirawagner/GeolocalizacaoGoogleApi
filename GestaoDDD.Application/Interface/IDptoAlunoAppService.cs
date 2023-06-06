@@ -1,4 +1,5 @@
 ﻿using GestaoDDD.Domain.Entities;
+using GestaoDDD.Domain.TiposPadronizados;
 using System.Collections.Generic;
 
 namespace GestaoDDD.Application.Interface
@@ -8,5 +9,6 @@ namespace GestaoDDD.Application.Interface
     IEnumerable<DepartamentoPolicia> PegaDptosPreferenciaAluno(int pAlunoID);
     bool AlunoJaEscolheuUnidade(int pAlunoID, int pDptoPoliciaID);
     DepartamentoAluno PegarDptoPreferenciaPorAluno(int pAlunoId, int pDptoPoliciaId);
+    IEnumerable<XGraficoDepartamentosAlunos> PegarGraficoDptosAlunos();
   }
 }

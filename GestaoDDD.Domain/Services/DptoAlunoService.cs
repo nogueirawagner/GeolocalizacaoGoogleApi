@@ -1,6 +1,7 @@
 ﻿using GestaoDDD.Domain.Entities;
 using GestaoDDD.Domain.Interfaces.Repositories;
 using GestaoDDD.Domain.Interfaces.Services;
+using GestaoDDD.Domain.TiposPadronizados;
 using System.Collections.Generic;
 
 namespace GestaoDDD.Domain.Services
@@ -29,6 +30,11 @@ namespace GestaoDDD.Domain.Services
     public DepartamentoAluno PegarDptoPreferenciaPorAluno(int pAlunoId, int pDptoPoliciaId)
     {
       return _dptoAlunoRepository.PegarDptoPreferenciaPorAluno(pAlunoId, pDptoPoliciaId);
+    }
+
+    public IEnumerable<XGraficoDepartamentosAlunos> PegarGraficoDptosAlunos()
+    {
+      return _dptoAlunoRepository.PegarGraficoDptosAlunos();
     }
   }
 }
