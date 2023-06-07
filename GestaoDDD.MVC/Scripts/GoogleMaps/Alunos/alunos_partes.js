@@ -27,6 +27,7 @@
 
 
 
+                // novo
                 var totalRows = $("#mytable tr").length - 1;
                 $("#totalRows").text("Total de linhas: " + totalRows);
 
@@ -38,7 +39,25 @@
                     });
                     var filteredRows = $("#mytable tr:visible").length - 1;
                     $("#totalRows").text("Linhas encontradas: " + filteredRows);
+
+                    // Adicionar eventos de clique novamente após cada filtro
+                    var filteredTableRows = document.getElementsByClassName("table-row");
+                    for (var i = 0; i < filteredTableRows.length; i++) {
+                        filteredTableRows[i].addEventListener("click", function () {
+                            var url = this.getAttribute("data-url");
+                            window.location.href = url;
+                        });
+                    }
                 });
+
+
+                var tableRows = document.getElementsByClassName("table-row");
+                for (var i = 0; i < tableRows.length; i++) {
+                    tableRows[i].addEventListener("click", function () {
+                        var url = this.getAttribute("data-url");
+                        window.location.href = url;
+                    });
+                }
 
 
             })
