@@ -27,6 +27,11 @@ namespace GestaoDDD.Domain.Services
       return _dptoAlunoRepository.PegaDptosPreferenciaAluno(pAlunoID);
     }
 
+    public IEnumerable<XDepartamentoPreferenciaAluno> PegarDptoContempladosAluno(int pAlunoId)
+    {
+      return _dptoAlunoRepository.PegarDptoContempladosAluno(pAlunoId);
+    }
+
     public DepartamentoAluno PegarDptoPreferenciaPorAluno(int pAlunoId, int pDptoPoliciaId)
     {
       return _dptoAlunoRepository.PegarDptoPreferenciaPorAluno(pAlunoId, pDptoPoliciaId);
@@ -36,5 +41,6 @@ namespace GestaoDDD.Domain.Services
     {
       return _dptoAlunoRepository.PegarGraficoDptosAlunos();
     }
+
   }
 }

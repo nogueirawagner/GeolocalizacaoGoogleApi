@@ -8,6 +8,43 @@
     })
         .then(response => response.text())
         .then(data => {
+            // iniciar tabela 
+            const parsedData = JSON.parse(data);
+
+            const tableBody = document.getElementById('tabela-dptos-preferencia');
+            tableBody.innerHTML = ""; // Limpa o conteúdo anterior da tabela
+
+            parsedData.forEach(item => {
+                const row = document.createElement('tr');
+
+                const nomeCell = document.createElement('td');
+                nomeCell.textContent = item.Nome;
+                row.appendChild(nomeCell);
+
+                const qtdVagasCell = document.createElement('td');
+                qtdVagasCell.textContent = item.QtdVagas;
+                row.appendChild(qtdVagasCell);
+
+                const contempladaCell = document.createElement('td');
+                contempladaCell.textContent = item.Contemplada;
+                row.appendChild(contempladaCell);
+
+                const excluirCell = document.createElement('td');
+                const excluirLink = document.createElement('a');
+                excluirLink.setAttribute('data-value', item.DepartamentoId);
+                excluirLink.classList.add('excluir-dpto', 'btn', 'btn-remover');
+                excluirLink.innerHTML = '<span class="glyphicon glyphicon-remove"></span>';
+                excluirLink.addEventListener('click', function () {
+                    var dpId = excluirLink.getAttribute("data-value");
+                    ExcluirDptoPreferencia(alunoId, dpId);
+                });
+                excluirCell.appendChild(excluirLink);
+                row.appendChild(excluirCell);
+
+                tableBody.appendChild(row);
+            });
+
+            // fim tabela
             document.getElementById('retornoPreferencias').innerHTML = data;
 
             contarLinhas();

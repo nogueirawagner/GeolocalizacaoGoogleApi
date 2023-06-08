@@ -84,12 +84,10 @@ namespace GestaoDDD.MVC.Controllers
       _alunoAppService.AtualizarNotaCFP(pAlunoId, pNota);
     }
 
-    public ActionResult BuscaDptosPreferenciaAluno(int pAlunoID)
+    public JsonResult BuscaDptosPreferenciaAluno(int pAlunoID)
     {
-      var dptos = _dptoAlunoAppService.PegaDptosPreferenciaAluno(pAlunoID).OrderByDescending(s => s.Vagas);
-      var dptoVm = Mapper.Map<IEnumerable<DepartamentoPolicia>, IEnumerable<DepartamentoPoliciaViewModel>>(dptos);
-
-      return PartialView(dptoVm);
+      var dptoContemplados = _dptoAlunoAppService.PegarDptoContempladosAluno(pAlunoID);
+      return Json(dptoContemplados, JsonRequestBehavior.AllowGet);
     }
 
     public void ExcluirDptoPreferencia(int pAlunoId, int pDptoId)

@@ -31,6 +31,11 @@ namespace GestaoDDD.Application.Services
       return _dptoAlunoService.PegaDptosPreferenciaAluno(pAlunoId);
     }
 
+    public IEnumerable<XDepartamentoPreferenciaAluno> PegarDptoContempladosAluno(int pAlunoId)
+    {
+      return _dptoAlunoService.PegarDptoContempladosAluno(pAlunoId);
+    }
+
     public DepartamentoAluno PegarDptoPreferenciaPorAluno(int pAlunoId, int pDptoPoliciaId)
     {
       return _dptoAlunoService.PegarDptoPreferenciaPorAluno(pAlunoId, pDptoPoliciaId);

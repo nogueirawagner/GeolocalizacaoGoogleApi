@@ -10,5 +10,6 @@ namespace GestaoDDD.Application.Interface
     bool AlunoJaEscolheuUnidade(int pAlunoID, int pDptoPoliciaID);
     DepartamentoAluno PegarDptoPreferenciaPorAluno(int pAlunoId, int pDptoPoliciaId);
     IEnumerable<XGraficoDepartamentosAlunos> PegarGraficoDptosAlunos();
+    IEnumerable<XDepartamentoPreferenciaAluno> PegarDptoContempladosAluno(int pAlunoId);
   }
 }

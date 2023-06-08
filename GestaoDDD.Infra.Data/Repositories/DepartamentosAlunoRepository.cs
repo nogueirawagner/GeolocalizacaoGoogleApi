@@ -3,6 +3,7 @@ using GestaoDDD.Domain.Interfaces.Repositories;
 using GestaoDDD.Domain.TiposPadronizados;
 using GestaoDDD.Infra.Data.Contexto;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 
 
@@ -32,6 +33,40 @@ namespace GestaoDDD.Infra.Data.Repositories
               on da.DptoID equals dp.ID
               where da.AlunoID == pAlunoID
               select dp).ToList();
+    }
+
+    public IEnumerable<XDepartamentoPreferenciaAluno> PegarDptoContempladosAluno(int pAlunoId)
+    {
+      var sql = @"
+        WITH PessoasConcorreramVagas AS (
+        select 
+	        a.ID AlunoId, 
+	        (a.NotaEtapa1 + a.NotaEtapa2) Nota, 
+	        dp.ID DpId,
+	        a.Concorrencia,
+	        SUM(1) over (partition by a.concorrencia, dp.ID order by (a.NotaEtapa1 + a.NotaEtapa2) desc) Posicao
+        from DepartamentoPolicia dp
+	        join DepartamentoAluno da on da.DptoID = dp.ID
+	        join Aluno a on a.ID = da.AlunoID
+        group by a.ID, a.Concorrencia, a.NotaEtapa1, a.NotaEtapa2, dp.ID
+        )
+
+        select 
+	        a.ID AlunoId, 
+	        dp.Vagas QtdVagas,
+          dp.ID DepartamentoId,
+	        dp.Nome Nome,
+	        (case
+		        WHEN dp.Vagas < pcv.Posicao THEN 'Não' ELSE 'Sim'
+	        end) Contemplada
+        from PessoasConcorreramVagas pcv
+	        join Aluno a on a.ID = pcv.AlunoId
+	        join DepartamentoPolicia dp on dp.Id = pcv.DpId
+        where a.ID = {0}";
+
+      sql = string.Format(sql, pAlunoId);
+
+      return _db.Database.SqlQuery<XDepartamentoPreferenciaAluno>(sql);
     }
 
     public DepartamentoAluno PegarDptoPreferenciaPorAluno(int pAlunoId, int pDptoPoliciaId)

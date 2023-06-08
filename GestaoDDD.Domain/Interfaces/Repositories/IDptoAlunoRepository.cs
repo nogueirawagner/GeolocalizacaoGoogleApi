@@ -8,8 +8,8 @@ namespace GestaoDDD.Domain.Interfaces.Repositories
   {
     IEnumerable<DepartamentoPolicia> PegaDptosPreferenciaAluno(int pAlunoId);
     bool AlunoJaEscolheuUnidade(int pAlunoId, int pDptoPoliciaId);
-
     DepartamentoAluno PegarDptoPreferenciaPorAluno(int pAlunoId, int pDptoPoliciaId);
     IEnumerable<XGraficoDepartamentosAlunos> PegarGraficoDptosAlunos();
+    IEnumerable<XDepartamentoPreferenciaAluno> PegarDptoContempladosAluno(int pAlunoId);
   }
 }

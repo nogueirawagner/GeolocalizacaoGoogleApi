@@ -395,7 +395,6 @@
     <Content Include="Views\Aluno\BuscaAlunosFiltro.cshtml" />
     <Content Include="Views\Aluno\BuscaDptosPolicia.cshtml" />
     <Content Include="Views\Aluno\PainelAluno.cshtml" />
-    <Content Include="Views\Aluno\BuscaDptosPreferenciaAluno.cshtml" />
     <Content Include="Views\Estatisticas\EstatisticasDF.cshtml" />
     <Content Include="Views\Estatisticas\Estatisticas.cshtml" />
   </ItemGroup>
