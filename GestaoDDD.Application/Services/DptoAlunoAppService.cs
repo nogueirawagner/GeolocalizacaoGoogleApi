@@ -45,5 +45,10 @@ namespace GestaoDDD.Application.Services
     {
       return _dptoAlunoService.PegarGraficoDptosAlunos();
     }
+
+    public IEnumerable<XPreferenciasRISP> PegarPreferenciaAlunosPorRegioes()
+    {
+      return _dptoAlunoService.PegarPreferenciaAlunosPorRegioes();
+  }
   }
 }

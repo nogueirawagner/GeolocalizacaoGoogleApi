@@ -37,5 +37,11 @@ namespace GestaoDDD.MVC.Controllers
       var grafico = _dptoAlunoAppService.PegarGraficoDptosAlunos();
       return Json(grafico, JsonRequestBehavior.AllowGet);
     }
+
+    public JsonResult PegarPreferenciaAlunosPorRegioes()
+    {
+      var grafico = _dptoAlunoAppService.PegarPreferenciaAlunosPorRegioes();
+      return Json(grafico, JsonRequestBehavior.AllowGet);
+    }
   }
 }

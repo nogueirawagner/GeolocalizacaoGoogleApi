@@ -11,5 +11,6 @@ namespace GestaoDDD.Application.Interface
     DepartamentoAluno PegarDptoPreferenciaPorAluno(int pAlunoId, int pDptoPoliciaId);
     IEnumerable<XGraficoDepartamentosAlunos> PegarGraficoDptosAlunos();
     IEnumerable<XDepartamentoPreferenciaAluno> PegarDptoContempladosAluno(int pAlunoId);
+    IEnumerable<XPreferenciasRISP> PegarPreferenciaAlunosPorRegioes();
   }
 }

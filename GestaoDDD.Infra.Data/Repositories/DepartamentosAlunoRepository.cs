@@ -3,7 +3,6 @@ using GestaoDDD.Domain.Interfaces.Repositories;
 using GestaoDDD.Domain.TiposPadronizados;
 using GestaoDDD.Infra.Data.Contexto;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 
 
@@ -89,9 +88,36 @@ namespace GestaoDDD.Infra.Data.Repositories
                     Nome = g.Key.Nome,
                     Vagas = g.Key.Vagas,
                     Pessoas = g.Count()
-                  }).ToList(); // Convertendo para uma lista IEnumerable
+                  })
+                  .OrderByDescending(s => s.Pessoas)
+                  .ToList(); // Convertendo para uma lista IEnumerable
 
       return resultado;
+    }
+
+    public IEnumerable<XPreferenciasRISP> PegarPreferenciaAlunosPorRegioes()
+    {
+      var sql = @"
+        WITH PessoasRegiao AS (
+	      select 
+		      rs.Nome,
+		      a.Nome NomeAluno
+	      from DepartamentoPolicia dp
+		      join DepartamentoAluno da on da.DptoID = dp.ID
+		      join Aluno a on a.ID = da.AlunoID
+		      join DepartamentoRISP dpr on dpr.DptoId = dp.ID
+		      join RegioesSeguranca rs on rs.ID = dpr.RispId
+	      group by rs.Nome, a.Nome
+      )
+
+      , AgrupandoDados AS (
+				select Nome, COUNT(*) QtdPessoas from PessoasRegiao pr
+				group by Nome
+			)
+			select * from AgrupandoDados order by QtdPessoas desc
+";
+
+      return _db.Database.SqlQuery<XPreferenciasRISP>(sql);
     }
   }
 }
