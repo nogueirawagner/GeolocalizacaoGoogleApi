@@ -107,6 +107,18 @@
     <Compile Include="Migrations\202306060204247_add campo nota final para aluno.Designer.cs">
       <DependentUpon>202306060204247_add campo nota final para aluno.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202306121121415_Add regiões integradas de segurança.cs" />
+    <Compile Include="Migrations\202306121121415_Add regiões integradas de segurança.Designer.cs">
+      <DependentUpon>202306121121415_Add regiões integradas de segurança.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202306121438347_inserindo relacionamento de delegacias e risp.cs" />
+    <Compile Include="Migrations\202306121438347_inserindo relacionamento de delegacias e risp.Designer.cs">
+      <DependentUpon>202306121438347_inserindo relacionamento de delegacias e risp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202306121534035_Adicionando delegacias.cs" />
+    <Compile Include="Migrations\202306121534035_Adicionando delegacias.Designer.cs">
+      <DependentUpon>202306121534035_Adicionando delegacias.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AlunoRepository.cs" />
@@ -168,8 +180,19 @@
     <EmbeddedResource Include="Migrations\202306060204247_add campo nota final para aluno.resx">
       <DependentUpon>202306060204247_add campo nota final para aluno.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306121121415_Add regiões integradas de segurança.resx">
+      <DependentUpon>202306121121415_Add regiões integradas de segurança.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306121438347_inserindo relacionamento de delegacias e risp.resx">
+      <DependentUpon>202306121438347_inserindo relacionamento de delegacias e risp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306121534035_Adicionando delegacias.resx">
+      <DependentUpon>202306121534035_Adicionando delegacias.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Migrations\Files\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

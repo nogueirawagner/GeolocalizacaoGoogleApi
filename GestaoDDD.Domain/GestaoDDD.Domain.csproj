@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\DepartamentoRISP.cs" />
     <Compile Include="Entities\DepartamentoAluno.cs" />
     <Compile Include="Entities\Aluno.cs" />
     <Compile Include="Entities\Candidato.cs" />
@@ -48,6 +49,7 @@
     <Compile Include="Entities\Entidade.cs" />
     <Compile Include="Entities\Identity\Claims.cs" />
     <Compile Include="Entities\Identity\Client.cs" />
+    <Compile Include="Entities\RegioesSeguranca.cs" />
     <Compile Include="Interfaces\Repositories\IDptoAlunoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IAlunoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IDptoPoliciaRepository.cs" />
