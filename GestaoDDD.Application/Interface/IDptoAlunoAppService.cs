@@ -1,5 +1,5 @@
 ﻿using GestaoDDD.Domain.Entities;
-using GestaoDDD.Domain.TiposPadronizados;
+using GestaoDDD.Domain.Estatics.TypesPatterns;
 using System.Collections.Generic;
 
 namespace GestaoDDD.Application.Interface

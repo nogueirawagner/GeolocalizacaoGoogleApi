@@ -1,6 +1,6 @@
 ﻿using GestaoDDD.Domain.Entities;
+using GestaoDDD.Domain.Estatics.TypesPatterns;
 using GestaoDDD.Domain.Interfaces.Repositories;
-using GestaoDDD.Domain.TiposPadronizados;
 using GestaoDDD.Infra.Data.Contexto;
 using System.Collections.Generic;
 using System.Linq;

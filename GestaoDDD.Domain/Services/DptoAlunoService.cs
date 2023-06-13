@@ -1,7 +1,7 @@
 ﻿using GestaoDDD.Domain.Entities;
+using GestaoDDD.Domain.Estatics.TypesPatterns;
 using GestaoDDD.Domain.Interfaces.Repositories;
 using GestaoDDD.Domain.Interfaces.Services;
-using GestaoDDD.Domain.TiposPadronizados;
 using System.Collections.Generic;
 
 namespace GestaoDDD.Domain.Services

@@ -1,4 +1,4 @@
-﻿namespace GestaoDDD.Domain.TiposPadronizados
+﻿namespace GestaoDDD.Domain.Estatics.TypesPatterns
 {
   public class XGraficoDepartamentosAlunos
   {
