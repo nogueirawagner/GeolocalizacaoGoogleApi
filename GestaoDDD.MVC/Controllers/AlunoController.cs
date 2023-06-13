@@ -2,6 +2,7 @@
 using GestaoDDD.Application.Interface;
 using GestaoDDD.Application.ViewModels;
 using GestaoDDD.Domain.Entities;
+using GestaoDDD.Domain.Estatics;
 using GestaoDDD.Domain.Interfaces.Services;
 using System;
 using System.Collections.Generic;
@@ -29,29 +30,46 @@ namespace GestaoDDD.MVC.Controllers
 
     public ActionResult BuscarAlunos()
     {
-      var alunos = _alunoAppService.GetAll().Where(s => s.Concorrencia == "Ampla")
-        .OrderByDescending(s => s.NotaFinal);
-      int i = 1;
-      var alunosVm = Mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoViewModel>>(alunos).ToList();
-      alunosVm.ForEach(s =>
+      var key = string.Concat("AlunosConcorrencia-", "Ampla");
+
+      if (XAppCache.Has(key))
+        return XAppCache.Get<ActionResult>(key);
+      else
+      {
+        var alunos = _alunoAppService.GetAll().Where(s => s.Concorrencia == "Ampla")
+          .OrderByDescending(s => s.NotaFinal);
+        int i = 1;
+        var alunosVm = Mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoViewModel>>(alunos).ToList();
+        alunosVm.ForEach(s =>
         {
           s.Posicao = i++;
         });
-      return View(alunosVm);
+
+        return XAppCache.Set(key, View(alunosVm));
+      }
     }
 
     public ActionResult BuscaAlunosFiltro(string pFiltro)
     {
-      var alunos = _alunoAppService.GetAll().Where(s => s.Concorrencia == pFiltro)
-        .OrderByDescending(s => s.NotaFinal);
-      int i = 1;
-      var alunosVm = Mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoViewModel>>(alunos).ToList();
-      alunosVm.ForEach(s =>
-      {
-        s.Posicao = i++;
-      });
+      var key = string.Concat("AlunosConcorrencia-Partial-", pFiltro);
 
-      return PartialView(alunosVm);
+      if (XAppCache.Has(key))
+      {
+        return XAppCache.Get<ActionResult>(key);
+      }
+      else
+      {
+        var alunos = _alunoAppService.GetAll().Where(s => s.Concorrencia == pFiltro)
+        .OrderByDescending(s => s.NotaFinal);
+        int i = 1;
+        var alunosVm = Mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoViewModel>>(alunos).ToList();
+        alunosVm.ForEach(s =>
+        {
+          s.Posicao = i++;
+        });
+
+        return XAppCache.Set(key, PartialView(alunosVm));
+      }
     }
 
     public ActionResult PainelAluno(int pAlunoId)
