@@ -2,6 +2,7 @@
 using GestaoDDD.Application.Interface;
 using GestaoDDD.Application.ViewModels;
 using GestaoDDD.Domain.Entities;
+using GestaoDDD.Domain.Estatics;
 using GestaoDDD.Domain.Interfaces.Services;
 using System;
 using System.Collections.Generic;
@@ -50,7 +51,7 @@ namespace GestaoDDD.MVC.Controllers
         return View();
       }
     }
-    
+
     public ActionResult BuscaDelegaciasProximas(string Latitude, string Longitude, string Endereco, int Id, string Nome)
     {
       ViewBag.Latitude = null;
@@ -64,40 +65,68 @@ namespace GestaoDDD.MVC.Controllers
         ViewBag.Id = Id;
         ViewBag.Nome = Nome;
 
-        var dptos = _dptoPoliciaApp.BuscaDelegaciasProximas(Latitude, Longitude)
-          .Where(s => s.ID != Id)
-          .OrderByDescending(s => s.Vagas);
-          
-        var dptoVM = Mapper.Map<IEnumerable<DepartamentoPolicia>, IEnumerable<DepartamentoPoliciaViewModel>>(dptos);
-        return View(dptoVM);
+        var key = string.Concat("BuscaDelegaciasProximas-", Id, Latitude, Longitude);
+        if (XAppCache.Has(key))
+          return XAppCache.Get<ActionResult>(key);
+        else
+        {
+          var dptos = _dptoPoliciaApp.BuscaDelegaciasProximas(Latitude, Longitude)
+            .Where(s => s.ID != Id)
+            .OrderByDescending(s => s.Vagas);
+
+          var dptoVM = Mapper.Map<IEnumerable<DepartamentoPolicia>, IEnumerable<DepartamentoPoliciaViewModel>>(dptos);
+          return XAppCache.Set(key, View(dptoVM));
+        }
       }
       else
       {
-        var dptos = _dptoPoliciaApp.GetAll();
-        var dptoVM = Mapper.Map<IEnumerable<DepartamentoPolicia>, IEnumerable<DepartamentoPoliciaViewModel>>(dptos);
-        return View(dptoVM);
+        return BuscaDelegacias();
       }
     }
 
     public ActionResult BuscaDelegacias()
     {
-      var dptos = _dptoPoliciaApp.GetAll()
-        .OrderByDescending(s => s.Vagas);
-      var dptoVm = Mapper.Map<IEnumerable<DepartamentoPolicia>, IEnumerable<DepartamentoPoliciaViewModel>>(dptos);
-      return View(dptoVm);
+      var key = "BuscaDelegacias";
+      if (XAppCache.Has(key))
+        return XAppCache.Get<ActionResult>(key);
+      else
+      {
+        var dptos = _dptoPoliciaApp.GetAll()
+          .OrderByDescending(s => s.Vagas);
+        var dptoVm = Mapper.Map<IEnumerable<DepartamentoPolicia>, IEnumerable<DepartamentoPoliciaViewModel>>(dptos);
+
+        return XAppCache.Set(key, View(dptoVm));
+      }
     }
 
     public JsonResult BuscaDelegaciasJson(string Latitude, string Longitude)
     {
       if (string.IsNullOrEmpty(Latitude) && string.IsNullOrEmpty(Longitude))
       {
-        var retorno = _dptoPoliciaApp.GetAll().OrderByDescending(s => s.Vagas);
-        return Json(retorno, JsonRequestBehavior.AllowGet);
+        var key = "BuscaDelegaciasJson";
+        if (XAppCache.Has(key))
+          return XAppCache.Get<JsonResult>(key);
+        else
+        {
+          var retorno = _dptoPoliciaApp.GetAll().OrderByDescending(s => s.Vagas);
+          var json = Json(retorno, JsonRequestBehavior.AllowGet);
+
+          return XAppCache.Set(key, json);
+        }
       }
       else
       {
-        var retorno = _dptoPoliciaApp.CalculaDistancia(Latitude, Longitude).OrderByDescending(s => s.Vagas);
-        return Json(retorno, JsonRequestBehavior.AllowGet);
+        var key = string.Concat("BuscaDelegaciasJson", Latitude, Longitude);
+
+        if (XAppCache.Has(key))
+          return XAppCache.Get<JsonResult>(key);
+        else
+        {
+          var retorno = _dptoPoliciaApp.CalculaDistancia(Latitude, Longitude).OrderByDescending(s => s.Vagas);
+          var json = Json(retorno, JsonRequestBehavior.AllowGet);
+
+          return XAppCache.Set(key, json);
+        }
       }
     }
 
@@ -105,14 +134,31 @@ namespace GestaoDDD.MVC.Controllers
     {
       if (string.IsNullOrEmpty(Latitude) && string.IsNullOrEmpty(Longitude))
       {
-        var retorno = _dptoPoliciaApp.GetAll();
-        return Json(retorno, JsonRequestBehavior.AllowGet);
+        var key = "BuscaDelegaciasJson";
+        if (XAppCache.Has(key))
+          return XAppCache.Get<JsonResult>(key);
+        else
+        {
+          var retorno = _dptoPoliciaApp.GetAll().OrderByDescending(s => s.Vagas);
+          var json = Json(retorno, JsonRequestBehavior.AllowGet);
+
+          return XAppCache.Set(key, json);
+        }
       }
       else
       {
-        var retorno = _dptoPoliciaApp.BuscaDelegaciasProximas(Latitude, Longitude)
-          .Where(s => s.ID != Id);
-        return Json(retorno, JsonRequestBehavior.AllowGet);
+        var key = string.Concat("BuscaDelegaciasProximasJson-", Id, Latitude, Longitude);
+        if (XAppCache.Has(key))
+          return XAppCache.Get<JsonResult>(key);
+        else
+        {
+          var dptos = _dptoPoliciaApp.BuscaDelegaciasProximas(Latitude, Longitude)
+            .Where(s => s.ID != Id)
+            .OrderByDescending(s => s.Vagas);
+
+          var json = Json(dptos, JsonRequestBehavior.AllowGet);
+          return XAppCache.Set(key, json);
+        }
       }
     }
   }
