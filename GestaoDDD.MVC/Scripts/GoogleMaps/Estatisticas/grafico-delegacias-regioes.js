@@ -26,8 +26,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 var options = {
                     chart: {
-                        title: 'Regiões mais procuradas pelos alunos para trabalhar',
-                        subtitle: 'Para cada região é exibida a qtd de pessoas que tem interesse, e também a qtd de unidades escolhidas naquela região',
+                        title: '',
+                        subtitle: '',
+                        
                     }
                 };
 

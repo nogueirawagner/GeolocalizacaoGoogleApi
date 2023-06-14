@@ -34,7 +34,7 @@ namespace GestaoDDD.MVC
       routes.MapRoute(
                name: "Estatisticas",
                url: "{controller}/{action}/{id}",
-               defaults: new { controller = "Estatisticas", action = "Estatisticas", id = UrlParameter.Optional }
+               defaults: new { controller = "Estatisticas", action = "EstatisticasDF", id = UrlParameter.Optional }
            );
 
 

@@ -355,7 +355,6 @@
     <Content Include="Scripts\GoogleMaps\Delegacias\mapa_delegacias_proximas.js" />
     <Content Include="Scripts\GoogleMaps\Delegacias\mapa_editar_candidato.js" />
     <Content Include="Scripts\GoogleMaps\Delegacias\mapa_todos_delegacias.js" />
-    <Content Include="Scripts\GoogleMaps\Estatisticas\estatisticas.js" />
     <Content Include="Scripts\GoogleMaps\Estatisticas\grafico-delegacias-regioes.js" />
     <Content Include="Scripts\GoogleMaps\Estatisticas\grafico-delegacias.js" />
     <Content Include="Scripts\GoogleMaps\Estatisticas\grafico-df.js" />
@@ -397,7 +396,6 @@
     <Content Include="Views\Aluno\BuscaDptosPolicia.cshtml" />
     <Content Include="Views\Aluno\PainelAluno.cshtml" />
     <Content Include="Views\Estatisticas\EstatisticasDF.cshtml" />
-    <Content Include="Views\Estatisticas\Estatisticas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

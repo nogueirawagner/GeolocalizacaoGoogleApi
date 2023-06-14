@@ -1,47 +1,42 @@
 ﻿using GestaoDDD.Application.Interface;
-using System;
-using System.Collections.Generic;
-using System.Web.Http;
+using GestaoDDD.Domain.Estatics;
 using System.Web.Mvc;
 
 namespace GestaoDDD.MVC.Controllers
 {
   public class EstatisticasController : Controller
   {
-    private readonly IDptoPoliciaAppService _dptoPoliciaAppService;
-    private readonly IAlunoAppService _alunoAppService;
     private readonly IDptoAlunoAppService _dptoAlunoAppService;
 
-    public EstatisticasController(IDptoPoliciaAppService dptoPoliciaAppService,
-      IAlunoAppService alunoAppService,
-      IDptoAlunoAppService dptoAlunoAppService
-      )
+    public EstatisticasController(IDptoAlunoAppService dptoAlunoAppService)
     {
-      _dptoPoliciaAppService = dptoPoliciaAppService;
-      _alunoAppService = alunoAppService;
       _dptoAlunoAppService = dptoAlunoAppService;
-    }
-
-    public ActionResult Estatisticas()
-    {
-      return View();
     }
 
     public ActionResult EstatisticasDF()
     {
-      return PartialView();
+      return View();
     }
 
     public JsonResult PegarDelegaciasPessoas()
     {
-      var grafico = _dptoAlunoAppService.PegarGraficoDptosAlunos();
-      return Json(grafico, JsonRequestBehavior.AllowGet);
+      var key = "PegarDelegaciasPessoas";
+      if (XAppCache.Has(key))
+        return XAppCache.Get<JsonResult>(key);
+      else
+      {
+        var grafico = _dptoAlunoAppService.PegarGraficoDptosAlunos();
+        var json = Json(grafico, JsonRequestBehavior.AllowGet);
+
+        return XAppCache.Set(key, json);
+      }
     }
 
     public JsonResult PegarPreferenciaAlunosPorRegioes()
     {
       var grafico = _dptoAlunoAppService.PegarPreferenciaAlunosPorRegioes();
-      return Json(grafico, JsonRequestBehavior.AllowGet);
+      var json = Json(grafico, JsonRequestBehavior.AllowGet);
+      return json;
     }
   }
 }

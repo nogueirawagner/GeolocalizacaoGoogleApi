@@ -1,4 +1,8 @@
-﻿<html>
+﻿@{
+    Layout = "~/Views/Shared/_CFP.cshtml";
+}
+
+<html>
 <head>
     <link href="~/Content/Estatisticas/graficos-df.css" rel="stylesheet" />
     <script src="~/Scripts/GoogleMaps/Estatisticas/grafico-df.js"></script>
@@ -60,10 +64,10 @@
         <label class="label-titulo">QUANTATIVO DE VAGAS E ESCOLHAS POR ALUNOS</label>
         <div id="columnchart_material" style="height: 500px;"></div>
     </div>
-    <br/>
+    <br />
     <div class="grafico-linha">
         <label class="label-titulo">QUANTATIVO DE VAGAS POR REGIÕES INTEGRADAS DE SEGURANÇA PÚBLICA</label>
-        <div id="columnchart_material_regioes" style="height: 500px;"></div>
+        <div id="columnchart_material_regioes" style="height: 500px; width: 700px;"></div>
     </div>
 </body>
 </html>

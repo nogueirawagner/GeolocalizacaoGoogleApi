@@ -122,7 +122,7 @@ namespace GestaoDDD.Infra.Data.Migrations
         . SAAEI (SERVIÇO DE APOIO ADMINISTRATIVO, ESTATÍSTICA E INFORMÁTICA) - 3207-7452
         . POSTO DE IDENTIFICAÇÃO BIOMÉTRICA Nº 04 - 3207-8422', 0, N'-15.6510655', N'-47.7900594')
         GO
-        INSERT [dbo].[DepartamentoPolicia] ([ID], [EhSede], [Nome], [AreaAtuacao], [Endereco], [Descricao], [Vagas], [Latitude], [Longitude]) VALUES (21, N'Não', N'31ª DP', NULL, N'0 - St. Res. Leste | Buritís IV - St. Res. Leste (Plana, Brasília - DF, 73357-000, Brasil', N'Telefones
+        INSERT [dbo].[DepartamentoPolicia] ([ID], [EhSede], [Nome], [AreaAtuacao], [Endereco], [Descricao], [Vagas], [Latitude], [Longitude]) VALUES (21, N'Não', N'31ª DP', NULL, N'0 - St. Res. Leste | Buritís IV - St. Res. Leste, Planaltina, Brasília - DF, 73357-000, Brasil', N'Telefones
         PLANTÃO - 3207-8411
         PLANTÃO - 3207-8433
         PLANTÃO - 3207-8465
