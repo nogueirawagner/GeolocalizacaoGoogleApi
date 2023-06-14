@@ -1,17 +1,5 @@
 ﻿$(document).ready(function () {
 
-    //var select = document.getElementById("estatisticas");
-
-    //select.addEventListener("change", function () {
-    //    var selectedValue = select.value;
-
-    //    // Verifica se alguma opção foi selecionada
-    //    if (selectedValue !== "") {
-    //        if (selectedValue == "DF")
-    //            PegarEstatisticasDF(selectedValue);
-    //        else
-    //            PegarEstatisticasDelegacias(selectedValue);
-    //    }
     });
 
     function PegarEstatisticasDF() {
