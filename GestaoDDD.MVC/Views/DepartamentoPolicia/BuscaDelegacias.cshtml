@@ -45,8 +45,8 @@
                         <tr>
                             <th>Nome</th>
                             <th>CEFLAG</th>
-                            @*<th class="col-descricao">Descrição</th>*@
-                            <th>Endereço</th>
+                            <th class="col-descricao">Endereco</th>
+                            <th>RA</th>
                             <th>Áreas da CEFLAG</th>
                             <th>DPs Próximas</th>
                         </tr>
@@ -61,9 +61,9 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.EhSede)
                             </td>
-                            @*<td>
-                                @Html.DisplayFor(modelItem => item.Descricao)
-                            </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Endereco)
+                            </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Bairro)
                             </td>
