@@ -17,5 +17,6 @@ namespace GestaoDDD.Application.ViewModels
     public int Vagas { get; set; }
     public string Contemplada { get; set; }
     public string DistanciaColega { get; set; }
+    public string Bairro { get; set; }
   }
 }

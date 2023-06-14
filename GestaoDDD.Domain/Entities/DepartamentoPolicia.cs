@@ -18,6 +18,7 @@ namespace GestaoDDD.Domain.Entities
     public string Longitude { get; set; }
     public string Descricao { get; set; }
     public int Vagas { get; set; }
+    public string Bairro { get; set; }
 
     [NotMapped]
     public string DistanciaColega { get; set; }
