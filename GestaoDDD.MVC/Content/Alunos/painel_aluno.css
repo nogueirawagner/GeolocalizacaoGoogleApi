@@ -136,4 +136,20 @@
         margin-bottom: 45px;
         font-size: 15px;
     }
+
+    .bloco-notas {
+        display: none;
+    }
+
+    .bloco-nota-cfp {
+        float: left;
+        margin-left: 20px;
+        margin-top: -25px;
+    }
+
+    .container-painel {
+        height: 75vh; 
+        margin-top: -30px;
+    }
+
 }

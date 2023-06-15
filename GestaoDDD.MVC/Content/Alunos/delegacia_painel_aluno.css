@@ -49,4 +49,9 @@
         margin-left: -20px;
         margin-bottom: 25px;
     }
+
+    .half {
+        height: 75vh;
+        margin: -10px;
+    }
 }
