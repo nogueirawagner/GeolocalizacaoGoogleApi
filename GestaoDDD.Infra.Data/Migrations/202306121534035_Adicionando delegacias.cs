@@ -7,6 +7,8 @@ namespace GestaoDDD.Infra.Data.Migrations
   {
     public override void Up()
     {
+      Sql("delete from DepartamentoPolicia");
+
       Sql(@"
         USE [GestaoDados]
         GO
