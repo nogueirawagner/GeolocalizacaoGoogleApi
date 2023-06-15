@@ -8,7 +8,7 @@ namespace GestaoDDD.Infra.Data.Migrations
     public override void Up()
     {
       Sql(@"
-        USE [GestaoDados]
+        USE [GestaoCFP]
         GO
         SET IDENTITY_INSERT [dbo].[RegioesSeguranca] ON 
         GO

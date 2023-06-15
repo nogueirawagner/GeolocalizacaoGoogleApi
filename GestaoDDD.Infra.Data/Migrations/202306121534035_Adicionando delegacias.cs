@@ -7,10 +7,8 @@ namespace GestaoDDD.Infra.Data.Migrations
   {
     public override void Up()
     {
-      Sql("delete from DepartamentoPolicia");
-
       Sql(@"
-        USE [GestaoDados]
+        USE [GestaoCFP]
         GO
         SET IDENTITY_INSERT [dbo].[DepartamentoPolicia] ON 
         GO

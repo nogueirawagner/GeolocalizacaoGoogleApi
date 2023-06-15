@@ -9,7 +9,7 @@ namespace GestaoDDD.Infra.Data.Migrations
     {
       Sql(@"
 
-        USE [GestaoDados]
+        USE [GestaoCFP]
         GO
         SET IDENTITY_INSERT [dbo].[Aluno] ON 
         GO
