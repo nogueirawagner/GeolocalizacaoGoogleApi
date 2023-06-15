@@ -127,6 +127,10 @@
     <Compile Include="Migrations\202306142120139_Adicionando valores em bairros.Designer.cs">
       <DependentUpon>202306142120139_Adicionando valores em bairros.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202306151725490_Adicionar alunos.cs" />
+    <Compile Include="Migrations\202306151725490_Adicionar alunos.Designer.cs">
+      <DependentUpon>202306151725490_Adicionar alunos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AlunoRepository.cs" />
@@ -202,6 +206,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202306142120139_Adicionando valores em bairros.resx">
       <DependentUpon>202306142120139_Adicionando valores em bairros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306151725490_Adicionar alunos.resx">
+      <DependentUpon>202306151725490_Adicionar alunos.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

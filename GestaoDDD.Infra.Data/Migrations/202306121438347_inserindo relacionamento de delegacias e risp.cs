@@ -7,6 +7,23 @@ namespace GestaoDDD.Infra.Data.Migrations
   {
     public override void Up()
     {
+      Sql(@"
+        USE [GestaoDados]
+        GO
+        SET IDENTITY_INSERT [dbo].[RegioesSeguranca] ON 
+        GO
+        INSERT [dbo].[RegioesSeguranca] ([ID], [Nome]) VALUES (1, N'Metropolitana')
+        GO
+        INSERT [dbo].[RegioesSeguranca] ([ID], [Nome]) VALUES (2, N'Sul')
+        GO
+        INSERT [dbo].[RegioesSeguranca] ([ID], [Nome]) VALUES (3, N'Leste')
+        GO
+        INSERT [dbo].[RegioesSeguranca] ([ID], [Nome]) VALUES (4, N'Oeste')
+        GO
+        SET IDENTITY_INSERT [dbo].[RegioesSeguranca] OFF
+        GO");
+
+
       Sql("insert into DepartamentoRISP(DptoId, RispId) values(2, 1)");
       Sql("insert into DepartamentoRISP(DptoId, RispId) values(5, 1)");
       Sql("insert into DepartamentoRISP(DptoId, RispId) values(6, 1)");
