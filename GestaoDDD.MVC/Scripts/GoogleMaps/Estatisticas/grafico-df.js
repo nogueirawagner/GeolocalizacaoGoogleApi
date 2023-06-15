@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
             ['C.V.L.I', 28],
             ['C.C.P', 6674],
             ['Outros Crimes', 1089],
-            ['Prod. Policial', 1961]
+            ['Produtividade Policial', 1961]
         ]);
 
         /* Sul */
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
             ['C.V.L.I', 63],
             ['C.C.P', 4471],
             ['Outros Crimes', 551],
-            ['Prod. Policial', 1840]
+            ['Produtividade Policial', 1840]
         ]);
 
         /* Leste */
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
             ['C.V.L.I', 85],
             ['C.C.P', 3977],
             ['Outros Crimes', 733],
-            ['Prod. Policial', 2166]
+            ['Produtividade Policial', 2166]
         ]);
 
         /* Oeste */
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
             ['C.V.L.I', 109],
             ['C.C.P', 12442],
             ['Outros Crimes', 1484],
-            ['Prod. Policial', 4710]
+            ['Produtividade Policial', 4710]
         ]);
 
         /* setando dados */

@@ -7,11 +7,6 @@ namespace GestaoDDD.Infra.Data.Migrations
   {
     public override void Up()
     {
-
-    }
-
-    public override void Down()
-    {
       Sql(@"
         USE [GestaoDados]
         GO
@@ -201,6 +196,11 @@ namespace GestaoDDD.Infra.Data.Migrations
         SET IDENTITY_INSERT [dbo].[DepartamentoPolicia] OFF
         GO
         ");
+    }
+
+    public override void Down()
+    {
+      
     }
   }
 }
