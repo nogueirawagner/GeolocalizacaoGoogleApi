@@ -355,6 +355,7 @@
     <Content Include="Scripts\GoogleMaps\Delegacias\mapa_delegacias_proximas.js" />
     <Content Include="Scripts\GoogleMaps\Delegacias\mapa_editar_candidato.js" />
     <Content Include="Scripts\GoogleMaps\Delegacias\mapa_todos_delegacias.js" />
+    <Content Include="Scripts\GoogleMaps\Estatisticas\grafico-delegacias-bairros.js" />
     <Content Include="Scripts\GoogleMaps\Estatisticas\grafico-delegacias-regioes.js" />
     <Content Include="Scripts\GoogleMaps\Estatisticas\grafico-delegacias.js" />
     <Content Include="Scripts\GoogleMaps\Estatisticas\grafico-df.js" />

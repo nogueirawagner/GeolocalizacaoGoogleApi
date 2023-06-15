@@ -12,5 +12,6 @@ namespace GestaoDDD.Domain.Interfaces.Services
     IEnumerable<XGraficoDepartamentosAlunos> PegarGraficoDptosAlunos();
     IEnumerable<XDepartamentoPreferenciaAluno> PegarDptoContempladosAluno(int pAlunoId);
     IEnumerable<XPreferenciasRISP> PegarPreferenciaAlunosPorRegioes();
+    IEnumerable<XPreferenciasBairro> PegarPreferenciaAlunosPorBairros();
   }
 }

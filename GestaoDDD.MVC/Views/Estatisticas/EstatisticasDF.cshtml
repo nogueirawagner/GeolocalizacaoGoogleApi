@@ -8,6 +8,7 @@
     <script src="~/Scripts/GoogleMaps/Estatisticas/grafico-df.js"></script>
     <script src="~/Scripts/GoogleMaps/Estatisticas/grafico-delegacias.js"></script>
     <script src="~/Scripts/GoogleMaps/Estatisticas/grafico-delegacias-regioes.js"></script>
+    <script src="~/Scripts/GoogleMaps/Estatisticas/grafico-delegacias-bairros.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 <body>
@@ -59,6 +60,10 @@
                 Planaltina, Lago Norte, Varjão, Paranoá, Itapoã, São Sebastião, Fercal, Jardim Botânico, Sobradinho I e II
             </p>
         </div>
+        <div class="half-df">
+            <label class="label-titulo">ESCOLHAS DE VAGAS POR RISP</label>
+            <div id="columnchart_material_regioes"></div>
+        </div>
     </div>
     <div class="grafico-linha">
         <label class="label-titulo">QUANTATIVO DE VAGAS E ESCOLHAS POR ALUNOS</label>
@@ -66,8 +71,8 @@
     </div>
     <br />
     <div class="grafico-linha">
-        <label class="label-titulo">QUANTATIVO DE VAGAS POR REGIÕES INTEGRADAS DE SEGURANÇA PÚBLICA</label>
-        <div id="columnchart_material_regioes" style="height: 500px; width: 700px;"></div>
+        <label class="label-titulo">QUANTATIVO DE VAGAS POR REGIÕES ADMINISTRATIVAS</label>
+        <div id="columnchart_material_bairros" style="height: 500px;"></div>
     </div>
 </body>
 </html>

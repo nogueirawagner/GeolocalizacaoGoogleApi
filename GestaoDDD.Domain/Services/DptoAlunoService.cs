@@ -46,5 +46,10 @@ namespace GestaoDDD.Domain.Services
     {
       return _dptoAlunoRepository.PegarPreferenciaAlunosPorRegioes();
     }
+
+    public IEnumerable<XPreferenciasBairro> PegarPreferenciaAlunosPorBairros()
+    {
+      return _dptoAlunoRepository.PegarPreferenciaAlunosPorBairros();
+    }
   }
 }

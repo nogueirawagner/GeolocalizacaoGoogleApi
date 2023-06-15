@@ -51,6 +51,7 @@
     <Compile Include="Entities\Identity\Claims.cs" />
     <Compile Include="Entities\Identity\Client.cs" />
     <Compile Include="Entities\RegioesSeguranca.cs" />
+    <Compile Include="Estatics\TypesPatterns\XDepartamentoPreferenciaAluno.cs" />
     <Compile Include="Estatics\XAppCache.cs" />
     <Compile Include="Interfaces\Repositories\IDptoAlunoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IAlunoRepository.cs" />
@@ -68,7 +69,7 @@
     <Compile Include="Services\CandidatoService.cs" />
     <Compile Include="Services\ServiceBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Estatics\TypesPatterns\XDepartamentoPreferenciaAluno.cs" />
+    <Compile Include="Estatics\TypesPatterns\XPreferenciasBairro.cs" />
     <Compile Include="Estatics\TypesPatterns\XGraficoDepartamentosAlunos.cs" />
     <Compile Include="Estatics\TypesPatterns\XPreferenciasRISP.cs" />
   </ItemGroup>

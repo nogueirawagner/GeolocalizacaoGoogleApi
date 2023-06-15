@@ -119,5 +119,39 @@ namespace GestaoDDD.Infra.Data.Repositories
 
       return _db.Database.SqlQuery<XPreferenciasRISP>(sql);
     }
+
+    public IEnumerable<XPreferenciasBairro> PegarPreferenciaAlunosPorBairros()
+    {
+      var sql = @"
+       WITH PreferenciasPorBairros AS (
+        select 
+	        dp.Bairro,
+	        dp.Vagas,
+	        a.Nome
+        from DepartamentoPolicia dp
+	        join DepartamentoAluno da on da.DptoID = dp.ID
+	        join Aluno a on a.ID = da.AlunoID
+        )
+
+        , PessoasBairros AS (
+        select Bairro, Vagas, Nome from PreferenciasPorBairros
+        group by Bairro, Vagas, Nome 
+        )
+
+        select
+          (CASE
+		        when CHARINDEX('Nucleo Bandeirante', Bairro) <> 0 then 'N. Bandeirante' 
+		        when CHARINDEX('Recanto das Emas', Bairro) <> 0 then 'R. Emas' 
+		        else 
+		        Bairro
+	        END) Bairro,
+	        COUNT(*) QtdPessoas 
+        from PessoasBairros
+        group by Bairro
+        order by QtdPessoas desc
+";
+
+      return _db.Database.SqlQuery<XPreferenciasBairro>(sql);
+    }
   }
 }

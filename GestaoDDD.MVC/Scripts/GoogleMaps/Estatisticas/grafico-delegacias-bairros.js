@@ -1,12 +1,10 @@
 ﻿// Use o evento 'DOMContentLoaded' para aguardar o carregamento completo do documento
-
-
 document.addEventListener("DOMContentLoaded", function () {
     google.charts.load('current', { 'packages': ['bar'] });
     google.charts.setOnLoadCallback(draw_servico);
 
     function draw_servico() {
-        fetch('/Estatisticas/PegarDelegaciasPessoas', {
+        fetch('/Estatisticas/PegarPreferenciaAlunosPorBairros', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -19,22 +17,22 @@ document.addEventListener("DOMContentLoaded", function () {
                 var jsonData = JSON.parse(data);
 
                 var dataTable = new google.visualization.DataTable();
-                dataTable.addColumn('string', 'Delegacias');
-                dataTable.addColumn('number', 'Qtd Vagas');
-                dataTable.addColumn('number', 'Qtd Pessoas');
+                dataTable.addColumn('string', 'Escolha de delegacias por bairros');
+                dataTable.addColumn('number', 'Qtd pessoas');
 
                 jsonData.forEach(function (item) {
-                    dataTable.addRow([item.Nome, item.Vagas, item.Pessoas]);
+                    dataTable.addRow([item.Bairro, item.QtdPessoas]);
                 });
 
                 var options = {
                     chart: {
-                        title: 'Delegacias mais procuradas durante o CFP.',
-                        subtitle: 'Qtd de vagas (Vagas) x Qtd de pessoas (Pessoas) que desejam trabalhar nessa unidade',
+                        title: '',
+                        subtitle: '',
+                        
                     }
                 };
 
-                var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+                var chart = new google.charts.Bar(document.getElementById('columnchart_material_bairros'));
                 chart.draw(dataTable, google.charts.Bar.convertOptions(options));
 
             })
