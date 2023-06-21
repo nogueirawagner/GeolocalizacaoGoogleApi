@@ -72,6 +72,25 @@ namespace GestaoDDD.MVC.Controllers
       }
     }
 
+    public JsonResult PesquisarAlunosPorPalavras(string pTermo, string pConcorrencia)
+    {
+      var p_1 = "wagn";
+      var p_2 = "wagner a";
+      var p_3 = "alves nogueira";
+      var p_4 = "wagner nogueira";
+
+      pTermo = p_3;
+
+      var espaco_branco = pTermo.Contains(" ");
+
+      var lista = new List<string>();
+      var cond = XFullText.MontarCondicao(pTermo, "Nome", out lista);
+
+
+
+      return null;
+    }
+
     public ActionResult PainelAluno(int pAlunoId)
     {
       var aluno = _alunoAppService.GetById(pAlunoId);

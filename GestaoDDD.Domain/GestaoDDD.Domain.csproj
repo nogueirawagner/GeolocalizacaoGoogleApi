@@ -53,6 +53,7 @@
     <Compile Include="Entities\RegioesSeguranca.cs" />
     <Compile Include="Estatics\TypesPatterns\XDepartamentoPreferenciaAluno.cs" />
     <Compile Include="Estatics\XAppCache.cs" />
+    <Compile Include="Estatics\XFullText.cs" />
     <Compile Include="Interfaces\Repositories\IDptoAlunoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IAlunoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IDptoPoliciaRepository.cs" />

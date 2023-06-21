@@ -25,8 +25,6 @@
             .then(data => {
                 document.getElementById('retornoPesquisa').innerHTML = data;
 
-
-
                 // novo
                 var totalRows = $("#mytable tr").length - 1;
                 $("#totalRows").text("Total de linhas: " + totalRows);
@@ -39,6 +37,13 @@
                     });
                     var filteredRows = $("#mytable tr:visible").length - 1;
                     $("#totalRows").text("Linhas encontradas: " + filteredRows);
+
+                    // Verificar se a palavra digitada é múltipla de 4
+                    if (value.length > 0 && value.length % 4 === 0) {
+                        // Chamar o serviço aqui
+                        PesquisarAlunosPorPalavras(value);
+                    }
+
 
                     // Adicionar eventos de clique novamente após cada filtro
                     var filteredTableRows = document.getElementsByClassName("table-row");
