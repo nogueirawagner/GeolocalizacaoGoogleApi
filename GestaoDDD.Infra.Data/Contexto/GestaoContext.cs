@@ -8,7 +8,7 @@ namespace GestaoDDD.Infra.Data.Contexto
   public class GestaoContext : DbContext, IGestaoContext
   {
     public GestaoContext()
-        : base("ConnectionProduction")
+        : base(PegarDatabase())
     {
       Configuration.ProxyCreationEnabled = false;
       Configuration.LazyLoadingEnabled = true;
@@ -24,6 +24,14 @@ namespace GestaoDDD.Infra.Data.Contexto
 
     #endregion
 
+    private static string PegarDatabase()
+    {
+#if DEBUG
+      return "ConnectionLocal";
+# else
+  return "ConnectionProduction";
+#endif
+    }
 
     protected override void OnModelCreating(DbModelBuilder modelBuilder)
     {

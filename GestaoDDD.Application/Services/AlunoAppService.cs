@@ -1,6 +1,7 @@
 ﻿using GestaoDDD.Application.Interface;
 using GestaoDDD.Domain.Entities;
 using GestaoDDD.Domain.Interfaces.Services;
+using System.Collections.Generic;
 
 namespace GestaoDDD.Application.Services
 {
@@ -17,6 +18,11 @@ namespace GestaoDDD.Application.Services
     public void AtualizarNotaCFP(int pAlunoId, double pNota)
     {
       _alunoService.AtualizarNotaCFP(pAlunoId, pNota);
+    }
+
+    public IEnumerable<Aluno> PesquisarAlunosPorPalavras(string pTermo, string pConcorrencia)
+    {
+     return _alunoService.PesquisarAlunosPorPalavras(pTermo, pConcorrencia);
     }
   }
 }

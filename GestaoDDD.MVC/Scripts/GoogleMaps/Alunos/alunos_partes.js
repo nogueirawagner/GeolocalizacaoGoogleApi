@@ -30,29 +30,28 @@
                 $("#totalRows").text("Total de linhas: " + totalRows);
 
                 $("#searchInput").on("keyup", function () {
-                    var value = $(this).val().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
-                    $("#mytable tr:not(:first)").filter(function () {
-                        var rowValue = $(this).text().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
-                        $(this).toggle(rowValue.indexOf(value) > -1);
-                    });
-                    var filteredRows = $("#mytable tr:visible").length - 1;
-                    $("#totalRows").text("Linhas encontradas: " + filteredRows);
+                    //var value = $(this).val().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+                    //$("#mytable tr:not(:first)").filter(function () {
+                    //    var rowValue = $(this).text().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+                    //    $(this).toggle(rowValue.indexOf(value) > -1);
+                    //});
+                    //var filteredRows = $("#mytable tr:visible").length - 1;
+                    //$("#totalRows").text("Linhas encontradas: " + filteredRows);
 
-                    // Verificar se a palavra digitada é múltipla de 4
-                    if (value.length > 0 && value.length % 4 === 0) {
-                        // Chamar o serviço aqui
+                    // Verificar se a palavra digitada é múltipla de 2
+                    if (value.length > 0 && value.length % 2 === 0) {
                         PesquisarAlunosPorPalavras(value);
                     }
 
 
                     // Adicionar eventos de clique novamente após cada filtro
-                    var filteredTableRows = document.getElementsByClassName("table-row");
-                    for (var i = 0; i < filteredTableRows.length; i++) {
-                        filteredTableRows[i].addEventListener("click", function () {
-                            var url = this.getAttribute("data-url");
-                            window.location.href = url;
-                        });
-                    }
+                    //var filteredTableRows = document.getElementsByClassName("table-row");
+                    //for (var i = 0; i < filteredTableRows.length; i++) {
+                    //    filteredTableRows[i].addEventListener("click", function () {
+                    //        var url = this.getAttribute("data-url");
+                    //        window.location.href = url;
+                    //    });
+                    //}
                 });
 
 
