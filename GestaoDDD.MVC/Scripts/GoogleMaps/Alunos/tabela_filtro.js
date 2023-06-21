@@ -72,6 +72,13 @@ function PesquisarAlunosPorPalavras(pTermo) {
                 tableBody.append(newRow);
             });
 
+            var tableRows = document.getElementsByClassName("table-row");
+            for (var i = 0; i < tableRows.length; i++) {
+                tableRows[i].addEventListener("click", function () {
+                    var url = this.getAttribute("data-url");
+                    window.location.href = url;
+                });
+            }
             //// novo
             //var totalRows = $("#mytable tr").length - 1;
             //$("#totalRows").text("Total de linhas: " + totalRows);

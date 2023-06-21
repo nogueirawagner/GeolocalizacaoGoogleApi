@@ -30,7 +30,7 @@
                 $("#totalRows").text("Total de linhas: " + totalRows);
 
                 $("#searchInput").on("keyup", function () {
-                    //var value = $(this).val().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+                    var value = $(this).val().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
                     //$("#mytable tr:not(:first)").filter(function () {
                     //    var rowValue = $(this).text().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
                     //    $(this).toggle(rowValue.indexOf(value) > -1);
