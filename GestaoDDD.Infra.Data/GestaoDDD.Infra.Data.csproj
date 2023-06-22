@@ -151,6 +151,10 @@
     <Compile Include="Migrations\202306222231110_atualizando pontuacao.Designer.cs">
       <DependentUpon>202306222231110_atualizando pontuacao.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202306222312394_teste.cs" />
+    <Compile Include="Migrations\202306222312394_teste.Designer.cs">
+      <DependentUpon>202306222312394_teste.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AlunoRepository.cs" />
@@ -244,6 +248,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202306222231110_atualizando pontuacao.resx">
       <DependentUpon>202306222231110_atualizando pontuacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306222312394_teste.resx">
+      <DependentUpon>202306222312394_teste.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
