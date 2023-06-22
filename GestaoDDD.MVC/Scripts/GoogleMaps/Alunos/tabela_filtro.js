@@ -1,4 +1,18 @@
-﻿function contarLinhas() {
+﻿function RegraBuscarPorPalavras(value) {
+    if (value.length >= 4) {
+        if (value.length == 4)
+            PesquisarAlunosPorPalavras(value);
+        if (value.length > 10)
+            PesquisarAlunosPorPalavras(value);
+        if (value.length % 2 === 0)
+            PesquisarAlunosPorPalavras(value);
+    }
+    if (value.length == 0) {
+        BuscarAlunosFetch();
+    }
+}
+
+function contarLinhas() {
     // novo
     var totalRows = $("#mytable tr").length - 1;
     $("#totalRows").text("Total de linhas: " + totalRows);
@@ -12,18 +26,7 @@
         var filteredRows = $("#mytable tr:visible").length - 1;
         $("#totalRows").text("Linhas encontradas: " + filteredRows);
 
-        // Verificar se a palavra digitada é múltipla de 4
-        if (value.length > 4) {
-            if (value.length == 4)
-                PesquisarAlunosPorPalavras(value);
-            if (value.length > 10)
-                PesquisarAlunosPorPalavras(value);
-            if (value.length % 2 === 0)
-                PesquisarAlunosPorPalavras(value);
-        }
-        if (value.length == 0) {
-            BuscarAlunosFetch();
-        }
+        RegraBuscarPorPalavras(value);
 
         // Adicionar eventos de clique novamente após cada filtro
         var filteredTableRows = document.getElementsByClassName("table-row");
@@ -67,18 +70,7 @@ function BuscarAlunosFetch() {
             $("#searchInput").on("keyup", function () {
                 var value = $(this).val().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
 
-                // Verificar se a palavra digitada é múltipla de 2
-                if (value.length > 4) {
-                    if (value.length == 4)
-                        PesquisarAlunosPorPalavras(value);
-                    if (value.length > 10)
-                        PesquisarAlunosPorPalavras(value);
-                    if (value.length % 2 === 0)
-                        PesquisarAlunosPorPalavras(value);
-                }
-                if (value.length == 0) {
-                    BuscarAlunosFetch();
-                }
+                RegraBuscarPorPalavras(value);
             });
 
             var tableRows = document.getElementsByClassName("table-row");
@@ -112,6 +104,9 @@ function PesquisarAlunosPorPalavras(pTermo) {
         .then(data => {
             const parsedData = JSON.parse(data);
             var tableBody = $("#tableBody"); // Obter a referência do elemento tbody da tabela
+
+            var totalRows = parsedData.length;
+            $("#totalRows").text("Total de linhas: " + totalRows);
 
             // Limpar a tabela atual
             tableBody.empty();
@@ -153,18 +148,7 @@ $(document).ready(function () {
     $("#searchInput").on("keyup", function () {
         var value = $(this).val().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
         
-        // Verificar se a palavra digitada é múltipla de 4
-        if (value.length > 4) {
-            if (value.length == 4)
-                PesquisarAlunosPorPalavras(value);
-            if (value.length > 10)
-                PesquisarAlunosPorPalavras(value);
-            if (value.length % 2 === 0)
-                PesquisarAlunosPorPalavras(value);
-        }
-        if (value.length == 0) {
-            BuscarAlunosFetch();
-        }
+        RegraBuscarPorPalavras(value);
 
         // Adicionar eventos de clique novamente após cada filtro
         var filteredTableRows = document.getElementsByClassName("table-row");
