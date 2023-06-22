@@ -1,11 +1,6 @@
 ﻿function RegraBuscarPorPalavras(value) {
     if (value.length >= 4) {
-        if (value.length == 4)
-            PesquisarAlunosPorPalavras(value);
-        if (value.length > 10)
-            PesquisarAlunosPorPalavras(value);
-        if (value.length % 2 === 0)
-            PesquisarAlunosPorPalavras(value);
+        PesquisarAlunosPorPalavras(value);
     }
     if (value.length == 0) {
         BuscarAlunosFetch();
@@ -147,7 +142,7 @@ $(document).ready(function () {
 
     $("#searchInput").on("keyup", function () {
         var value = $(this).val().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
-        
+
         RegraBuscarPorPalavras(value);
 
         // Adicionar eventos de clique novamente após cada filtro
