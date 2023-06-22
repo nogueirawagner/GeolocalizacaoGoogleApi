@@ -131,6 +131,18 @@
     <Compile Include="Migrations\202306151725490_Adicionar alunos.Designer.cs">
       <DependentUpon>202306151725490_Adicionar alunos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202306221635159_Add posicao.cs" />
+    <Compile Include="Migrations\202306221635159_Add posicao.Designer.cs">
+      <DependentUpon>202306221635159_Add posicao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202306221701160_create index aluno concorrencia.cs" />
+    <Compile Include="Migrations\202306221701160_create index aluno concorrencia.Designer.cs">
+      <DependentUpon>202306221701160_create index aluno concorrencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202306221709042_Add novos alunos homologados.cs" />
+    <Compile Include="Migrations\202306221709042_Add novos alunos homologados.Designer.cs">
+      <DependentUpon>202306221709042_Add novos alunos homologados.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AlunoRepository.cs" />
@@ -209,6 +221,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202306151725490_Adicionar alunos.resx">
       <DependentUpon>202306151725490_Adicionar alunos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306221635159_Add posicao.resx">
+      <DependentUpon>202306221635159_Add posicao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306221701160_create index aluno concorrencia.resx">
+      <DependentUpon>202306221701160_create index aluno concorrencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306221709042_Add novos alunos homologados.resx">
+      <DependentUpon>202306221709042_Add novos alunos homologados.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

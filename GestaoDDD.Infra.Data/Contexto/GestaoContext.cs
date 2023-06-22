@@ -29,7 +29,7 @@ namespace GestaoDDD.Infra.Data.Contexto
 #if DEBUG
       return "ConnectionLocal";
 # else
-  return "ConnectionProduction";
+  return "ConnectionProduction_Az";
 #endif
     }
 

@@ -33,7 +33,7 @@ namespace GestaoDDD.Infra.Data.Repositories
       var sql = @"SELECT * FROM Aluno WHERE {0} and Concorrencia = '{1}'";
       var sqlLike = @"SELECT * FROM Aluno WHERE Nome LIKE '%{0}%' and Concorrencia = '{1}'";
 
-      sql = string.Format(sqlLike, pTermo, pConcorrencia);
+      sql = string.Format(sql, where, pConcorrencia);
 
 
       return _db.Database.SqlQuery<Aluno>(sql);

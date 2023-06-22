@@ -12,7 +12,6 @@ namespace GestaoDDD.Domain.Entities
     public double NotaEtapa2 { get; set; }
     public double NotaFinal { get; set; }
 
-    [NotMapped]
     public int Posicao { get; set; }
   }
 }

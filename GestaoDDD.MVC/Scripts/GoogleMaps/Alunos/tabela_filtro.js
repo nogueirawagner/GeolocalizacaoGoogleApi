@@ -13,9 +13,16 @@
         $("#totalRows").text("Linhas encontradas: " + filteredRows);
 
         // Verificar se a palavra digitada é múltipla de 4
-        if (value.length > 0 && value.length % 3 === 0) {
-            // Chamar o serviço aqui
-            PesquisarPorPalavras();
+        if (value.length > 4) {
+            if (value.length == 4)
+                PesquisarAlunosPorPalavras(value);
+            if (value.length > 10)
+                PesquisarAlunosPorPalavras(value);
+            if (value.length % 2 === 0)
+                PesquisarAlunosPorPalavras(value);
+        }
+        if (value.length == 0) {
+            BuscarAlunosFetch();
         }
 
         // Adicionar eventos de clique novamente após cada filtro
@@ -37,6 +44,57 @@ function linhaLink() {
             window.location.href = url;
         });
     }
+}
+
+function BuscarAlunosFetch() {
+    var filtro = $("#concorrencias option:selected").val();
+
+    fetch('/Aluno/BuscaAlunosFiltro?pFiltro=' + filtro, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        cache: 'no-cache',
+    })
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('retornoPesquisa').innerHTML = data;
+
+            // novo
+            var totalRows = $("#mytable tr").length - 1;
+            $("#totalRows").text("Total de linhas: " + totalRows);
+
+            $("#searchInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+
+                // Verificar se a palavra digitada é múltipla de 2
+                if (value.length > 4) {
+                    if (value.length == 4)
+                        PesquisarAlunosPorPalavras(value);
+                    if (value.length > 10)
+                        PesquisarAlunosPorPalavras(value);
+                    if (value.length % 2 === 0)
+                        PesquisarAlunosPorPalavras(value);
+                }
+                if (value.length == 0) {
+                    BuscarAlunosFetch();
+                }
+            });
+
+            var tableRows = document.getElementsByClassName("table-row");
+            for (var i = 0; i < tableRows.length; i++) {
+                tableRows[i].addEventListener("click", function () {
+                    var url = this.getAttribute("data-url");
+                    window.location.href = url;
+                });
+            }
+
+
+        })
+        .catch(error => {
+            // Se houver algum erro na requisição, ele será capturado aqui
+            console.error('Erro:', error);
+        });
 }
 
 function PesquisarAlunosPorPalavras(pTermo) {
@@ -79,57 +137,11 @@ function PesquisarAlunosPorPalavras(pTermo) {
                     window.location.href = url;
                 });
             }
-            //// novo
-            //var totalRows = $("#mytable tr").length - 1;
-            //$("#totalRows").text("Total de linhas: " + totalRows);
-
-            //$("#searchInput").on("keyup", function () {
-            //    var value = $(this).val().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
-            //    $("#mytable tr:not(:first)").filter(function () {
-            //        var rowValue = $(this).text().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
-            //        $(this).toggle(rowValue.indexOf(value) > -1);
-            //    });
-            //    var filteredRows = $("#mytable tr:visible").length - 1;
-            //    $("#totalRows").text("Linhas encontradas: " + filteredRows);
-
-            //    // Verificar se a palavra digitada é múltipla de 4
-            //    if (value.length > 0 && value.length % 4 === 0) {
-            //        // Chamar o serviço aqui
-            //        PesquisarPorPalavras(value);
-            //    }
-
-
-            //    // Adicionar eventos de clique novamente após cada filtro
-            //    var filteredTableRows = document.getElementsByClassName("table-row");
-            //    for (var i = 0; i < filteredTableRows.length; i++) {
-            //        filteredTableRows[i].addEventListener("click", function () {
-            //            var url = this.getAttribute("data-url");
-            //            window.location.href = url;
-            //        });
-            //    }
-            //});
-
-
-            //var tableRows = document.getElementsByClassName("table-row");
-            //for (var i = 0; i < tableRows.length; i++) {
-            //    tableRows[i].addEventListener("click", function () {
-            //        var url = this.getAttribute("data-url");
-            //        window.location.href = url;
-            //    });
-            //}
-
-
         })
         .catch(error => {
             // Se houver algum erro na requisição, ele será capturado aqui
             console.error('Erro:', error);
         });
-
-
-
-
-
-
 }
 
 $(document).ready(function () {
@@ -140,17 +152,18 @@ $(document).ready(function () {
 
     $("#searchInput").on("keyup", function () {
         var value = $(this).val().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
-        //$("#mytable tr:not(:first)").filter(function () {
-        //    var rowValue = $(this).text().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
-        //    $(this).toggle(rowValue.indexOf(value) > -1);
-        //});
-        //var filteredRows = $("#mytable tr:visible").length - 1;
-        //$("#totalRows").text("Linhas encontradas: " + filteredRows);
-
+        
         // Verificar se a palavra digitada é múltipla de 4
-        if (value.length > 0 && value.length % 3 === 0) {
-            // Chamar o serviço aqui
-            PesquisarAlunosPorPalavras(value);
+        if (value.length > 4) {
+            if (value.length == 4)
+                PesquisarAlunosPorPalavras(value);
+            if (value.length > 10)
+                PesquisarAlunosPorPalavras(value);
+            if (value.length % 2 === 0)
+                PesquisarAlunosPorPalavras(value);
+        }
+        if (value.length == 0) {
+            BuscarAlunosFetch();
         }
 
         // Adicionar eventos de clique novamente após cada filtro
