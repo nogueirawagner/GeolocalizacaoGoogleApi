@@ -72,7 +72,7 @@ namespace GestaoDDD.MVC.Controllers
         {
           var dptos = _dptoPoliciaApp.BuscaDelegaciasProximas(Latitude, Longitude)
             .Where(s => s.ID != Id)
-            .OrderByDescending(s => s.Vagas);
+            .OrderByDescending(s => s.Pontuacao);
 
           var dptoVM = Mapper.Map<IEnumerable<DepartamentoPolicia>, IEnumerable<DepartamentoPoliciaViewModel>>(dptos);
           return XAppCache.Set(key, View(dptoVM));
@@ -92,7 +92,7 @@ namespace GestaoDDD.MVC.Controllers
       else
       {
         var dptos = _dptoPoliciaApp.GetAll()
-          .OrderByDescending(s => s.Vagas);
+          .OrderByDescending(s => s.Pontuacao);
         var dptoVm = Mapper.Map<IEnumerable<DepartamentoPolicia>, IEnumerable<DepartamentoPoliciaViewModel>>(dptos);
 
         return XAppCache.Set(key, View(dptoVm));
@@ -108,7 +108,7 @@ namespace GestaoDDD.MVC.Controllers
           return XAppCache.Get<JsonResult>(key);
         else
         {
-          var retorno = _dptoPoliciaApp.GetAll().OrderByDescending(s => s.Vagas);
+          var retorno = _dptoPoliciaApp.GetAll().OrderByDescending(s => s.Pontuacao);
           var json = Json(retorno, JsonRequestBehavior.AllowGet);
 
           return XAppCache.Set(key, json);
@@ -122,7 +122,7 @@ namespace GestaoDDD.MVC.Controllers
           return XAppCache.Get<JsonResult>(key);
         else
         {
-          var retorno = _dptoPoliciaApp.CalculaDistancia(Latitude, Longitude).OrderByDescending(s => s.Vagas);
+          var retorno = _dptoPoliciaApp.CalculaDistancia(Latitude, Longitude).OrderByDescending(s => s.Pontuacao);
           var json = Json(retorno, JsonRequestBehavior.AllowGet);
 
           return XAppCache.Set(key, json);
@@ -139,7 +139,7 @@ namespace GestaoDDD.MVC.Controllers
           return XAppCache.Get<JsonResult>(key);
         else
         {
-          var retorno = _dptoPoliciaApp.GetAll().OrderByDescending(s => s.Vagas);
+          var retorno = _dptoPoliciaApp.GetAll().OrderByDescending(s => s.Pontuacao);
           var json = Json(retorno, JsonRequestBehavior.AllowGet);
 
           return XAppCache.Set(key, json);
@@ -154,7 +154,7 @@ namespace GestaoDDD.MVC.Controllers
         {
           var dptos = _dptoPoliciaApp.BuscaDelegaciasProximas(Latitude, Longitude)
             .Where(s => s.ID != Id)
-            .OrderByDescending(s => s.Vagas);
+            .OrderByDescending(s => s.Pontuacao);
 
           var json = Json(dptos, JsonRequestBehavior.AllowGet);
           return XAppCache.Set(key, json);

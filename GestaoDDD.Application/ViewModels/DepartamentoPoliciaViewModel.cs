@@ -18,5 +18,6 @@ namespace GestaoDDD.Application.ViewModels
     public string Contemplada { get; set; }
     public string DistanciaColega { get; set; }
     public string Bairro { get; set; }
+    public string Pontuacao { get; set; }
   }
 }

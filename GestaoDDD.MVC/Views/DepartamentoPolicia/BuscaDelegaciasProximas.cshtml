@@ -45,12 +45,10 @@
                 <table id="mytable" class="table">
                     <thead>
                         <tr>
-                        <tr>
                             <th>Nome</th>
                             <th>CEFLAG</th>
-                            <th>Descrição</th>
-                            <th>Endereço</th>
-                            <th>Áreas da CEFLAG</th>
+                            <th>RA</th>
+                            <th>Pontuação</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -65,13 +63,10 @@
                                 @Html.DisplayFor(modelItem => item.EhSede)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Descricao)
+                                @Html.DisplayFor(modelItem => item.Bairro)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Endereco)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.AreaAtuacao)
+                                @Html.DisplayFor(modelItem => item.Pontuacao)
                             </td>
                         </tr>
                         }

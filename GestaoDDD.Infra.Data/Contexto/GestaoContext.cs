@@ -8,7 +8,7 @@ namespace GestaoDDD.Infra.Data.Contexto
   public class GestaoContext : DbContext, IGestaoContext
   {
     public GestaoContext()
-        : base("ConnectionProduction_Az")
+        : base("ConnectionLocal")
     {
       Configuration.ProxyCreationEnabled = false;
       Configuration.LazyLoadingEnabled = true;

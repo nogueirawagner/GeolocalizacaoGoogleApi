@@ -143,6 +143,14 @@
     <Compile Include="Migrations\202306221709042_Add novos alunos homologados.Designer.cs">
       <DependentUpon>202306221709042_Add novos alunos homologados.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202306222212582_Adicionando pontuacao e demanda.cs" />
+    <Compile Include="Migrations\202306222212582_Adicionando pontuacao e demanda.Designer.cs">
+      <DependentUpon>202306222212582_Adicionando pontuacao e demanda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202306222231110_atualizando pontuacao.cs" />
+    <Compile Include="Migrations\202306222231110_atualizando pontuacao.Designer.cs">
+      <DependentUpon>202306222231110_atualizando pontuacao.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AlunoRepository.cs" />
@@ -230,6 +238,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202306221709042_Add novos alunos homologados.resx">
       <DependentUpon>202306221709042_Add novos alunos homologados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306222212582_Adicionando pontuacao e demanda.resx">
+      <DependentUpon>202306222212582_Adicionando pontuacao e demanda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306222231110_atualizando pontuacao.resx">
+      <DependentUpon>202306222231110_atualizando pontuacao.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
