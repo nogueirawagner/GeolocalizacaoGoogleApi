@@ -13,7 +13,7 @@
         $("#totalRows").text("Linhas encontradas: " + filteredRows);
 
         // Verificar se a palavra digitada é múltipla de 4
-        if (value.length > 0 && value.length % 4 === 0) {
+        if (value.length > 0 && value.length % 3 === 0) {
             // Chamar o serviço aqui
             PesquisarPorPalavras();
         }
@@ -148,7 +148,7 @@ $(document).ready(function () {
         //$("#totalRows").text("Linhas encontradas: " + filteredRows);
 
         // Verificar se a palavra digitada é múltipla de 4
-        if (value.length > 0 && value.length % 2 === 0) {
+        if (value.length > 0 && value.length % 3 === 0) {
             // Chamar o serviço aqui
             PesquisarAlunosPorPalavras(value);
         }
@@ -171,9 +171,5 @@ $(document).ready(function () {
             window.location.href = url;
         });
     }
-
-
-
-
 });
 

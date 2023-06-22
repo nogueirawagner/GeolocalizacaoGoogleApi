@@ -39,7 +39,7 @@
                     //$("#totalRows").text("Linhas encontradas: " + filteredRows);
 
                     // Verificar se a palavra digitada é múltipla de 2
-                    if (value.length > 0 && value.length % 2 === 0) {
+                    if (value.length > 0 && value.length % 3 === 0) {
                         PesquisarAlunosPorPalavras(value);
                     }
 
