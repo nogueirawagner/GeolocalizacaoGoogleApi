@@ -37,14 +37,10 @@ namespace GestaoDDD.MVC.Controllers
       else
       {
         var alunos = _alunoAppService.GetAll().Where(s => s.Concorrencia == "Ampla")
-          .OrderByDescending(s => s.NotaFinal);
+          .OrderBy(s => s.Posicao);
         int i = 1;
         var alunosVm = Mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoViewModel>>(alunos).ToList();
-        alunosVm.ForEach(s =>
-        {
-          s.Posicao = i++;
-        });
-
+        
         return XAppCache.Set(key, View(alunosVm));
       }
     }
@@ -60,13 +56,9 @@ namespace GestaoDDD.MVC.Controllers
       else
       {
         var alunos = _alunoAppService.GetAll().Where(s => s.Concorrencia == pFiltro)
-        .OrderByDescending(s => s.NotaFinal);
+        .OrderBy(s => s.Posicao);
         int i = 1;
         var alunosVm = Mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoViewModel>>(alunos).ToList();
-        alunosVm.ForEach(s =>
-        {
-          s.Posicao = i++;
-        });
 
         return XAppCache.Set(key, PartialView(alunosVm));
       }

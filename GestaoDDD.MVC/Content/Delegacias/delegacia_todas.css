@@ -224,7 +224,11 @@
 
 @media (max-width: 480px) {
     .table th:nth-child(2),
+    .table th:nth-child(5),
     .table td:nth-child(2) {
+        display: none;
+    }
+    .table td:nth-child(5) {
         display: none;
     }
 

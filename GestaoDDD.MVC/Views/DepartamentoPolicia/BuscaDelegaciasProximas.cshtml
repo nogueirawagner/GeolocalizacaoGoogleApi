@@ -49,6 +49,7 @@
                             <th>CEFLAG</th>
                             <th>RA</th>
                             <th>Pontuação</th>
+                            <th>Área de Atuação</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -67,6 +68,9 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Pontuacao)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AreaAtuacao)
                             </td>
                         </tr>
                         }

@@ -70,7 +70,7 @@ function initialize() {
                 marker = new google.maps.Marker({
                     position: new google.maps.LatLng(locations[i].Latitude, locations[i].Longitude),
                     map: map,
-                    title: locations[i].EhSede ? "CEFLAG: " + locations[i].Nome : locations[i].Nome,
+                    title: locations[i].Nome,
                     icon: postoVermelho
                 });
 
