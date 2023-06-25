@@ -20,9 +20,9 @@ namespace GestaoDDD.Domain.Services
       _alunoRepository.AtualizarNotaCFP(pAlunoId, pNota);
     }
 
-    public IEnumerable<Aluno> PesquisarAlunosPorPalavras(string pTermo, string pConcorrencia)
+    public IEnumerable<Aluno> PesquisarAlunosPorPalavras(string pTermo, string pConcorrencia, string pCargo)
     {
-      return _alunoRepository.PesquisarAlunosPorPalavras(pTermo, pConcorrencia);
+      return _alunoRepository.PesquisarAlunosPorPalavras(pTermo, pConcorrencia, pCargo);
     }
   }
 }
