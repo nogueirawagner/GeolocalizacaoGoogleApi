@@ -86,9 +86,9 @@ function BuscarAlunosFetch() {
 
 function PesquisarAlunosPorPalavras(pTermo) {
     var concorrencia = document.getElementById("concorrencias").value;
-    console.log("chamando serviço passando a concorrencia: ", concorrencia, "e termo: " + pTermo);
+    var cargo = document.getElementById("cargo").value;
 
-    fetch('/Aluno/PesquisarAlunosPorPalavras?pTermo=' + pTermo + '&pConcorrencia=' + concorrencia, {
+    fetch('/Aluno/PesquisarAlunosPorPalavras?pTermo=' + pTermo + '&pConcorrencia=' + concorrencia + "&pCargo=" + cargo, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -114,7 +114,6 @@ function PesquisarAlunosPorPalavras(pTermo) {
                     .append($("<td>").text(item.Inscricao))
                     .append($("<td>").text(item.Nome))
                     .append($("<td>").text(item.NotaEtapa1))
-                    .append($("<td>").text(item.NotaEtapa2))
                     .append($("<td>").text(item.NotaFinal));
 
                 tableBody.append(newRow);

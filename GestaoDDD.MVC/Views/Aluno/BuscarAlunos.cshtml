@@ -11,10 +11,20 @@
     <link href="~/Styles/sweetalert.css" rel="stylesheet" />
 
     <div class="m-4">
-        <div class="form-control">
-            <p>
-                Escolha a concorrência dos alunos a ser exibidos:
-                <select name="concorrencia" id="concorrencias">
+        <div class="container-texto">
+            <div class="half-texto">
+                Escolha o cargo e a concorrência dos alunos a serem exibidos:
+            </div>
+        </div>
+        <div class="container-concorrencia">
+            <div class="half-alunos">
+                <select name="cargo" class="form-control" id="concorrencias">
+                    <option value="Ampla">Agente</option>
+                    <option value="Negros">Escrivao</option>
+                </select>
+            </div>
+            <div class="half-alunos">
+                <select name="concorrencia" class="form-control" id="concorrencias">
                     <option value="Ampla">Ampla</option>
                     <option value="Negros">Negros</option>
                     <option value="PCD">PCD</option>
@@ -22,7 +32,7 @@
                     <option value="SJD">Sub Judice PCD</option>
                     <option value="SJN">Sub Judice Negros</option>
                 </select>
-            </p>
+            </div>
         </div>
         <div id="retornoPesquisa">
             @{
