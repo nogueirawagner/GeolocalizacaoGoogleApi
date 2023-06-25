@@ -66,7 +66,7 @@ namespace GestaoDDD.MVC.Controllers
 
     public JsonResult PesquisarAlunosPorPalavras(string pTermo, string pConcorrencia, string pCargo)
     {
-      var alunos = _alunoAppService.PesquisarAlunosPorPalavras(pTermo, pConcorrencia);
+      var alunos = _alunoAppService.PesquisarAlunosPorPalavras(pTermo, pConcorrencia, pCargo);
 
       return Json(alunos, JsonRequestBehavior.AllowGet);
     }

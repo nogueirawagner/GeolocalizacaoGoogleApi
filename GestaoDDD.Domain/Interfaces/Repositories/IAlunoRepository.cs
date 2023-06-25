@@ -6,6 +6,6 @@ namespace GestaoDDD.Domain.Interfaces.Repositories
   public interface IAlunoRepository : IRepositoryBase<Aluno>
   {
     void AtualizarNotaCFP(int pAlunoId, double pNota);
-    IEnumerable<Aluno> PesquisarAlunosPorPalavras(string pTermo, string pConcorrencia);
+    IEnumerable<Aluno> PesquisarAlunosPorPalavras(string pTermo, string pConcorrencia, string pCargo);
   }
 }
