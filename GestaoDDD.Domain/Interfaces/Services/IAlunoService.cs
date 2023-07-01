@@ -8,5 +8,6 @@ namespace GestaoDDD.Domain.Interfaces.Services
     void AtualizarNotaCFP(int pAlunoId, double pNota);
 
     IEnumerable<Aluno> PesquisarAlunosPorPalavras(string pTermo, string pConcorrencia, string pCargo);
+    IEnumerable<Aluno> PegarAlunosPorCargoConcorrencia(string pCargo, string pConcorrencia);
   }
 }

@@ -20,6 +20,11 @@ namespace GestaoDDD.Domain.Services
       _alunoRepository.AtualizarNotaCFP(pAlunoId, pNota);
     }
 
+    public IEnumerable<Aluno> PegarAlunosPorCargoConcorrencia(string pCargo, string pConcorrencia)
+    {
+      return _alunoRepository.PegarAlunosPorCargoConcorrencia(pCargo, pConcorrencia);
+    }
+
     public IEnumerable<Aluno> PesquisarAlunosPorPalavras(string pTermo, string pConcorrencia, string pCargo)
     {
       return _alunoRepository.PesquisarAlunosPorPalavras(pTermo, pConcorrencia, pCargo);

@@ -24,5 +24,10 @@ namespace GestaoDDD.Application.Services
     {
      return _alunoService.PesquisarAlunosPorPalavras(pTermo, pConcorrencia, pCargo);
     }
+
+    public IEnumerable<Aluno> PegarAlunosPorCargoConcorrencia(string pCargo, string pConcorrencia)
+    {
+      return _alunoService.PegarAlunosPorCargoConcorrencia(pCargo, pConcorrencia);
+    }
   }
 }

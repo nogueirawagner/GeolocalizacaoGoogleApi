@@ -7,13 +7,13 @@ namespace GestaoDDD.Infra.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class teste : IMigrationMetadata
+    public sealed partial class adicionandoescrivaes : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(teste));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(adicionandoescrivaes));
         
         string IMigrationMetadata.Id
         {
-            get { return "202306222312394_teste"; }
+            get { return "202307011903179_adicionando escrivaes"; }
         }
         
         string IMigrationMetadata.Source

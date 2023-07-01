@@ -151,9 +151,17 @@
     <Compile Include="Migrations\202306222231110_atualizando pontuacao.Designer.cs">
       <DependentUpon>202306222231110_atualizando pontuacao.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202306222312394_teste.cs" />
-    <Compile Include="Migrations\202306222312394_teste.Designer.cs">
-      <DependentUpon>202306222312394_teste.cs</DependentUpon>
+    <Compile Include="Migrations\202307011310434_add-cargo.cs" />
+    <Compile Include="Migrations\202307011310434_add-cargo.Designer.cs">
+      <DependentUpon>202307011310434_add-cargo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202307011312056_preenchendo cargo de agentes.cs" />
+    <Compile Include="Migrations\202307011312056_preenchendo cargo de agentes.Designer.cs">
+      <DependentUpon>202307011312056_preenchendo cargo de agentes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202307011903179_adicionando escrivaes.cs" />
+    <Compile Include="Migrations\202307011903179_adicionando escrivaes.Designer.cs">
+      <DependentUpon>202307011903179_adicionando escrivaes.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -249,8 +257,14 @@
     <EmbeddedResource Include="Migrations\202306222231110_atualizando pontuacao.resx">
       <DependentUpon>202306222231110_atualizando pontuacao.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202306222312394_teste.resx">
-      <DependentUpon>202306222312394_teste.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202307011310434_add-cargo.resx">
+      <DependentUpon>202307011310434_add-cargo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202307011312056_preenchendo cargo de agentes.resx">
+      <DependentUpon>202307011312056_preenchendo cargo de agentes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202307011903179_adicionando escrivaes.resx">
+      <DependentUpon>202307011903179_adicionando escrivaes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -1,16 +1,29 @@
 ﻿$(document).ready(function () {
-    var select = document.getElementById("concorrencias");
+    var concorrenciasValue = document.getElementById("concorrencias");
+    var cargoValue = document.getElementById("cargo-select");
 
-    select.addEventListener("change", function () {
-        var selectedValue = select.value;
+    cargoValue.addEventListener("change", function () {
+        var concorrencia = concorrenciasValue.value;
+        var cargo = cargoValue.value;
 
         // Verifica se alguma opção foi selecionada
-        if (selectedValue !== "") {
+        if (concorrencia !== "" || cargo !== "") {
             // Aqui você pode chamar o serviço desejado com base na opção selecionada
-            BuscarAlunosFetch(selectedValue);
+            BuscarAlunosFetch();
         }
     });
 
-    
+    concorrenciasValue.addEventListener("change", function () {
+        var concorrencia = concorrenciasValue.value;
+        var cargo = cargoValue.value;
+
+        // Verifica se alguma opção foi selecionada
+        if (concorrencia !== "" || cargo !== "") {
+            // Aqui você pode chamar o serviço desejado com base na opção selecionada
+            BuscarAlunosFetch();
+        }
+    });
+
+
 });
 

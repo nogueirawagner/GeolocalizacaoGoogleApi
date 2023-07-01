@@ -26,6 +26,11 @@
     font-size: 25px;
 }
 
+.info-aluno {
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
 .bloco-coluna {
     box-sizing: border-box; /* Considera a borda no cálculo da largura */
     border: 0px solid #dee2e6; /* Apenas para fins de visualização */
@@ -152,4 +157,7 @@
         margin-top: -30px;
     }
 
+    .info-aluno {
+        display: none;
+    }
 }

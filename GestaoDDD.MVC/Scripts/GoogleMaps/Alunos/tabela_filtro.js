@@ -45,9 +45,10 @@ function linhaLink() {
 }
 
 function BuscarAlunosFetch() {
-    var filtro = $("#concorrencias option:selected").val();
+    var concorrencia = $("#concorrencias option:selected").val();
+    var cargo = $("#cargo-select option:selected").val();
 
-    fetch('/Aluno/BuscaAlunosFiltro?pFiltro=' + filtro, {
+    fetch('/Aluno/BuscaAlunosFiltro?pCargo=' + cargo + '&pConcorrencia=' + concorrencia,  {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -86,7 +87,7 @@ function BuscarAlunosFetch() {
 
 function PesquisarAlunosPorPalavras(pTermo) {
     var concorrencia = document.getElementById("concorrencias").value;
-    var cargo = document.getElementById("cargo").value;
+    var cargo = document.getElementById("cargo-select").value;
 
     fetch('/Aluno/PesquisarAlunosPorPalavras?pTermo=' + pTermo + '&pConcorrencia=' + concorrencia + "&pCargo=" + cargo, {
         method: 'POST',

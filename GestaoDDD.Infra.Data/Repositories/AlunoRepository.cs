@@ -30,9 +30,17 @@ namespace GestaoDDD.Infra.Data.Repositories
       var pChaves = new List<string>();
       var where = XFullText.MontarCondicao(pTermo, "Nome", out pChaves);
       
-      var sql = @"SELECT * FROM Aluno WHERE {0} and Concorrencia = '{1}' and Cargo = '{2}'";
+      var sql = @"SELECT * FROM Aluno WHERE {0} and Concorrencia = '{1}' and Cargo = '{2}' ORDER BY Posicao";
 
       sql = string.Format(sql, where, pConcorrencia, pCargo);
+      return _db.Database.SqlQuery<Aluno>(sql);
+    }
+
+    public IEnumerable<Aluno> PegarAlunosPorCargoConcorrencia(string pCargo, string pConcorrencia)
+    {
+      var sql = @"SELECT * FROM Aluno WHERE Concorrencia = '{0}' and Cargo = '{1}' ORDER BY Posicao";
+
+      sql = string.Format(sql, pConcorrencia, pCargo);
       return _db.Database.SqlQuery<Aluno>(sql);
     }
   }

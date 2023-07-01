@@ -30,24 +30,22 @@ namespace GestaoDDD.MVC.Controllers
 
     public ActionResult BuscarAlunos()
     {
-      var key = string.Concat("AlunosConcorrencia-", "Ampla");
+      var key = string.Concat("AlunosConcorrencia-", "Agente", "Ampla");
 
       if (XAppCache.Has(key))
         return XAppCache.Get<ActionResult>(key);
       else
       {
-        var alunos = _alunoAppService.GetAll().Where(s => s.Concorrencia == "Ampla")
-          .OrderBy(s => s.Posicao);
-        int i = 1;
+        var alunos = _alunoAppService.PegarAlunosPorCargoConcorrencia("Agente", "Ampla");
         var alunosVm = Mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoViewModel>>(alunos).ToList();
         
         return XAppCache.Set(key, View(alunosVm));
       }
     }
 
-    public ActionResult BuscaAlunosFiltro(string pFiltro)
+    public ActionResult BuscaAlunosFiltro(string pCargo, string pConcorrencia)
     {
-      var key = string.Concat("AlunosConcorrencia-Partial-", pFiltro);
+      var key = string.Concat("AlunosConcorrencia-Partial-", pCargo, pConcorrencia);
 
       if (XAppCache.Has(key))
       {
@@ -55,11 +53,8 @@ namespace GestaoDDD.MVC.Controllers
       }
       else
       {
-        var alunos = _alunoAppService.GetAll().Where(s => s.Concorrencia == pFiltro)
-        .OrderBy(s => s.Posicao);
-        int i = 1;
+        var alunos = _alunoAppService.PegarAlunosPorCargoConcorrencia(pCargo, pConcorrencia);
         var alunosVm = Mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoViewModel>>(alunos).ToList();
-
         return XAppCache.Set(key, PartialView(alunosVm));
       }
     }
@@ -79,6 +74,9 @@ namespace GestaoDDD.MVC.Controllers
       ViewBag.NotaFinal = aluno.NotaEtapa1 + aluno.NotaEtapa2;
       ViewBag.NotaEtapa1 = aluno.NotaEtapa1;
       ViewBag.NotaEtapa2 = aluno.NotaEtapa2;
+      ViewBag.Inscricao = aluno.Inscricao;
+      ViewBag.Cargo = aluno.Cargo;
+      ViewBag.Posicao = aluno.Posicao;
 
       var dptos = _dptoPoliciaAppService.GetAll()
        .OrderByDescending(s => s.Vagas);
