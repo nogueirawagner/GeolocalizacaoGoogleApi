@@ -3,6 +3,7 @@
   public class XPreferenciasBairro
   {
     public string Bairro { get; set; }
-    public int QtdPessoas { get; set; }
+    public int QtdAgente { get; set; }
+    public int QtdEscrivao { get; set; }
   }
 }

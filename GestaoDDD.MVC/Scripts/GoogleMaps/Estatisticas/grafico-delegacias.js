@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 var dataTable = new google.visualization.DataTable();
                 dataTable.addColumn('string', 'Delegacias');
                 dataTable.addColumn('number', 'Qtd Vagas');
-                dataTable.addColumn('number', 'Qtd Pessoas');
+                dataTable.addColumn('number', 'Qtd Alunos');
 
                 jsonData.forEach(function (item) {
                     dataTable.addRow([item.Nome, item.Vagas, item.Pessoas]);

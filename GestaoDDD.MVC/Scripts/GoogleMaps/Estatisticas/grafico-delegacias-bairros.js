@@ -17,11 +17,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 var jsonData = JSON.parse(data);
 
                 var dataTable = new google.visualization.DataTable();
-                dataTable.addColumn('string', 'Escolha de delegacias por bairros');
-                dataTable.addColumn('number', 'Qtd pessoas');
+                dataTable.addColumn('string', 'Escolha de delegacias por regiões adm e cargos');
+                dataTable.addColumn('number', 'Qtd agentes');
+                dataTable.addColumn('number', 'Qtd escrivães');
 
                 jsonData.forEach(function (item) {
-                    dataTable.addRow([item.Bairro, item.QtdPessoas]);
+                    dataTable.addRow([item.Bairro, item.QtdAgente, item.QtdEscrivao]);
                 });
 
                 var options = {

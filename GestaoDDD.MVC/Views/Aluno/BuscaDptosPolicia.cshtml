@@ -28,6 +28,7 @@
                         <tr>
                             <th>Nome</th>
                             <th>Bairro</th>
+                            <th>Pontuação</th>
                             <th>Vagas</th>
                             <th>Escolher</th>
                         </tr>
@@ -41,6 +42,9 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Bairro)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Pontuacao)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Vagas)

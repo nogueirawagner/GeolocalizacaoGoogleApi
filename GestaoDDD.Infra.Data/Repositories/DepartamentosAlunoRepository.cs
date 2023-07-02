@@ -123,32 +123,71 @@ namespace GestaoDDD.Infra.Data.Repositories
     public IEnumerable<XPreferenciasBairro> PegarPreferenciaAlunosPorBairros()
     {
       var sql = @"
-       WITH PreferenciasPorBairros AS (
-        select 
-	        dp.Bairro,
-	        dp.Vagas,
-	        a.Nome
-        from DepartamentoPolicia dp
-	        join DepartamentoAluno da on da.DptoID = dp.ID
-	        join Aluno a on a.ID = da.AlunoID
-        )
+       WITH PreferenciasPorBairrosAgente AS (
+	      select 
+		      dp.Bairro,
+		      a.Cargo
+	      from DepartamentoPolicia dp
+		      join DepartamentoAluno da on da.DptoID = dp.ID
+		      join Aluno a on a.ID = da.AlunoID
+	      where a.Cargo = 'Agente'
+      )
+		
+      ,  PreferenciasPorBairrosEscrivao AS (
+	      select 
+		      dp.Bairro,
+		      a.Cargo
+	      from DepartamentoPolicia dp
+		      join DepartamentoAluno da on da.DptoID = dp.ID
+		      join Aluno a on a.ID = da.AlunoID
+	      where a.Cargo = 'Escrivao'
+      )
 
-        , PessoasBairros AS (
-        select Bairro, Vagas, Nome from PreferenciasPorBairros
-        group by Bairro, Vagas, Nome 
-        )
+      , BairrosEscolhidosCargos AS (
+	      select Bairro from PreferenciasPorBairrosAgente
+	      union all
+	      select Bairro from PreferenciasPorBairrosEscrivao 
+      )
 
-        select
-          (CASE
-		        when CHARINDEX('Nucleo Bandeirante', Bairro) <> 0 then 'N. Bandeirante' 
-		        when CHARINDEX('Recanto das Emas', Bairro) <> 0 then 'R. Emas' 
-		        else 
-		        Bairro
-	        END) Bairro,
-	        COUNT(*) QtdPessoas 
-        from PessoasBairros
-        group by Bairro
-        order by QtdPessoas desc
+      , BairrosEscolhidos AS (
+	      select * from BairrosEscolhidosCargos 
+	      group by Bairro
+      )
+
+      , PessoasBairrosAgente AS (
+	      select 
+		      (CASE
+			      when CHARINDEX('Nucleo Bandeirante', Bairro) <> 0 then 'N. Bandeirante' 
+			      when CHARINDEX('Recanto das Emas', Bairro) <> 0 then 'R. Emas' 
+			      else 
+			      Bairro
+		      END) Bairro,
+		      COUNT(*) QtdAgente
+	      from PreferenciasPorBairrosAgente
+	      group by Bairro
+      )
+
+      , PessoasBairrosEscrivao AS (
+	      select 
+		      (CASE
+			      when CHARINDEX('Nucleo Bandeirante', Bairro) <> 0 then 'N. Bandeirante' 
+			      when CHARINDEX('Recanto das Emas', Bairro) <> 0 then 'R. Emas' 
+			      else 
+			      Bairro
+		      END) Bairro,
+		      COUNT(*) QtdEscrivao
+	      from PreferenciasPorBairrosEscrivao
+	      group by Bairro
+      )
+
+      select 
+	      br.Bairro, 
+	      COALESCE(pa.QtdAgente, 0) QtdAgente,
+	      COALESCE(pe.QtdEscrivao, 0) QtdEscrivao
+      from BairrosEscolhidos br
+      left join PessoasBairrosAgente pa on pa.Bairro = br.Bairro
+      left join PessoasBairrosEscrivao pe on pe.Bairro = br.Bairro
+
 ";
 
       return _db.Database.SqlQuery<XPreferenciasBairro>(sql);

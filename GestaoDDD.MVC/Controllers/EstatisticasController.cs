@@ -20,16 +20,9 @@ namespace GestaoDDD.MVC.Controllers
 
     public JsonResult PegarDelegaciasPessoas()
     {
-      var key = "PegarDelegaciasPessoas";
-      if (XAppCache.Has(key))
-        return XAppCache.Get<JsonResult>(key);
-      else
-      {
-        var grafico = _dptoAlunoAppService.PegarGraficoDptosAlunos();
-        var json = Json(grafico, JsonRequestBehavior.AllowGet);
-
-        return XAppCache.Set(key, json);
-      }
+      var grafico = _dptoAlunoAppService.PegarGraficoDptosAlunos();
+      var json = Json(grafico, JsonRequestBehavior.AllowGet);
+      return json;
     }
 
     public JsonResult PegarPreferenciaAlunosPorRegioes()

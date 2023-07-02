@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 var dataTable = new google.visualization.DataTable();
                 dataTable.addColumn('string', 'Regiões Integradas de Segurança Pública - RISP');
-                dataTable.addColumn('number', 'Qtd pessoas');
+                dataTable.addColumn('number', 'Qtd Alunos');
 
                 jsonData.forEach(function (item) {
                     dataTable.addRow([item.Nome, item.QtdPessoas]);
