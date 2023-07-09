@@ -21,13 +21,17 @@
                 nomeCell.textContent = item.Nome;
                 row.appendChild(nomeCell);
 
-                const qtdVagasCell = document.createElement('td');
-                qtdVagasCell.textContent = item.QtdVagas;
-                row.appendChild(qtdVagasCell);
+                const ehSedeCell = document.createElement('td');
+                ehSedeCell.textContent = item.EhSede;
+                row.appendChild(ehSedeCell);
 
-                const contempladaCell = document.createElement('td');
-                contempladaCell.textContent = item.Contemplada;
-                row.appendChild(contempladaCell);
+                const bairroCell = document.createElement('td');
+                bairroCell.textContent = item.Bairro;
+                row.appendChild(bairroCell);
+
+                //const contempladaCell = document.createElement('td');
+                //contempladaCell.textContent = item.Contemplada;
+                //row.appendChild(contempladaCell);
 
                 const excluirCell = document.createElement('td');
                 const excluirLink = document.createElement('a');

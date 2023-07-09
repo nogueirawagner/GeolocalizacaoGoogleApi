@@ -11,14 +11,6 @@
     float: right;
 }
 
-.bloco-nota-cfp {
-    display: grid;
-    grid-template-columns: 400px;
-    grid-template-rows: 40px; /* se tiver duas linhas e duas colunas. Esse código fixa o tamanho da primeira linha.*/
-    margin-right: -400px;
-    margin-top: 10px;
-    float: right;
-}
 
 .titulo-aluno {
     padding-top: 15px;
@@ -31,36 +23,32 @@
     font-size: 15px;
 }
 
-.bloco-coluna {
-    box-sizing: border-box; /* Considera a borda no cálculo da largura */
-    border: 0px solid #dee2e6; /* Apenas para fins de visualização */
-    overflow: auto;
-}
+
 
 .painel {
     display: grid;
-    grid-template-rows: 150px; /* se tiver duas linhas e duas colunas. Esse código fixa o tamanho da primeira linha.*/
+    grid-template-rows: 100px; /* se tiver duas linhas e duas colunas. Esse código fixa o tamanho da primeira linha.*/
     margin-top: -30px;
 }
 
-.container-painel {
+/*.container-painel {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 550px; /* se tiver duas linhas e duas colunas. Esse código fixa o tamanho da primeira linha.*/
-    margin: 10px;
-    height: 75vh; /* Define a altura total da tela: ficar a tela cheia é 100vh */
-    margin-top: -10px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 550px 550px;*/ /* se tiver duas linhas e duas colunas. Esse código fixa o tamanho da primeira linha.*/
+    /*margin: 10px;
+    height: 75vh;*/ /* Define a altura total da tela: ficar a tela cheia é 100vh */
+    /*margin-top: -10px;
 }
 
 .half {
-    box-sizing: border-box; /* Considera a borda no cálculo da largura */
-    border: 1px solid #dee2e6; /* Apenas para fins de visualização */
-    overflow: auto;
-}
+    box-sizing: border-box;*/ /* Considera a borda no cálculo da largura */
+    /*border: 1px solid #dee2e6;*/ /* Apenas para fins de visualização */
+    /*overflow: auto;
+}*/
 
 
 .btn:focus {
-    box-shadow: rgba (0,0,0,4);
+    box-shadow: rgba(0,0,0,4);
     outline: 0;
 }
 
@@ -146,17 +134,20 @@
         display: none;
     }
 
-    .bloco-nota-cfp {
+    .painel {
+        grid-template-rows: 50px; /* se tiver duas linhas e duas colunas. Esse código fixa o tamanho da primeira linha.*/
+    }
+    /*.bloco-nota-cfp {
         float: left;
         margin-left: 20px;
         margin-top: -25px;
-    }
+    }*/
 
-    .container-painel {
+/*    .container-painel {
         height: 75vh; 
         margin-top: -30px;
     }
-
+*/
     .info-aluno {
         display: none;
     }

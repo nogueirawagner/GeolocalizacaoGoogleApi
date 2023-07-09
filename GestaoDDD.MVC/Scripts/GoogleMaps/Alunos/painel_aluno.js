@@ -35,23 +35,23 @@ $(document).ready(function () {
     var alunoId = document.getElementById("vbId").value;
     inicializarNotas();
 
-    document.getElementById('botao-cfp').addEventListener('click', function () {
-        var notaCfp = document.getElementById('notacfp').value;
-        if (notaCfp.length > 3)
-            SalvarNotaCFP(alunoId, notaCfp);
-        else
-            alert("Sua nota deve estar no formato 55,40 ou 55,00");
-    });
+    //document.getElementById('botao-cfp').addEventListener('click', function () {
+    //    var notaCfp = document.getElementById('notacfp').value;
+    //    if (notaCfp.length > 3)
+    //        SalvarNotaCFP(alunoId, notaCfp);
+    //    else
+    //        alert("Sua nota deve estar no formato 55,40 ou 55,00");
+    //});
 
-    var input = document.getElementById('notacfp');
+    //var input = document.getElementById('notacfp');
 
-    input.addEventListener('input', function (e) {
-        var value = e.target.value;
-        if (value.length > 3) {
-            var formattedValue = formatNumber(value);
-            e.target.value = formattedValue;
-        }
-    });
+    //input.addEventListener('input', function (e) {
+    //    var value = e.target.value;
+    //    if (value.length > 3) {
+    //        var formattedValue = formatNumber(value);
+    //        e.target.value = formattedValue;
+    //    }
+    //});
 
     function formatNumber(value) {
         // Remove tudo que não for dígito

@@ -53,6 +53,8 @@ namespace GestaoDDD.Infra.Data.Repositories
         select 
 	        a.ID AlunoId, 
 	        dp.Vagas QtdVagas,
+          dp.EhSede,
+          dp.Bairro,
           dp.ID DepartamentoId,
 	        dp.Nome Nome,
 	        (case

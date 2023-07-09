@@ -32,8 +32,14 @@
     }
 
 @media (max-width: 480px) {
-    .table-delegacias-painel th:nth-child(2),
-    .table-delegacias-painel td:nth-child(2) {
+    .table-delegacias-painel th:nth-child(3),
+    .table-delegacias-painel th:nth-child(4),
+    
+    .table-delegacias-painel td:nth-child(3) {
+        display: none;
+    }
+
+    .table-delegacias-painel td:nth-child(4) {
         display: none;
     }
 

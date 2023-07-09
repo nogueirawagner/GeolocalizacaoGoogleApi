@@ -21,9 +21,13 @@
                 nomeCell.textContent = item.Nome;
                 row.appendChild(nomeCell);
 
-                const qtdVagasCell = document.createElement('td');
-                qtdVagasCell.textContent = item.QtdVagas;
-                row.appendChild(qtdVagasCell);
+                const ehSedeCell = document.createElement('td');
+                ehSedeCell.textContent = item.EhSede;
+                row.appendChild(ehSedeCell);
+
+                const bairroCell = document.createElement('td');
+                bairroCell.textContent = item.Bairro;
+                row.appendChild(bairroCell);
 
                 const contempladaCell = document.createElement('td');
                 contempladaCell.textContent = item.Contemplada;
@@ -85,6 +89,16 @@ $(document).ready(function () {
             EscolherLotacao(dpId);
         });
     });
+
+
+    var escolherButtonRow = document.querySelectorAll(".escolher-dpto-row");
+    escolherButtonRow.forEach(function (button) {
+        button.addEventListener("click", function () {
+            var dpId = button.getAttribute("data-value");
+            EscolherLotacao(dpId);
+        });
+    });
+
 
     function EscolherLotacao(pId) {
         fetch('/Aluno/EscolherLotacao?pLotacaoID=' + pId + '&pAlunoID=' + vbId)

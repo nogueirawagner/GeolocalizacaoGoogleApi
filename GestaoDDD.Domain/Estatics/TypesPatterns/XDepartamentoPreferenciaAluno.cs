@@ -7,5 +7,7 @@
     public int AlunoId { get; set; }
     public int QtdVagas { get; set; }
     public string Contemplada { get; set; }
+    public string Bairro { get; set; }
+    public string EhSede { get; set; }
   }
 }

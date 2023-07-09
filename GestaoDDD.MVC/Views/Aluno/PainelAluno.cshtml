@@ -5,6 +5,7 @@
     }
     <link href="~/Content/Alunos/painel_aluno.css" rel="stylesheet" />
     <link href="~/Content/Alunos/delegacia_preferencia_aluno.css" rel="stylesheet" />
+    <link href="~/Content/Alunos/delegacia_painel_aluno.css" rel="stylesheet" />
 
     <script src="~/Scripts/GoogleMaps/Alunos/painel_aluno.js"></script>
     <script src="~/Scripts/GoogleMaps/Alunos/busca_dptos_preferencia.js"></script>
@@ -47,47 +48,94 @@
                     <input type="text" id="nota-atualizada" style="border: 0px;" readonly />
                 </div>
             </div>
-
-            <div class="bloco-nota-cfp">
-                <div class="bloco-coluna" style="display: flex;">
-                    <input type="text" maxlength="4" min="30" max="60" step="0.01" pattern="^\d+(,\d{2})?$" id="notacfp" style="width: 50%; order: 1;" placeholder="Insira a Nota Etapa 2" class="form-control col-form-2">
-                    <a class="btn btn-cfp" id="botao-cfp" style="order: 2;">
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </a>
-                </div>
-            </div>
         </div>
 
-        <div class="container-painel">
-            <div class="half">
-                @{
-                    Html.RenderPartial("BuscaDptosPolicia");
-                }
-            </div>
-            <div class="half">
+        <div class="accordion" id="accordionExample">
 
-                <div class="m-4">
-                    <div class="row formulario col-md-6 col-sm-6 col-lg-6">
-                        <p>Unidades que você escolheu.</p>
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Selecione Unidades de Preferência
+                        </button>
+                    </h5>
+                </div>
 
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body">
                         <p id="totalRows" style="padding-left: 20px;"></p>
                         <div class="table-responsive" style="padding-left: 20px; border: 1px solid black;">
-                            <table id="mytable" class="table-delegacias-preferencia">
+                            <table id="mytable" class="table-delegacias-painel">
                                 <thead>
                                     <tr>
                                         <th>Nome</th>
-                                        <th>Vagas</th>
-                                        <th title="Contemplada">Cont.</th>
-                                        <th>Remover</th>
+                                        <th>CEFLAG</th>
+                                        <th>Bairro</th>
+                                        <th>Pontuação</th>
+                                        <th>Área de atuação</th>
+                                        @*<th>Escolher</th>*@
                                     </tr>
                                 </thead>
-                                <tbody id="tabela-dptos-preferencia">
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                    <tr class="escolher-dpto-row" data-value="@item.ID">
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Nome)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.EhSede)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Bairro)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Pontuacao)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.AreaAtuacao)
+                                        </td>
+                                    </tr>
+                                    }
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
+            </div>
 
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Unidades de Preferência
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="m-4">
+                            <div class="row formulario col-md-6 col-sm-6 col-lg-6">
+                                <p id="totalRows" style="padding-left: 20px;"></p>
+                                <div class="table-responsive" style="padding-left: 20px; border: 1px solid black;">
+                                    <table id="mytable" class="table-delegacias-preferencia">
+                                        <thead>
+                                            <tr>
+                                                <th>Nome</th>
+                                                <th>CEFLAG</th>
+                                                <th>Bairro</th>
+                                                @*<th title="Contemplada">Contemplada</th>*@
+                                                <th>Remover</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tabela-dptos-preferencia">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

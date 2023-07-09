@@ -78,21 +78,27 @@ namespace GestaoDDD.MVC.Controllers
       ViewBag.Cargo = aluno.Cargo;
       ViewBag.Posicao = aluno.Posicao;
 
-      var dptos = _dptoPoliciaAppService.GetAll()
-       .OrderByDescending(s => s.Vagas);
-      var dptoVm = Mapper.Map<IEnumerable<DepartamentoPolicia>, IEnumerable<DepartamentoPoliciaViewModel>>(dptos);
+      var key = "BuscaDelegacias";
+      if (XAppCache.Has(key))
+        return XAppCache.Get<ActionResult>(key);
+      else
+      {
+        var dptos = _dptoPoliciaAppService.GetAll()
+          .OrderByDescending(s => s.Pontuacao);
+        var dptoVm = Mapper.Map<IEnumerable<DepartamentoPolicia>, IEnumerable<DepartamentoPoliciaViewModel>>(dptos);
 
-      return View(dptoVm);
+        return XAppCache.Set(key, View(dptoVm));
+      }
     }
 
-    public ActionResult BuscaDptosPolicia()
-    {
-      var dptos = _dptoPoliciaAppService.GetAll()
-        .OrderByDescending(s => s.Vagas);
-      var dptoVm = Mapper.Map<IEnumerable<DepartamentoPolicia>, IEnumerable<DepartamentoPoliciaViewModel>>(dptos);
+    //public ActionResult BuscaDptosPolicia()
+    //{
+    //  var dptos = _dptoPoliciaAppService.GetAll()
+    //    .OrderByDescending(s => s.Vagas);
+    //  var dptoVm = Mapper.Map<IEnumerable<DepartamentoPolicia>, IEnumerable<DepartamentoPoliciaViewModel>>(dptos);
 
-      return PartialView(dptoVm);
-    }
+    //  return PartialView(dptoVm);
+    //}
 
     public void AtualizarNotaCFP(int pAlunoId, double pNota)
     {
