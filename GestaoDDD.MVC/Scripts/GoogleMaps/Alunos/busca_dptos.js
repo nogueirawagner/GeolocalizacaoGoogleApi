@@ -29,9 +29,9 @@
                 bairroCell.textContent = item.Bairro;
                 row.appendChild(bairroCell);
 
-                const contempladaCell = document.createElement('td');
-                contempladaCell.textContent = item.Contemplada;
-                row.appendChild(contempladaCell);
+                //const contempladaCell = document.createElement('td');
+                //contempladaCell.textContent = item.Contemplada;
+                //row.appendChild(contempladaCell);
 
                 const excluirCell = document.createElement('td');
                 const excluirLink = document.createElement('a');
@@ -78,18 +78,18 @@ function carregadorDepartamentosPolicia(alunoId) {
         });
 }
 
+function exibirPopup() {
+    alert("DP Selecionada com sucesso");
+}
+
+function fecharPopup() {
+    var popup = document.getElementById("myPopup");
+    popup.style.display = "none";
+}
+
 $(document).ready(function () {
 
     var vbId = document.getElementById("vbId").value;
-
-    var escolherButton = document.querySelectorAll(".escolher-dpto");
-    escolherButton.forEach(function (button) {
-        button.addEventListener("click", function () {
-            var dpId = button.getAttribute("data-value");
-            EscolherLotacao(dpId);
-        });
-    });
-
 
     var escolherButtonRow = document.querySelectorAll(".escolher-dpto-row");
     escolherButtonRow.forEach(function (button) {

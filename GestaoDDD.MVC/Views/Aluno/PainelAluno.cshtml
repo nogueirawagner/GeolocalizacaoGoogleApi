@@ -6,6 +6,7 @@
     <link href="~/Content/Alunos/painel_aluno.css" rel="stylesheet" />
     <link href="~/Content/Alunos/delegacia_preferencia_aluno.css" rel="stylesheet" />
     <link href="~/Content/Alunos/delegacia_painel_aluno.css" rel="stylesheet" />
+    <link href="~/Content/Alunos/popup-escolha-dpto.css" rel="stylesheet" />
 
     <script src="~/Scripts/GoogleMaps/Alunos/painel_aluno.js"></script>
     <script src="~/Scripts/GoogleMaps/Alunos/busca_dptos_preferencia.js"></script>
@@ -53,13 +54,13 @@
         <div class="accordion" id="accordionExample">
 
             <div class="card">
-                <div class="card-header" id="headingOne">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <a class="btn btn-link" text="dad" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
                             Selecione Unidades de Preferência
-                        </button>
-                    </h5>
-                </div>
+                        </h5>
+                    </div>
+                </a>
 
                 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                     <div class="card-body">
@@ -79,39 +80,48 @@
                                 <tbody>
                                     @foreach (var item in Model)
                                     {
-                                    <tr class="escolher-dpto-row" data-value="@item.ID">
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Nome)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.EhSede)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Bairro)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Pontuacao)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.AreaAtuacao)
-                                        </td>
-                                    </tr>
+                                        <tr onclick="exibirPopup()" class="escolher-dpto-row" data-value="@item.ID">
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Nome)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.EhSede)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Bairro)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Pontuacao)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.AreaAtuacao)
+                                            </td>
+                                            
+                                        </tr>
                                     }
                                 </tbody>
                             </table>
                         </div>
+                        
                     </div>
                 </div>
+
+
+
+
             </div>
 
             <div class="card">
-                <div class="card-header" id="headingTwo">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+
+
+                <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
                             Unidades de Preferência
-                        </button>
-                    </h5>
-                </div>
+                        </h5>
+                    </div>
+                </a>
+
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                     <div class="card-body">
                         <div class="m-4">

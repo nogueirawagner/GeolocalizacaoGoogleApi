@@ -62,8 +62,8 @@
 
 
 @media (max-width: 480px) {
-    .table-delegacias-preferencia th:nth-child(2),
-    .table-delegacias-preferencia td:nth-child(2) {
+    .table-delegacias-preferencia th:nth-child(3),
+    .table-delegacias-preferencia td:nth-child(3) {
         display: none;
     }
 

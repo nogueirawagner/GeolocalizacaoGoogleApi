@@ -219,6 +219,7 @@
     <Content Include="Content\Alunos\aluno.css" />
     <Content Include="Content\Alunos\delegacia_preferencia_aluno.css" />
     <Content Include="Content\Alunos\delegacia_painel_aluno.css" />
+    <Content Include="Content\Alunos\popup-escolha-dpto.css" />
     <Content Include="Content\Alunos\painel_aluno.css" />
     <Content Include="Content\Alunos\alunos_todos.css" />
     <Content Include="Content\bootstrap-theme.css" />
