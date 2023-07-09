@@ -79,7 +79,7 @@ function carregadorDepartamentosPolicia(alunoId) {
 }
 
 function exibirPopup() {
-    alert("DP Selecionada com sucesso");
+    alert("DP Selecionada com Sucesso.");
 }
 
 function fecharPopup() {
