@@ -78,17 +78,22 @@ namespace GestaoDDD.MVC.Controllers
       ViewBag.Cargo = aluno.Cargo;
       ViewBag.Posicao = aluno.Posicao;
 
-      var key = "BuscaDelegacias";
-      if (XAppCache.Has(key))
-        return XAppCache.Get<ActionResult>(key);
-      else
-      {
-        var dptos = _dptoPoliciaAppService.GetAll()
-          .OrderByDescending(s => s.Pontuacao);
-        var dptoVm = Mapper.Map<IEnumerable<DepartamentoPolicia>, IEnumerable<DepartamentoPoliciaViewModel>>(dptos);
+      var dptos = _dptoPoliciaAppService.GetAll()
+         .OrderByDescending(s => s.Pontuacao);
+      var dptoVm = Mapper.Map<IEnumerable<DepartamentoPolicia>, IEnumerable<DepartamentoPoliciaViewModel>>(dptos);
+      return View(dptoVm);
 
-        return XAppCache.Set(key, View(dptoVm));
-      }
+      //var key = "BuscaDelegacias";
+      //if (XAppCache.Has(key))
+      //  return XAppCache.Get<ActionResult>(key);
+      //else
+      //{
+      //  var dptos = _dptoPoliciaAppService.GetAll()
+      //    .OrderByDescending(s => s.Pontuacao);
+      //  var dptoVm = Mapper.Map<IEnumerable<DepartamentoPolicia>, IEnumerable<DepartamentoPoliciaViewModel>>(dptos);
+
+      //  return XAppCache.Set(key, View(dptoVm));
+      //}
     }
 
     //public ActionResult BuscaDptosPolicia()

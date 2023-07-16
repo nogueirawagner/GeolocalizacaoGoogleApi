@@ -74,30 +74,34 @@
                                         <th>Bairro</th>
                                         <th>Pontuação</th>
                                         <th>Área de atuação</th>
-                                        @*<th>Escolher</th>*@
+                                        <th>Escolher</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach (var item in Model)
                                     {
-                                        <tr onclick="exibirPopup()" class="escolher-dpto-row" data-value="@item.ID">
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Nome)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.EhSede)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Bairro)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Pontuacao)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.AreaAtuacao)
-                                            </td>
-                                            
-                                        </tr>
+                                    <tr class="escolher-dpto-row" data-value="@item.ID">
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Nome)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.EhSede)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Bairro)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Pontuacao)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.AreaAtuacao)
+                                        </td>
+                                        <td>
+                                            <a data-value="@item.ID" class="escolher-dpto btn btn-proximos">
+                                                <span class="glyphicon glyphicon-ok"></span>
+                                            </a>
+                                        </td>
+                                    </tr>
                                     }
                                 </tbody>
                             </table>
