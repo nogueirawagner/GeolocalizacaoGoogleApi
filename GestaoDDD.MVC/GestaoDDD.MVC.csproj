@@ -332,10 +332,7 @@
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
-    <None Include="Properties\PublishProfiles\Caio.pubxml" />
     <None Include="Properties\PublishProfiles\cfpagentepcdf - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\v.001.pubxml" />
-    <None Include="Properties\PublishProfiles\Wagner.pubxml" />
     <Content Include="Images\posto-preto.png" />
     <Content Include="Images\posto-vermelho.png" />
     <Content Include="Scripts\bootstrap.js" />
