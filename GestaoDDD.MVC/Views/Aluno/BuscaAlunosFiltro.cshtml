@@ -20,30 +20,34 @@
                             <th>Inscricao</th>
                             <th>Nome</th>
                             <th>Nota Etapa 1</th>
-                            <th>Nota Final</th>
+                            <th>Nota Etapa 2</th>
+                            <th>Nota Final Provisoria</th>
                         </tr>
                     </thead>
                     <tbody id="tableBody">
                         @foreach (var item in Model)
                         {
 
-                            <tr class="table-row" data-url="@Url.Action("PainelAluno", "Aluno", new { pAlunoId = item.ID })">
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Posicao)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Inscricao)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Nome)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.NotaEtapa1)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.NotaFinal)
-                                </td>
-                            </tr>
+                        <tr class="table-row" data-url="@Url.Action("PainelAluno", "Aluno", new { pAlunoId = item.ID })">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PosicaoProvisoria)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Inscricao)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NotaEtapa1)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NotaEtapa2)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NotaFinalProvisoria)
+                            </td>
+                        </tr>
                         }
                     </tbody>
                 </table>

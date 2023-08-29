@@ -11,7 +11,9 @@ namespace GestaoDDD.Domain.Entities
     public double NotaEtapa1 { get; set; }
     public double NotaEtapa2 { get; set; }
     public double NotaFinal { get; set; }
+    public double NotaFinalProvisoria { get; set; }
     public int Posicao { get; set; }
+    public int PosicaoProvisoria { get; set; }
     public string Cargo { get; set; }
   }
 }

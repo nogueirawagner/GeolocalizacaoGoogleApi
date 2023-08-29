@@ -30,8 +30,13 @@ namespace GestaoDDD.MVC.Controllers
 
     public ActionResult BuscarAlunos()
     {
-      var key = string.Concat("AlunosConcorrencia-", "Agente", "Ampla");
 
+      var alunos = _alunoAppService.PegarAlunosPorCargoConcorrencia("Agente", "Ampla");
+      var alunosVm = Mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoViewModel>>(alunos).ToList();
+
+      return View(alunosVm);
+      /*
+      var key = string.Concat("AlunosConcorrencia-", "Agente", "Ampla");
       if (XAppCache.Has(key))
         return XAppCache.Get<ActionResult>(key);
       else
@@ -41,10 +46,16 @@ namespace GestaoDDD.MVC.Controllers
         
         return XAppCache.Set(key, View(alunosVm));
       }
+      */
     }
 
     public ActionResult BuscaAlunosFiltro(string pCargo, string pConcorrencia)
     {
+      var alunos = _alunoAppService.PegarAlunosPorCargoConcorrencia(pCargo, pConcorrencia);
+      var alunosVm = Mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoViewModel>>(alunos).ToList();
+      return PartialView(alunosVm);
+
+      /*
       var key = string.Concat("AlunosConcorrencia-Partial-", pCargo, pConcorrencia);
 
       if (XAppCache.Has(key))
@@ -57,6 +68,8 @@ namespace GestaoDDD.MVC.Controllers
         var alunosVm = Mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoViewModel>>(alunos).ToList();
         return XAppCache.Set(key, PartialView(alunosVm));
       }
+
+      */
     }
 
     public JsonResult PesquisarAlunosPorPalavras(string pTermo, string pConcorrencia, string pCargo)
@@ -77,6 +90,7 @@ namespace GestaoDDD.MVC.Controllers
       ViewBag.Inscricao = aluno.Inscricao;
       ViewBag.Cargo = aluno.Cargo;
       ViewBag.Posicao = aluno.Posicao;
+      ViewBag.PosicaoProvisoria = aluno.PosicaoProvisoria;
 
       var dptos = _dptoPoliciaAppService.GetAll()
          .OrderByDescending(s => s.Pontuacao);

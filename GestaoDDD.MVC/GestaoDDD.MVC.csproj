@@ -347,6 +347,8 @@
     <Content Include="Scripts\GoogleMaps\Candidatos\mapa_candidatos_proximos.js" />
     <Content Include="Scripts\GoogleMaps\Candidatos\mapa_todos_candidatos.js" />
     <Content Include="Scripts\GoogleMaps\Candidatos\mapa_candidato.js" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FTPProfile.pubxml" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\GoogleMaps\Delegacias\mapa _cfp.js" />
     <Content Include="Scripts\GoogleMaps\Delegacias\mapa_delegacias.js" />

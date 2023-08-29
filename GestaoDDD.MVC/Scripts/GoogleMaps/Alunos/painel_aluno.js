@@ -1,6 +1,9 @@
 ﻿function SalvarNotaCFP(alunoId, notaCfp) {
     var nota = parseFloat(notaCfp.replace(',', '.'));
-    fetch('/Aluno/AtualizarNotaCFP?pAlunoId=' + alunoId + '&pNota=' + nota, {
+    var notaDividida = (nota / 2);
+    //if (parseFloat(price) > 100)
+
+    fetch('/Aluno/AtualizarNotaCFP?pAlunoId=' + alunoId + '&pNota=' + notaDividida, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -11,10 +14,10 @@
         .then(data => {
             var notaFinal = document.getElementById("vbNotaFinal").value;
             var notaFinal = parseFloat(notaFinal.replace(',', '.'));
-            var notaAtualizada = nota + notaFinal;
+            var notaAtualizada = nota + notaDividida;
             notaAtualizada = parseFloat(notaAtualizada.toFixed(4)).toFixed(2).replace('.', ',');
 
-            document.getElementById('nota-etapa-2').value = notaCfp;
+            document.getElementById('nota-etapa-2').value = nota;
             document.getElementById('nota-atualizada').value = notaAtualizada;
         });
 }
@@ -35,23 +38,23 @@ $(document).ready(function () {
     var alunoId = document.getElementById("vbId").value;
     inicializarNotas();
 
-    //document.getElementById('botao-cfp').addEventListener('click', function () {
-    //    var notaCfp = document.getElementById('notacfp').value;
-    //    if (notaCfp.length > 3)
-    //        SalvarNotaCFP(alunoId, notaCfp);
-    //    else
-    //        alert("Sua nota deve estar no formato 55,40 ou 55,00");
-    //});
+    document.getElementById('botao-cfp').addEventListener('click', function () {
+        var notaCfp = document.getElementById('nota-etapa-2').value;
+        if (notaCfp.length > 3)
+            SalvarNotaCFP(alunoId, notaCfp);
+        else
+            alert("Sua nota deve estar no formato 55,40 ou 55,00");
+    });
 
-    //var input = document.getElementById('notacfp');
+    var input = document.getElementById('nota-etapa-2');
 
-    //input.addEventListener('input', function (e) {
-    //    var value = e.target.value;
-    //    if (value.length > 3) {
-    //        var formattedValue = formatNumber(value);
-    //        e.target.value = formattedValue;
-    //    }
-    //});
+    input.addEventListener('input', function (e) {
+        var value = e.target.value;
+        if (value.length > 3) {
+            var formattedValue = formatNumber(value);
+            e.target.value = formattedValue;
+        }
+    });
 
     function formatNumber(value) {
         // Remove tudo que não for dígito

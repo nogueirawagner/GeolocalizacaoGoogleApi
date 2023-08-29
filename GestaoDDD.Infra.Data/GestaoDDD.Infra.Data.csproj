@@ -167,6 +167,18 @@
     <Compile Include="Migrations\202308051348135_AtualizacaoEscrivao.Designer.cs">
       <DependentUpon>202308051348135_AtualizacaoEscrivao.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202308291236478_add coluna provisoria.cs" />
+    <Compile Include="Migrations\202308291236478_add coluna provisoria.Designer.cs">
+      <DependentUpon>202308291236478_add coluna provisoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202308291402169_atualizar nota provisoria.cs" />
+    <Compile Include="Migrations\202308291402169_atualizar nota provisoria.Designer.cs">
+      <DependentUpon>202308291402169_atualizar nota provisoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202308291420044_add posicao provisoria.cs" />
+    <Compile Include="Migrations\202308291420044_add posicao provisoria.Designer.cs">
+      <DependentUpon>202308291420044_add posicao provisoria.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AlunoRepository.cs" />
@@ -272,6 +284,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202308051348135_AtualizacaoEscrivao.resx">
       <DependentUpon>202308051348135_AtualizacaoEscrivao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308291236478_add coluna provisoria.resx">
+      <DependentUpon>202308291236478_add coluna provisoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308291402169_atualizar nota provisoria.resx">
+      <DependentUpon>202308291402169_atualizar nota provisoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308291420044_add posicao provisoria.resx">
+      <DependentUpon>202308291420044_add posicao provisoria.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

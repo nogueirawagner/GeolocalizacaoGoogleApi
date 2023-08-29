@@ -11,6 +11,10 @@
     float: right;
 }
 
+.accordion {
+    margin: 20px;
+}
+
 
 .titulo-aluno {
     padding-top: 15px;
@@ -123,6 +127,25 @@
         border-top: 2px solid #dee2e6;
     }
 
+@media (max-width: 800px){
+    .titulo-aluno {
+        padding-top: 20px;
+        margin-bottom: 45px;
+        font-size: 15px;
+    }
+
+    .info-aluno {
+        display: none;
+    }
+
+    .bloco-notas {
+        margin-top: -30px;
+        margin-right: 100px;
+    }
+
+
+}
+
 @media (max-width: 480px) {
     .titulo-aluno {
         padding-top: 20px;
@@ -130,24 +153,34 @@
         font-size: 15px;
     }
 
-    .bloco-notas {
+    .info-aluno {
         display: none;
+    }
+
+    .bloco-nota-1,
+    .bloco-resultado-nota-1 {
+        display: none;
+    }
+
+    .bloco-nota-2,
+    .bloco-resultado-nota-2 {
+        position: relative;
+        margin-left: -150px;
+    }
+
+    .bloco-nota-final,
+    .bloco-resultado-nota-final {
+        margin-left: -100px;
+    }
+
+    .accordion {
+        margin-top: 80px;
     }
 
     .painel {
         grid-template-rows: 50px; /* se tiver duas linhas e duas colunas. Esse código fixa o tamanho da primeira linha.*/
     }
-    /*.bloco-nota-cfp {
-        float: left;
-        margin-left: 20px;
-        margin-top: -25px;
-    }*/
-
-/*    .container-painel {
-        height: 75vh; 
-        margin-top: -30px;
-    }
-*/
+  
     .info-aluno {
         display: none;
     }
