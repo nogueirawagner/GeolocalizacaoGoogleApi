@@ -111,7 +111,7 @@ function PesquisarAlunosPorPalavras(pTermo) {
             parsedData.forEach(function (item) {
                 var newRow = $("<tr class='table-row'>")
                     .attr("data-url", "/Aluno/PainelAluno?pAlunoId=" + item.ID)
-                    .append($("<td>").text(item.Posicao))
+                    .append($("<td>").text(item.PosicaoProvisoria))
                     .append($("<td>").text(item.Inscricao))
                     .append($("<td>").text(item.Nome))
                     .append($("<td>").text(item.NotaEtapa1))
