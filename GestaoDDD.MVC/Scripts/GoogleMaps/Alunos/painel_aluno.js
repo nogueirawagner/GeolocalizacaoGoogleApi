@@ -46,14 +46,9 @@ $(document).ready(function () {
             alert("Sua nota deve estar no formato 80,40 ou 80,00. Não precisa digitar a vírgula, apenas coloque 8000 que a vírgula entra sozinha.");
 
         var nota = parseFloat(notaCfp.replace(',', '.'));
-        var notaDividida = (nota / 2);
 
-        if (notaDividida <= 50)
+        if (nota <= 50)
             alert("Não coloque a nota dividida! Se vc tirou 80,00 na prova, coloque 80,00 e não 40.");
-
-        
-
-
 
     });
 
