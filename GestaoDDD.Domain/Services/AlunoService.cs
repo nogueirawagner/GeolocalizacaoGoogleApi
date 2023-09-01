@@ -29,5 +29,10 @@ namespace GestaoDDD.Domain.Services
     {
       return _alunoRepository.PesquisarAlunosPorPalavras(pTermo, pConcorrencia, pCargo);
     }
+
+    public string PegarMediaCalculada()
+    {
+      return _alunoRepository.PegarMediaCalculada();
+    }
   }
 }

@@ -34,6 +34,8 @@ namespace GestaoDDD.MVC.Controllers
       var alunos = _alunoAppService.PegarAlunosPorCargoConcorrencia("Agente", "Ampla");
       var alunosVm = Mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoViewModel>>(alunos).ToList();
 
+      ViewBag.Media = _alunoAppService.PegarMediaCalculada();
+
       return View(alunosVm);
       /*
       var key = string.Concat("AlunosConcorrencia-", "Agente", "Ampla");
@@ -53,6 +55,9 @@ namespace GestaoDDD.MVC.Controllers
     {
       var alunos = _alunoAppService.PegarAlunosPorCargoConcorrencia(pCargo, pConcorrencia);
       var alunosVm = Mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoViewModel>>(alunos).ToList();
+
+      ViewBag.Media = _alunoAppService.PegarMediaCalculada();
+      
       return PartialView(alunosVm);
 
       /*
@@ -95,6 +100,7 @@ namespace GestaoDDD.MVC.Controllers
       var dptos = _dptoPoliciaAppService.GetAll()
          .OrderByDescending(s => s.Pontuacao);
       var dptoVm = Mapper.Map<IEnumerable<DepartamentoPolicia>, IEnumerable<DepartamentoPoliciaViewModel>>(dptos);
+
       return View(dptoVm);
 
       //var key = "BuscaDelegacias";

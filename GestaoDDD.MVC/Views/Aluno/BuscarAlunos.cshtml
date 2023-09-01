@@ -33,7 +33,11 @@
                     <option value="SJN">Sub Judice Negros</option>
                 </select>
             </div>
+            <div class="half-alunos">
+                <input class="form-control" type="text" value="@ViewBag.Media" readonly />
+            </div>
         </div>
+        
         <div id="retornoPesquisa">
             @{
                 Html.RenderPartial("BuscaAlunosFiltro");

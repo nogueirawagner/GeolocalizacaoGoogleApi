@@ -29,5 +29,10 @@ namespace GestaoDDD.Application.Services
     {
       return _alunoService.PegarAlunosPorCargoConcorrencia(pCargo, pConcorrencia);
     }
+
+    public string PegarMediaCalculada()
+    {
+      return _alunoService.PegarMediaCalculada();
+    }
   }
 }

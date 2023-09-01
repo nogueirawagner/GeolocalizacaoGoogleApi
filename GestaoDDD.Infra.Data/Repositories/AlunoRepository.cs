@@ -4,6 +4,7 @@ using GestaoDDD.Domain.Interfaces.Repositories;
 using GestaoDDD.Infra.Data.Contexto;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace GestaoDDD.Infra.Data.Repositories
@@ -67,12 +68,28 @@ namespace GestaoDDD.Infra.Data.Repositories
       return _db.Database.SqlQuery<Aluno>(sql);
     }
 
+    public string PegarMediaCalculada()
+    {
+      var sql = @"select 
+	        CAST(AVG(NotaEtapa2) as numeric(18,2)) Media 
+        from Aluno 
+        where Cargo = 'Agente' 
+	        and NotaFinalProvisoria > 0
+	        and NotaEtapa2 <> 43.25
+	        and NotaEtapa2 > 0
+        ";
+
+      var media = _db.Database.SqlQuery<decimal>(sql).FirstOrDefault();
+      return string.Format("Média: {0}", media);
+    }
+
     public IEnumerable<Aluno> PegarAlunosPorCargoConcorrencia(string pCargo, string pConcorrencia)
     {
       //var sql = @"SELECT * FROM Aluno WHERE Concorrencia = '{0}' and Cargo = '{1}' ORDER BY Posicao";
       var sql = @"SELECT * FROM Aluno WHERE Concorrencia = '{0}' and Cargo = '{1}' ORDER BY PosicaoProvisoria";
 
       sql = string.Format(sql, pConcorrencia, pCargo);
+
       return _db.Database.SqlQuery<Aluno>(sql);
     }
   }

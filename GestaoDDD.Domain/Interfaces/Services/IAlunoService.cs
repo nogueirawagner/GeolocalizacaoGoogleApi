@@ -9,5 +9,6 @@ namespace GestaoDDD.Domain.Interfaces.Services
 
     IEnumerable<Aluno> PesquisarAlunosPorPalavras(string pTermo, string pConcorrencia, string pCargo);
     IEnumerable<Aluno> PegarAlunosPorCargoConcorrencia(string pCargo, string pConcorrencia);
+    string PegarMediaCalculada();
   }
 }

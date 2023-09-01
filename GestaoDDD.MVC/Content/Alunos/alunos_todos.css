@@ -10,7 +10,7 @@
 
 .container-concorrencia {
     display: grid;
-    grid-template-columns: 100px 200px;
+    grid-template-columns: 100px 200px 120px;
     grid-template-rows: 40px; /* se tiver duas linhas e duas colunas. Esse código fixa o tamanho da primeira linha e da segunda linha.*/
     margin: 20px;
     margin-top: -20px;
@@ -59,7 +59,7 @@
 
     .container-concorrencia {
         display: grid;
-        grid-template-columns: 100px 200px;
+        grid-template-columns: 120px 200px;
         grid-template-rows: 40px; /* se tiver duas linhas e duas colunas. Esse código fixa o tamanho da primeira linha e da segunda linha.*/
         margin: 20px;
         margin-top: -50px;
