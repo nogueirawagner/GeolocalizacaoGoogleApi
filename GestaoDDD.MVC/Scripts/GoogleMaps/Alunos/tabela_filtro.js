@@ -116,7 +116,8 @@ function PesquisarAlunosPorPalavras(pTermo) {
                     .append($("<td>").text(item.Nome))
                     .append($("<td>").text(item.NotaEtapa1))
                     .append($("<td>").text(item.NotaEtapa2))
-                    .append($("<td>").text(item.NotaFinalProvisoria));
+                    .append($("<td>").text(item.NotaFinalProvisoria))
+                    .append($("<td>").text(item.Turma));
 
                 tableBody.append(newRow);
             });

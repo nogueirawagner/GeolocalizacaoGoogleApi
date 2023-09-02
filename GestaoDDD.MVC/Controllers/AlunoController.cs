@@ -3,11 +3,8 @@ using GestaoDDD.Application.Interface;
 using GestaoDDD.Application.ViewModels;
 using GestaoDDD.Domain.Entities;
 using GestaoDDD.Domain.Estatics;
-using GestaoDDD.Domain.Interfaces.Services;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace GestaoDDD.MVC.Controllers
@@ -28,11 +25,152 @@ namespace GestaoDDD.MVC.Controllers
       _dptoAlunoAppService = dptoAlunoAppService;
     }
 
+    private IEnumerable<AlunoViewModel> VerificarTurmasNomeacao(string pConcorrencia)
+    {
+      var lista_ampla = new List<AlunoViewModel>();
+      var lista_negros = new List<AlunoViewModel>();
+      var lista_pcd = new List<AlunoViewModel>();
+
+      var ampla = _alunoAppService.PegarAlunosPorCargoConcorrencia("Agente", "Ampla");
+      var amplaVm = Mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoViewModel>>(ampla).ToList();
+
+
+      lista_ampla.AddRange(amplaVm.Take(5));
+      foreach (var amp in lista_ampla)
+        amp.Turma = "T1";
+
+      var negros = _alunoAppService.PegarAlunosPorCargoConcorrencia("Agente", "Negros");
+      var negrosVm = Mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoViewModel>>(negros).ToList();
+
+      lista_negros.AddRange(negrosVm.Take(2));
+      foreach (var ng in lista_negros)
+        ng.Turma = "T1";
+
+      var pcd = _alunoAppService.PegarAlunosPorCargoConcorrencia("Agente", "PCD");
+      var pcdVm = Mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoViewModel>>(pcd).ToList();
+
+      lista_pcd.AddRange(pcdVm.Take(1));
+      foreach (var pc in pcdVm)
+        pc.Turma = "T1";
+
+      var resto_ampla = amplaVm.Skip(5).ToList();
+      var resto_negros = negrosVm.Skip(2).ToList();
+      var resto_pcd = pcdVm.Skip(1).ToList();
+
+      var parada = resto_ampla.Count();
+
+      int posicao_ampla = 6, posicao_negro = 3, posicao_pcd = 1;
+      int ultima_posicao_negro = 3, ultima_posicao_pcd = 2;
+
+      for (int i = 6; i < parada; i++)
+      {
+
+        var obj = resto_ampla[0];
+        obj.Turma = posicao_ampla <= 450 ? "T1"
+                     : posicao_ampla > 450 && posicao_ampla < 900 ? "T2"
+                     : "T3";
+
+        posicao_ampla += 1;
+
+        lista_ampla.Add(obj);
+        resto_ampla.Remove(obj);
+
+        // negros fixos na posição 3 e 8;.
+
+        if (obj.PosicaoProvisoria == posicao_negro + 5)
+        {
+          if (resto_negros.Count() > 0)
+          {
+            var obj_negro = resto_negros[0];
+            obj_negro.Turma = ultima_posicao_negro <= 120 ? "T1"
+                : ultima_posicao_negro > 120 && ultima_posicao_negro < 240 ? "T2"
+                : "T3";
+
+
+            posicao_negro += 5;
+            ultima_posicao_negro += 1;
+
+            lista_negros.Add(obj_negro);
+            resto_negros.Remove(obj_negro);
+          }
+        }
+
+        if (obj.PosicaoProvisoria == posicao_pcd + 20)
+        {
+          if (resto_pcd.Count() > 0)
+          {
+            var obj_pcd = resto_pcd[0];
+            obj_pcd.Turma = ultima_posicao_pcd <= 30 ? "T1"
+                       : ultima_posicao_pcd > 30 && ultima_posicao_pcd < 60 ? "T2"
+                       : "T3";
+
+            posicao_pcd += 20;
+            ultima_posicao_pcd += 1;
+
+            lista_pcd.Add(obj_pcd);
+            resto_pcd.Remove(obj_pcd);
+          }
+        }
+      }
+
+      var faltaPcd = 30 - lista_pcd.Count();
+      var posicaoUltimoT1 = lista_ampla.Last(s => s.Turma == "T1");
+      var indexUltimoT1 = lista_ampla.IndexOf(posicaoUltimoT1);
+
+      var amplaPcd = lista_ampla.Skip(indexUltimoT1 + 1).Take(faltaPcd);
+      foreach (var ampPcd in amplaPcd)
+        ampPcd.Turma = "T1";
+
+      var keyAmpla = "TurmasAmpla";
+      var keyNegros = "TurmasNegros";
+      var keyPCD = "TurmasPCD";
+
+      if (pConcorrencia == "Ampla")
+      {
+        if (XAppCache.Has(keyAmpla))
+        {
+          XAppCache.Alter<List<AlunoViewModel>>(keyAmpla, lista_ampla);
+          return XAppCache.Get<List<AlunoViewModel>>(keyAmpla);
+        }
+        else
+        {
+          return XAppCache.Set(keyAmpla, lista_ampla);
+        }
+      }
+      else if (pConcorrencia == "Negros")
+      {
+        if (XAppCache.Has(keyNegros))
+        {
+          XAppCache.Alter<List<AlunoViewModel>>(keyNegros, lista_negros);
+          return XAppCache.Get<List<AlunoViewModel>>(keyNegros);
+        }
+        else
+        {
+          return XAppCache.Set(keyNegros, lista_negros);
+        }
+      }
+      else
+      {
+        if (XAppCache.Has(keyPCD))
+        {
+          XAppCache.Alter<List<AlunoViewModel>>(keyPCD, lista_pcd);
+          return XAppCache.Get<List<AlunoViewModel>>(keyPCD);
+        }
+        else
+        {
+          return XAppCache.Set(keyPCD, lista_pcd);
+        }
+      }
+    }
+
     public ActionResult BuscarAlunos()
     {
 
+
       var alunos = _alunoAppService.PegarAlunosPorCargoConcorrencia("Agente", "Ampla");
-      var alunosVm = Mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoViewModel>>(alunos).ToList();
+      //var alunosVm = Mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoViewModel>>(alunos).ToList();
+
+      var alunosVm = VerificarTurmasNomeacao("Ampla");
 
       ViewBag.Media = _alunoAppService.PegarMediaCalculada();
 
@@ -54,11 +192,22 @@ namespace GestaoDDD.MVC.Controllers
     public ActionResult BuscaAlunosFiltro(string pCargo, string pConcorrencia)
     {
       var alunos = _alunoAppService.PegarAlunosPorCargoConcorrencia(pCargo, pConcorrencia);
-      var alunosVm = Mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoViewModel>>(alunos).ToList();
 
-      ViewBag.Media = _alunoAppService.PegarMediaCalculada();
-      
-      return PartialView(alunosVm);
+      if (pConcorrencia == "Ampla" || pConcorrencia == "Negros" || pConcorrencia == "PCD")
+      {
+        var alunosVm = VerificarTurmasNomeacao(pConcorrencia);
+        ViewBag.Media = _alunoAppService.PegarMediaCalculada();
+
+        return PartialView(alunosVm);
+      }
+      else
+      {
+        var alunosVm = Mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoViewModel>>(alunos).ToList();
+        ViewBag.Media = _alunoAppService.PegarMediaCalculada();
+
+        return PartialView(alunosVm);
+      }
+
 
       /*
       var key = string.Concat("AlunosConcorrencia-Partial-", pCargo, pConcorrencia);
@@ -80,8 +229,40 @@ namespace GestaoDDD.MVC.Controllers
     public JsonResult PesquisarAlunosPorPalavras(string pTermo, string pConcorrencia, string pCargo)
     {
       var alunos = _alunoAppService.PesquisarAlunosPorPalavras(pTermo, pConcorrencia, pCargo);
+      var alunosVm = Mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoViewModel>>(alunos).ToList();
 
-      return Json(alunos, JsonRequestBehavior.AllowGet);
+      if (alunosVm.Count == 0)
+        return null;
+
+      if (pConcorrencia == "Ampla")
+      {
+        var turmasAmpla = XAppCache.Get<List<AlunoViewModel>>("TurmasAmpla");
+        foreach (var aVm in alunosVm)
+        {
+          aVm.Turma = turmasAmpla.FirstOrDefault(s => s.ID == aVm.ID).Turma;
+        }
+        return Json(alunosVm, JsonRequestBehavior.AllowGet);
+      }
+      else if (pConcorrencia == "Negros")
+      {
+        var turmasNegro = XAppCache.Get<List<AlunoViewModel>>("TurmasNegros");
+        foreach (var aVm in alunosVm)
+        {
+          aVm.Turma = turmasNegro.FirstOrDefault(s => s.ID == aVm.ID).Turma;
+        }
+        return Json(alunosVm, JsonRequestBehavior.AllowGet);
+      }
+      else if (pConcorrencia == "PCD")
+      {
+        var turmasPCD = XAppCache.Get<List<AlunoViewModel>>("TurmasPCD");
+        foreach (var aVm in alunosVm)
+        {
+          aVm.Turma = turmasPCD.FirstOrDefault(s => s.ID == aVm.ID).Turma;
+        }
+        return Json(alunosVm, JsonRequestBehavior.AllowGet);
+      }
+      else
+        return Json(alunosVm, JsonRequestBehavior.AllowGet);
     }
 
     public ActionResult PainelAluno(int pAlunoId)

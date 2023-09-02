@@ -19,5 +19,6 @@ namespace GestaoDDD.Application.ViewModels
     public int Posicao { get; set; }
     public int PosicaoProvisoria { get; set; }
     public string Cargo { get; set; }
+    public string Turma { get; set; }
   }
 }
