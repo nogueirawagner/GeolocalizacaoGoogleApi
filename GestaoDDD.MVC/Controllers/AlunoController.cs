@@ -5,6 +5,7 @@ using GestaoDDD.Domain.Entities;
 using GestaoDDD.Domain.Estatics;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace GestaoDDD.MVC.Controllers
@@ -125,56 +126,48 @@ namespace GestaoDDD.MVC.Controllers
       var keyNegros = "TurmasNegros";
       var keyPCD = "TurmasPCD";
 
+      // Alimentando os caches.
+      if (XAppCache.Has(keyAmpla))
+      {
+        XAppCache.Alter<List<AlunoViewModel>>(keyAmpla, lista_ampla);
+        return XAppCache.Get<List<AlunoViewModel>>(keyAmpla);
+      }
+
+      if (XAppCache.Has(keyNegros))
+      {
+        XAppCache.Alter<List<AlunoViewModel>>(keyNegros, lista_negros);
+        return XAppCache.Get<List<AlunoViewModel>>(keyNegros);
+      }
+
+      if (XAppCache.Has(keyNegros))
+      {
+        XAppCache.Alter<List<AlunoViewModel>>(keyNegros, lista_negros);
+        return XAppCache.Get<List<AlunoViewModel>>(keyNegros);
+      }
+
       if (pConcorrencia == "Ampla")
-      {
-        if (XAppCache.Has(keyAmpla))
-        {
-          XAppCache.Alter<List<AlunoViewModel>>(keyAmpla, lista_ampla);
-          return XAppCache.Get<List<AlunoViewModel>>(keyAmpla);
-        }
-        else
-        {
-          return XAppCache.Set(keyAmpla, lista_ampla);
-        }
-      }
+        return XAppCache.Set(keyAmpla, lista_ampla);
       else if (pConcorrencia == "Negros")
-      {
-        if (XAppCache.Has(keyNegros))
-        {
-          XAppCache.Alter<List<AlunoViewModel>>(keyNegros, lista_negros);
-          return XAppCache.Get<List<AlunoViewModel>>(keyNegros);
-        }
-        else
-        {
-          return XAppCache.Set(keyNegros, lista_negros);
-        }
-      }
+        return XAppCache.Set(keyNegros, lista_negros);
       else
-      {
-        if (XAppCache.Has(keyPCD))
-        {
-          XAppCache.Alter<List<AlunoViewModel>>(keyPCD, lista_pcd);
-          return XAppCache.Get<List<AlunoViewModel>>(keyPCD);
-        }
-        else
-        {
-          return XAppCache.Set(keyPCD, lista_pcd);
-        }
-      }
+        return XAppCache.Set(keyPCD, lista_pcd);
     }
 
     public ActionResult BuscarAlunos()
     {
-
-
       var alunos = _alunoAppService.PegarAlunosPorCargoConcorrencia("Agente", "Ampla");
-      //var alunosVm = Mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoViewModel>>(alunos).ToList();
-
-      var alunosVm = VerificarTurmasNomeacao("Ampla");
-
+      var alunosVm = Mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoViewModel>>(alunos).ToList();
       ViewBag.Media = _alunoAppService.PegarMediaCalculada();
 
+      var turmasAmpla = XAppCache.Get<List<AlunoViewModel>>("TurmasAmpla");
+
+      foreach (var aVm in alunosVm)
+      {
+        aVm.Turma = turmasAmpla?.FirstOrDefault(s => s.ID == aVm.ID)?.Turma;
+      }
+
       return View(alunosVm);
+
       /*
       var key = string.Concat("AlunosConcorrencia-", "Agente", "Ampla");
       if (XAppCache.Has(key))
@@ -192,19 +185,41 @@ namespace GestaoDDD.MVC.Controllers
     public ActionResult BuscaAlunosFiltro(string pCargo, string pConcorrencia)
     {
       var alunos = _alunoAppService.PegarAlunosPorCargoConcorrencia(pCargo, pConcorrencia);
+      var alunosVm = Mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoViewModel>>(alunos).ToList();
 
       if (pConcorrencia == "Ampla" || pConcorrencia == "Negros" || pConcorrencia == "PCD")
       {
-        var alunosVm = VerificarTurmasNomeacao(pConcorrencia);
+        if (pConcorrencia == "Ampla")
+        {
+          var turmasAmpla = XAppCache.Get<List<AlunoViewModel>>("TurmasAmpla");
+          foreach (var aVm in alunosVm)
+          {
+            aVm.Turma = turmasAmpla?.FirstOrDefault(s => s.ID == aVm.ID)?.Turma;
+          }
+        }
+        else if (pConcorrencia == "Negros")
+        {
+          var turmasNegro = XAppCache.Get<List<AlunoViewModel>>("TurmasNegros");
+          foreach (var aVm in alunosVm)
+          {
+            aVm.Turma = turmasNegro?.FirstOrDefault(s => s.ID == aVm.ID)?.Turma;
+          }
+        }
+        else if (pConcorrencia == "PCD")
+        {
+          var turmasPCD = XAppCache.Get<List<AlunoViewModel>>("TurmasPCD");
+          foreach (var aVm in alunosVm)
+          {
+            aVm.Turma = turmasPCD?.FirstOrDefault(s => s.ID == aVm.ID)?.Turma;
+          }
+        }
         ViewBag.Media = _alunoAppService.PegarMediaCalculada();
 
         return PartialView(alunosVm);
       }
       else
       {
-        var alunosVm = Mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoViewModel>>(alunos).ToList();
         ViewBag.Media = _alunoAppService.PegarMediaCalculada();
-
         return PartialView(alunosVm);
       }
 
@@ -239,7 +254,7 @@ namespace GestaoDDD.MVC.Controllers
         var turmasAmpla = XAppCache.Get<List<AlunoViewModel>>("TurmasAmpla");
         foreach (var aVm in alunosVm)
         {
-          aVm.Turma = turmasAmpla.FirstOrDefault(s => s.ID == aVm.ID).Turma;
+          aVm.Turma = turmasAmpla?.FirstOrDefault(s => s.ID == aVm.ID)?.Turma;
         }
         return Json(alunosVm, JsonRequestBehavior.AllowGet);
       }
@@ -248,7 +263,7 @@ namespace GestaoDDD.MVC.Controllers
         var turmasNegro = XAppCache.Get<List<AlunoViewModel>>("TurmasNegros");
         foreach (var aVm in alunosVm)
         {
-          aVm.Turma = turmasNegro.FirstOrDefault(s => s.ID == aVm.ID).Turma;
+          aVm.Turma = turmasNegro?.FirstOrDefault(s => s.ID == aVm.ID)?.Turma;
         }
         return Json(alunosVm, JsonRequestBehavior.AllowGet);
       }
@@ -257,7 +272,7 @@ namespace GestaoDDD.MVC.Controllers
         var turmasPCD = XAppCache.Get<List<AlunoViewModel>>("TurmasPCD");
         foreach (var aVm in alunosVm)
         {
-          aVm.Turma = turmasPCD.FirstOrDefault(s => s.ID == aVm.ID).Turma;
+          aVm.Turma = turmasPCD?.FirstOrDefault(s => s.ID == aVm.ID)?.Turma;
         }
         return Json(alunosVm, JsonRequestBehavior.AllowGet);
       }
@@ -309,6 +324,8 @@ namespace GestaoDDD.MVC.Controllers
     public void AtualizarNotaCFP(int pAlunoId, double pNota)
     {
       _alunoAppService.AtualizarNotaCFP(pAlunoId, pNota);
+      VerificarTurmasNomeacao("Ampla");
+      //Task.Run(() => Task.FromResult());
     }
 
     public JsonResult BuscaDptosPreferenciaAluno(int pAlunoID)
