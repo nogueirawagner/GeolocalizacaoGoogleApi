@@ -21,8 +21,7 @@
                             <th>Nome</th>
                             <th>Nota Etapa 1</th>
                             <th>Nota Etapa 2</th>
-                            <th>Nota Final Provisoria</th>
-                            <th>Turma</th>
+                            <th>Nota Final</th>
                         </tr>
                     </thead>
                     <tbody id="tableBody">
@@ -31,7 +30,7 @@
 
                         <tr class="table-row" data-url="@Url.Action("PainelAluno", "Aluno", new { pAlunoId = item.ID })">
                             <td>
-                                @Html.DisplayFor(modelItem => item.PosicaoProvisoria)
+                                @Html.DisplayFor(modelItem => item.Posicao)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Inscricao)
@@ -46,10 +45,7 @@
                                 @Html.DisplayFor(modelItem => item.NotaEtapa2)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.NotaFinalProvisoria)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Turma)
+                                @Html.DisplayFor(modelItem => item.NotaFinal)
                             </td>
                         </tr>
                         }

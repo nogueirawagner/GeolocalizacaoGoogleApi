@@ -78,7 +78,7 @@ namespace GestaoDDD.MVC.Controllers
 
         // negros fixos na posição 3 e 8;.
 
-        if (obj.PosicaoProvisoria == posicao_negro + 5)
+        if (obj.Posicao == posicao_negro + 5)
         {
           if (resto_negros.Count() > 0)
           {
@@ -96,7 +96,7 @@ namespace GestaoDDD.MVC.Controllers
           }
         }
 
-        if (obj.PosicaoProvisoria == posicao_pcd + 20)
+        if (obj.Posicao == posicao_pcd + 20)
         {
           if (resto_pcd.Count() > 0)
           {
@@ -155,20 +155,8 @@ namespace GestaoDDD.MVC.Controllers
 
     public ActionResult BuscarAlunos()
     {
-      var alunos = _alunoAppService.PegarAlunosPorCargoConcorrencia("Agente", "Ampla");
-      var alunosVm = Mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoViewModel>>(alunos).ToList();
-      ViewBag.Media = _alunoAppService.PegarMediaCalculada();
+      ViewBag.Media = "43.35";
 
-      var turmasAmpla = XAppCache.Get<List<AlunoViewModel>>("TurmasAmpla");
-
-      foreach (var aVm in alunosVm)
-      {
-        aVm.Turma = turmasAmpla?.FirstOrDefault(s => s.ID == aVm.ID)?.Turma;
-      }
-
-      return View(alunosVm);
-
-      /*
       var key = string.Concat("AlunosConcorrencia-", "Agente", "Ampla");
       if (XAppCache.Has(key))
         return XAppCache.Get<ActionResult>(key);
@@ -176,57 +164,17 @@ namespace GestaoDDD.MVC.Controllers
       {
         var alunos = _alunoAppService.PegarAlunosPorCargoConcorrencia("Agente", "Ampla");
         var alunosVm = Mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoViewModel>>(alunos).ToList();
-        
+
         return XAppCache.Set(key, View(alunosVm));
       }
-      */
+
     }
 
     public ActionResult BuscaAlunosFiltro(string pCargo, string pConcorrencia)
     {
-      var alunos = _alunoAppService.PegarAlunosPorCargoConcorrencia(pCargo, pConcorrencia);
-      var alunosVm = Mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoViewModel>>(alunos).ToList();
+      ViewBag.Media = "43.35";
 
-      if (pConcorrencia == "Ampla" || pConcorrencia == "Negros" || pConcorrencia == "PCD")
-      {
-        if (pConcorrencia == "Ampla")
-        {
-          var turmasAmpla = XAppCache.Get<List<AlunoViewModel>>("TurmasAmpla");
-          foreach (var aVm in alunosVm)
-          {
-            aVm.Turma = turmasAmpla?.FirstOrDefault(s => s.ID == aVm.ID)?.Turma;
-          }
-        }
-        else if (pConcorrencia == "Negros")
-        {
-          var turmasNegro = XAppCache.Get<List<AlunoViewModel>>("TurmasNegros");
-          foreach (var aVm in alunosVm)
-          {
-            aVm.Turma = turmasNegro?.FirstOrDefault(s => s.ID == aVm.ID)?.Turma;
-          }
-        }
-        else if (pConcorrencia == "PCD")
-        {
-          var turmasPCD = XAppCache.Get<List<AlunoViewModel>>("TurmasPCD");
-          foreach (var aVm in alunosVm)
-          {
-            aVm.Turma = turmasPCD?.FirstOrDefault(s => s.ID == aVm.ID)?.Turma;
-          }
-        }
-        ViewBag.Media = _alunoAppService.PegarMediaCalculada();
-
-        return PartialView(alunosVm);
-      }
-      else
-      {
-        ViewBag.Media = _alunoAppService.PegarMediaCalculada();
-        return PartialView(alunosVm);
-      }
-
-
-      /*
       var key = string.Concat("AlunosConcorrencia-Partial-", pCargo, pConcorrencia);
-
       if (XAppCache.Has(key))
       {
         return XAppCache.Get<ActionResult>(key);
@@ -237,8 +185,6 @@ namespace GestaoDDD.MVC.Controllers
         var alunosVm = Mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoViewModel>>(alunos).ToList();
         return XAppCache.Set(key, PartialView(alunosVm));
       }
-
-      */
     }
 
     public JsonResult PesquisarAlunosPorPalavras(string pTermo, string pConcorrencia, string pCargo)
@@ -246,38 +192,7 @@ namespace GestaoDDD.MVC.Controllers
       var alunos = _alunoAppService.PesquisarAlunosPorPalavras(pTermo, pConcorrencia, pCargo);
       var alunosVm = Mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoViewModel>>(alunos).ToList();
 
-      if (alunosVm.Count == 0)
-        return null;
-
-      if (pConcorrencia == "Ampla")
-      {
-        var turmasAmpla = XAppCache.Get<List<AlunoViewModel>>("TurmasAmpla");
-        foreach (var aVm in alunosVm)
-        {
-          aVm.Turma = turmasAmpla?.FirstOrDefault(s => s.ID == aVm.ID)?.Turma;
-        }
-        return Json(alunosVm, JsonRequestBehavior.AllowGet);
-      }
-      else if (pConcorrencia == "Negros")
-      {
-        var turmasNegro = XAppCache.Get<List<AlunoViewModel>>("TurmasNegros");
-        foreach (var aVm in alunosVm)
-        {
-          aVm.Turma = turmasNegro?.FirstOrDefault(s => s.ID == aVm.ID)?.Turma;
-        }
-        return Json(alunosVm, JsonRequestBehavior.AllowGet);
-      }
-      else if (pConcorrencia == "PCD")
-      {
-        var turmasPCD = XAppCache.Get<List<AlunoViewModel>>("TurmasPCD");
-        foreach (var aVm in alunosVm)
-        {
-          aVm.Turma = turmasPCD?.FirstOrDefault(s => s.ID == aVm.ID)?.Turma;
-        }
-        return Json(alunosVm, JsonRequestBehavior.AllowGet);
-      }
-      else
-        return Json(alunosVm, JsonRequestBehavior.AllowGet);
+      return Json(alunosVm, JsonRequestBehavior.AllowGet);
     }
 
     public ActionResult PainelAluno(int pAlunoId)
@@ -291,25 +206,24 @@ namespace GestaoDDD.MVC.Controllers
       ViewBag.Inscricao = aluno.Inscricao;
       ViewBag.Cargo = aluno.Cargo;
       ViewBag.Posicao = aluno.Posicao;
-      ViewBag.PosicaoProvisoria = aluno.PosicaoProvisoria;
 
-      var dptos = _dptoPoliciaAppService.GetAll()
-         .OrderByDescending(s => s.Pontuacao);
-      var dptoVm = Mapper.Map<IEnumerable<DepartamentoPolicia>, IEnumerable<DepartamentoPoliciaViewModel>>(dptos);
+      //var dptos = _dptoPoliciaAppService.GetAll()
+      //   .OrderByDescending(s => s.Pontuacao);
+      //var dptoVm = Mapper.Map<IEnumerable<DepartamentoPolicia>, IEnumerable<DepartamentoPoliciaViewModel>>(dptos);
 
-      return View(dptoVm);
+      //return View(dptoVm);
 
-      //var key = "BuscaDelegacias";
-      //if (XAppCache.Has(key))
-      //  return XAppCache.Get<ActionResult>(key);
-      //else
-      //{
-      //  var dptos = _dptoPoliciaAppService.GetAll()
-      //    .OrderByDescending(s => s.Pontuacao);
-      //  var dptoVm = Mapper.Map<IEnumerable<DepartamentoPolicia>, IEnumerable<DepartamentoPoliciaViewModel>>(dptos);
+      var key = "BuscaDelegacias";
+      if (XAppCache.Has(key))
+        return XAppCache.Get<ActionResult>(key);
+      else
+      {
+        var dptos = _dptoPoliciaAppService.GetAll()
+          .OrderByDescending(s => s.Pontuacao);
+        var dptoVm = Mapper.Map<IEnumerable<DepartamentoPolicia>, IEnumerable<DepartamentoPoliciaViewModel>>(dptos);
 
-      //  return XAppCache.Set(key, View(dptoVm));
-      //}
+        return XAppCache.Set(key, View(dptoVm));
+      }
     }
 
     //public ActionResult BuscaDptosPolicia()
@@ -324,7 +238,7 @@ namespace GestaoDDD.MVC.Controllers
     public void AtualizarNotaCFP(int pAlunoId, double pNota)
     {
       _alunoAppService.AtualizarNotaCFP(pAlunoId, pNota);
-      VerificarTurmasNomeacao("Ampla");
+      //VerificarTurmasNomeacao("Ampla");
       //Task.Run(() => Task.FromResult());
     }
 

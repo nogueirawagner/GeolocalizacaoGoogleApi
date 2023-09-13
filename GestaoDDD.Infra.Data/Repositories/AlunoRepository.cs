@@ -21,18 +21,18 @@ namespace GestaoDDD.Infra.Data.Repositories
 
     public void AtualizarNotaCFP(int pAlunoId, double pNota)
     {
-      var aluno = GetById(pAlunoId);
-      aluno.NotaEtapa2 = pNota;
-      aluno.NotaFinalProvisoria = aluno.NotaEtapa1 + pNota;
-      Update(aluno);
-      Task.Run(() => Task.FromResult(AtualizarRankingAluno(aluno.Concorrencia)));
+      //var aluno = GetById(pAlunoId);
+      //aluno.NotaEtapa2 = pNota;
+      //aluno.NotaFinalProvisoria = aluno.NotaEtapa1 + pNota;
+      //Update(aluno);
+      //Task.Run(() => Task.FromResult(AtualizarRankingAluno(aluno.Concorrencia)));
     }
 
     private Task<int> AtualizarRankingAluno(string pConcorrencia)
     {
       using (var db = new GestaoContext())
       {
-        var sql = string.Format(@"update Aluno set PosicaoProvisoria = 0 where Cargo = 'Agente' and Concorrencia = '{0}'", pConcorrencia);
+        var sql = string.Format(@"update Aluno set Posicao = 0 where Cargo = 'Agente' and Concorrencia = '{0}'", pConcorrencia);
         db.Database.ExecuteSqlCommand(sql);
 
         var sqlAtualiza = string.Format(@"
@@ -42,13 +42,13 @@ namespace GestaoDDD.Infra.Data.Repositories
             select 
             ID, Nome,
             ROW_NUMBER ( )   
-                OVER ( order by NotaFinalProvisoria desc )  PosicaoProvisoria
+                OVER ( order by NotaFinal desc )  Posicao
 
             from Aluno where Cargo = 'Agente'
             and Concorrencia = '{0}'
             )
 
-            update a set a.PosicaoProvisoria = ar.PosicaoProvisoria from Aluno a
+            update a set a.Posicao = ar.Posicao from Aluno a
             join AtualizarRank ar on ar.ID = a.ID
         ", pConcorrencia);
 
@@ -61,8 +61,8 @@ namespace GestaoDDD.Infra.Data.Repositories
       var pChaves = new List<string>();
       var where = XFullText.MontarCondicao(pTermo, "Nome", out pChaves);
 
-      //var sql = @"SELECT * FROM Aluno WHERE {0} and Concorrencia = '{1}' and Cargo = '{2}' ORDER BY Posicao";
-      var sql = @"SELECT * FROM Aluno WHERE {0} and Concorrencia = '{1}' and Cargo = '{2}' ORDER BY PosicaoProvisoria";
+      var sql = @"SELECT * FROM Aluno WHERE {0} and Concorrencia = '{1}' and Cargo = '{2}' ORDER BY Posicao";
+      //var sql = @"SELECT * FROM Aluno WHERE {0} and Concorrencia = '{1}' and Cargo = '{2}' ORDER BY PosicaoProvisoria";
 
       sql = string.Format(sql, where, pConcorrencia, pCargo);
       return _db.Database.SqlQuery<Aluno>(sql);
@@ -74,7 +74,7 @@ namespace GestaoDDD.Infra.Data.Repositories
 	        CAST(AVG(NotaEtapa2) as numeric(18,2)) Media 
         from Aluno 
         where Cargo = 'Agente' 
-	        and NotaFinalProvisoria > 0
+	        and NotaFinal > 0
 	        and NotaEtapa2 <> 43.25
 	        and NotaEtapa2 > 0
         ";
@@ -85,8 +85,8 @@ namespace GestaoDDD.Infra.Data.Repositories
 
     public IEnumerable<Aluno> PegarAlunosPorCargoConcorrencia(string pCargo, string pConcorrencia)
     {
-      //var sql = @"SELECT * FROM Aluno WHERE Concorrencia = '{0}' and Cargo = '{1}' ORDER BY Posicao";
-      var sql = @"SELECT * FROM Aluno WHERE Concorrencia = '{0}' and Cargo = '{1}' ORDER BY PosicaoProvisoria";
+      var sql = @"SELECT * FROM Aluno WHERE Concorrencia = '{0}' and Cargo = '{1}' ORDER BY Posicao";
+      //var sql = @"SELECT * FROM Aluno WHERE Concorrencia = '{0}' and Cargo = '{1}' ORDER BY PosicaoProvisoria";
 
       sql = string.Format(sql, pConcorrencia, pCargo);
 
